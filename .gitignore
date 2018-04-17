@@ -21,3 +21,5 @@ spec/coverage
 spec/reports
 brakeman-output.tabs
 rubocop-results.xml
+
+.DS_store
