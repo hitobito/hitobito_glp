@@ -1,19 +1,154 @@
 de:
   activerecord:
     models:
-
       ### GROUPS
-
       group/root:
-        one: Hauptgruppe
+        one: Dachverband
         other: Hauptgruppen
-
+      group/root_geschaeftsstelle:
+        one: Geschäftsstelle
+        other: Geschäftsstellen
+      group/root_vorstand:
+        one: Vorstand
+        other: Vorstände
+      group/root_arbeitsgruppe:
+        one: Arbeitsgruppe
+        other: Arbeitsgruppen
+      group/root_mitglieder:
+        one: Mitglieder
+        other:
+      group/root_kontakte:
+        one: Kontakte
+        other:
+      group/root_gewaehlte: &GEWAEHLTE
+        one: Gewählte 
+        other:
+      group/kanton:
+        one: Kanton
+        other:
+      group/kanton_delegierte:
+        one: Delegierte
+        other:
+      group/kanton_gewaehlte:
+        *GEWAEHLTE
+      group/ortsektion:
+        one: Ortsektion
+        other:
 
       ### ROLES
-
+      group/root/administrator:
+        one: Administrator
+        other: Administratoren
       group/root/leader:
         one: Leitung
         description: Leitungspersonen verwalten die Applikation.
       group/root/member:
         one: Mitglied
         description: Mitglieder sind alle anderen.
+
+      group/root_geschaeftsstelle/leitung: &LEITUNG
+        one: Leitung
+        other:
+      group/root_geschaeftsstelle/mitarbeiter:
+        one: Mitarbeiter(in)
+        other:
+
+      group/root_vorstand/praesidentln:
+        one: PräsidentIn
+        other:
+      group/root_vorstand/vizepraesidentln:
+        one: Vizepräsidentln 
+        other:
+      group/root_vorstand/geschaeftsleitung:
+        one: Geschäftsleitung 
+        other:
+      group/root_vorstand/kassier:
+        one: Kassier
+        other:
+      group/root_vorstand/mitglied: &MITGLIED
+        one: Mitglied 
+        other:
+
+      group/root_arbeitsgruppe/leitung: 
+        *LEITUNG
+      group/root_arbeitsgruppe/mitglied:
+        *MITGLIED
+
+      group/root_mitglieder/mitglied:
+        *MITGLIED
+      group/root_mitglieder/sympathisant:
+        one: Sympathisant
+        other:
+      group/root_mitglieder/adressverwaltung: &ADRESSVERWALTUNG
+        one: Adressverwaltung
+        other:
+
+      group/root_kontakte/adressverwaltung:
+        *ADRESSVERWALTUNG
+      group/root_kontakte/kontakt:
+        one: Kontakt
+        other:
+
+      group/root_gewaehlte/bundesrat:
+        one: Bundesrat 
+        other:
+      group/root_gewaehlte/staenderat:
+        one: Ständerat
+        other:
+      group/root_gewaehlte/nationalrat:
+        one: Nationalrat
+        other:
+      group/root_gewaehlte/vollamt_bundesrichter:
+        one: Bundesrichter (Vollamt)
+        other:
+      group/root_gewaehlte/nebenamt_bundes_richter:
+        one: Bundesrichter (Nebenamt)
+        other:
+      group/root_gewaehlte/bundesverwaltungsrichter:
+        one: Bundesverwaltungsrichter
+        other:
+      group/root_gewaehlte/bundespatentrichter:
+        one: Bundespatentrichter
+        other:
+      group/root_gewaehlte/bundesstrafrichter:
+        one: Bundesstrafrichter
+        other:
+
+      group/kanton_delegierte/delegierte:
+        one: Delegierte
+        other:
+      group/kanton_delegierte/ersatzdelegierte:
+        one: Ersatzdelegierte
+        other:
+
+      group/kanton_gewaehlte/kantonale_exekutive:
+        one: Kantonale Exekutive
+        other:
+      group/kanton_gewaehlte/kantonale_legislative:
+        one: Kantonale Legislative 
+        other:
+      group/kanton_gewaehlte/mitglied_kantonales_gericht_erste_instanz:
+        one: Mitglied kantonales Gericht erste Instanz 
+        other:
+      group/kanton_gewaehlte/mitglied_kantonales_gericht_obere_instanz:
+        one: Mitglied kantonales Gericht obere Instanz
+        other:
+      group/kanton_gewaehlte/staatsanwaltschaft:
+        one: Staatsanwaltschaft 
+        other:
+
+      group/ortsektion/kommunale_exekutive:
+        one: Kommunale Exekutive 
+        other:
+      group/ortsektion/kommunale_legislative:
+        one: Kommunale Legislative
+        other:
+      group/ortsektion/schulpflegekommission :
+        one: Schulpflege/- kommission
+        other:
+      group/ortsektion/rechnungspruefungskommission:
+        one: Rechnungsprüfungskommission
+        other:
+      group/ortsektion/mitglied_weitere_kommissionen:
+        one: Mitglied weitere Kommissionen 
+        other:

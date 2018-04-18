@@ -1,24 +1,25 @@
-# encoding: utf-8
-
-# TODO: rename class to specific name and change all references
-class Group::Root < ::Group
+class Group::Root < Group
 
   self.layer = true
 
-  # TODO: define actual child group types
-  children Group::Root
+  children Group::RootGeschaeftsstelle, Group::RootVorstand, Group::RootArbeitsgruppe, Group::RootMitglieder, Group::RootKontakte, Group::RootGewaehlte, Group::Kanton
 
-  ### ROLES
+  # TODO: define default children for each layer/group
+  # self.default_children = [Group::RootVorstand]
 
-  # TODO: define actual role types
-  class Leader < ::Role
+
+  # TODO: Leader and member left in for the time being, otherwise single table inheritance crashes the app.
+  class Leader < Role
     self.permissions = [:layer_and_below_full, :admin]
   end
 
-  class Member < ::Role
+  class Member < Role
     self.permissions = [:group_read]
   end
 
-  roles Leader, Member
+  class Administrator < Role
+    self.permissions = [:layer_and_below_full, :admin]
+  end
 
+  roles Leader, Member, Administrator
 end
