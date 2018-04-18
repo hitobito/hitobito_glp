@@ -13,18 +13,7 @@ class GlpPersonSeeder < PersonSeeder
 
 end
 
-puzzlers = ['Pascal Zumkehr',
-            'Pierre Fritsch',
-            'Andreas Maierhofer',
-            'Mathis Hofer',
-            'Andre Kunz',
-            'Pascal Simon',
-            'Roland Studer']
-
-devs = {'Customer Name' => 'customer@email.com'}
-puzzlers.each do |puz|
-  devs[puz] = "#{puz.split.last.downcase}@puzzle.ch"
-end
+devs = {'Mat' => 'mat@zeilenwerk.ch', 'Zeilenwerk' => 'test@zeilenwerk.ch'} # add accounts for 'live' test users
 
 seeder = GlpPersonSeeder.new
 
