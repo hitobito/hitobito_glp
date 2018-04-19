@@ -4,6 +4,9 @@
 application:
   languages:
     de: Deutsch
+    en: English
+    fr: French
+    it: Italian
 
 # The person with this email has root access to everything
 # This person should only be used by the operators of the application,
