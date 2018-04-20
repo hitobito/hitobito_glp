@@ -1,5 +1,5 @@
-class Group::RootMitglieder < Group
-  children Group::RootMitglieder
+class Group::BezirkMitglieder < Group
+  children Group::BezirkMitglieder
 
   class Mitglied < Role
   end

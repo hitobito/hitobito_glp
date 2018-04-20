@@ -1,8 +1,11 @@
 class Group::Bezirk < Group
   self.layer = true
 
-  class Regierungsstatthalter < Role
+  class Administrator < Role
+    self.permissions = [:layer_and_below_full, :contact_data]
   end
 
-  roles Regierungsstatthalter
+  roles Administrator
+
+  children Group::BezirkGewaehlte, Group::BezirkGeschaeftsstelle, Group::BezirkVorstand, Group::BezirkArbeitsgruppe, Group::BezirkMitglieder, Group::BezirkKontakte
 end

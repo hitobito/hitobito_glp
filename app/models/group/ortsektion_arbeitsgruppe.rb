@@ -1,5 +1,5 @@
-class Group::RootArbeitsgruppe < ::Group
-  children Group::RootArbeitsgruppe
+class Group::OrtsektionArbeitsgruppe < ::Group
+  children Group::OrtsektionArbeitsgruppe
 
   class Leitung < Role
     self.permissions = [:group_and_below_read, :contact_data]

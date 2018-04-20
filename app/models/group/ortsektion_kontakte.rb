@@ -1,5 +1,5 @@
-class Group::RootKontakte < Group
-  children Group::RootKontakte
+class Group::OrtsektionKontakte < Group
+  children Group::OrtsektionKontakte
 
   class Adressverwaltung < Role
     self.permissions = [:group_and_below_full]

@@ -1,22 +1,11 @@
 class Group::Ortsektion < Group
-
   self.layer = true
 
-  class KommunaleExekutive < Role
+  class Administrator < Role
+    self.permissions = [:layer_and_below_full, :contact_data]
   end
 
-  class KommunaleLegislative < Role
-  end
+  roles Administrator
 
-  class Schulpflegekommission < Role
-  end
-
-  class Rechnungspruefungskommission < Role
-  end
-
-  class MitgliedWeitereKommissionen < Role
-  end
-
-  roles KommunaleExekutive, KommunaleLegislative, Schulpflegekommission, Rechnungspruefungskommission, MitgliedWeitereKommissionen
-  
+  children Group::OrtsektionGewaehlte, Group::OrtsektionGeschaeftsstelle, Group::OrtsektionVorstand, Group::OrtsektionArbeitsgruppe, Group::OrtsektionMitglieder, Group::OrtsektionKontakte
 end

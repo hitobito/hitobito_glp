@@ -21,5 +21,5 @@ class Group::Root < Group
     self.permissions = [:layer_and_below_full, :admin]
   end
 
-  roles Leader, Member, Administrator
+  roles Administrator
 end
