@@ -8,7 +8,7 @@ class Group::KantonGeschaeftsstelle < Group
   end
 
   class Finanzen < Role
-    self.permissions = [:finance]
+    self.permissions = [:layer_and_below_read, :layer_full, :finance]
   end
 
   roles Leitung, Mitarbeiter, Finanzen
