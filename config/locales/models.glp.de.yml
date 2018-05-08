@@ -90,6 +90,9 @@ de:
       group/root_geschaeftsstelle/mitarbeiter: &MITARBEITER
         one: Mitarbeiter(in)
         other:
+      group/root_geschaeftsstelle/finanzen: &FINANZEN
+        one: Finanzen
+        other:
 
       group/root_vorstand/praesidentln: &PRAESIDENTLN
         one: PräsidentIn
@@ -194,6 +197,8 @@ de:
         *LEITUNG
       group/kanton_geschaeftsstelle/mitarbeiter: 
         *MITARBEITER
+      group/kanton_geschaeftsstelle/finanzen:
+        *FINANZEN
       group/kanton_vorstand/praesidentln: 
         *PRAESIDENTLN
       group/kanton_vorstand/vizepraesidentln: 
@@ -240,6 +245,8 @@ de:
         *LEITUNG
       group/ortsektion_geschaeftsstelle/mitarbeiter: 
         *MITARBEITER
+      group/ortsektion_geschaeftsstelle/finanzen:
+        *FINANZEN
       group/ortsektion_vorstand/praesidentln: 
         *PRAESIDENTLN
       group/ortsektion_vorstand/vizepraesidentln: 
@@ -274,6 +281,8 @@ de:
         *LEITUNG
       group/bezirk_geschaeftsstelle/mitarbeiter: 
         *MITARBEITER
+      group/bezirk_geschaeftsstelle/finanzen:
+        *FINANZEN
       group/bezirk_vorstand/praesidentln: 
         *PRAESIDENTLN
       group/bezirk_vorstand/vizepraesidentln: 
