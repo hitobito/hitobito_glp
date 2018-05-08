@@ -3,6 +3,15 @@
 //  or later. See the COPYING file at the top-level directory or at
 //  https://github.com/hitobito/hitobito_dsj.
 
+// GLP
+$glp:                   #B4DC00;
+$glpDark:               #004b32;
+$glpGrey:               #e3ebe8;
+
+$glpDarkGreen:   #004B32;
+$glpMediumGreen: #82B43C;
+$glpLightBlue:   #119CD4;
+
 $glp_color_a:           #004b32;
 $bsv_color_b:           #FF424B;
 $bsv_color_c:           #a00000;
@@ -29,32 +38,32 @@ $white:                 #fff !default;
 
 // Colors
 // ----------------------------
-$blue:                  $glp_color_a!default;
-$blueDark:              darken($blue, 10%) !default;
+$blue:                  $grayDark !default;
+$blueDark:              darken($grayDark, 10%) !default;
 $green:                 #8DB850 !default;
 $greenDark:             darken($green, 10%) !default;
 
 $orange:                lighten($bsv_color_b, 10%) !default;
 $orangeDark:            $bsv_color_b;
-$purple:                $bsv_color_c;
-$purpleDark:            darken($bsv_color_c, 10%) !default;
+$purple:                $grayDark;
+$purpleDark:            $grayDarker !default;
 
 $red:                   $orange !default;
 
-$textColor:             $bsv_color_f !default;
-$borderColor:           $grayLight !default;
+$textColor:             $glpDark !default;
+$borderColor:           $glpGrey !default;
 
-$pageBackground:        $bsv_color_e;
-$contentBackground:     $grayLight;
-$footerBackground:      $bsv_color_h;
+$pageBackground:        mix($gray, $grayLight, .65); //$glpGrey;
+$contentBackground:     mix($gray, $grayLight, .4);
+$footerBackground:      $grayDarker;
 $bodyBackground:        $footerBackground !default;
 
-$focusColor:            $bsv_color_c;
-$shadowColor:           darken($pageBackground, 10%);
-$linkColor:             $glp_color_a !default;
-$linkColorHover:        $bsv_color_d !default;
+$focusColor:            $gray;
+$shadowColor:           transparentize($glpDark, .8);
+$linkColor:             $glpMediumGreen !default;
+$linkColorHover:        $glpDark !default;
 
-$footerColor:           $white;
+$footerColor:           transparentize($white, .5);
 $footerColorHover:      $white;
 
 $tableColorHover:       lighten($purple, 50%);
