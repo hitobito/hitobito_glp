@@ -7,5 +7,9 @@ class Group::BezirkGeschaeftsstelle < Group
     self.permissions = [:layer_and_below_read, :layer_full, :contact_data]
   end
 
-  roles Leitung, Mitarbeiter
+  class Finanzen < Role
+    self.permissions = [:finance]
+  end
+
+  roles Leitung, Mitarbeiter, Finanzen
 end
