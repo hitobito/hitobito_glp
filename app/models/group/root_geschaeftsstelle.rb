@@ -1,6 +1,6 @@
 class Group::RootGeschaeftsstelle < Group
   class Leitung < Role
-    self.permissions = [:layer_and_below_full, :admin, :contact_data, :finance]
+    self.permissions = [:layer_and_below_full, :admin, :contact_data, :finance, :impersonation]
   end
 
   class Mitarbeiter < Role

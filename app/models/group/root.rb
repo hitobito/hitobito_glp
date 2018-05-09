@@ -18,7 +18,7 @@ class Group::Root < Group
   end
 
   class Administrator < Role
-    self.permissions = [:layer_and_below_full, :admin]
+    self.permissions = [:layer_and_below_full, :admin, :impersonation]
   end
 
   roles Administrator
