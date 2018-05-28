@@ -16,19 +16,19 @@ de:
         other: Arbeitsgruppen
       group/root_mitglieder: &MITGLIEDER
         one: Mitglieder
-        other:
+        other: Mitglieder
       group/root_kontakte: &KONTAKTE
         one: Kontakte
-        other:
+        other: Kontakte
       group/root_gewaehlte: &GEWAEHLTE
         one: Gewählte 
-        other:
+        other: Gewählte
       group/kanton:
         one: Kanton
-        other:
+        other: Kantone
       group/kanton_delegierte:
         one: Delegierte
-        other:
+        other: Delegierte
       group/kanton_vorstand:
         *VORSTAND
       group/kanton_geschaeftsstelle:
@@ -43,7 +43,7 @@ de:
         *KONTAKTE
       group/ortsektion:
         one: Ortsektion
-        other:
+        other: Ortsektionen
       group/ortsektion_gewaehlte:
         *GEWAEHLTE
       group/ortsektion_vorstand:
@@ -86,29 +86,29 @@ de:
 
       group/root_geschaeftsstelle/leitung: &LEITUNG
         one: Leitung
-        other:
+        other: Leitungen
       group/root_geschaeftsstelle/mitarbeiter: &MITARBEITER
         one: Mitarbeiter(in)
-        other:
+        other: Mitarbeiter(innen)
       group/root_geschaeftsstelle/finanzen: &FINANZEN
         one: Finanzen
-        other:
+        other: Finanzen
 
       group/root_vorstand/praesidentln: &PRAESIDENTLN
         one: PräsidentIn
-        other:
+        other: PräsidentInnen
       group/root_vorstand/vizepraesidentln: &VIZEPRAESIDENTLN
         one: Vizepräsidentln 
-        other:
+        other: Vizepräsidentlnnen
       group/root_vorstand/geschaeftsleitung: &GESCHAEFTSLEITUNG
         one: Geschäftsleitung 
-        other:
+        other: Geschäftsleitung
       group/root_vorstand/kassier: &KASSIER
         one: Kassier
-        other:
+        other: Kassiere
       group/root_vorstand/mitglied: &MITGLIED
         one: Mitglied 
-        other:
+        other: Mitglieder
 
       group/root_arbeitsgruppe/leitung: 
         *LEITUNG
@@ -119,66 +119,66 @@ de:
         *MITGLIED
       group/root_mitglieder/sympathisant: &SYMPATHISANT
         one: Sympathisant
-        other:
+        other: Sympathisanten
       group/root_mitglieder/adressverwaltung: &ADRESSVERWALTUNG
         one: Adressverwaltung
-        other:
+        other: Adressverwaltungen
 
       group/root_kontakte/adressverwaltung:
         *ADRESSVERWALTUNG
       group/root_kontakte/kontakt: &KONTAKT
         one: Kontakt
-        other:
+        other: Kontakte
 
       group/root_gewaehlte/bundesrat:
         one: Bundesrat 
-        other:
+        other: Bundesräte
       group/root_gewaehlte/staenderat:
         one: Ständerat
-        other:
+        other: Ständeräte
       group/root_gewaehlte/nationalrat:
         one: Nationalrat
-        other:
+        other: Nationalräte
       group/root_gewaehlte/vollamt_bundesrichter:
         one: Bundesrichter (Vollamt)
-        other:
+        other: Bundesrichter (Vollamt)
       group/root_gewaehlte/nebenamt_bundes_richter:
         one: Bundesrichter (Nebenamt)
-        other:
+        other: Bundesrichter (Nebenamt)
       group/root_gewaehlte/bundesverwaltungsrichter:
         one: Bundesverwaltungsrichter
-        other:
+        other: Bundesverwaltungsrichter
       group/root_gewaehlte/bundespatentrichter:
         one: Bundespatentrichter
-        other:
+        other: Bundespatentrichter
       group/root_gewaehlte/bundesstrafrichter:
         one: Bundesstrafrichter
-        other:
+        other: Bundesstrafrichter
 
       group/kanton/administrator:
         *ADMINISTRATOR
       group/kanton_delegierte/delegierte:
         one: Delegierte
-        other:
+        other: Delegierte
       group/kanton_delegierte/ersatzdelegierte:
         one: Ersatzdelegierte
-        other:
+        other: Ersatzdelegierte
 
       group/kanton_gewaehlte/kantonale_exekutive:
         one: Kantonale Exekutive
-        other:
+        other: Kantonale Exekutiven
       group/kanton_gewaehlte/kantonale_legislative:
         one: Kantonale Legislative 
-        other:
+        other: Kantonale Legislativen
       group/kanton_gewaehlte/mitglied_kantonales_gericht_erste_instanz:
         one: Mitglied kantonales Gericht erste Instanz 
-        other:
+        other: Mitglieder kantonales Gericht erste Instanz
       group/kanton_gewaehlte/mitglied_kantonales_gericht_obere_instanz:
         one: Mitglied kantonales Gericht obere Instanz
-        other:
+        other: Mitglieder kantonales Gericht obere Instanz
       group/kanton_gewaehlte/staatsanwaltschaft:
         one: Staatsanwaltschaft 
-        other:
+        other: Staatsanwaltschaften
       group/kanton_arbeitsgruppe/leitung: 
         *LEITUNG
       group/kanton_arbeitsgruppe/mitglied:
@@ -214,19 +214,19 @@ de:
         *ADMINISTRATOR
       group/ortsektion_gewaehlte/kommunale_exekutive:
         one: Kommunale Exekutive 
-        other:
+        other: Kommunale Exekutiven
       group/ortsektion_gewaehlte/kommunale_legislative:
         one: Kommunale Legislative
-        other:
+        other: Kommunale Legislativen
       group/ortsektion_gewaehlte/schulpflegekommission :
         one: Schulpflege/- kommission
-        other:
+        other: Schulpflege/- kommissionen
       group/ortsektion_gewaehlte/rechnungspruefungskommission:
         one: Rechnungsprüfungskommission
-        other:
+        other: Rechnungsprüfungskommissionen
       group/ortsektion_gewaehlte/mitglied_weitere_kommissionen:
         one: Mitglied weitere Kommissionen 
-        other:
+        other: Mitglieder weitere Kommissionen
       group/ortsektion_arbeitsgruppe/leitung: 
         *LEITUNG
       group/ortsektion_arbeitsgruppe/mitglied:
@@ -262,7 +262,7 @@ de:
         *ADMINISTRATOR
       group/bezirk_gewaehlte/regierungsstatthalter:
         one: Regierungsstatthalter/-in
-        other:
+        other: Regierungsstatthalter/-innen
       group/bezirk_arbeitsgruppe/leitung: 
         *LEITUNG
       group/bezirk_arbeitsgruppe/mitglied:
