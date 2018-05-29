@@ -29,6 +29,9 @@ de:
       group/kanton_delegierte:
         one: Delegierte
         other: Delegierte
+      group/bezirk:
+        one: Bezirk
+        other: Bezirke
       group/kanton_vorstand:
         *VORSTAND
       group/kanton_geschaeftsstelle:
@@ -58,8 +61,6 @@ de:
         *MITGLIEDER
       group/ortsektion_kontakte:
         *KONTAKTE
-      group/bezirk:
-        one: Bezirk
       group/bezirk_vorstand:
         *VORSTAND
       group/bezirk_geschaeftsstelle:
