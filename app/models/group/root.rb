@@ -2,7 +2,7 @@ class Group::Root < Group
 
   self.layer = true
 
-  children Group::RootGeschaeftsstelle, Group::RootVorstand, Group::RootArbeitsgruppe, Group::RootMitglieder, Group::RootKontakte, Group::RootGewaehlte, Group::Kanton, Group::Bezirk, Group::Ortsektion
+  children Group::RootGeschaeftsstelle, Group::RootVorstand, Group::RootArbeitsgruppe, Group::RootMitglieder, Group::RootKontakte, Group::RootGewaehlte, Group::Kanton
 
   # TODO: define default children for each layer/group
   # self.default_children = [Group::RootVorstand]

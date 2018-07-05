@@ -7,5 +7,5 @@ class Group::Kanton < Group
 
   roles Administrator
 
-  children Group::KantonDelegierte, Group::KantonGewaehlte, Group::KantonGeschaeftsstelle, Group::KantonVorstand, Group::KantonArbeitsgruppe, Group::KantonMitglieder, Group::KantonKontakte
+  children Group::KantonDelegierte, Group::KantonGewaehlte, Group::KantonGeschaeftsstelle, Group::KantonVorstand, Group::KantonArbeitsgruppe, Group::KantonMitglieder, Group::KantonKontakte, Group::Bezirk
 end

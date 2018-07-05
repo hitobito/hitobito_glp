@@ -7,5 +7,5 @@ class Group::Bezirk < Group
 
   roles Administrator
 
-  children Group::BezirkGewaehlte, Group::BezirkGeschaeftsstelle, Group::BezirkVorstand, Group::BezirkArbeitsgruppe, Group::BezirkMitglieder, Group::BezirkKontakte
+  children Group::BezirkGewaehlte, Group::BezirkGeschaeftsstelle, Group::BezirkVorstand, Group::BezirkArbeitsgruppe, Group::BezirkMitglieder, Group::BezirkKontakte, Group::Ortsektion
 end
