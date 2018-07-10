@@ -24,3 +24,4 @@ rubocop-results.xml
 
 .DS_store
 *.swp
+tags
