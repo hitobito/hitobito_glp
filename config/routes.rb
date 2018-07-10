@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   extend LanguageRouteScope
 
   language_scope do
-    # Define wagon routes here
-
+    resources :external_forms
+    resources :external_people_form_submissions, only: [:create]
   end
 
 end
