@@ -1,5 +1,5 @@
-class Group::OrtsektionMitglieder < Group
-  children Group::OrtsektionMitglieder
+class Group::BezirkZugeordnete < Group
+  children Group::BezirkZugeordnete 
 
   class Mitglied < Role
   end

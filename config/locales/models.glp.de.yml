@@ -14,15 +14,15 @@ de:
       group/root_arbeitsgruppe: &ARBEITSGRUPPE
         one: Arbeitsgruppe
         other: Arbeitsgruppen
-      group/root_mitglieder: &MITGLIEDER
-        one: Mitglieder
-        other: Mitglieder
       group/root_kontakte: &KONTAKTE
         one: Kontakte
         other: Kontakte
       group/root_gewaehlte: &GEWAEHLTE
         one: Gewählte 
         other: Gewählte
+      group/root_zugeordnete: &ZUGEORDNETE
+        one: Zugeordnete
+        other: Zugeordneten
       group/kanton:
         one: Kanton
         other: Kantone
@@ -40,8 +40,8 @@ de:
         *GEWAEHLTE
       group/kanton_arbeitsgruppe:
         *ARBEITSGRUPPE
-      group/kanton_mitglieder:
-        *MITGLIEDER
+      group/kanton_zugeordnete:
+        *ZUGEORDNETE
       group/kanton_kontakte:
         *KONTAKTE
       group/ortsektion:
@@ -57,8 +57,8 @@ de:
         *GEWAEHLTE
       group/ortsektion_arbeitsgruppe:
         *ARBEITSGRUPPE
-      group/ortsektion_mitglieder:
-        *MITGLIEDER
+      group/ortsektion_zugeordnete:
+        *ZUGEORDNETE
       group/ortsektion_kontakte:
         *KONTAKTE
       group/bezirk_vorstand:
@@ -69,8 +69,8 @@ de:
         *GEWAEHLTE
       group/bezirk_arbeitsgruppe:
         *ARBEITSGRUPPE
-      group/bezirk_mitglieder:
-        *MITGLIEDER
+      group/bezirk_zugeordnete:
+        *ZUGEORDNETE
       group/bezirk_kontakte:
         *KONTAKTE
 
@@ -78,6 +78,9 @@ de:
       group/root/administrator: &ADMINISTRATOR
         one: Administrator
         other: Administratoren
+      group/root/eventverantwortliche: &EVENTVERANTWORTLICHE
+        one: Eventverantwortliche
+        other: Eventverantwortlichen
       group/root/leader:
         one: Leitung
         description: Leitungspersonen verwalten die Applikation.
@@ -107,21 +110,21 @@ de:
       group/root_vorstand/kassier: &KASSIER
         one: Kassier
         other: Kassiere
-      group/root_vorstand/mitglied: &MITGLIED
-        one: Mitglied 
-        other: Mitglieder
-
+      group/root_vorstand/vorstandsmitglied: &VORSTANDSMITGLIED
+        one: Vorstandsmitglied
+        other: Vorstandsmitglieder
       group/root_arbeitsgruppe/leitung: 
         *LEITUNG
-      group/root_arbeitsgruppe/mitglied:
-        *MITGLIED
-
-      group/root_mitglieder/mitglied:
-        *MITGLIED
-      group/root_mitglieder/sympathisant: &SYMPATHISANT
+      group/root_arbeitsgruppe/agmitglied: &AGMITGLIED
+        one: Arbeitsgruppe Mitglied
+        other: Arbeitsgruppe Mitglieder
+      group/root_zugeordnete/mitglied: &MITGLIED
+        one: Mitglied 
+        other: Mitglieder
+      group/root_zugeordnete/sympathisant: &SYMPATHISANT
         one: Sympathisant
         other: Sympathisanten
-      group/root_mitglieder/adressverwaltung: &ADRESSVERWALTUNG
+      group/root_zugeordnete/adressverwaltung: &ADRESSVERWALTUNG
         one: Adressverwaltung
         other: Adressverwaltungen
 
@@ -184,11 +187,11 @@ de:
         *LEITUNG
       group/kanton_arbeitsgruppe/mitglied:
         *MITGLIED
-      group/kanton_mitglieder/mitglied:
+      group/kanton_zugeordnete/mitglied:
         *MITGLIED
-      group/kanton_mitglieder/sympathisant: 
+      group/kanton_zugeordnete/sympathisant: 
         *SYMPATHISANT
-      group/kanton_mitglieder/adressverwaltung: 
+      group/kanton_zugeordnete/adressverwaltung: 
         *ADRESSVERWALTUNG
       group/kanton_kontakte/adressverwaltung:
         *ADRESSVERWALTUNG
@@ -232,11 +235,11 @@ de:
         *LEITUNG
       group/ortsektion_arbeitsgruppe/mitglied:
         *MITGLIED
-      group/ortsektion_mitglieder/mitglied:
+      group/ortsektion_zugeordnete/mitglied:
         *MITGLIED
-      group/ortsektion_mitglieder/sympathisant: 
+      group/ortsektion_zugeordnete/sympathisant: 
         *SYMPATHISANT
-      group/ortsektion_mitglieder/adressverwaltung: 
+      group/ortsektion_zugeordnete/adressverwaltung: 
         *ADRESSVERWALTUNG
       group/ortsektion_kontakte/adressverwaltung:
         *ADRESSVERWALTUNG
@@ -268,11 +271,11 @@ de:
         *LEITUNG
       group/bezirk_arbeitsgruppe/mitglied:
         *MITGLIED
-      group/bezirk_mitglieder/mitglied:
+      group/bezirk_zugeordnete/mitglied:
         *MITGLIED
-      group/bezirk_mitglieder/sympathisant: 
+      group/bezirk_zugeordnete/sympathisant: 
         *SYMPATHISANT
-      group/bezirk_mitglieder/adressverwaltung: 
+      group/bezirk_zugeordnete/adressverwaltung: 
         *ADRESSVERWALTUNG
       group/bezirk_kontakte/adressverwaltung:
         *ADRESSVERWALTUNG

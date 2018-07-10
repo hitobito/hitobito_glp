@@ -7,5 +7,5 @@ class Group::Ortsektion < Group
 
   roles Administrator
 
-  children Group::OrtsektionGewaehlte, Group::OrtsektionGeschaeftsstelle, Group::OrtsektionVorstand, Group::OrtsektionArbeitsgruppe, Group::OrtsektionMitglieder, Group::OrtsektionKontakte
+  children Group::OrtsektionGewaehlte, Group::OrtsektionGeschaeftsstelle, Group::OrtsektionVorstand, Group::OrtsektionArbeitsgruppe, Group::OrtsektionZugeordnete, Group::OrtsektionKontakte
 end

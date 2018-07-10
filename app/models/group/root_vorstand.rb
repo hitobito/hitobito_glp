@@ -11,13 +11,9 @@ class Group::RootVorstand < Group
     self.permissions = [:group_and_below_full, :contact_data]
   end
 
-  class Kassier < Role
-    self.permissions = [:layer_and_below_read, :contact_data, :finance]
-  end
-
-  class Mitglied < Role
+  class Vorstandsmitglied < Role
     self.permissions = [:group_and_below_read, :contact_data]
   end
 
-  roles Praesidentln, Vizepraesidentln, Geschaeftsleitung, Kassier, Mitglied
+  roles Praesidentln, Vizepraesidentln, Geschaeftsleitung, Vorstandsmitglied
 end

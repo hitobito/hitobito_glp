@@ -1,5 +1,5 @@
-class Group::RootMitglieder < Group
-  children Group::RootMitglieder
+class Group::KantonZugeordnete < Group
+  children Group::KantonZugeordnete
 
   class Mitglied < Role
   end

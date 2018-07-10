@@ -9,6 +9,8 @@ class Group::KantonGewaehlte < Group
   end
   class Staatsanwaltschaft < Role
   end
+  class ParlamentarischeGeschaeftsfuehrung < Role
+  end
 
-  roles KantonaleExekutive, KantonaleLegislative, MitgliedKantonalesGerichtObereInstanz, MitgliedKantonalesGerichtErsteInstanz, Staatsanwaltschaft
+  roles KantonaleExekutive, KantonaleLegislative, MitgliedKantonalesGerichtObereInstanz, MitgliedKantonalesGerichtErsteInstanz, Staatsanwaltschaft, ParlamentarischeGeschaeftsfuehrung 
 end
