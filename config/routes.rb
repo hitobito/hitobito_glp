@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   language_scope do
     resources :external_forms
-    resources :external_people_form_submissions, only: [:create]
+    resources :externally_submitted_people, only: [:create]
   end
 
 end

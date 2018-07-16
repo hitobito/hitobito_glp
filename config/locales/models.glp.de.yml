@@ -1,3 +1,7 @@
+attributes:
+  group:
+    gip_codes: Zip Codes
+
 de:
   activerecord:
     models:

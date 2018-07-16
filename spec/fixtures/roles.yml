@@ -14,3 +14,8 @@ member:
   person: member
   group: root
   type: Group::Root::Member
+
+sympathisant:
+  person: sympathisant
+  group: root_zugeordnete
+  type: Group::RootZugeordnete::Sympathisant
