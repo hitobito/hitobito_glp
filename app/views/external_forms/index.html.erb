@@ -1,25 +1,46 @@
 <strong>Mitglied/Mitglied</strong>
-<%=h "<form action='' method='post'>
-    <input name='email' type=email/>
-    <input name='zipcode' type=text/>
-    <input type='hidden' name='role' value='mitglied'/>
+<br/>
+<%= text_area_tag(:haha, "
+<form action='#{@url}' method='post'>
+    <label for='first_name'>First name</label>
+    <input name='externally_submitted_person[first_name]' type=text id='first_name'/>
+    <label for='first_name'>Last name</label>
+    <input name='externally_submitted_person[last_name]' type=text id='last_name'/>
+    <label for='first_name'>Email name</label>
+    <input name='externally_submitted_person[email]' type=email id='email'/>
+    <label for='zip_code'>Zipcode name</label>
+    <input name='externally_submitted_person[zip_code]' type=text id='zip_code'/>
+    <input type='hidden' name='externally_submitted_person[role]' value='mitglied'/>
+    <input type=submit value='create'/>
+  </form>
+                  ", disabled: true)%>
+<br/>
+<strong>Mitglied/Symphatisant</strong>
+<br/>
+<%=h "<form action='#{@url}' method='post'>
+    <label for='first_name'>First name</label>
+    <input name='externally_submitted_person[first_name]' type=text id='first_name'/>
+    <label for='first_name'>Last name</label>
+    <input name='externally_submitted_person[last_name]' type=text id='last_name'/>
+    <label for='first_name'>Email name</label>
+    <input name='externally_submitted_person[email]' type=email id='email'/>
+    <label for='zip_code'>Zipcode name</label>
+    <input name='externally_submitted_person[zip_code]' type=text id='zip_code'/>
+    <input type='hidden' name='externally_submitted_person[role]' value='symphatisant'/>
     <input type=submit value='create'/>
   </form>"%>
 <br/>
+<strong>Kontake/Kontakt</strong>
 <br/>
-<strong>Mitglied/Symphatisant</strong><br/>
-<%=h "<form action='' method='post'>
-    <input name='email' type=email/>
-    <input name='zipcode' type=text/>
-    <input type='hidden' name='role' value='symphatisant'/>
-    <input type=submit value='create'/>
-  </form>"%>
-<br/>
-<br/>
-<strong>Kontake/Kontakt</strong><br/>
-<%=h "<form action='' method='post'>
-    <input name='email' type=email/>
-    <input name='zipcode' type=text/>
-    <input type='hidden' name='role' value='kontakt'/>
+<%=h "<form action='#{@url}' method='post'>
+    <label for='first_name'>First name</label>
+    <input name='externally_submitted_person[first_name]' type=text id='first_name'/>
+    <label for='first_name'>Last name</label>
+    <input name='externally_submitted_person[last_name]' type=text id='last_name'/>
+    <label for='first_name'>Email name</label>
+    <input name='externally_submitted_person[email]' type=email id='email'/>
+    <label for='zip_code'>Zipcode name</label>
+    <input name='externally_submitted_person[zip_code]' type=text id='zip_code'/>
+    <input type='externally_submitted_person[hidden]' name='role' value='adressverwaltung'/>
     <input type=submit value='create'/>
   </form>"%>
