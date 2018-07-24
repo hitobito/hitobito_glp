@@ -24,9 +24,6 @@
 = render 'contactable/fields', f: f
 
 = field_set_tag do
-  = f.labeled(:preferred_language) do
-    = f.collection_select(:preferred_language, Person::PREFERRED_LANGUAGES, :to_s, :to_s, {}, class: 'span2')
-
   = f.labeled(:gender) do
     - (Person::GENDERS + ['']).each do |key|
       = f.inline_radio_button(:gender, key, entry.gender_label(key))
@@ -43,6 +40,8 @@
                            value: f.date_value(:left_at),
                            help_inline: t('.format_birthday'),
                            class: 'span2')
+  = f.labeled(:preferred_language) do
+    = f.collection_select(:preferred_language, Person::PREFERRED_LANGUAGES, :to_s, :to_s, {}, class: 'span2')
 
 = render_extensions :fields, locals: { f: f }
 
