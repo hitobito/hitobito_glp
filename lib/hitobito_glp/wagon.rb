@@ -16,7 +16,9 @@ module HitobitoGlp
     config.to_prepare do
       # rubocop:disable SingleSpaceBeforeFirstArg
       # extend application classes here
-      Group.send        :include, Glp::Group
+      Group.send            :include, Glp::Group
+      Person.send           :include, Glp::Person
+      PeopleController.send :include, Glp::PeopleController
       # rubocop:enable SingleSpaceBeforeFirstArg
     end
 

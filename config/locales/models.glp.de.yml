@@ -1,5 +1,14 @@
 de:
   activerecord:
+    attributes:
+      person:
+        title: Anrede
+        preferred_language: Sprache
+        joining_journey: Wie zur GLP
+        occupation: Beruf und Berufssparte
+        joined_at: Datum Eintritt
+        left_at: Datum Austritt
+        website_link: Webseite
     models:
       ### GROUPS
       group/root:

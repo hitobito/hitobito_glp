@@ -5,15 +5,13 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito.
 
-module Glp::Group
-  extend ActiveSupport::Concern
-
-  included do
-    # Define additional used attributes
-    # self.used_attributes += [:website, :bank_account, :description]
-    # self.superior_attributes = [:bank_account]
-
-    root_types Group::Root
+module Glp
+  module PeopleController
+    extend ActiveSupport::Concern
+    included do
+      self.permitted_attrs += [:title, :preferred_language,
+                               :joining_journey, :occupation,
+                               :joined_at, :left_at, :website_url]
+    end
   end
-
 end
