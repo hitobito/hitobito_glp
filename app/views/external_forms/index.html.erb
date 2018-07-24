@@ -1,7 +1,6 @@
-<strong>Mitglied/Mitglied</strong>
+<strong>Mitglied</strong>
 <br/>
-<%= text_area_tag(:haha, "
-<form action='#{@url}' method='post'>
+<%= text_area_tag(:mitglied, "<form action='#{@url}' method='post'>
     <label for='first_name'>First name</label>
     <input name='externally_submitted_person[first_name]' type=text id='first_name'/>
     <label for='first_name'>Last name</label>
@@ -13,9 +12,9 @@
     <input type='hidden' name='externally_submitted_person[role]' value='mitglied'/>
     <input type=submit value='create'/>
   </form>
-                  ", disabled: true)%>
+                  ", size: "50x20")%>
 <br/>
-<strong>Mitglied/Symphatisant</strong>
+<strong>Symphatisant</strong>
 <br/>
 <%=h "<form action='#{@url}' method='post'>
     <label for='first_name'>First name</label>
@@ -30,7 +29,7 @@
     <input type=submit value='create'/>
   </form>"%>
 <br/>
-<strong>Kontake/Kontakt</strong>
+<strong></strong>
 <br/>
 <%=h "<form action='#{@url}' method='post'>
     <label for='first_name'>First name</label>

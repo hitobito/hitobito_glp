@@ -5,9 +5,16 @@
     <title></title>
   </head>
   <body>
-    <form action="http://example.com/employees?return_url=...some_url..." 
-          method='post'>
-      <input name="employee[name]" type=text/>
+    <form action='http://localhost:3000/externally_submitted_people' method='post'>
+      <label for='first_name'>First name</label>
+      <input name='externally_submitted_person[first_name]' type=text id='first_name'/>
+      <label for='first_name'>Last name</label>
+      <input name='externally_submitted_person[last_name]' type=text id='last_name'/>
+      <label for='first_name'>Email name</label>
+      <input name='externally_submitted_person[email]' type=email id='email'/>
+      <label for='zip_code'>Zipcode name</label>
+      <input name='externally_submitted_person[zip_code]' type=text id='zip_code'/>
+      <input type='hidden' name='externally_submitted_person[role]' value='mitglied'/>
       <input type=submit value='create'/>
     </form>
   </body>

@@ -7,7 +7,7 @@ describe ExternallySubmittedPeopleController do
   context "POST #create" do
     it "creates a person and saves his/her attributes." do
       expect do
-        post :create, externally_submitted_person: {zip_code: "917 01",
+        post :create, externally_submitted_person: {zip_code: "3012",
                                                     email: "sauron@evil.com",
                                                     first_name: "Sauron",
                                                     last_name: "The Abominable",
@@ -19,7 +19,7 @@ describe ExternallySubmittedPeopleController do
     end
 
     it "creates a 'mitglied' role for the new person." do
-      post :create, externally_submitted_person: {zip_code: "917 01",
+      post :create, externally_submitted_person: {zip_code: "3012",
                                                   email: "sauron@evil.com",
                                                   first_name: "Sauron",
                                                   last_name: "The Abominable",
@@ -28,7 +28,7 @@ describe ExternallySubmittedPeopleController do
     end
 
     it "creates a 'sympathisant' role for the new person." do
-      post :create, externally_submitted_person: {zip_code: "917 01",
+      post :create, externally_submitted_person: {zip_code: "3012",
                                                   email: "sauron@evil.com",
                                                   first_name: "Sauron",
                                                   last_name: "The Abominable",
@@ -37,7 +37,7 @@ describe ExternallySubmittedPeopleController do
     end
 
     it "creates a 'adressverwaltung' role for the new person." do
-      post :create, externally_submitted_person: {zip_code: "917 01",
+      post :create, externally_submitted_person: {zip_code: "3012",
                                                   email: "sauron@evil.com",
                                                   first_name: "Sauron",
                                                   last_name: "The Abominable",

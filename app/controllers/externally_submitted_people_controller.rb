@@ -12,8 +12,8 @@ class ExternallySubmittedPeopleController < ApplicationController
       person = Person.create(first_name: externally_submitted_person_params[:first_name],
                              last_name: externally_submitted_person_params[:last_name],
                              email: externally_submitted_person_params[:email])
-      Role.create(type: "Group::RootZugeordnete::#{externally_submitted_person_params[:role].capitalize}", person: person, group: group)
-
+      # person.roles.create(type: "Group::RootZugeordnete::#{externally_submitted_person_params[:role].capitalize}", group: group)
+      Role.create!(type: "Group::RootZugeordnete::#{externally_submitted_person_params[:role].capitalize}", person: person, group: group)
     end
 
   end
