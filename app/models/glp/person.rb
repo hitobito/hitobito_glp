@@ -1,10 +1,10 @@
-module Glp
-  module Person
+module Glp::Person
     extend ActiveSupport::Concern
 
     PREFERRED_LANGUAGES = [:en, :de, :fr, :it]
 
     included do
+      Person::PUBLIC_ATTRS << :title
       alias_method_chain :full_name, :title
     end
 
@@ -14,5 +14,4 @@ module Glp
       else "#{title} #{full_name_without_title}".strip
       end
     end
-  end
 end
