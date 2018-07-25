@@ -1,1 +1,1 @@
-= link_to entry.website_url, "https://#{entry.website_url}"
+= link_to entry.website_url, "https://#{entry.website_url}" if entry.instance_of? Person
