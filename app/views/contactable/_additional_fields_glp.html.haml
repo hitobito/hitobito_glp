@@ -1,2 +1,3 @@
-= field_set_tag do
-  = f.labeled_string_field :website_url
+- if entry.instance_of? Person
+  = field_set_tag do
+    = f.labeled_string_field :website_url
