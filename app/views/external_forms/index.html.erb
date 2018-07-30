@@ -1,34 +1,36 @@
-<% def external_form(role)
-  <<~END
-    <form action='#{@url}' method='post'>
-      <label for='first_name'>
-        Vorname: <input name='externally_submitted_person[first_name]' type='text' id='first_name'/>
-      </label>
-      <label for='last_name'>
-        Nachname: <input name='externally_submitted_person[last_name]' type='text' id='last_name'/>
-      </label>
-      <label for='email'>
-        Email-Adresse: <input name='externally_submitted_person[email]' type='email' id='email'/>
-      </label>
-      <label for='zip_code'>
-        Postleitzahl (PLZ): <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
-      </label>
-      <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
-      <input type='submit' value='Abschicken'/>
-    </form>
-  END
-end %>
+<%
+  @sheet = Sheet::Admin.new(self)
+  title "Externe Formulare"
 
-<strong>Mitglied</strong>
-<br/>
-<%= render partial: "form_textarea", locals: { role: "mitglied" } %>
-<br/>
+  def external_form(role)
+    <<~END
+      <form action='#{@url}' method='post'>
+        <label for='first_name'>
+          Vorname: <input name='externally_submitted_person[first_name]' type='text' id='first_name'/>
+        </label>
+        <label for='last_name'>
+          Nachname: <input name='externally_submitted_person[last_name]' type='text' id='last_name'/>
+        </label>
+        <label for='email'>
+          Email-Adresse: <input name='externally_submitted_person[email]' type='email' id='email'/>
+        </label>
+        <label for='zip_code'>
+          Postleitzahl (PLZ): <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
+        </label>
+        <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
+        <input type='submit' value='Abschicken'/>
+      </form>
+    END
+  end
+%>
 
-<strong>Symphatisant</strong>
-<br/>
-<%= render partial: "form_textarea", locals: { role: "symphatisant" } %>
-<br/>
+<div id="main">
+  <h2>Mitglied</h2>
+  <%= render partial: "form_textarea", locals: { role: "mitglied" } %>
 
-<strong>Newsletter</strong>
-<br/>
-<%= render partial: "form_textarea", locals: { role: "adressverwaltung" } %>
+  <h2>Symphatisant</h2>
+  <%= render partial: "form_textarea", locals: { role: "symphatisant" } %>
+
+  <h2>Newsletter</h2>
+  <%= render partial: "form_textarea", locals: { role: "adressverwaltung" } %>
+</div>
