@@ -5,3 +5,9 @@
   background: transparent image-url("glp_logo.svg") no-repeat;
   background-size: contain;
 }
+
+textarea.external_forms {
+  width: auto;
+  font-family: Consolas, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+}
