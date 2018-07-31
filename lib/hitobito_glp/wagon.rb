@@ -14,12 +14,11 @@ module HitobitoGlp
                                )
 
     config.to_prepare do
-      # rubocop:disable SingleSpaceBeforeFirstArg
-      # extend application classes here
-      Group.send            :include, Glp::Group
-      Person.send           :include, Glp::Person
-      PeopleController.send :include, Glp::PeopleController
-      # rubocop:enable SingleSpaceBeforeFirstArg
+      Group.send        :include, Glp::Group
+
+      GroupAbility.send :include, Glp::GroupAbility
+      
+      GroupsController.permitted_attrs += [:zip_codes]
     end
 
     initializer 'glp.add_settings' do |_app|
