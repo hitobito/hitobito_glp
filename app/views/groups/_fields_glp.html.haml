@@ -1,1 +1,2 @@
-= f.labeled_input_fields :zip_codes
+- if ["Group::Bezirk ", "Group::Ortsektion", "Group::Kanton" ].include? entry.type
+  = f.labeled_input_fields :zip_codes
