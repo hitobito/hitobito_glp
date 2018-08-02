@@ -3,7 +3,7 @@
   title "Externe Formulare"
 
   def external_form(role)
-    <<~END
+    <<-END.gsub(/^ {6}/, '')
       <form action='#{@url}' method='post'>
         <label for='first_name'>
           Vorname: <input name='externally_submitted_person[first_name]' type='text' id='first_name'/>
