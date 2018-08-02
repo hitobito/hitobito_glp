@@ -1,8 +1,10 @@
 attributes:
   group:
-    gip_codes: Zip Codes
+    zip_codes: Zip Codes
 
 de:
+  zip_codes:
+    separated_by_comma: Zip Codes (besetzt von Komma )
   activerecord:
     models:
       ### GROUPS

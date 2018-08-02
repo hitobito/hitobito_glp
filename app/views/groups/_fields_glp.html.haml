@@ -1,2 +1,2 @@
 - if ["Group::Bezirk ", "Group::Ortsektion", "Group::Kanton" ].include? entry.type
-  = f.labeled_input_fields :zip_codes
+  = f.labeled_input_fields :zip_codes, label: t('zip_codes.separated_by_comma')
