@@ -17,7 +17,7 @@ describe ExternallySubmittedPeopleController do
                                                   email: "sauron@evil.com",
                                                   first_name: "Sauron",
                                                   last_name: "The Abominable",
-                                                  role: "mitglied"}, format: :js
+                                                  role: "mitglied"}
     end.to change{Person.count}.by(1)
     expect(Person.last.email).to eq "sauron@evil.com"
     expect(Person.last.first_name).to eq "Sauron"
@@ -31,7 +31,7 @@ describe ExternallySubmittedPeopleController do
                                                     email: "sauron@evil.com",
                                                     first_name: "Sauron",
                                                     last_name: "The Abominable",
-                                                    role: "mitglied"}, format: :js
+                                                    role: "mitglied"}
         expect(Person.last.groups).to include kanton_zugeordnete_group, another_kanton_zugeordnete_group
       end
       it "when submitted role is a symphatisant" do
@@ -39,7 +39,7 @@ describe ExternallySubmittedPeopleController do
                                                     email: "sauron@evil.com",
                                                     first_name: "Sauron",
                                                     last_name: "The Abominable",
-                                                    role: "sympathisant"}, format: :js
+                                                    role: "sympathisant"}
         expect(Person.last.groups).to include kanton_zugeordnete_group, another_kanton_zugeordnete_group
       end
       it "when submitted role is a adressverwaltung" do
@@ -47,7 +47,7 @@ describe ExternallySubmittedPeopleController do
                                                     email: "sauron@evil.com",
                                                     first_name: "Sauron",
                                                     last_name: "The Abominable",
-                                                    role: "adressverwaltung"}, format: :js
+                                                    role: "adressverwaltung"}
         expect(Person.last.groups).to include kanton_kontakte_group, another_kanton_kontakte_group
       end
     end
@@ -60,7 +60,7 @@ describe ExternallySubmittedPeopleController do
                                                     email: "sauron@evil.com",
                                                     first_name: "Sauron",
                                                     last_name: "The Abominable",
-                                                    role: "mitglied"}, format: :js
+                                                    role: "mitglied"}
         expect(Person.last.groups).to include root_zugeordnete_group
       end
       it "when submitted role is a symphatisant" do
@@ -68,7 +68,7 @@ describe ExternallySubmittedPeopleController do
                                                     email: "sauron@evil.com",
                                                     first_name: "Sauron",
                                                     last_name: "The Abominable",
-                                                    role: "sympathisant"}, format: :js
+                                                    role: "sympathisant"}
         expect(Person.last.groups).to include root_zugeordnete_group
       end
       it "when submitted role is a adressverwaltung" do
@@ -76,7 +76,7 @@ describe ExternallySubmittedPeopleController do
                                                     email: "sauron@evil.com",
                                                     first_name: "Sauron",
                                                     last_name: "The Abominable",
-                                                    role: "adressverwaltung"}, format: :js
+                                                    role: "adressverwaltung"}
         expect(Person.last.groups).to include root_kontakte_group
       end
     end

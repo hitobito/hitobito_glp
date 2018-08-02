@@ -1,7 +1,6 @@
 class ExternallySubmittedPeopleController < ApplicationController
   skip_authorization_check
-
-  respond_to :js
+  skip_before_action :verify_authenticity_token
 
   def devise_controller?
     true
@@ -9,7 +8,7 @@ class ExternallySubmittedPeopleController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
-      @person = Person.create(first_name: first_name,
+      @person = Person.create!(first_name: first_name,
                               last_name: last_name,
                               email: email)
 
@@ -39,6 +38,7 @@ class ExternallySubmittedPeopleController < ApplicationController
         end
       end
     end
+    render :nothing => true
   end
 
   private
