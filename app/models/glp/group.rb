@@ -9,9 +9,9 @@ module Glp::Group
   extend ActiveSupport::Concern
 
   included do
-    # Define additional used attributes
-    # self.used_attributes += [:website, :bank_account, :description]
-    # self.superior_attributes = [:bank_account]
+    # self.used_attributes += [:zip_codes]
+    # serialize :zip_codes, Array
+
 
     root_types Group::Root
   end

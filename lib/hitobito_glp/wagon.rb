@@ -15,9 +15,7 @@ module HitobitoGlp
 
     config.to_prepare do
       Group.send        :include, Glp::Group
-
       GroupAbility.send :include, Glp::GroupAbility
-      
       GroupsController.permitted_attrs += [:zip_codes]
     end
 

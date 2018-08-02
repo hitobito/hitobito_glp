@@ -10,4 +10,87 @@ root:
   town: Neu Carlscheid
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:root) %>
 
-# TODO add more groups
+root_zugeordnete:
+  parent:
+  lft: 1
+  rgt: 2
+  name: Root Zugeordnete
+  type: Group::RootZugeordnete
+  email: root_zugeodnete@example.net
+  address: Ophovener Str. 79a
+  zip_code: 3012
+  town: Bern
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:root) %>
+
+root_kontakte:
+  parent:
+  lft: 1
+  rgt: 2
+  name: Root Kontakte
+  type: Group::RootKontakte
+  email: root_kontakte@example.net
+  address: Ophovener Str. 79a
+  zip_code: 3012
+  town: Bern
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:root) %>
+
+kanton:
+  parent:
+  lft: 1
+  rgt: 2
+  name: Bern
+  type: Group::Kanton
+  email: kanton@bern.net
+  address: Ophovener Str. 79a
+  zip_code: 3012
+  zip_codes: "917 01, 3012"
+  town: Bern
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kanton) %>
+
+kanton_zugeordnete:
+  parent: kanton
+  lft: 1
+  rgt: 2
+  name: Bern
+  type: Group::KantonZugeordnete
+  email: kanton_zugeordnete@bern.net
+  address: Ophovener Str. 79a
+  zip_code: 3012
+  town: Bern
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kanton) %>
+
+another_kanton_zugeordnete:
+  parent: kanton
+  lft: 1
+  rgt: 2
+  name: Zurich
+  type: Group::KantonZugeordnete
+  email: kanton_zugeordnete2@bern.net
+  address: Ophovener Str. 79a
+  zip_code: 3012
+  town: Bern
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kanton) %>
+
+kanton_kontakte:
+  parent: kanton
+  lft: 1
+  rgt: 2
+  name: Bern Kontakte
+  type: Group::KantonKontakte
+  email: kanton_kontakte@bern.net
+  address: Ophovener Str. 79a
+  zip_code: 3012
+  town: Bern
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kanton) %>
+
+another_kanton_kontakte:
+  parent: kanton
+  lft: 1
+  rgt: 2
+  name: Bern Kontakte 2
+  type: Group::KantonKontakte
+  email: kanton_kontakte_2@bern.net
+  address: Ophovener Str. 79a
+  zip_code: 3012
+  town: Bern
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kanton) %>
