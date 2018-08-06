@@ -11,7 +11,7 @@ module Glp
     included do
       self.permitted_attrs += [:title, :preferred_language,
                                :joining_journey, :occupation,
-                               :joined_at, :left_at, :website_url]
+                               :joined_at, :left_at, :website_url, :paperless]
     end
   end
 end
