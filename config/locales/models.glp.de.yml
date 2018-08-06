@@ -15,6 +15,8 @@ de:
         joined_at: Datum Eintritt
         left_at: Datum Austritt
         website_link: Webseite
+        genders:
+          _nil: unbekannt/anderes
     models:
       ### GROUPS
       group/root:
@@ -312,3 +314,4 @@ de:
         *KASSIER
       group/bezirk_vorstand/mitglied: 
         *MITGLIED
+
