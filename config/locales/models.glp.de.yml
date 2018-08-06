@@ -10,7 +10,7 @@ de:
       person:
         title: Anrede
         preferred_language: Sprache
-        joining_journey: Wie zur GLP
+        joining_journey: Wie zur glp
         occupation: Beruf und Berufssparte
         joined_at: Datum Eintritt
         left_at: Datum Austritt
