@@ -2,43 +2,50 @@ class ExternallySubmittedPeopleController < ApplicationController
   skip_authorization_check
   skip_before_action :verify_authenticity_token
 
+  respond_to :js
+
   def devise_controller?
     true
   end
 
   def create
-    ActiveRecord::Base.transaction do
-      @person = Person.create!(first_name: first_name,
-                              last_name: last_name,
-                              email: email)
+    begin
+      ActiveRecord::Base.transaction do
+        @person = Person.create!(first_name: first_name,
+                                 last_name: last_name,
+                                 email: email)
 
-      if zip_codes_matching_groups.any?
-        zip_codes_matching_groups.each do |group|
-          case submitted_role
-          when "Mitglied", "Sympathisant"
-            if zugeordnete_children(group).any?
-              put_him_into_zugeordnete_children zugeordnete_children(group)
-            else
-              put_him_into_root_zugeordnete_groups
-            end
-          when "Adressverwaltung"
-            if kontakte_children(group).any?
-              put_him_into_kontakte_children kontakte_children(group)
-            else
-              put_him_into_root_kontakte_groups
+        if zip_codes_matching_groups.any?
+          zip_codes_matching_groups.each do |group|
+            case submitted_role
+            when "Mitglied", "Sympathisant"
+              if zugeordnete_children(group).any?
+                put_him_into_zugeordnete_children zugeordnete_children(group)
+              else
+                put_him_into_root_zugeordnete_groups
+              end
+            when "Adressverwaltung"
+              if kontakte_children(group).any?
+                put_him_into_kontakte_children kontakte_children(group)
+              else
+                put_him_into_root_kontakte_groups
+              end
             end
           end
-        end
-      else
-        case submitted_role
-        when "Mitglied", "Sympathisant"
-          put_him_into_root_zugeordnete_groups
-        when "Adressverwaltung"
-          put_him_into_root_kontakte_groups
+        else
+          case submitted_role
+          when "Mitglied", "Sympathisant"
+            put_him_into_root_zugeordnete_groups
+          when "Adressverwaltung"
+            put_him_into_root_kontakte_groups
+          end
         end
       end
+      render json: @person
+    rescue ActiveRecord::RecordInvalid => e
+      render json: {errors: e.message}
     end
-    render :nothing => true
+
   end
 
   private

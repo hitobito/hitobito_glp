@@ -11,75 +11,71 @@ describe ExternallySubmittedPeopleController do
   let!(:kanton_kontakte_group) { groups(:kanton_kontakte) }
   let!(:another_kanton_kontakte_group) { groups(:another_kanton_kontakte) }
 
+  def subject_with_args args={}
+    post :create, externally_submitted_person: {zip_code: "917 01",
+                                                email: "sauron@evil.com",
+                                                first_name: "Sauron",
+                                                last_name: "The Abominable",
+                                                role: "mitglied"}.merge(args), format: :js
+  end
+
   it "creates a person and saves his/her attributes." do
-    expect do
-      post :create, externally_submitted_person: {zip_code: "3012",
-                                                  email: "sauron@evil.com",
-                                                  first_name: "Sauron",
-                                                  last_name: "The Abominable",
-                                                  role: "mitglied"}
-    end.to change{Person.count}.by(1)
+    expect{subject_with_args}.to change{Person.count}.by(1)
     expect(Person.last.email).to eq "sauron@evil.com"
     expect(Person.last.first_name).to eq "Sauron"
     expect(Person.last.last_name).to eq "The Abominable"
   end
 
   context "when submitted zip code DOES match existing layer groups' zip_codes" do
-    context "it places him in respective subgroups." do
+    context "it places him in respective subgroups" do
+
       it "when submitted role is a mitglied." do
-        post :create, externally_submitted_person: {zip_code: "917 01",
-                                                    email: "sauron@evil.com",
-                                                    first_name: "Sauron",
-                                                    last_name: "The Abominable",
-                                                    role: "mitglied"}
+        subject_with_args
         expect(Person.last.groups).to include kanton_zugeordnete_group, another_kanton_zugeordnete_group
       end
-      it "when submitted role is a symphatisant" do
-        post :create, externally_submitted_person: {zip_code: "917 01",
-                                                    email: "sauron@evil.com",
-                                                    first_name: "Sauron",
-                                                    last_name: "The Abominable",
-                                                    role: "sympathisant"}
+
+      it "when submitted role is a symphatisant." do
+        subject_with_args({role: "sympathisant"})
         expect(Person.last.groups).to include kanton_zugeordnete_group, another_kanton_zugeordnete_group
       end
-      it "when submitted role is a adressverwaltung" do
-        post :create, externally_submitted_person: {zip_code: "917 01",
-                                                    email: "sauron@evil.com",
-                                                    first_name: "Sauron",
-                                                    last_name: "The Abominable",
-                                                    role: "adressverwaltung"}
+
+      it "when submitted role is a adressverwaltung." do
+        subject_with_args({role: "adressverwaltung"})
         expect(Person.last.groups).to include kanton_kontakte_group, another_kanton_kontakte_group
       end
+
     end
   end
 
   context "when submitted zip code DOES NOT match any existing layer groups' zip_codes" do
     context "it places him in one of root groups equivalents" do
-      it "when submitted role is a mitglied" do
-        post :create, externally_submitted_person: {zip_code: "12345",
-                                                    email: "sauron@evil.com",
-                                                    first_name: "Sauron",
-                                                    last_name: "The Abominable",
-                                                    role: "mitglied"}
+
+      it "when submitted role is a mitglied." do
+        subject_with_args({zip_code: "12345"})
         expect(Person.last.groups).to include root_zugeordnete_group
       end
-      it "when submitted role is a symphatisant" do
-        post :create, externally_submitted_person: {zip_code: "12345",
-                                                    email: "sauron@evil.com",
-                                                    first_name: "Sauron",
-                                                    last_name: "The Abominable",
-                                                    role: "sympathisant"}
+
+      it "when submitted role is a symphatisant." do
+        subject_with_args({zip_code: "12345", role: "sympathisant"})
         expect(Person.last.groups).to include root_zugeordnete_group
       end
-      it "when submitted role is a adressverwaltung" do
-        post :create, externally_submitted_person: {zip_code: "12345",
-                                                    email: "sauron@evil.com",
-                                                    first_name: "Sauron",
-                                                    last_name: "The Abominable",
-                                                    role: "adressverwaltung"}
+
+      it "when submitted role is a adressverwaltung." do
+        subject_with_args({zip_code: "12345", role: "adressverwaltung"})
         expect(Person.last.groups).to include root_kontakte_group
       end
+
     end
+  end
+
+  context "fails gracefully" do
+
+    it "when submitted email is a duplicate." do
+      subject_with_args
+      subject_with_args
+      expect(response.body).to eq({errors: "Gültigkeitsprüfung ist fehlgeschlagen: Haupt-E-Mail ist bereits vergeben. Diese Adresse muss für alle Personen eindeutig sein, da sie beim Login verwendet wird. Du kannst jedoch unter 'Weitere E-Mails' Adressen eintragen, welche bei anderen Personen als Haupt-E-Mail vergeben sind (Die Haupt-E-Mail kann leer gelassen werden).\n"}.to_json)
+    end
+
   end
 
 end
