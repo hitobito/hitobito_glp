@@ -16,6 +16,7 @@ describe ExternallySubmittedPeopleController do
                                                 email: "sauron@evil.com",
                                                 first_name: "Sauron",
                                                 last_name: "The Abominable",
+                                                preferred_language: "de",
                                                 role: "mitglied"}.merge(args), format: :js
   end
 
@@ -24,6 +25,7 @@ describe ExternallySubmittedPeopleController do
     expect(Person.last.email).to eq "sauron@evil.com"
     expect(Person.last.first_name).to eq "Sauron"
     expect(Person.last.last_name).to eq "The Abominable"
+    expect(Person.last.preferred_language).to eq "de"
   end
 
   context "when submitted zip code DOES match existing layer groups' zip_codes" do
@@ -73,7 +75,7 @@ describe ExternallySubmittedPeopleController do
     it "when submitted email is a duplicate." do
       subject_with_args
       subject_with_args
-      expect(response.body).to eq({errors: "Gültigkeitsprüfung ist fehlgeschlagen: Haupt-E-Mail ist bereits vergeben. Diese Adresse muss für alle Personen eindeutig sein, da sie beim Login verwendet wird. Du kannst jedoch unter 'Weitere E-Mails' Adressen eintragen, welche bei anderen Personen als Haupt-E-Mail vergeben sind (Die Haupt-E-Mail kann leer gelassen werden).\n"}.to_json)
+      expect(response.body).to eq({error: "Gültigkeitsprüfung ist fehlgeschlagen: Haupt-E-Mail ist bereits vergeben. Diese Adresse muss für alle Personen eindeutig sein, da sie beim Login verwendet wird. Du kannst jedoch unter 'Weitere E-Mails' Adressen eintragen, welche bei anderen Personen als Haupt-E-Mail vergeben sind (Die Haupt-E-Mail kann leer gelassen werden).\n"}.to_json)
     end
 
   end

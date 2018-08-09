@@ -13,7 +13,8 @@ class ExternallySubmittedPeopleController < ApplicationController
       ActiveRecord::Base.transaction do
         @person = Person.create!(first_name: first_name,
                                  last_name: last_name,
-                                 email: email)
+                                 email: email,
+                                 preferred_language: preferred_language)
 
         if zip_codes_matching_groups.any?
           zip_codes_matching_groups.each do |group|
@@ -41,9 +42,9 @@ class ExternallySubmittedPeopleController < ApplicationController
           end
         end
       end
-      render json: @person
+      render json: @person, status: :ok
     rescue ActiveRecord::RecordInvalid => e
-      render json: {errors: e.message}
+      render json: {error: e.message}, status: :unprocessable_entity
     end
 
   end
@@ -137,7 +138,11 @@ class ExternallySubmittedPeopleController < ApplicationController
     externally_submitted_person_params[:email]
   end
 
+  def preferred_language
+    externally_submitted_person_params[:preferred_language]
+  end
+
   def externally_submitted_person_params
-    params.require(:externally_submitted_person).permit(:email, :zip_code, :role, :first_name, :last_name)
+    params.require(:externally_submitted_person).permit(:email, :zip_code, :role, :first_name, :last_name, :preferred_language)
   end
 end
