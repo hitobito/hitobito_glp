@@ -1,10 +1,10 @@
 attributes:
   group:
-    zip_codes: Zip Codes
+    zip_codes: PLZ
 
 de:
   zip_codes:
-    separated_by_comma: Zip Codes (besetzt von Komma )
+    separated_by_comma: PLZ (getrennt durch Kommas)
   activerecord:
     attributes:
       person:
