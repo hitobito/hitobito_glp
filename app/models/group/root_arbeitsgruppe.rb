@@ -5,9 +5,9 @@ class Group::RootArbeitsgruppe < ::Group
     self.permissions = [:group_and_below_read, :contact_data]
   end
 
-  class AGMitglied < Role
+  class Mitglied < Role
     self.permissions = [:group_and_below_read]
   end
 
-  roles Leitung, AGMitglied
+  roles Leitung, Mitglied
 end
