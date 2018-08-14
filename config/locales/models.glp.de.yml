@@ -98,12 +98,6 @@ de:
       group/root/eventverantwortliche: &EVENTVERANTWORTLICHE
         one: Eventverantwortliche
         other: Eventverantwortlichen
-      group/root/leader:
-        one: Leitung
-        description: Leitungspersonen verwalten die Applikation.
-      group/root/member:
-        one: Mitglied
-        description: Mitglieder sind alle anderen.
 
       group/root_geschaeftsstelle/leitung: &LEITUNG
         one: Leitung
@@ -132,9 +126,9 @@ de:
         other: Vorstandsmitglieder
       group/root_arbeitsgruppe/leitung: 
         *LEITUNG
-      group/root_arbeitsgruppe/agmitglied: &AGMITGLIED
-        one: Arbeitsgruppe Mitglied
-        other: Arbeitsgruppe Mitglieder
+      group/root_arbeitsgruppe/mitglied: &AGMITGLIED
+        one: AG-Mitglied
+        other: AG-Mitglieder
       group/root_zugeordnete/mitglied: &MITGLIED
         one: Mitglied 
         other: Mitglieder
@@ -200,10 +194,13 @@ de:
       group/kanton_gewaehlte/staatsanwaltschaft:
         one: Staatsanwaltschaft 
         other: Staatsanwaltschaften
+      group/kanton_gewaehlte/parlamentarische_geschaeftsfuehrung:
+        one: Parlamentarische Geschaeftsfuehrung 
+        other: Parlamentarische Geschaeftsfuehrungen 
       group/kanton_arbeitsgruppe/leitung: 
         *LEITUNG
       group/kanton_arbeitsgruppe/mitglied:
-        *MITGLIED
+        *AGMITGLIED
       group/kanton_zugeordnete/mitglied:
         *MITGLIED
       group/kanton_zugeordnete/sympathisant: 
@@ -251,7 +248,7 @@ de:
       group/ortsektion_arbeitsgruppe/leitung: 
         *LEITUNG
       group/ortsektion_arbeitsgruppe/mitglied:
-        *MITGLIED
+        *AGMITGLIED
       group/ortsektion_zugeordnete/mitglied:
         *MITGLIED
       group/ortsektion_zugeordnete/sympathisant: 
@@ -287,7 +284,7 @@ de:
       group/bezirk_arbeitsgruppe/leitung: 
         *LEITUNG
       group/bezirk_arbeitsgruppe/mitglied:
-        *MITGLIED
+        *AGMITGLIED
       group/bezirk_zugeordnete/mitglied:
         *MITGLIED
       group/bezirk_zugeordnete/sympathisant: 
