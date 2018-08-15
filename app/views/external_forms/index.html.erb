@@ -2,35 +2,57 @@
   @sheet = Sheet::Admin.new(self)
   title "Externe Formulare"
 
-  def external_form(role)
+  def form_loader(role)
     <<-END.gsub(/^ {6}/, '')
-      <form action='#{@url}' method='post'>
-        <label for='first_name'>
-          Vorname: <input name='externally_submitted_person[first_name]' type='text' id='first_name'/>
-        </label>
-        <label for='last_name'>
-          Nachname: <input name='externally_submitted_person[last_name]' type='text' id='last_name'/>
-        </label>
-        <label for='email'>
-          Email-Adresse: <input name='externally_submitted_person[email]' type='email' id='email'/>
-        </label>
-        <label for='zip_code'>
-          Postleitzahl (PLZ): <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
-        </label>
-        <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
-        <input type='submit' value='Abschicken'/>
-      </form>
+      <div id="hitobito-external-form">Formular wird geladen…</div>
+      <script src="http://localhost:3000/external_forms/loader.js?role=mitglied&language=de"></script>
     END
   end
+
+  role_options = {
+    "Mitglied" => "mitglied",
+    "SympathisantIn" => "sympathisant",
+    "Newsletter" => "adressverwaltung"
+  }
+
+  language_options = {
+    "Deutsch" => "de",
+    "English" => "en",
+    "Français" => "fr",
+    "Italiano" => "it",
+  }
 %>
 
 <div id="main">
-  <h2>Mitglied</h2>
-  <%= render partial: "form_textarea", locals: { role: "mitglied" } %>
+  <h2>Optionen</h2>
+  <label>
+    Rolle <%= select_tag "ext_form_role", options_for_select(role_options) %>
+  </label>
+  <label>
+    Sprache <%= select_tag "ext_form_language", options_for_select(language_options) %>
+  </label>
 
-  <h2>Sympathisant</h2>
-  <%= render partial: "form_textarea", locals: { role: "sympathisant" } %>
-
-  <h2>Newsletter</h2>
-  <%= render partial: "form_textarea", locals: { role: "adressverwaltung" } %>
+  <h2>Formular</h2>
+  <%= render partial: "form_textarea", locals: { content: form_loader("mitglied") } %>
 </div>
+
+<script>
+  function external_forms_index(){
+    $("#ext_form_role, #ext_form_language")
+      .off("change")
+      .on("change", on_select_change);
+  }
+  function on_select_change(){
+    var role = $("#ext_form_role").val();
+    var language = $("#ext_form_language").val();
+
+    var textarea = $("textarea.external_forms");
+    textarea.val(
+      textarea.val().replace(
+        /js\?role.*\">/gi,
+        "js?role=" + role + "&language=" + language + "\">"
+      )
+    )
+  }
+  $(document).on("turbolinks:load", external_forms_index)
+</script>

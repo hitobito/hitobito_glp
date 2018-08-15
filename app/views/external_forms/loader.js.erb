@@ -1,0 +1,26 @@
+function onLoad () {
+  var form = "<%= @form.gsub("\n", "\\\n").html_safe %>";
+  var selector = "#hitobito-external-form";
+  insertHtml(selector, form);
+}
+
+function insertHtml(selector, html){
+  var node = document.querySelector(selector);
+  node.innerHTML = html;
+}
+
+/* https://stackoverflow.com/a/1795167/3707365 */
+
+if ( document.addEventListener ) {
+  document.addEventListener( "DOMContentLoaded", function(){
+    document.removeEventListener( "DOMContentLoaded", arguments.callee, false);
+    onLoad();
+  }, false );
+} else if ( document.attachEvent ) {
+  document.attachEvent("onreadystatechange", function(){
+    if ( document.readyState === "complete" ) {
+      document.detachEvent( "onreadystatechange", arguments.callee );
+      onLoad();
+    }
+  });
+}
