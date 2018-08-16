@@ -24,6 +24,7 @@ class ExternalFormsController < ApplicationController
     I18n.locale = options[:language]
 
     <<-END
+      <p id='hitobito-external-form-message'></p>
       <form action='#{@url}' method='post'>
         <label for='first_name'>
           #{t("activerecord.attributes.person.first_name")}: <input name='externally_submitted_person[first_name]' type='text' id='first_name'/>

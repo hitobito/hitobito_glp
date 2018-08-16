@@ -1,26 +1,123 @@
-function onLoad () {
-  var form = "<%= @form.gsub("\n", "\\\n").html_safe %>";
-  var selector = "#hitobito-external-form";
-  insertHtml(selector, form);
-}
+(function(){
+  var EXTERNAL_FORM_SELECTOR = "#hitobito-external-form";
+  var EXTERNAL_FORM_MESSAGE_SELECTOR = "#hitobito-external-form-message";
+  var EXTERNAL_FORM_CONTENT = "<%= @form.gsub("\n", "\\\n").html_safe %>";
+  var EXTERNAL_FORM_MODEL = "externally_submitted_person";
 
-function insertHtml(selector, html){
-  var node = document.querySelector(selector);
-  node.innerHTML = html;
-}
+  function onLoad () {
+    insertHtml(EXTERNAL_FORM_SELECTOR, EXTERNAL_FORM_CONTENT);
 
-/* https://stackoverflow.com/a/1795167/3707365 */
+    var form = document.querySelector(EXTERNAL_FORM_SELECTOR + " form")
+    onSubmit(form, function(event){
+      event.preventDefault();
+      disableForm(form);
+      displayNeutral("Daten werden abgeschickt…")
 
-if ( document.addEventListener ) {
-  document.addEventListener( "DOMContentLoaded", function(){
-    document.removeEventListener( "DOMContentLoaded", arguments.callee, false);
-    onLoad();
-  }, false );
-} else if ( document.attachEvent ) {
-  document.attachEvent("onreadystatechange", function(){
-    if ( document.readyState === "complete" ) {
-      document.detachEvent( "onreadystatechange", arguments.callee );
-      onLoad();
+      submitFormAsynchronously(form, function(status, response){
+        displaySuccess("Erfolgreich eingetragen.");
+        // disableForm(form, false);
+      }, function(status, response){
+        var errorMessage = "Ein Fehler ist aufgetreten."
+        if(status === 422){
+          errorMessage = JSON.parse(response).error;
+        }
+        displayError(errorMessage);
+        disableForm(form, false);
+      })
+    })
+  }
+
+  function displayNeutral(text) {
+    display("neutral", text);
+  }
+  function displaySuccess(text) {
+    display("success", text);
+  }
+  function displayError(text) {
+    display("error", text);
+  }
+  function display(state, text){
+    var messageContainer = document.querySelector(EXTERNAL_FORM_SELECTOR + " " + EXTERNAL_FORM_MESSAGE_SELECTOR);
+    messageContainer.innerHTML = text;
+    messageContainer.setAttribute("class", state);
+  }
+
+  function disableForm(form, disabled = true){
+    traverseNodeList(form.querySelectorAll("input"), function(input){
+      input.disabled = disabled;
+    });
+  }
+  function submitFormAsynchronously(form, onSuccess, onError){
+    var data = {};
+    traverseNodeList(form.querySelectorAll("input"), function(input){
+      if(input.name !== ""){
+        data[input.name] = input.value;
+      }
+    });
+    var path = form.getAttribute("action");
+    post(path, formatData(data), onSuccess, onError);
+  }
+  function formatData(object){
+    var inner = {};
+    Object.keys(object).forEach(function(key){
+      inner[key.replace(/[^\[]+\[(.*)\]/gi, "$1")] = object[key];
+    });
+    var outer = {};
+    outer[EXTERNAL_FORM_MODEL] = inner;
+    return JSON.stringify(outer);
+  }
+
+  function traverseNodeList(node_list, callback, scope) {
+    for (var index = 0; index < node_list.length; index++) {
+      callback.call(scope, node_list[index], index);
     }
-  });
-}
+  }
+  function insertHtml(selector, html){
+    var node = document.querySelector(selector);
+    node.innerHTML = html;
+  }
+  function onSubmit(node, callback){
+    if(node.addEventListener){
+      node.addEventListener("submit", callback, false);
+    }else if(node.attachEvent){
+      node.attachEvent('onsubmit', callback);
+    }
+  }
+  function post(path, data, onSuccess, onError){
+    xhr("POST", path, onSuccess, onError, data);
+  }
+  function get(path, onSuccess, onError){
+    xhr("GET", path, onSuccess, onError);
+  }
+  function xhr(method, path, onSuccess, onError, data = null){
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, path);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.onreadystatechange = function(){
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200 || xhr.status === 304) {
+          onSuccess(xhr.status, xhr.responseText);
+        } else {
+          onError(xhr.status, xhr.responseText);
+        }
+      }
+    }
+    xhr.send(data);
+  }
+
+  /* https://stackoverflow.com/a/1795167/3707365 */
+
+  if ( document.addEventListener ) {
+    document.addEventListener( "DOMContentLoaded", function(){
+      document.removeEventListener( "DOMContentLoaded", arguments.callee, false);
+      onLoad();
+    }, false );
+  } else if ( document.attachEvent ) {
+    document.attachEvent("onreadystatechange", function(){
+      if ( document.readyState === "complete" ) {
+        document.detachEvent( "onreadystatechange", arguments.callee );
+        onLoad();
+      }
+    });
+  }
+})();
