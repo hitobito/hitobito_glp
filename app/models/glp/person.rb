@@ -14,4 +14,9 @@ module Glp::Person
       else "#{title} #{full_name_without_title}".strip
       end
     end
+
+    def zugeordnete_groups_where_he_is_a_mitglied
+      roles.select{|role| role.type.include? "Zugeordnete" and role.type.include? "Mitglied"}
+    end
+
 end
