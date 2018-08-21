@@ -12,30 +12,24 @@ module Glp::PeopleController
     self.permitted_attrs += [:title, :preferred_language,
                              :joining_journey, :occupation,
                              :joined_at, :left_at, :website_url, :paperless]
-    prepend_before_action :puts_hello
-    # def destroy
-    #   super
-    #   binding.pry
-    # end
-  end
-  def puts_hello
-    binding.pry
+    before_destroy :notify_leadership
   end
 
   # Notify parent group and root group via email
   def notify_leadership
-    binding.pry
-    # zugeordnete_groups_where_he_is_a_mitglied = entry.zugeordnete_groups_where_he_is_a_mitglied
+    zugeordnete_roles_where_he_is_a_mitglied = entry.zugeordnete_roles_where_he_is_a_mitglied
 
-    # if zugeordnete_groups_where_he_is_a_mitglied.any?
-    #   zugeordnete_groups_where_he_is_a_mitglied.each do |zugeordnete_group|
-    #     if zugeordnete_group.parent.email.present?
-    #       binding.pry
-    #       notify_parent_group email
-    #     end
-    #   end
-    #   # notify_root_group
-    # end
+    if zugeordnete_roles_where_he_is_a_mitglied.any?
+      zugeordnete_roles_where_he_is_a_mitglied.each do |zugeordnete_role|
+        zugeordnete_group = zugeordnete_role.group
+        if zugeordnete_group.parent.present?
+          if zugeordnete_group.parent.email.present?
+            notify_parent_group zugeordnete_group.parent.email
+          end
+        end
+      end
+      notify_root_group
+    end
   end
 
   def notify_parent_group email
@@ -43,6 +37,9 @@ module Glp::PeopleController
   end
 
   def notify_root_group
-    Notifier.mitglied_left(entry, root_group.email).deliver_now 
+    root_group = Group.find_by_type("Group::Root")
+    if root_group.email.present?
+      Notifier.mitglied_left(entry, root_group.email).deliver_now 
+    end
   end
 end

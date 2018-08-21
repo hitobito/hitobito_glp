@@ -21,6 +21,7 @@ root_zugeordnete:
   zip_code: 3012
   town: Bern
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:root) %>
+  parent: root
 
 root_kontakte:
   parent:

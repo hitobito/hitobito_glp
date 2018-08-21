@@ -13,8 +13,8 @@ leader:
   contact_data_visible: true
   primary_group: root
 
-member:
+mitglied:
   first_name: My
   last_name: Member
-  email: member0@hitobito.example.com
-  primary_group: root
+  email: mitglied@hitobito.example.com
+  primary_group: root_zugeordnete
