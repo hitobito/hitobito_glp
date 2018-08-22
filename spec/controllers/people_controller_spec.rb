@@ -12,6 +12,5 @@ describe PeopleController, type: :controller do
     expect do
       delete :destroy, group_id: role.person.primary_group.id, id: role.person.id
     end.to change(ActionMailer::Base.deliveries, :count).by(2)
-    binding.pry
   end
 end

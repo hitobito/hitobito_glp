@@ -19,13 +19,14 @@ class ExternallySubmittedPeopleController < ApplicationController
         if zip_codes_matching_groups.any?
           zip_codes_matching_groups.each do |group|
             case submitted_role
-            when "Mitglied", "Sympathisant"
+            when "Mitglied"
               if zugeordnete_children(group).any?
                 put_him_into_zugeordnete_children zugeordnete_children(group)
               else
                 put_him_into_root_zugeordnete_groups
               end
               send_him_login_information
+              notify_parent_group
             when "Sympathisant"
               if zugeordnete_children(group).any?
                 put_him_into_zugeordnete_children zugeordnete_children(group)
@@ -62,6 +63,20 @@ class ExternallySubmittedPeopleController < ApplicationController
     admin_role = Role.where(type: "Group::Root::Administrator").first
     admin = Person.find(admin_role.person_id)
     Person::SendLoginJob.new(@person, admin).enqueue!
+  end
+
+  def notify_parent_group
+    zugeordnete_roles_where_he_is_a_mitglied = @person.zugeordnete_roles_where_he_is_a_mitglied
+
+    if zugeordnete_roles_where_he_is_a_mitglied.any?
+      zugeordnete_parent_groups = zugeordnete_roles_where_he_is_a_mitglied.map(&:group).map(&:parent).uniq
+
+      zugeordnete_parent_groups.each do |group|
+        if group.email.present?
+          Notifier.mitglied_joined(@person, group.email).deliver_now 
+        end
+      end
+    end
   end
 
   def put_him_into_root_zugeordnete_groups

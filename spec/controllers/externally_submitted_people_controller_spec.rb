@@ -36,6 +36,10 @@ describe ExternallySubmittedPeopleController do
     # expect{subject_with_args}.to enqueue_job
   end
 
+  it "sends a notification email to the layer group." do
+    expect{subject_with_args}.to change(ActionMailer::Base.deliveries, :count).by(1)
+  end
+
   context "when submitted zip code DOES match existing layer groups' zip_codes" do
     context "it places him in respective subgroups" do
 
