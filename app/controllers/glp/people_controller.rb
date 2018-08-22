@@ -5,13 +5,41 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito.
 
-module Glp
-  module PeopleController
-    extend ActiveSupport::Concern
-    included do
-      self.permitted_attrs += [:title, :preferred_language,
-                               :joining_journey, :occupation,
-                               :joined_at, :left_at, :website_url, :paperless]
+module Glp::PeopleController
+  extend ActiveSupport::Concern
+
+  included do
+    self.permitted_attrs += [:title, :preferred_language,
+                             :joining_journey, :occupation,
+                             :joined_at, :left_at, :website_url, :paperless]
+    before_destroy :notify_leadership
+  end
+
+  # Notify parent group and root group via email
+  def notify_leadership
+    zugeordnete_roles_where_he_is_a_mitglied = entry.zugeordnete_roles_where_he_is_a_mitglied
+
+    if zugeordnete_roles_where_he_is_a_mitglied.any?
+      zugeordnete_roles_where_he_is_a_mitglied.each do |zugeordnete_role|
+        zugeordnete_group = zugeordnete_role.group
+        if zugeordnete_group.parent.present?
+          if zugeordnete_group.parent.email.present?
+            notify_parent_group zugeordnete_group.parent.email
+          end
+        end
+      end
+      notify_root_group
+    end
+  end
+
+  def notify_parent_group email
+    Notifier.mitglied_left(entry, email).deliver_now 
+  end
+
+  def notify_root_group
+    root_group = Group.find_by_type("Group::Root")
+    if root_group.email.present?
+      Notifier.mitglied_left(entry, root_group.email).deliver_now 
     end
   end
 end

@@ -1,21 +1,14 @@
 admin:
   person: admin
   group: root
-  type: Group::Root::Leader
+  type: Group::Root::Administrator
 
-# TODO use group and type of the main base leader
 leader:
   person: leader
   group: root
-  type: Group::Root::Leader
+  type: Group::Root::Administrator
 
-# TODO use group and type of the main base member
-member:
-  person: member
-  group: root
-  type: Group::Root::Member
-
-sympathisant:
-  person: sympathisant
+mitglied:
+  person: mitglied
   group: root_zugeordnete
-  type: Group::RootZugeordnete::Sympathisant
+  type: Group::RootZugeordnete::Mitglied
