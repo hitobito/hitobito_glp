@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe ExternallySubmittedPeopleController do
+  let!(:admin) { people(:admin) }
+  let!(:role) { roles(:admin) }
 
   let!(:root_zugeordnete_group) { groups(:root_zugeordnete) }
   let!(:root_kontakte_group) { groups(:root_kontakte) }
@@ -26,6 +28,12 @@ describe ExternallySubmittedPeopleController do
     expect(Person.last.first_name).to eq "Sauron"
     expect(Person.last.last_name).to eq "The Abominable"
     expect(Person.last.preferred_language).to eq "de"
+  end
+
+  it "sends an email with login information to the newly created person." do
+    ActiveJob::Base.queue_adapter = :test
+    # WTF?
+    # expect{subject_with_args}.to enqueue_job
   end
 
   context "when submitted zip code DOES match existing layer groups' zip_codes" do

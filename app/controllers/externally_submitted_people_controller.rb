@@ -25,6 +25,13 @@ class ExternallySubmittedPeopleController < ApplicationController
               else
                 put_him_into_root_zugeordnete_groups
               end
+              send_him_login_information
+            when "Sympathisant"
+              if zugeordnete_children(group).any?
+                put_him_into_zugeordnete_children zugeordnete_children(group)
+              else
+                put_him_into_root_zugeordnete_groups
+              end
             when "Adressverwaltung"
               if kontakte_children(group).any?
                 put_him_into_kontakte_children kontakte_children(group)
@@ -50,6 +57,12 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   private
+
+  def send_him_login_information
+    admin_role = Role.where(type: "Group::Root::Administrator").first
+    admin = Person.find(admin_role.person_id)
+    Person::SendLoginJob.new(@person, admin).enqueue!
+  end
 
   def put_him_into_root_zugeordnete_groups
     root_zugeordnete_groups.each do |group|
