@@ -61,7 +61,7 @@ class ExternalFormsController < ApplicationController
             <div class='button-wrapper'>
               <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
               <div class='g-recaptcha' data-sitekey='6LcBNGoUAAAAAO3PJDEgWoN9f0zFFag1WdBRHjYO'></div>
-              <input type='submit' value='Abschicken'/>
+              <input type='submit' value='#{t("global.button.save")}'/>
             </div>
         </form>
       </div>
