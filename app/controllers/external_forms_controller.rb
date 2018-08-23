@@ -1,5 +1,6 @@
 class ExternalFormsController < ApplicationController
   skip_authorization_check
+  skip_before_action :authenticate_person!
   skip_before_filter :verify_authenticity_token, :only => [:loader]
   before_action :set_url, :only => [:index, :loader]
 
@@ -7,10 +8,12 @@ class ExternalFormsController < ApplicationController
   end
 
   def loader
+    @language = params[:language] || "de"
+    @role = params[:role] || "mitglied"
     @form = external_form({
-      :role => params[:role] || "mitglied",
-      :language => params[:language] || "de"
+      :role => @role
     })
+    I18n.locale = @language
   end
 
   private
@@ -21,7 +24,6 @@ class ExternalFormsController < ApplicationController
 
   def external_form(options)
     role = options[:role]
-    I18n.locale = options[:language]
 
     <<-END
       <p id='hitobito-external-form-message'></p>
@@ -37,6 +39,10 @@ class ExternalFormsController < ApplicationController
         </label>
         <label for='zip_code'>
           #{t("activerecord.attributes.person.zip_code")}: <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
+        </label>
+        <label for='terms_and_conditions'>
+          <input name='terms_and_conditions' type='checkbox' />
+          <a href='#{t("external_form_js.terms_and_conditions_link")}' target='_blank'>#{t("external_form_js.terms_and_conditions_checkbox")}</a>
         </label>
         <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
         <input type='submit' value='Abschicken'/>
