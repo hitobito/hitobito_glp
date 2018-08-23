@@ -3,8 +3,10 @@ de:
     submitting: Daten werden abgeschickt…
     submit_error_required_fields: Bitte fülle alle Felder aus
     submit_error_email_taken: Deine Email-Adresse ist leider schon vergeben. Melde dich unter +41 31 311 33 03 oder schweiz@grunliberale.ch, um dich zum Mitglied upzugraden
+    submit_error_terms_conditions: Du musst dich mit den Geschäftsbedingungen einverstanden erklären
     submit_error: Ein Fehler ist aufgetreten
+    server_error_captcha: Das Captcha ("Ich bin kein Roboter") muss ausgefüllt werden
     submit_success_member: Du wirst in Kürze deine Zugangsdaten erhalten
     submit_success_other: Du hast dich erfolgreich für Partei-Updates angemeldet
-    terms_and_conditions_checkbox: Ich bin mit den den Geschäftsbedingungen einverstanden.
+    terms_and_conditions_checkbox: Ich bin mit den den Geschäftsbedingungen einverstanden
     terms_and_conditions_link: https://grunliberale.ch/impressum.html

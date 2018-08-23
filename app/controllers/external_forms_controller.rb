@@ -26,27 +26,45 @@ class ExternalFormsController < ApplicationController
     role = options[:role]
 
     <<-END
-      <p id='hitobito-external-form-message'></p>
-      <form action='#{@url}' method='post'>
-        <label for='first_name'>
-          #{t("activerecord.attributes.person.first_name")}: <input name='externally_submitted_person[first_name]' type='text' id='first_name'/>
-        </label>
-        <label for='last_name'>
-          #{t("activerecord.attributes.person.last_name")}: <input name='externally_submitted_person[last_name]' type='text' id='last_name'/>
-        </label>
-        <label for='email'>
-          #{t("activerecord.attributes.additional_email.email")}: <input name='externally_submitted_person[email]' type='email' id='email'/>
-        </label>
-        <label for='zip_code'>
-          #{t("activerecord.attributes.person.zip_code")}: <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
-        </label>
-        <label for='terms_and_conditions'>
-          <input name='terms_and_conditions' type='checkbox' />
-          <a href='#{t("external_form_js.terms_and_conditions_link")}' target='_blank'>#{t("external_form_js.terms_and_conditions_checkbox")}</a>
-        </label>
-        <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
-        <input type='submit' value='Abschicken'/>
-      </form>
+      <div class='form-wrapper'>
+        <p id='hitobito-external-form-message'></p>
+        <form action='#{@url}' method='post'>
+          <fieldset>
+            <div class='form-row'>
+              <label for='first_name'>
+                #{t("activerecord.attributes.person.first_name")} *
+              </label>
+              <input name='externally_submitted_person[first_name]' type='text' id='first_name'/>
+            </div>
+            <div class='form-row'>
+              <label for='last_name'>
+                #{t("activerecord.attributes.person.last_name")} *
+              </label>
+              <input name='externally_submitted_person[last_name]' type='text' id='last_name'/>
+            </div>
+            <div class='form-row'>
+              <label for='email'>
+                #{t("activerecord.attributes.additional_email.email")} *
+              </label>
+              <input name='externally_submitted_person[email]' type='email' id='email'/>
+            </div>
+            <div class='form-row'>
+              <label for='zip_code'>
+                #{t("activerecord.attributes.person.zip_code")} *
+              </label>
+              <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
+            </div>
+            <label for='terms_and_conditions'>
+              <input name='terms_and_conditions' id='terms_and_conditions' type='checkbox' />
+              <a href='#{t("external_form_js.terms_and_conditions_link")}' target='_blank'>#{t("external_form_js.terms_and_conditions_checkbox")}</a>
+            </label>
+            <div class='button-wrapper'>
+              <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
+              <div class='g-recaptcha' data-sitekey='6LcBNGoUAAAAAO3PJDEgWoN9f0zFFag1WdBRHjYO'></div>
+              <input type='submit' value='Abschicken'/>
+            </div>
+        </form>
+      </div>
     END
   end
 

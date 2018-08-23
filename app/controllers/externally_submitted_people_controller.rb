@@ -1,3 +1,6 @@
+require "uri"
+require "net/http"
+
 class ExternallySubmittedPeopleController < ApplicationController
   skip_authorization_check
   skip_before_action :verify_authenticity_token
@@ -8,7 +11,19 @@ class ExternallySubmittedPeopleController < ApplicationController
     true
   end
 
+  def is_captcha_valid?
+    response = Net::HTTP.post_form(URI.parse("https://www.google.com/recaptcha/api/siteverify"), {
+      secret: "6LcBNGoUAAAAAKoQO8Rvw_H5DlKKkR64Q1ZoP3Is",
+      response: params["g-recaptcha-response"]
+    })
+    return JSON.parse(response.body)["success"] || false
+  end
+
   def create
+    if !is_captcha_valid?
+      render json: {error: t("external_form_js.server_error_captcha")}, status: :unprocessable_entity
+      return
+    end
     begin
       ActiveRecord::Base.transaction do
         @person = Person.create!(first_name: first_name,
@@ -52,7 +67,11 @@ class ExternallySubmittedPeopleController < ApplicationController
       end
       render json: @person, status: :ok
     rescue ActiveRecord::RecordInvalid => e
-      render json: {error: e.message}, status: :unprocessable_entity
+      if e.message =~ /e-mail is already taken/
+        render json: {error: t("external_form_js.submit_error_email_taken")}, status: :unprocessable_entity
+      else
+        render json: {error: t("external_form_js.submit_error")}, status: :unprocessable_entity
+      end
     end
 
   end
@@ -73,7 +92,7 @@ class ExternallySubmittedPeopleController < ApplicationController
 
       zugeordnete_parent_groups.each do |group|
         if group.email.present?
-          Notifier.mitglied_joined(@person, group.email).deliver_now 
+          Notifier.mitglied_joined(@person, group.email).deliver_now
         end
       end
     end

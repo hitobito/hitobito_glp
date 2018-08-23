@@ -2,7 +2,7 @@
   /* Translations & Strings */
 
   var STRINGS = {
-    <% %w(submitting submit_error_required_fields submit_error_email_taken submit_error submit_success_member submit_success_other).each do |key| %>
+    <% %w(submitting submit_error_required_fields submit_error_terms_conditions submit_error submit_success_member submit_success_other).each do |key| %>
       <%= key %>: '<%= t("external_form_js.#{key}").gsub("'", "\'") %>',
     <% end %>
   };
@@ -31,8 +31,9 @@
     onSubmit(form, function(event){
       event.preventDefault();
 
-      if(!validateFormFields(form)){
-        displayError(s("submit_error_required_fields"));
+      var validation_error_message = validateFormFields(form);
+      if(validation_error_message){
+        displayError(validation_error_message);
         return;
       }
       disableForm(form);
@@ -54,19 +55,26 @@
   /* Helper functions: Forms */
 
   function validateFormFields(form){
-    var data = getInputDataFromForm(form);
-    return Object.values(data).map(function(value){
+    var is_fully_filled_out = Object.values(getInputDataFromForm(form)).map(function(value){
       return value !== "";
     }).reduce(function(a, b){
       return a && b;
     })
+    if(!is_fully_filled_out){
+      return s("submit_error_required_fields");
+    }
+
+    var terms_and_conditions_checkbox = form.querySelector("#terms_and_conditions");
+    if(!terms_and_conditions_checkbox.checked){
+      return s("submit_error_terms_conditions");
+    }
+
+    return false;
   }
   function errorMessageForResponse(status, response){
     if(status === 422){
       errorResponse = JSON.parse(response).error;
-      if(/e-mail is already taken/.test(errorResponse)){
-        return s("submit_error_email_taken")
-      }
+      return errorResponse
     }
     return s("submit_error")
   }
@@ -79,7 +87,12 @@
   function submitFormAsynchronously(form, onSuccess, onError){
     var data = getInputDataFromForm(form);
     var path = form.getAttribute("action");
-    post(path, formatData(data), onSuccess, onError);
+    var postParams = JSON.stringify(
+      Object.assign({}, formatData(data), getCaptchaResponse())
+    )
+
+    resetCaptcha();
+    post(path, postParams, onSuccess, onError);
   }
   function getInputDataFromForm(form){
     var data = {};
@@ -97,7 +110,23 @@
     });
     var outer = {};
     outer[RAILS_MODEL] = inner;
-    return JSON.stringify(outer);
+    return outer;
+  }
+  function getCaptchaResponse(){
+    let response = ""
+    try {
+      response = grecaptcha.getResponse();
+    } catch (e) {
+      response = "";
+    }
+    return {"g-recaptcha-response": response};
+  }
+  function resetCaptcha(){
+    try {
+      grecaptcha.reset();
+    } catch (e) {
+      //
+    }
   }
 
   /* Helper functions: Messages */
