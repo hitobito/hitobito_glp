@@ -15,17 +15,15 @@ module Glp::PeopleController
     before_destroy :notify_leadership
   end
 
-  # Notify parent group and root group via email
   def notify_leadership
     zugeordnete_roles_where_he_is_a_mitglied = entry.zugeordnete_roles_where_he_is_a_mitglied
 
     if zugeordnete_roles_where_he_is_a_mitglied.any?
-      zugeordnete_roles_where_he_is_a_mitglied.each do |zugeordnete_role|
-        zugeordnete_group = zugeordnete_role.group
-        if zugeordnete_group.parent.present?
-          if zugeordnete_group.parent.email.present?
-            notify_parent_group zugeordnete_group.parent.email
-          end
+      zugeordnete_parent_groups = zugeordnete_roles_where_he_is_a_mitglied.map(&:group).map(&:parent).uniq
+
+      zugeordnete_parent_groups.each do |group|
+        if group.email.present?
+          notify_parent_group group.email
         end
       end
       notify_root_group

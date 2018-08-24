@@ -1,3 +1,6 @@
+require "uri"
+require "net/http"
+
 class ExternallySubmittedPeopleController < ApplicationController
   skip_authorization_check
   skip_before_action :verify_authenticity_token
@@ -8,7 +11,19 @@ class ExternallySubmittedPeopleController < ApplicationController
     true
   end
 
+  def is_captcha_valid?
+    response = Net::HTTP.post_form(URI.parse("https://www.google.com/recaptcha/api/siteverify"), {
+      secret: "6LcBNGoUAAAAAKoQO8Rvw_H5DlKKkR64Q1ZoP3Is",
+      response: params["g-recaptcha-response"]
+    })
+    return JSON.parse(response.body)["success"] || false
+  end
+
   def create
+    if !is_captcha_valid?
+      render json: {error: t("external_form_js.server_error_captcha")}, status: :unprocessable_entity
+      return
+    end
     begin
       ActiveRecord::Base.transaction do
         @person = Person.create!(first_name: first_name,
@@ -19,7 +34,15 @@ class ExternallySubmittedPeopleController < ApplicationController
         if zip_codes_matching_groups.any?
           zip_codes_matching_groups.each do |group|
             case submitted_role
-            when "Mitglied", "Sympathisant"
+            when "Mitglied"
+              if zugeordnete_children(group).any?
+                put_him_into_zugeordnete_children zugeordnete_children(group)
+              else
+                put_him_into_root_zugeordnete_groups
+              end
+              send_him_login_information
+              notify_parent_group
+            when "Sympathisant"
               if zugeordnete_children(group).any?
                 put_him_into_zugeordnete_children zugeordnete_children(group)
               else
@@ -44,12 +67,36 @@ class ExternallySubmittedPeopleController < ApplicationController
       end
       render json: @person, status: :ok
     rescue ActiveRecord::RecordInvalid => e
-      render json: {error: e.message}, status: :unprocessable_entity
+      if e.message =~ /e-mail is already taken/
+        render json: {error: t("external_form_js.submit_error_email_taken")}, status: :unprocessable_entity
+      else
+        render json: {error: t("external_form_js.submit_error")}, status: :unprocessable_entity
+      end
     end
 
   end
 
   private
+
+  def send_him_login_information
+    admin_role = Role.where(type: "Group::Root::Administrator").first
+    admin = Person.find(admin_role.person_id)
+    Person::SendLoginJob.new(@person, admin).enqueue!
+  end
+
+  def notify_parent_group
+    zugeordnete_roles_where_he_is_a_mitglied = @person.zugeordnete_roles_where_he_is_a_mitglied
+
+    if zugeordnete_roles_where_he_is_a_mitglied.any?
+      zugeordnete_parent_groups = zugeordnete_roles_where_he_is_a_mitglied.map(&:group).map(&:parent).uniq
+
+      zugeordnete_parent_groups.each do |group|
+        if group.email.present?
+          Notifier.mitglied_joined(@person, group.email).deliver_now
+        end
+      end
+    end
+  end
 
   def put_him_into_root_zugeordnete_groups
     root_zugeordnete_groups.each do |group|

@@ -5,4 +5,9 @@ class Notifier < ApplicationMailer
     @person = person
     mail(to: email)
   end
+
+  def mitglied_joined person, email
+    @person = person
+    mail(to: email)
+  end
 end

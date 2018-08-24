@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Ein neues Mitglied hat sich registriert. Bitte begrüsst dieses Mitglied.</p>
+    <%=link_to("#{@person.first_name} #{@person.last_name}", person_path(@person))%>
+  </body>
+</html>

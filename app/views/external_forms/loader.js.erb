@@ -1,0 +1,208 @@
+(function(){
+  /* Translations & Strings */
+
+  var STRINGS = {
+    <% %w(submitting submit_error_required_fields submit_error_terms_conditions submit_error submit_success_member submit_success_other).each do |key| %>
+      <%= key %>: '<%= t("external_form_js.#{key}").gsub("'", "\'") %>',
+    <% end %>
+  };
+  function s(identifier){
+    var translation = STRINGS[identifier];
+    if(typeof translation === "string"){
+      return translation;
+    }
+    return "Translation missing: " + identifier;
+  }
+
+  /* Form Information */
+
+  var ROLE = "<%= @role %>";
+  var FORM_SELECTOR = "#hitobito-external-form";
+  var MESSAGE_SELECTOR = "#hitobito-external-form-message";
+  var FORM_CONTENT = "<%= @form.gsub("\n", "\\\n").html_safe %>";
+  var RAILS_MODEL = "externally_submitted_person";
+
+  /* Main logic */
+
+  function onLoad () {
+    insertHtml(FORM_SELECTOR, FORM_CONTENT);
+
+    var form = document.querySelector(FORM_SELECTOR + " form")
+    onSubmit(form, function(event){
+      event.preventDefault();
+
+      var validation_error_message = validateFormFields(form);
+      if(validation_error_message){
+        displayError(validation_error_message);
+        return;
+      }
+      disableForm(form);
+      displayNeutral(s("submitting"));
+
+      submitFormAsynchronously(form, function(status, response){
+        if(ROLE === "mitglied"){
+          displaySuccess(s("submit_success_member"));
+        }else{
+          displaySuccess(s("submit_success_other"));
+        }
+      }, function(status, response){
+        displayError(errorMessageForResponse(status, response));
+        disableForm(form, false);
+      })
+    })
+  }
+
+  /* Helper functions: Forms */
+
+  function validateFormFields(form){
+    var is_fully_filled_out = Object.values(getInputDataFromForm(form)).map(function(value){
+      return value !== "";
+    }).reduce(function(a, b){
+      return a && b;
+    })
+    if(!is_fully_filled_out){
+      return s("submit_error_required_fields");
+    }
+
+    var terms_and_conditions_checkbox = form.querySelector("#terms_and_conditions");
+    if(!terms_and_conditions_checkbox.checked){
+      return s("submit_error_terms_conditions");
+    }
+
+    return false;
+  }
+  function errorMessageForResponse(status, response){
+    if(status === 422){
+      errorResponse = JSON.parse(response).error;
+      return errorResponse
+    }
+    return s("submit_error")
+  }
+
+  function disableForm(form, disabled = true){
+    traverseNodeList(form.querySelectorAll("input"), function(input){
+      input.disabled = disabled;
+    });
+  }
+  function submitFormAsynchronously(form, onSuccess, onError){
+    var data = getInputDataFromForm(form);
+    var path = form.getAttribute("action");
+    var postParams = JSON.stringify(
+      Object.assign({}, formatData(data), getCaptchaResponse())
+    )
+
+    resetCaptcha();
+    post(path, postParams, onSuccess, onError);
+  }
+  function getInputDataFromForm(form){
+    var data = {};
+    traverseNodeList(form.querySelectorAll("input"), function(input){
+      if(input.name !== ""){
+        data[input.name] = input.value;
+      }
+    });
+    return data;
+  }
+  function formatData(object){
+    var inner = {};
+    Object.keys(object).forEach(function(key){
+      inner[key.replace(/[^\[]+\[(.*)\]/gi, "$1")] = object[key];
+    });
+    var outer = {};
+    outer[RAILS_MODEL] = inner;
+    return outer;
+  }
+  function getCaptchaResponse(){
+    let response = ""
+    try {
+      response = grecaptcha.getResponse();
+    } catch (e) {
+      response = "";
+    }
+    return {"g-recaptcha-response": response};
+  }
+  function resetCaptcha(){
+    try {
+      grecaptcha.reset();
+    } catch (e) {
+      //
+    }
+  }
+
+  /* Helper functions: Messages */
+
+  function displayNeutral(text) {
+    display("neutral", text);
+  }
+  function displaySuccess(text) {
+    display("success", text);
+  }
+  function displayError(text) {
+    display("error", text);
+  }
+  function display(state, text){
+    var messageContainer = document.querySelector(FORM_SELECTOR + " " + MESSAGE_SELECTOR);
+    messageContainer.innerHTML = text;
+    messageContainer.setAttribute("class", state);
+  }
+
+  /* Helper functions: DOM */
+
+  function traverseNodeList(node_list, callback, scope) {
+    for (var index = 0; index < node_list.length; index++) {
+      callback.call(scope, node_list[index], index);
+    }
+  }
+  function insertHtml(selector, html){
+    var node = document.querySelector(selector);
+    node.innerHTML = html;
+  }
+  function onSubmit(node, callback){
+    if(node.addEventListener){
+      node.addEventListener("submit", callback, false);
+    }else if(node.attachEvent){
+      node.attachEvent('onsubmit', callback);
+    }
+  }
+
+  /* Helper functions: XHR */
+
+  function post(path, data, onSuccess, onError){
+    xhr("POST", path, onSuccess, onError, data);
+  }
+  function get(path, onSuccess, onError){
+    xhr("GET", path, onSuccess, onError);
+  }
+  function xhr(method, path, onSuccess, onError, data = null){
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, path);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.onreadystatechange = function(){
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200 || xhr.status === 304) {
+          onSuccess(xhr.status, xhr.responseText);
+        } else {
+          onError(xhr.status, xhr.responseText);
+        }
+      }
+    }
+    xhr.send(data);
+  }
+
+  /* Kick-start main logic on load */
+  /* https://stackoverflow.com/a/1795167/3707365 */
+
+  if ( document.addEventListener ) {
+    document.addEventListener( "DOMContentLoaded", function(){
+      document.removeEventListener( "DOMContentLoaded", arguments.callee, false);
+      onLoad();
+    }, false );
+  } else if ( document.attachEvent ) {
+    document.attachEvent("onreadystatechange", function(){
+      if ( document.readyState === "complete" ) {
+        document.detachEvent( "onreadystatechange", arguments.callee );
+        onLoad();
+      }
+    });
+  }
+})();
