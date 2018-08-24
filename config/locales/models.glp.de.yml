@@ -142,8 +142,8 @@ de:
       group/root_kontakte/adressverwaltung:
         *ADRESSVERWALTUNG
       group/root_kontakte/kontakt: &KONTAKT
-        one: Kontakt
-        other: Kontakte
+        one: Medien und Dritte
+        other: Medien und Dritte
 
       group/root_gewaehlte/bundesrat:
         one: Bundesrat 
