@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'rack/cors'
 
 module HitobitoGlp
   class Wagon < Rails::Engine
@@ -11,7 +12,7 @@ module HitobitoGlp
     config.autoload_paths += %W( #{config.root}/app/abilities
                                  #{config.root}/app/domain
                                  #{config.root}/app/jobs
-                               )
+    )
 
     config.to_prepare do
       Person.send           :include, Glp::Person
@@ -26,12 +27,26 @@ module HitobitoGlp
     initializer 'glp.add_settings' do |_app|
       Settings.add_source!(File.join(paths['config'].existent, 'settings.yml'))
       Settings.reload!
-    end
-
-    initializer 'glp.add_inflections' do |_app|
+      config.middleware.insert_before 0, "Rack::Cors" do
+        allow do
+          origins '*', headers: :any
+          resource '*', headers: :any, methods: [:get, :post, :options]
+        end
+      end
       ActiveSupport::Inflector.inflections do |inflect|
         # inflect.irregular 'census', 'censuses'
       end
+      # config.middleware.insert_before 0, "Rack::Cors" do
+      #   allow do
+      #     origins '*'
+      #     # origins ['file:///Users/matejlukasik/Zeilenwerk/hitobito_glp/index.html',
+      #     #          'https://grunliberale.ch',
+      #     #          'https://vertliberaux.ch',
+      #     #          'https://verdiliberali.ch',
+      #     #          'https://be.grunliberale.ch']
+      #     resource '*', headers: :any, methods: [:get, :post, :options]
+      #   end
+      # end
     end
 
     private
