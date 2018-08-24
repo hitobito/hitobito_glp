@@ -27,26 +27,19 @@ module HitobitoGlp
     initializer 'glp.add_settings' do |_app|
       Settings.add_source!(File.join(paths['config'].existent, 'settings.yml'))
       Settings.reload!
-      config.middleware.insert_before 0, "Rack::Cors" do
-        allow do
-          origins '*', headers: :any
-          resource '*', headers: :any, methods: [:get, :post, :options]
-        end
-      end
       ActiveSupport::Inflector.inflections do |inflect|
         # inflect.irregular 'census', 'censuses'
       end
-      # config.middleware.insert_before 0, "Rack::Cors" do
-      #   allow do
-      #     origins '*'
-      #     # origins ['file:///Users/matejlukasik/Zeilenwerk/hitobito_glp/index.html',
-      #     #          'https://grunliberale.ch',
-      #     #          'https://vertliberaux.ch',
-      #     #          'https://verdiliberali.ch',
-      #     #          'https://be.grunliberale.ch']
-      #     resource '*', headers: :any, methods: [:get, :post, :options]
-      #   end
-      # end
+      Rails.application.config.middleware.insert_before 0, Rack::Cors do
+        allow do
+          origins ['http://localhost:4000',
+                   'https://grunliberale.ch',
+                   'https://vertliberaux.ch',
+                   'https://verdiliberali.ch',
+                   'https://be.grunliberale.ch']
+          resource '*', headers: :any, methods: [:get, :post, :options]
+        end
+      end
     end
 
     private
