@@ -135,25 +135,9 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   def zip_codes_matching_groups
-    groups_with_zip_codes = Group.where.not(zip_codes: '')
+    groups_with_zip_codes = Group.where.not(zip_codes: '').where.not(type: 'Group::Root')
     groups_with_zip_codes.select do |group|
       group.zip_codes.split(",").map(&:strip).include? externally_submitted_person_params[:zip_code]
-    end
-  end
-
-  def zugeordnete_children group
-    if group.children.any?
-      @zugeordnete_children ||= group.children.select{ |child| child.type.include?("Zugeordnete")}
-    else
-      []
-    end
-  end
-
-  def kontakte_children group
-    if group.children.any?
-      @kontakte_children ||= group.children.select{ |child| child.type.include?("Kontakte")}
-    else
-      []
     end
   end
 
@@ -170,6 +154,22 @@ class ExternallySubmittedPeopleController < ApplicationController
       Role.create!(type:   "#{kontakte_child.type}::#{submitted_role}",
                    person: @person,
                    group:  kontakte_child)
+    end
+  end
+
+  def zugeordnete_children group
+    if group.children.any?
+      group.children.select{ |child| child.type.include?("Zugeordnete")}
+    else
+      []
+    end
+  end
+
+  def kontakte_children group
+    if group.children.any?
+      group.children.select{ |child| child.type.include?("Kontakte")}
+    else
+      []
     end
   end
 

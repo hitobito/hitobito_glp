@@ -87,7 +87,7 @@ describe ExternallySubmittedPeopleController do
     it "when submitted email is a duplicate." do
       subject_with_args
       subject_with_args
-      expect(response.body).to eq({error: "Gültigkeitsprüfung ist fehlgeschlagen: Haupt-E-Mail ist bereits vergeben. Diese Adresse muss für alle Personen eindeutig sein, da sie beim Login verwendet wird. Du kannst jedoch unter 'Weitere E-Mails' Adressen eintragen, welche bei anderen Personen als Haupt-E-Mail vergeben sind (Die Haupt-E-Mail kann leer gelassen werden).\n"}.to_json)
+      expect(response.body).to eq({error: "Ein Fehler ist aufgetreten"}.to_json)
     end
 
   end
