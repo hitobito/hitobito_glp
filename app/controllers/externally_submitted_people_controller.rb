@@ -12,11 +12,15 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   def is_captcha_valid?
-    response = Net::HTTP.post_form(URI.parse("https://www.google.com/recaptcha/api/siteverify"), {
-      secret: "6LcBNGoUAAAAAKoQO8Rvw_H5DlKKkR64Q1ZoP3Is",
-      response: params["g-recaptcha-response"]
-    })
-    return JSON.parse(response.body)["success"] || false
+    if Rails.env == "test"
+      true
+    else
+      response = Net::HTTP.post_form(URI.parse("https://www.google.com/recaptcha/api/siteverify"), {
+        secret: "6LcBNGoUAAAAAKoQO8Rvw_H5DlKKkR64Q1ZoP3Is",
+        response: params["g-recaptcha-response"]
+      })
+      return JSON.parse(response.body)["success"] || false
+    end
   end
 
   def create
