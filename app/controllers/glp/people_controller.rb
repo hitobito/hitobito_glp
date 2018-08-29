@@ -12,7 +12,14 @@ module Glp::PeopleController
     self.permitted_attrs += [:title, :preferred_language,
                              :joining_journey, :occupation,
                              :joined_at, :left_at, :website_url, :paperless]
+    before_update :notify_schweiz_at_grunliberale_ch
     before_destroy :notify_leadership
+  end
+
+  def notify_schweiz_at_grunliberale_ch
+    if entry.zip_code_changed? and entry.valid?
+      Notifier.zip_code_changed(entry, "schweiz@grunliberale.ch").deliver_now
+    end
   end
 
   def notify_leadership
