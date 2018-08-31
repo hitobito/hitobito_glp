@@ -20,4 +20,6 @@ Gem::Specification.new do |s|
   # rubocop:enable SingleSpaceBeforeFirstArg
 
   s.add_runtime_dependency 'rack-cors'
+  s.add_runtime_dependency 'aws-sdk'
+  s.add_runtime_dependency 'dotenv-rails'
 end
