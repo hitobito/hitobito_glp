@@ -36,7 +36,8 @@ module HitobitoGlp
                    'https://grunliberale.ch',
                    'https://vertliberaux.ch',
                    'https://verdiliberali.ch',
-                   'https://be.grunliberale.ch']
+                   'https://be.grunliberale.ch',
+                   'https://gruenliberale.mironet.ch']
           resource '*', headers: :any, methods: [:get, :post, :options]
         end
       end
