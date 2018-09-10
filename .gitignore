@@ -26,3 +26,4 @@ rubocop-results.xml
 *.swp
 .ruby-version
 tags
+.env
