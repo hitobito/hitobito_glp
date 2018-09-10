@@ -12,6 +12,7 @@ de:
         preferred_language: Sprache
         joining_journey: Wie zur glp
         occupation: Beruf und Berufssparte
+        place_of_origin: Heimatort
         joined_at: Datum Eintritt
         left_at: Datum Austritt
         website_link: Webseite

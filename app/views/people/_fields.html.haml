@@ -12,7 +12,7 @@
 - without_relations ||= false
 
 = field_set_tag do
-  = f.labeled_input_fields :title, :first_name, :last_name, :nickname, :occupation
+  = f.labeled_input_fields :title, :first_name, :last_name, :nickname, :occupation, :place_of_origin
   = f.labeled_string_field(:company_name,
                            placeholder: I18n.t('global.search.placeholder_company_name'),
                            data: { provide: 'entity',
