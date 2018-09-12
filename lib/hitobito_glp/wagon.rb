@@ -36,7 +36,15 @@ module HitobitoGlp
                    'https://grunliberale.ch',
                    'https://vertliberaux.ch',
                    'https://verdiliberali.ch',
-                   'https://be.grunliberale.ch']
+                   'https://be.grunliberale.ch',
+                   'https://gruenliberale.mironet.ch',
+                   'https://www.bennoscherrer.ch/',
+                   'http://liste-6.ch/',
+                   'http://markusstadler.ch/',
+                   'http://tianamoser.ch/',
+                   'http://verenadiener.ch/',
+                   'http://greenliberals.ch/'
+                 ]
           resource '*', headers: :any, methods: [:get, :post, :options]
         end
       end

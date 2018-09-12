@@ -1,0 +1,12 @@
+fr:
+  external_form_js:
+    submitting: Merci pour vos données. Elles ont été transmises avec succès.
+    submit_error_required_fields: Veuillez remplir tous les champs.
+    submit_error_email_taken: Votre adresse mail est déjà enregistrée. Merci de nous contacter par téléphone (+41 31 311 33 03) ou par courriel (suisse@vertliberaux.ch) pour que nous puissions vous inscrire comme membre ou vous aider dans votre requête.
+    submit_error_terms_conditions: Vous devez accepter la déclaration de protection des données.
+    submit_error: Une erreur s'est produite.
+    server_error_captcha: Veuillez remplir la CAPTCHA (« Je ne suis pas un robot »).
+    submit_success_member: Merci beaucoup, vous recevrez vos données d'accès dans un instant.
+    submit_success_other: Merci beaucoup, vous vous êtes abonné/e aux nouvelles de notre parti avec succès.
+    terms_and_conditions_checkbox: J'accepte la déclaration de protection des données.
+    terms_and_conditions_link: https://vertliberaux.ch/protection-des-donnees

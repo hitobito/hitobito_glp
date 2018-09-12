@@ -45,6 +45,7 @@
         }else{
           displaySuccess(s("submit_success_other"));
         }
+        collapseForm(form);
       }, function(status, response){
         displayError(errorMessageForResponse(status, response));
         disableForm(form, false);
@@ -83,6 +84,9 @@
     traverseNodeList(form.querySelectorAll("input"), function(input){
       input.disabled = disabled;
     });
+  }
+  function collapseForm(form){
+    form.style.display = "none";
   }
   function submitFormAsynchronously(form, onSuccess, onError){
     var data = getInputDataFromForm(form);
