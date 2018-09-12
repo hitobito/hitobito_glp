@@ -13,6 +13,6 @@ class Notifier < ApplicationMailer
 
   def mitglied_joined person, email
     @person = person
-    mail(to: email)
+    mail(to: email, subject: "Achtung: Neues Mitglied.")
   end
 end
