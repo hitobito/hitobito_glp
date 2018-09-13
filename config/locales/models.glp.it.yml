@@ -1,0 +1,315 @@
+attributes:
+  group:
+    zip_codes: PLZ
+
+de:
+  zip_codes:
+    separated_by_comma: PLZ (getrennt durch Kommas)
+  activerecord:
+    attributes:
+      person:
+        title: Anrede
+        preferred_language: Sprache
+        joining_journey: Wie zur glp
+        occupation: Beruf und Berufssparte
+        place_of_origin: Heimatort
+        joined_at: Datum Eintritt
+        left_at: Datum Austritt
+        website_link: Webseite
+        genders:
+          _nil: unbekannt/anderes
+    models:
+      ### GROUPS
+      group/root:
+        one: Schweiz
+        other: Hauptgruppen
+      group/root_geschaeftsstelle: &GESCHAEFTSSTELLE
+        one: Geschäftsstelle
+        other: Geschäftsstellen
+      group/root_vorstand: &VORSTAND
+        one: Vorstand
+        other: Vorstände
+      group/root_arbeitsgruppe: &ARBEITSGRUPPE
+        one: Arbeitsgruppe
+        other: Arbeitsgruppen
+      group/root_kontakte: &KONTAKTE
+        one: Kontakte
+        other: Kontakte
+      group/root_gewaehlte: &GEWAEHLTE
+        one: Gewählte 
+        other: Gewählte
+      group/root_zugeordnete: &ZUGEORDNETE
+        one: Zugeordnete
+        other: Zugeordneten
+      group/kanton:
+        one: Kanton
+        other: Kantone
+      group/kanton_delegierte:
+        one: Delegierte
+        other: Delegierte
+      group/bezirk:
+        one: Bezirk
+        other: Bezirke
+      group/kanton_vorstand:
+        *VORSTAND
+      group/kanton_geschaeftsstelle:
+        *GESCHAEFTSSTELLE
+      group/kanton_gewaehlte:
+        *GEWAEHLTE
+      group/kanton_arbeitsgruppe:
+        *ARBEITSGRUPPE
+      group/kanton_zugeordnete:
+        *ZUGEORDNETE
+      group/kanton_kontakte:
+        *KONTAKTE
+      group/ortsektion:
+        one: Ortsektion
+        other: Ortsektionen
+      group/ortsektion_gewaehlte:
+        *GEWAEHLTE
+      group/ortsektion_vorstand:
+        *VORSTAND
+      group/ortsektion_geschaeftsstelle:
+        *GESCHAEFTSSTELLE
+      group/ortsektion_gewaehlte:
+        *GEWAEHLTE
+      group/ortsektion_arbeitsgruppe:
+        *ARBEITSGRUPPE
+      group/ortsektion_zugeordnete:
+        *ZUGEORDNETE
+      group/ortsektion_kontakte:
+        *KONTAKTE
+      group/bezirk_vorstand:
+        *VORSTAND
+      group/bezirk_geschaeftsstelle:
+        *GESCHAEFTSSTELLE
+      group/bezirk_gewaehlte:
+        *GEWAEHLTE
+      group/bezirk_arbeitsgruppe:
+        *ARBEITSGRUPPE
+      group/bezirk_zugeordnete:
+        *ZUGEORDNETE
+      group/bezirk_kontakte:
+        *KONTAKTE
+
+      ### ROLES
+      group/root/administrator: &ADMINISTRATOR
+        one: Administrator
+        other: Administratoren
+      group/root/eventverantwortliche: &EVENTVERANTWORTLICHE
+        one: Eventverantwortliche
+        other: Eventverantwortlichen
+
+      group/root_geschaeftsstelle/leitung: &LEITUNG
+        one: Leitung
+        other: Leitungen
+      group/root_geschaeftsstelle/mitarbeiter: &MITARBEITER
+        one: Mitarbeiter(in)
+        other: Mitarbeiter(innen)
+      group/root_geschaeftsstelle/finanzen: &FINANZEN
+        one: Finanzen
+        other: Finanzen
+
+      group/root_vorstand/praesidentln: &PRAESIDENTLN
+        one: PräsidentIn
+        other: PräsidentInnen
+      group/root_vorstand/vizepraesidentln: &VIZEPRAESIDENTLN
+        one: Vizepräsidentln 
+        other: Vizepräsidentlnnen
+      group/root_vorstand/geschaeftsleitung: &GESCHAEFTSLEITUNG
+        one: Geschäftsleitung 
+        other: Geschäftsleitung
+      group/root_vorstand/kassier: &KASSIER
+        one: Kassier
+        other: Kassiere
+      group/root_vorstand/vorstandsmitglied: &VORSTANDSMITGLIED
+        one: Vorstandsmitglied
+        other: Vorstandsmitglieder
+      group/root_arbeitsgruppe/leitung: 
+        *LEITUNG
+      group/root_arbeitsgruppe/mitglied: &AGMITGLIED
+        one: AG-Mitglied
+        other: AG-Mitglieder
+      group/root_zugeordnete/mitglied: &MITGLIED
+        one: Mitglied 
+        other: Mitglieder
+      group/root_zugeordnete/sympathisant: &SYMPATHISANT
+        one: Sympathisant
+        other: Sympathisanten
+      group/root_zugeordnete/adressverwaltung: &ADRESSVERWALTUNG
+        one: Adressverwaltung
+        other: Adressverwaltungen
+
+      group/root_kontakte/adressverwaltung:
+        *ADRESSVERWALTUNG
+      group/root_kontakte/kontakt: &KONTAKT
+        one: Medien und Dritte
+        other: Medien und Dritte
+
+      group/root_gewaehlte/bundesrat:
+        one: Bundesrat 
+        other: Bundesräte
+      group/root_gewaehlte/staenderat:
+        one: Ständerat
+        other: Ständeräte
+      group/root_gewaehlte/nationalrat:
+        one: Nationalrat
+        other: Nationalräte
+      group/root_gewaehlte/vollamt_bundesrichter:
+        one: Bundesrichter (Vollamt)
+        other: Bundesrichter (Vollamt)
+      group/root_gewaehlte/nebenamt_bundes_richter:
+        one: Bundesrichter (Nebenamt)
+        other: Bundesrichter (Nebenamt)
+      group/root_gewaehlte/bundesverwaltungsrichter:
+        one: Bundesverwaltungsrichter
+        other: Bundesverwaltungsrichter
+      group/root_gewaehlte/bundespatentrichter:
+        one: Bundespatentrichter
+        other: Bundespatentrichter
+      group/root_gewaehlte/bundesstrafrichter:
+        one: Bundesstrafrichter
+        other: Bundesstrafrichter
+
+      group/kanton/administrator:
+        *ADMINISTRATOR
+      group/kanton_delegierte/delegierte:
+        one: Delegierte
+        other: Delegierte
+      group/kanton_delegierte/ersatzdelegierte:
+        one: Ersatzdelegierte
+        other: Ersatzdelegierte
+
+      group/kanton_gewaehlte/kantonale_exekutive:
+        one: Kantonale Exekutive
+        other: Kantonale Exekutiven
+      group/kanton_gewaehlte/kantonale_legislative:
+        one: Kantonale Legislative 
+        other: Kantonale Legislativen
+      group/kanton_gewaehlte/mitglied_kantonales_gericht_erste_instanz:
+        one: Mitglied kantonales Gericht erste Instanz 
+        other: Mitglieder kantonales Gericht erste Instanz
+      group/kanton_gewaehlte/mitglied_kantonales_gericht_obere_instanz:
+        one: Mitglied kantonales Gericht obere Instanz
+        other: Mitglieder kantonales Gericht obere Instanz
+      group/kanton_gewaehlte/staatsanwaltschaft:
+        one: Staatsanwaltschaft 
+        other: Staatsanwaltschaften
+      group/kanton_gewaehlte/parlamentarische_geschaeftsfuehrung:
+        one: Parlamentarische Geschaeftsfuehrung 
+        other: Parlamentarische Geschaeftsfuehrungen 
+      group/kanton_arbeitsgruppe/leitung: 
+        *LEITUNG
+      group/kanton_arbeitsgruppe/mitglied:
+        *AGMITGLIED
+      group/kanton_zugeordnete/mitglied:
+        *MITGLIED
+      group/kanton_zugeordnete/sympathisant: 
+        *SYMPATHISANT
+      group/kanton_zugeordnete/adressverwaltung: 
+        *ADRESSVERWALTUNG
+      group/kanton_kontakte/adressverwaltung:
+        *ADRESSVERWALTUNG
+      group/kanton_kontakte/kontakt: 
+        *KONTAKT
+      group/kanton_geschaeftsstelle/leitung: 
+        *LEITUNG
+      group/kanton_geschaeftsstelle/mitarbeiter: 
+        *MITARBEITER
+      group/kanton_geschaeftsstelle/finanzen:
+        *FINANZEN
+      group/kanton_vorstand/praesidentln: 
+        *PRAESIDENTLN
+      group/kanton_vorstand/vizepraesidentln: 
+        *VIZEPRAESIDENTLN
+      group/kanton_vorstand/geschaeftsleitung: 
+        *GESCHAEFTSLEITUNG
+      group/kanton_vorstand/kassier: 
+        *KASSIER
+      group/kanton_vorstand/mitglied: 
+        *MITGLIED
+
+      group/ortsektion/administrator:
+        *ADMINISTRATOR
+      group/ortsektion_gewaehlte/kommunale_exekutive:
+        one: Kommunale Exekutive 
+        other: Kommunale Exekutiven
+      group/ortsektion_gewaehlte/kommunale_legislative:
+        one: Kommunale Legislative
+        other: Kommunale Legislativen
+      group/ortsektion_gewaehlte/schulpflegekommission :
+        one: Schulpflege/- kommission
+        other: Schulpflege/- kommissionen
+      group/ortsektion_gewaehlte/rechnungspruefungskommission:
+        one: Rechnungsprüfungskommission
+        other: Rechnungsprüfungskommissionen
+      group/ortsektion_gewaehlte/mitglied_weitere_kommissionen:
+        one: Mitglied weitere Kommissionen 
+        other: Mitglieder weitere Kommissionen
+      group/ortsektion_arbeitsgruppe/leitung: 
+        *LEITUNG
+      group/ortsektion_arbeitsgruppe/mitglied:
+        *AGMITGLIED
+      group/ortsektion_zugeordnete/mitglied:
+        *MITGLIED
+      group/ortsektion_zugeordnete/sympathisant: 
+        *SYMPATHISANT
+      group/ortsektion_zugeordnete/adressverwaltung: 
+        *ADRESSVERWALTUNG
+      group/ortsektion_kontakte/adressverwaltung:
+        *ADRESSVERWALTUNG
+      group/ortsektion_kontakte/kontakt: 
+        *KONTAKT
+      group/ortsektion_geschaeftsstelle/leitung: 
+        *LEITUNG
+      group/ortsektion_geschaeftsstelle/mitarbeiter: 
+        *MITARBEITER
+      group/ortsektion_geschaeftsstelle/finanzen:
+        *FINANZEN
+      group/ortsektion_vorstand/praesidentln: 
+        *PRAESIDENTLN
+      group/ortsektion_vorstand/vizepraesidentln: 
+        *VIZEPRAESIDENTLN
+      group/ortsektion_vorstand/geschaeftsleitung: 
+        *GESCHAEFTSLEITUNG
+      group/ortsektion_vorstand/kassier: 
+        *KASSIER
+      group/ortsektion_vorstand/mitglied: 
+        *MITGLIED
+
+      group/bezirk/administrator:
+        *ADMINISTRATOR
+      group/bezirk_gewaehlte/regierungsstatthalter:
+        one: Regierungsstatthalter/-in
+        other: Regierungsstatthalter/-innen
+      group/bezirk_arbeitsgruppe/leitung: 
+        *LEITUNG
+      group/bezirk_arbeitsgruppe/mitglied:
+        *AGMITGLIED
+      group/bezirk_zugeordnete/mitglied:
+        *MITGLIED
+      group/bezirk_zugeordnete/sympathisant: 
+        *SYMPATHISANT
+      group/bezirk_zugeordnete/adressverwaltung: 
+        *ADRESSVERWALTUNG
+      group/bezirk_kontakte/adressverwaltung:
+        *ADRESSVERWALTUNG
+      group/bezirk_kontakte/kontakt: 
+        *KONTAKT
+      group/bezirk_geschaeftsstelle/leitung: 
+        *LEITUNG
+      group/bezirk_geschaeftsstelle/mitarbeiter: 
+        *MITARBEITER
+      group/bezirk_geschaeftsstelle/finanzen:
+        *FINANZEN
+      group/bezirk_vorstand/praesidentln: 
+        *PRAESIDENTLN
+      group/bezirk_vorstand/vizepraesidentln: 
+        *VIZEPRAESIDENTLN
+      group/bezirk_vorstand/geschaeftsleitung: 
+        *GESCHAEFTSLEITUNG
+      group/bezirk_vorstand/kassier: 
+        *KASSIER
+      group/bezirk_vorstand/mitglied: 
+        *MITGLIED
+
