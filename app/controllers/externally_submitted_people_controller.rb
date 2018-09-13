@@ -33,6 +33,7 @@ class ExternallySubmittedPeopleController < ApplicationController
         @person = Person.create!(first_name: first_name,
                                  last_name: last_name,
                                  email: email,
+                                 zip_code: zip_code,
                                  preferred_language: preferred_language)
 
         if zip_codes_matching_groups.any?
@@ -52,7 +53,7 @@ class ExternallySubmittedPeopleController < ApplicationController
               else
                 put_him_into_root_zugeordnete_groups
               end
-            when "Adressverwaltung"
+            when "Medien_und_dritte"
               if kontakte_children(group).any?
                 put_him_into_kontakte_children kontakte_children(group)
               else
@@ -64,7 +65,7 @@ class ExternallySubmittedPeopleController < ApplicationController
           case submitted_role
           when "Mitglied", "Sympathisant"
             put_him_into_root_zugeordnete_groups
-          when "Adressverwaltung"
+          when "Medien_und_dritte"
             put_him_into_root_kontakte_groups
           end
         end
@@ -131,7 +132,7 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   def kontakte_role_type
-    "Group::RootKontakte::#{submitted_role}"
+    "Group::RootKontakte::Kontakt"
   end
 
   def zip_codes_matching_groups
@@ -151,7 +152,7 @@ class ExternallySubmittedPeopleController < ApplicationController
 
   def put_him_into_kontakte_children kontakte_children
     kontakte_children.each do |kontakte_child|
-      Role.create!(type:   "#{kontakte_child.type}::#{submitted_role}",
+      Role.create!(type:   "#{kontakte_child.type}::Kontakt",
                    person: @person,
                    group:  kontakte_child)
     end
@@ -191,6 +192,10 @@ class ExternallySubmittedPeopleController < ApplicationController
 
   def preferred_language
     externally_submitted_person_params[:preferred_language]
+  end
+
+  def zip_code
+    externally_submitted_person_params[:zip_code]
   end
 
   def externally_submitted_person_params

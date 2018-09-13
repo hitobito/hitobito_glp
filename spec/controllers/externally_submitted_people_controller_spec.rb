@@ -14,7 +14,7 @@ describe ExternallySubmittedPeopleController do
   let!(:another_kanton_kontakte_group) { groups(:another_kanton_kontakte) }
 
   def subject_with_args args={}
-    post :create, externally_submitted_person: {zip_code: "917 01",
+    post :create, externally_submitted_person: {zip_code: "9171",
                                                 email: "sauron@evil.com",
                                                 first_name: "Sauron",
                                                 last_name: "The Abominable",
@@ -27,13 +27,8 @@ describe ExternallySubmittedPeopleController do
     expect(Person.last.email).to eq "sauron@evil.com"
     expect(Person.last.first_name).to eq "Sauron"
     expect(Person.last.last_name).to eq "The Abominable"
+    expect(Person.last.zip_code).to eq "9171"
     expect(Person.last.preferred_language).to eq "de"
-  end
-
-  it "sends an email with login information to the newly created person." do
-    ActiveJob::Base.queue_adapter = :test
-    # WTF?
-    # expect{subject_with_args}.to enqueue_job
   end
 
   it "sends a notification email to the layer group." do
@@ -53,8 +48,8 @@ describe ExternallySubmittedPeopleController do
         expect(Person.last.groups).to include kanton_zugeordnete_group, another_kanton_zugeordnete_group
       end
 
-      it "when submitted role is a adressverwaltung." do
-        subject_with_args({role: "adressverwaltung"})
+      it "when submitted role is a medien und dritte." do
+        subject_with_args({role: "medien_und_dritte"})
         expect(Person.last.groups).to include kanton_kontakte_group, another_kanton_kontakte_group
       end
 
@@ -65,17 +60,17 @@ describe ExternallySubmittedPeopleController do
     context "it places him in one of root groups equivalents" do
 
       it "when submitted role is a mitglied." do
-        subject_with_args({zip_code: "12345"})
+        subject_with_args({zip_code: "1234"})
         expect(Person.last.groups).to include root_zugeordnete_group
       end
 
       it "when submitted role is a symphatisant." do
-        subject_with_args({zip_code: "12345", role: "sympathisant"})
+        subject_with_args({zip_code: "1234", role: "sympathisant"})
         expect(Person.last.groups).to include root_zugeordnete_group
       end
 
-      it "when submitted role is a adressverwaltung." do
-        subject_with_args({zip_code: "12345", role: "adressverwaltung"})
+      it "when submitted role is a medien und dritte." do
+        subject_with_args({zip_code: "1234", role: "medien_und_dritte"})
         expect(Person.last.groups).to include root_kontakte_group
       end
 
@@ -87,7 +82,7 @@ describe ExternallySubmittedPeopleController do
     it "when submitted email is a duplicate." do
       subject_with_args
       subject_with_args
-      expect(response.body).to eq({error: "Ein Fehler ist aufgetreten"}.to_json)
+      expect(response.body).to eq({error: "Ein Fehler ist aufgetreten."}.to_json)
     end
 
   end
