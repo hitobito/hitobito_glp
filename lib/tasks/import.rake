@@ -167,7 +167,7 @@ def generate_additional_emails(additional_email)
 end
 
 def parse_zip_code zip_code
-  zip_code.length == 4 ? zip_code : nil
+  !zip_code.nil? && zip_code.length == 4 ? zip_code : nil
 end
 
 def parse_date date
