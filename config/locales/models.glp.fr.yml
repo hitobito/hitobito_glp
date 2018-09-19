@@ -12,44 +12,44 @@ de:
         preferred_language: Langue
         joining_journey: Comment avez-vous connu le pvl
         occupation: Profession
-        place_of_origin: Heimatort
+        place_of_origin: Lieu d'origine
         joined_at: Date d'adhésion
         left_at: Date de démission
         website_link: Site web
         genders:
-          _nil: unbekannt/anderes
+          _nil: inconnu/autre 
     models:
       ### GROUPS
       group/root:
         one: Groupe principal
-        other: Hauptgruppen
+        other: Groupes principaux 
       group/root_geschaeftsstelle: &GESCHAEFTSSTELLE
         one: Secrétariat
-        other: Geschäftsstellen
+        other: Secrétariats
       group/root_vorstand: &VORSTAND
         one: Comité directeur
-        other: Vorstände
+        other: Comité directeur
       group/root_arbeitsgruppe: &ARBEITSGRUPPE
         one: Groupe de travail
-        other: Arbeitsgruppen
+        other: Groupes de travail 
       group/root_zugeordnete: &ZUGEORDNETE
-        one: Attribués
-        other: Zugeordneten
+        one: Attribué/e 
+        other: Attribués
       group/root_kontakte: &KONTAKTE
-        one: Contacts 
-        other: Kontakte
+        one: Contact 
+        other: Contacts 
       group/root_gewaehlte: &GEWAEHLTE
-        one: Élus 
-        other: Gewählte
+        one: Élu/e
+        other: Élus 
       group/kanton:
         one: Canton
-        other: Kantone
+        other: Cantons
       group/kanton_delegierte:
-        one: Délégués
-        other: Delegierte
+        one: Délégué/e
+        other: Délégués
       group/bezirk:
         one: District
-        other: Bezirke
+        other: Districts
       group/kanton_vorstand:
         *VORSTAND
       group/kanton_geschaeftsstelle:
@@ -64,7 +64,7 @@ de:
         *KONTAKTE
       group/ortsektion:
         one: Section locale
-        other: Ortsektionen
+        other: Sections locales
       group/ortsektion_gewaehlte:
         *GEWAEHLTE
       group/ortsektion_vorstand:
@@ -94,110 +94,110 @@ de:
 
       ### ROLES
       group/root/administrator: &ADMINISTRATOR
-        one: Administrator
-        other: Administratoren
+        one: Administrateur
+        other: Administrateurs
       group/root/eventverantwortliche: &EVENTVERANTWORTLICHE
-        one: Eventverantwortliche
-        other: Eventverantwortlichen
+        one: Responsable
+        other: Responsables
 
       group/root_geschaeftsstelle/leitung: &LEITUNG
         one: Direction
-        other: Leitungen
+        other: Direction 
       group/root_geschaeftsstelle/mitarbeiter: &MITARBEITER
         one: Collaborateur/trice
-        other: Mitarbeiter(innen)
+        other: Collaborateurs/trices
       group/root_geschaeftsstelle/finanzen: &FINANZEN
         one: Finances
-        other: Finanzen
+        other: Finances
 
       group/root_vorstand/praesidentln: &PRAESIDENTLN
         one: Président/e
-        other: PräsidentInnen
+        other: Président/e
       group/root_vorstand/vizepraesidentln: &VIZEPRAESIDENTLN
         one: Vice-président/e 
-        other: Vizepräsidentlnnen
+        other: Vice-présidents
       group/root_vorstand/geschaeftsleitung: &GESCHAEFTSLEITUNG
         one: Comité 
-        other: Geschäftsleitung
+        other: Comité
       group/root_vorstand/kassier: &KASSIER
-        one: Kassier
-        other: Kassiere
+        one: Trésorier/ère
+        other: Trésoriers/ères 
       group/root_vorstand/vorstandsmitglied: &VORSTANDSMITGLIED
         one: Membre du comité directeur
-        other: Vorstandsmitglieder
+        other: Membres du comité directeur 
       group/root_arbeitsgruppe/leitung: 
         *LEITUNG
       group/root_arbeitsgruppe/mitglied: &AGMITGLIED
         one: Membre du groupe de travail
-        other: AG-Mitglieder
+        other: Membres du groupe de travail
       group/root_zugeordnete/mitglied: &MITGLIED
         one: Membre 
-        other: Mitglieder
+        other: Membres
       group/root_zugeordnete/sympathisant: &SYMPATHISANT
         one: Sympathisant/e
-        other: Sympathisanten
+        other: Sympathisants
       group/root_zugeordnete/adressverwaltung: &ADRESSVERWALTUNG
         one: Gestion des adresses
-        other: Adressverwaltungen
+        other: Gestion des adresses 
 
       group/root_kontakte/adressverwaltung:
         *ADRESSVERWALTUNG
       group/root_kontakte/kontakt: &KONTAKT
-        one: Medien und Dritte
-        other: Medien und Dritte
+        one: Médias et tiers
+        other: Médias et tiers
 
       group/root_gewaehlte/bundesrat:
         one: Conseil fédéral
-        other: Bundesräte
+        other: Conseil fédéral
       group/root_gewaehlte/staenderat:
         one: Conseil des États
-        other: Ständeräte
+        other: Conseil des États
       group/root_gewaehlte/nationalrat:
         one: Conseil national
-        other: Nationalräte
+        other: Conseil national
       group/root_gewaehlte/vollamt_bundesrichter:
         one: Juge fédéral (temps plein)
-        other: Bundesrichter (Vollamt)
+        other: Juge fédéral (temps plein)
       group/root_gewaehlte/nebenamt_bundes_richter:
         one: Juge fédéral (suppléant)
-        other: Bundesrichter (Nebenamt)
+        other: Juge fédéral (suppléants)
       group/root_gewaehlte/bundesverwaltungsrichter:
         one: Juge du Tribunal administratif fédéral
-        other: Bundesverwaltungsrichter
+        other: Juge du Tribunal administratif fédéral
       group/root_gewaehlte/bundespatentrichter:
         one: Juge du Tribunal fédéral des brevets
-        other: Bundespatentrichter
+        other: Juges du Tribunal fédéral des brevets
       group/root_gewaehlte/bundesstrafrichter:
         one: Juge du Tribunal pénal fédéral
-        other: Bundesstrafrichter
+        other: Juge du Tribunal pénal fédéral
 
       group/kanton/administrator:
         *ADMINISTRATOR
       group/kanton_delegierte/delegierte:
-        one: Délégués
-        other: Delegierte
+        one: Délégué/e 
+        other: Délégués
       group/kanton_delegierte/ersatzdelegierte:
-        one: Délégués suppléants
-        other: Ersatzdelegierte
+        one: Délégué/e suppléant/e
+        other: Délégués suppléants 
 
       group/kanton_gewaehlte/kantonale_exekutive:
         one: Exécutif cantonal
-        other: Kantonale Exekutiven
+        other: Exécutifs cantonaux 
       group/kanton_gewaehlte/kantonale_legislative:
         one: Législatif cantonal
-        other: Kantonale Legislativen
+        other: Législatifs cantonaux 
       group/kanton_gewaehlte/mitglied_kantonales_gericht_erste_instanz:
         one: Membre du tribunal cantonal de première instance 
-        other: Mitglieder kantonales Gericht erste Instanz
+        other: Membres du tribunal cantonal de première instance
       group/kanton_gewaehlte/mitglied_kantonales_gericht_obere_instanz:
         one: Membre du tribunal cantonal d'instance supérieure
-        other: Mitglieder kantonales Gericht obere Instanz
+        other: Membres du tribunal cantonal d'instance supérieure
       group/kanton_gewaehlte/staatsanwaltschaft:
         one: Ministère public
-        other: Staatsanwaltschaften
+        other: Ministères publics
       group/kanton_gewaehlte/parlamentarische_geschaeftsfuehrung:
         one: Secrétariat du groupe parlementaire
-        other: Parlamentarische Geschaeftsfuehrungen 
+        other: Secrétariats de groupes parlementaires
       group/kanton_arbeitsgruppe/leitung: 
         *LEITUNG
       group/kanton_arbeitsgruppe/mitglied:
@@ -233,19 +233,19 @@ de:
         *ADMINISTRATOR
       group/ortsektion_gewaehlte/kommunale_exekutive:
         one: Exécutif communal
-        other: Kommunale Exekutiven
+        other: Exécutifs communaux
       group/ortsektion_gewaehlte/kommunale_legislative:
         one: Législatif communal
-        other: Kommunale Legislativen
+        other: Législatifs communaux 
       group/ortsektion_gewaehlte/schulpflegekommission :
         one: Autorité/commission scolaire
-        other: Schulpflege/- kommissionen
+        other: Autorités/commissions scolaires
       group/ortsektion_gewaehlte/rechnungspruefungskommission:
         one: Commission de vérification des comptes
-        other: Rechnungsprüfungskommissionen
+        other: Commissions de vérification des comptes
       group/ortsektion_gewaehlte/mitglied_weitere_kommissionen:
         one: Membre d'autres commissions
-        other: Mitglieder weitere Kommissionen
+        other: Membres d'autres commissions
       group/ortsektion_arbeitsgruppe/leitung: 
         *LEITUNG
       group/ortsektion_arbeitsgruppe/mitglied:
@@ -281,7 +281,7 @@ de:
         *ADMINISTRATOR
       group/bezirk_gewaehlte/regierungsstatthalter:
         one: Préfecture
-        other: Regierungsstatthalter/-innen
+        other: Préfectures
       group/bezirk_arbeitsgruppe/leitung: 
         *LEITUNG
       group/bezirk_arbeitsgruppe/mitglied:
