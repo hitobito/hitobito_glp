@@ -10,3 +10,52 @@ fr:
     submit_success_other: Merci beaucoup, vous vous êtes abonné/e aux nouvelles de notre parti avec succès.
     terms_and_conditions_checkbox: J'accepte la déclaration de protection des données.
     terms_and_conditions_link: https://vertliberaux.ch/protection-des-donnees
+
+  notifier:
+    welcome_mitglied:
+      from: suisse@vertliberaux.ch
+      subject: Bienvenue chez les vert’libéraux !
+      hello: Bonjour,
+      first_paragraph: Nous nous réjouissons de votre choix d'adhérer au parti vert'libéral. Nous prendrons contact avec vous le plus rapidement possible afin de vous démontrer comment vous pouvez vous engager au sein du parti.
+      second_paragraph: "Afin de mieux vous connaître, nous vous prions de nous transmettre des informations plus détaillées. Cela nous aidera à gérer nos données des membres et garantira que vous recevrez toutes les informations importantes de notre part. Toutes vos données seront traitées de manière strictement confidentielle et ne seront pas transmises à des tiers :"
+      third_paragraph: "Si vous avez moins de 35 ans et souhaitez devenir membre des jeunes vert’libéraux également, ce que nous vous recommandons fortement, merci de vous inscrire ici :"
+      link_to_young_liberals: https://jeunesvertliberaux.ch/devenir-membre/
+      fourth_paragraph: Nous vous remercions d'avance et nous tenons à votre disposition pour toute question –suisse@vertliberaux.ch
+      first_goodbye: Meilleures salutations
+      second_goodbye: L'équipe du secrétariat général
+      address_first_line: Parti vert’libéral Suisse
+      address_second_line: secrétariat général
+      address_city: 3011 Berne
+      phone: Téléphone +41 31 311 33 03
+      opening_hours: (lun-ven 10h00-12h00, 14h00-16h00)
+    welcome_sympathisant:
+      from: suisse@vertliberaux.ch
+      subject: Bienvenue chez les vert’libéraux !
+      hello: Bonjour,
+      first_paragraph: Nous vous remercions de vous être abonné(e) à nos nouvelles et informations. C'est avec plaisir que nous avons ajouté votre adresse à notre liste de diffusion.
+      second_paragraph: Afin de mieux vous connaître, nous vous offrons la possibilité de modifier vos données directement dans notre base de données. Toutes les données sont traitées de manière strictement confidentielle et ne sont pas transmises à des tiers. Si vous êtes intéressé(e) par cette possibilité, c’est avec plaisir que nous vous transmettrons votre login personnel à votre demande.
+      third_paragraph_part_one: Merci de nous écrire
+      third_paragraph_part_two: à cette adresse e-mail
+      third_paragraph_part_three: i vous avez des questions ou souhaitez des informations supplémentaires.
+      first_goodbye: Meilleures salutations,
+      second_goodbye: L'équipe du secrétariat général
+      address_first_line: Parti vert’libéral Suisse
+      address_second_line: secrétariat général
+      address_city: 3011 Berne
+      phone: Téléphone +41 31 311 33 03
+      opening_hours: (lun-ven 10h00-12h00, 14h00-16h00)
+    welcome_medien_und_dritte:
+      from: suisse@vertliberaux.ch
+      subject: Merci beaucoup pour votre inscription !
+      hello: Bonjour,
+      first_paragraph: Nous vous remercions de vous être abonné(e) à nos nouvelles et informations. C'est avec plaisir que nous avons ajouté votre adresse à notre liste de diffusion.
+      second_paragraph_part_one: Merci de nous écrire
+      second_paragraph_part_two: à cette adresse e-mail
+      second_paragraph_part_three: si vous avez des questions ou souhaitez des informations supplémentaires.
+      first_goodbye: Meilleures salutations,
+      second_goodbye: L'équipe du secrétariat général
+      address_first_line: Parti vert’libéral Suisse
+      address_second_line: secrétariat général
+      address_city: 3011 Berne
+      phone: Téléphone +41 31 311 33 03
+      opening_hours: (lun-ven 10h00-12h00, 14h00-16h00)

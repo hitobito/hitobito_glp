@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p><%= t('.hello') %> <%= @person.first_name unless @locale == "fr" %></p>
+    <p><%= t('.first_paragraph')%></p>
+    <p><%= t('.second_paragraph')%></p>
+    <p>login link</p>
+    <% if @locale != "it" %>
+      <p><%= t('.third_paragraph')%></p>
+      <p><a><%= t('.link_to_young_liberals')%></a></p>
+    <% end %>
+    <p><%= t('.fourth_paragraph')%></p>
+    <p>
+      <%= t('.first_goodbye')%><br/>
+      <%= t('.second_goodbye')%>
+    </p>
+    --
+    <p>
+      <%= t('.address_first_line')%><br/>
+      <%= t('.address_second_line')%><br/>
+      Monbijoustrasse 30<br/>
+      <%= t('.address_city')%><br/>
+    </p>
+    <p>
+      <%= t('.phone')%><br/>
+      <%= t('.opening_hours')%><br/>
+    </p>
+  </body>
+</html>

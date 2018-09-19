@@ -10,3 +10,52 @@ de:
     submit_success_other: Vielen Dank, Du hast dich erfolgreich für unsere Partei-Updates angemeldet.
     terms_and_conditions_checkbox: Ich akzeptiere die Datenschutzerklärung.
     terms_and_conditions_link: https://grunliberale.ch/datenschutz
+
+  notifier:
+    welcome_mitglied:
+      from: schweiz@grunliberale.ch
+      subject: Herzlich willkommen bei den Grünliberalen!
+      hello: Hallo
+      first_paragraph: Es freut uns sehr, dass Du Dich entschieden hast, Mitglied der Grünliberalen Partei zu sein. Wir werden uns so rasch wie möglich persönlich bei Dir melden und Dir aufzeigen, wie Du Dich in der Partei engagieren kannst.
+      second_paragraph: "Damit wir Dich besser kennen lernen, bitten wir Dich, unter dem folgenden Link weitere Angaben zu Dir zu machen. Dies hilft uns bei der Pflege unserer Mitgliederdaten sehr und gewährleistet, dass Du von uns nur relevante Infos erhältst. Sämtliche Angaben werden natürlich streng vertraulich behandelt und nicht an Dritte weitergegeben:"
+      third_paragraph: "Falls Du unter 35 bist und auch Mitglied der Jungen Grünliberalen werden möchtest, was wir Dir sehr empfehlen, melde Dich bitte hier an:"
+      link_to_young_liberals: https://jungegrunliberale.ch/mitglied-werden/
+      fourth_paragraph: Wir danken Dir im Voraus und stehen auch unsererseits unter schweiz@grunliberale.ch sehr gerne für Fragen zur Verfügung.
+      first_goodbye: Liebe Grüsse
+      second_goodbye: Das Team des Generalsekretariats
+      address_first_line: Grünliberale Schweiz
+      address_second_line: Generalsekretariat
+      address_city: 3011 Bern
+      phone: Telefon +41 31 311 33 03
+      opening_hours: (Mo-Fr 10-12 und 14-16 Uhr)
+    welcome_sympathisant:
+      from: schweiz@grunliberale.ch
+      subject: Herzlich willkommen bei den Grünliberalen!
+      hello: Hallo
+      first_paragraph: Vielen Dank für Deine Anmeldung für unsere News und Infos. Gerne haben wir Deine Adresse der Versandliste hinzugefügt.
+      second_paragraph: Damit wir Dich besser kennen lernen, hast Du die Möglichkeit, die Angaben zu Dir direkt in unserer Datenbank zu bearbeiten. Sämtliche Angaben werden natürlich streng vertraulich behandelt und nicht an Dritte weitergegeben. Gerne schicken wir Dir auf Anfrage den Login dafür.
+      third_paragraph_part_one: Wenn Du weitere Fragen hast oder mehr erfahren möchtest, kannst Du uns jederzeit
+      third_paragraph_part_two: über diese E-Mail-Adresse erreichen.
+      first_goodbye: Freundliche Grüsse
+      second_goodbye: Das Team des Generalsekretariats
+      address_first_line: Grünliberale Schweiz
+      address_second_line: Generalsekretariat
+      pc_konto: "PC-Konto: 85-136086-0"
+      address_city: 3011 Bern
+      phone: Telefon +41 31 311 33 03
+      opening_hours: (Mo-Fr 10-12 und 14-16 Uhr)
+    welcome_medien_und_dritte:
+      from: schweiz@grunliberale.ch
+      subject: Vielen Dank für Ihre Anmeldung!
+      hello: Guten Tag
+      first_paragraph: Vielen Dank für Ihre Anmeldung für unsere News und Infos. Gerne haben wir Ihre Adresse der Versandliste hinzugefügt.
+      second_paragraph_part_one: Wenn Sie weitere Fragen haben oder mehr erfahren möchten, können Sie uns jederzeit
+      second_paragraph_part_two: über diese E-Mail-Adresse
+      second_paragraph_part_three: erreichen.
+      first_goodbye: Freundliche Grüsse
+      second_goodbye: Das Team des Generalsekretariats
+      address_first_line: Grünliberale Schweiz
+      address_second_line: Generalsekretariat
+      address_city: 3011 Bern
+      phone: Telefon +41 31 311 33 03
+      opening_hours: (Mo-Fr 10-12 und 14-16 Uhr)

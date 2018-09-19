@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p><%= t('.hello') %> <%= @person.first_name unless @locale == "fr"%></p>
+    <p><%= t('.first_paragraph')%></p>
+    <p><%= t('.second_paragraph')%></p>
+    <p><%= t('.third_paragraph_part_one')%> <a href="mailto:<%=t('.from')%>"><%= t('.third_paragraph_part_two')%> </a> <%= t('.third_paragraph_part_three') if @locale == "fr" %>
+    </p>
+    <p>
+      <%= t('.first_goodbye')%><br/>
+      <%= t('.second_goodbye')%>
+    </p>
+    --
+    <p>
+      <%= t('.address_first_line')%><br/>
+      <%= t('.address_second_line')%><br/>
+      Monbijoustrasse 30<br/>
+      <%= t('.address_city')%><br/>
+      <%= t('.pc_konto') if @locale == "de"%><br/>
+    </p>
+    <p>
+      <%= t('.phone')%><br/>
+      <%= t('.opening_hours')%><br/>
+    </p>
+  </body>
+</html>

@@ -15,4 +15,25 @@ class Notifier < ApplicationMailer
     @person = person
     mail(to: email, subject: "Achtung: Neues Mitglied.")
   end
+
+  def welcome_mitglied person, locale
+    @person = person
+    @locale = locale
+    I18n.locale = @locale
+    mail(to: @person.email, from: t(".from"), subject: t(".subject"))
+  end
+
+  def welcome_sympathisant person, locale
+    @person = person
+    @locale = locale
+    I18n.locale = @locale
+    mail(to: @person.email, from: t(".from"), subject: t(".subject"))
+  end
+
+  def welcome_medien_und_dritte person, locale
+    @person = person
+    @locale = locale
+    I18n.locale = @locale
+    mail(to: @person.email, from: t(".from"), subject: t(".subject"))
+  end
 end

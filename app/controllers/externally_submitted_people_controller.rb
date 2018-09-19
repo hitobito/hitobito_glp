@@ -46,6 +46,7 @@ class ExternallySubmittedPeopleController < ApplicationController
                 put_him_into_root_zugeordnete_groups
               end
               send_him_login_information
+              send_him_a_mitglied_welcome_email
               notify_parent_group
             when "Sympathisant"
               if zugeordnete_children(group).any?
@@ -53,20 +54,28 @@ class ExternallySubmittedPeopleController < ApplicationController
               else
                 put_him_into_root_zugeordnete_groups
               end
+              send_him_a_sympathisant_welcome_email
             when "Medien_und_dritte"
               if kontakte_children(group).any?
                 put_him_into_kontakte_children kontakte_children(group)
               else
                 put_him_into_root_kontakte_groups
               end
+              send_him_a_medien_und_dritte_welcome_email
             end
           end
         else
           case submitted_role
-          when "Mitglied", "Sympathisant"
+          when "Mitglied"
             put_him_into_root_zugeordnete_groups
+            send_him_a_mitglied_welcome_email
+            send_him_login_information
+          when "Sympathisant"
+            put_him_into_root_zugeordnete_groups
+            send_him_a_sympathisant_welcome_email
           when "Medien_und_dritte"
             put_him_into_root_kontakte_groups
+            send_him_a_medien_und_dritte_welcome_email
           end
         end
       end
@@ -87,6 +96,18 @@ class ExternallySubmittedPeopleController < ApplicationController
     admin_role = Role.where(type: "Group::Root::Administrator").first
     admin = Person.find(admin_role.person_id)
     Person::SendLoginJob.new(@person, admin).enqueue!
+  end
+
+  def send_him_a_mitglied_welcome_email
+    Notifier.welcome_mitglied(@person, preferred_language).deliver_now
+  end
+
+  def send_him_a_sympathisant_welcome_email
+    Notifier.welcome_sympathisant(@person, preferred_language).deliver_now
+  end
+
+  def send_him_a_medien_und_dritte_welcome_email
+    Notifier.welcome_medien_und_dritte(@person, preferred_language).deliver_now
   end
 
   def notify_parent_group
