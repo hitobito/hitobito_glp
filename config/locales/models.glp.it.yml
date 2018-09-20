@@ -1,55 +1,55 @@
 attributes:
   group:
-    zip_codes: PLZ
+    zip_codes: Codice postale
 
 de:
   zip_codes:
-    separated_by_comma: PLZ (getrennt durch Kommas)
+    separated_by_comma: Codice postale (separati da virgole)
   activerecord:
     attributes:
       person:
-        title: Anrede
-        preferred_language: Sprache
-        joining_journey: Wie zur glp
-        occupation: Beruf und Berufssparte
-        place_of_origin: Heimatort
-        joined_at: Datum Eintritt
-        left_at: Datum Austritt
-        website_link: Webseite
+        title: Titolo
+        preferred_language: Lingua
+        joining_journey: Come siete arrivati a noi
+        occupation: Professione
+        place_of_origin: Luogo d'origine
+        joined_at: Data di iscrizione
+        left_at: Data di uscita
+        website_link: Sito web
         genders:
-          _nil: unbekannt/anderes
+          _nil: ignoto/altro
     models:
       ### GROUPS
       group/root:
-        one: Schweiz
-        other: Hauptgruppen
+        one: Gruppo principale
+        other: Gruppi principali
       group/root_geschaeftsstelle: &GESCHAEFTSSTELLE
-        one: Geschäftsstelle
-        other: Geschäftsstellen
+        one: Segretariato
+        other: Segretariati
       group/root_vorstand: &VORSTAND
-        one: Vorstand
-        other: Vorstände
+        one: Comitato direttivo
+        other: Comitato direttivo
       group/root_arbeitsgruppe: &ARBEITSGRUPPE
-        one: Arbeitsgruppe
-        other: Arbeitsgruppen
+        one: Gruppo di lavoro
+        other: Gruppi di lavoro
       group/root_kontakte: &KONTAKTE
-        one: Kontakte
-        other: Kontakte
+        one: Contatto
+        other: Contatti
       group/root_gewaehlte: &GEWAEHLTE
-        one: Gewählte 
-        other: Gewählte
+        one: Eletto/a
+        other: Eletti
       group/root_zugeordnete: &ZUGEORDNETE
-        one: Zugeordnete
-        other: Zugeordneten
+        one: Attribuito/a
+        other: Attribuiti
       group/kanton:
-        one: Kanton
-        other: Kantone
+        one: Cantone
+        other: Cantoni
       group/kanton_delegierte:
-        one: Delegierte
-        other: Delegierte
+        one: Delegato/a
+        other: Delegati
       group/bezirk:
-        one: Bezirk
-        other: Bezirke
+        one: Distretto
+        other: Distretti
       group/kanton_vorstand:
         *VORSTAND
       group/kanton_geschaeftsstelle:
@@ -63,8 +63,8 @@ de:
       group/kanton_kontakte:
         *KONTAKTE
       group/ortsektion:
-        one: Ortsektion
-        other: Ortsektionen
+        one: Sezione locale
+        other: Sezioni locali
       group/ortsektion_gewaehlte:
         *GEWAEHLTE
       group/ortsektion_vorstand:
@@ -94,110 +94,110 @@ de:
 
       ### ROLES
       group/root/administrator: &ADMINISTRATOR
-        one: Administrator
-        other: Administratoren
+        one: Amministratore
+        other: Amministratori
       group/root/eventverantwortliche: &EVENTVERANTWORTLICHE
-        one: Eventverantwortliche
-        other: Eventverantwortlichen
+        one: Responsabile
+        other: Responsabili
 
       group/root_geschaeftsstelle/leitung: &LEITUNG
-        one: Leitung
-        other: Leitungen
+        one: Direzione
+        other: Direzione
       group/root_geschaeftsstelle/mitarbeiter: &MITARBEITER
-        one: Mitarbeiter(in)
-        other: Mitarbeiter(innen)
+        one: Collaboratore/trice
+        other: Collaboratori/trici
       group/root_geschaeftsstelle/finanzen: &FINANZEN
-        one: Finanzen
-        other: Finanzen
+        one: Finanze
+        other: Finanze
 
       group/root_vorstand/praesidentln: &PRAESIDENTLN
-        one: PräsidentIn
-        other: PräsidentInnen
+        one: Presidente/tessa
+        other: Presidenti/tesse
       group/root_vorstand/vizepraesidentln: &VIZEPRAESIDENTLN
-        one: Vizepräsidentln 
-        other: Vizepräsidentlnnen
+        one: Vicepresidente/tessa
+        other: Vicepresidenti/tesse
       group/root_vorstand/geschaeftsleitung: &GESCHAEFTSLEITUNG
-        one: Geschäftsleitung 
-        other: Geschäftsleitung
+        one: Comitato
+        other: Comitato
       group/root_vorstand/kassier: &KASSIER
-        one: Kassier
-        other: Kassiere
+        one: Tesoriere/a
+        other: Tesorieri/e
       group/root_vorstand/vorstandsmitglied: &VORSTANDSMITGLIED
-        one: Vorstandsmitglied
-        other: Vorstandsmitglieder
+        one: Membro del Comitato direttivo
+        other: Membri del Comitato direttivo
       group/root_arbeitsgruppe/leitung: 
         *LEITUNG
       group/root_arbeitsgruppe/mitglied: &AGMITGLIED
-        one: AG-Mitglied
-        other: AG-Mitglieder
+        one: Membro del gruppo di lavoro
+        other: Membri del gruppo di lavoro
       group/root_zugeordnete/mitglied: &MITGLIED
-        one: Mitglied 
-        other: Mitglieder
+        one: Membro
+        other: Membri
       group/root_zugeordnete/sympathisant: &SYMPATHISANT
-        one: Sympathisant
-        other: Sympathisanten
+        one: Simpatizzante
+        other: Simpatizzanti
       group/root_zugeordnete/adressverwaltung: &ADRESSVERWALTUNG
-        one: Adressverwaltung
-        other: Adressverwaltungen
+        one: Gestione degli indirizzi
+        other: Gestione degli indirizzi
 
       group/root_kontakte/adressverwaltung:
         *ADRESSVERWALTUNG
       group/root_kontakte/kontakt: &KONTAKT
-        one: Medien und Dritte
-        other: Medien und Dritte
+        one: Contatto
+        other: Contatti
 
       group/root_gewaehlte/bundesrat:
-        one: Bundesrat 
-        other: Bundesräte
+        one: Consiglio federale
+        other: Consiglio federale
       group/root_gewaehlte/staenderat:
-        one: Ständerat
-        other: Ständeräte
+        one: Consiglio degli Stati
+        other: Consiglio degli Stati
       group/root_gewaehlte/nationalrat:
-        one: Nationalrat
-        other: Nationalräte
+        one: Consiglio nazionale
+        other: Consiglio nazionale
       group/root_gewaehlte/vollamt_bundesrichter:
-        one: Bundesrichter (Vollamt)
-        other: Bundesrichter (Vollamt)
+        one: Giudice federale (a tempo pieno)
+        other: Giudici federali (a tempo pieno)
       group/root_gewaehlte/nebenamt_bundes_richter:
-        one: Bundesrichter (Nebenamt)
-        other: Bundesrichter (Nebenamt)
+        one: Giudice federale (supplente)
+        other: Giudici federali (supplenti)
       group/root_gewaehlte/bundesverwaltungsrichter:
-        one: Bundesverwaltungsrichter
-        other: Bundesverwaltungsrichter
+        one: Giudice del Tribunale amministrativo federale
+        other: Giudici del Tribunale amministrativo federale
       group/root_gewaehlte/bundespatentrichter:
-        one: Bundespatentrichter
-        other: Bundespatentrichter
+        one: Giudice del Tribunale federale dei brevetti
+        other: Giudici del Tribunale federale dei brevetti
       group/root_gewaehlte/bundesstrafrichter:
-        one: Bundesstrafrichter
-        other: Bundesstrafrichter
+        one: Giudice del Tribunale penale federale
+        other: Giudici del Tribunale penale federale
 
       group/kanton/administrator:
         *ADMINISTRATOR
       group/kanton_delegierte/delegierte:
-        one: Delegierte
-        other: Delegierte
+        one: Delegato/a
+        other: Delegati
       group/kanton_delegierte/ersatzdelegierte:
-        one: Ersatzdelegierte
-        other: Ersatzdelegierte
+        one: Delegato/a supplente
+        other: Delegati supplenti
 
       group/kanton_gewaehlte/kantonale_exekutive:
-        one: Kantonale Exekutive
-        other: Kantonale Exekutiven
+        one: Esecutivo cantonale
+        other: Esecutivi cantonali
       group/kanton_gewaehlte/kantonale_legislative:
-        one: Kantonale Legislative 
-        other: Kantonale Legislativen
+        one: Legislativo cantonale
+        other: Legislativi cantonali
       group/kanton_gewaehlte/mitglied_kantonales_gericht_erste_instanz:
-        one: Mitglied kantonales Gericht erste Instanz 
-        other: Mitglieder kantonales Gericht erste Instanz
+        one: Membro del Tribunale cantonale di prima istanza
+        other: Membri del Tribunale cantonale di prima istanza
       group/kanton_gewaehlte/mitglied_kantonales_gericht_obere_instanz:
-        one: Mitglied kantonales Gericht obere Instanz
-        other: Mitglieder kantonales Gericht obere Instanz
+        one: Membro del Tribunale cantonale di istanza superiore
+        other: Membro del Tribunale cantonali di istanza superiore
       group/kanton_gewaehlte/staatsanwaltschaft:
-        one: Staatsanwaltschaft 
-        other: Staatsanwaltschaften
+        one: Ministero pubblico
+        other: Ministeri pubblici
       group/kanton_gewaehlte/parlamentarische_geschaeftsfuehrung:
-        one: Parlamentarische Geschaeftsfuehrung 
-        other: Parlamentarische Geschaeftsfuehrungen 
+        one: Segretariato del gruppo parlamentare
+        other: Segretariati di gruppi parlamentari
       group/kanton_arbeitsgruppe/leitung: 
         *LEITUNG
       group/kanton_arbeitsgruppe/mitglied:
@@ -229,23 +229,23 @@ de:
       group/kanton_vorstand/mitglied: 
         *MITGLIED
 
-      group/ortsektion/administrator:
+      groui/ortsektion/administrator:
         *ADMINISTRATOR
       group/ortsektion_gewaehlte/kommunale_exekutive:
-        one: Kommunale Exekutive 
-        other: Kommunale Exekutiven
+        one: Esecutivo comunale
+        other: Esecutivi comunali
       group/ortsektion_gewaehlte/kommunale_legislative:
-        one: Kommunale Legislative
-        other: Kommunale Legislativen
-      group/ortsektion_gewaehlte/schulpflegekommission :
-        one: Schulpflege/- kommission
-        other: Schulpflege/- kommissionen
+        one: Legislativo comunale
+        other: Legislativi comunali
+      group/ortsektion_gewaehlte/schulpflegekommission:
+        one: Autorità didattica/commissione scolastica
+        other: Autorità didattiche/commissioni scolastiche
       group/ortsektion_gewaehlte/rechnungspruefungskommission:
-        one: Rechnungsprüfungskommission
-        other: Rechnungsprüfungskommissionen
+        one: Commissione di verifica dei conti
+        other: Commissioni di verifica dei conti
       group/ortsektion_gewaehlte/mitglied_weitere_kommissionen:
-        one: Mitglied weitere Kommissionen 
-        other: Mitglieder weitere Kommissionen
+        one: Membro di altre commissioni
+        other: Membri di altre commissioni
       group/ortsektion_arbeitsgruppe/leitung: 
         *LEITUNG
       group/ortsektion_arbeitsgruppe/mitglied:
@@ -280,8 +280,8 @@ de:
       group/bezirk/administrator:
         *ADMINISTRATOR
       group/bezirk_gewaehlte/regierungsstatthalter:
-        one: Regierungsstatthalter/-in
-        other: Regierungsstatthalter/-innen
+        one: Prefettura
+        other: Prefetture
       group/bezirk_arbeitsgruppe/leitung: 
         *LEITUNG
       group/bezirk_arbeitsgruppe/mitglied:
@@ -312,4 +312,3 @@ de:
         *KASSIER
       group/bezirk_vorstand/mitglied: 
         *MITGLIED
-
