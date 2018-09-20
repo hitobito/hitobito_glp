@@ -2,7 +2,7 @@ attributes:
   group:
     zip_codes: Zip codes
 
-de:
+en:
   zip_codes:
     separated_by_comma: Zip codes (separated by commas)
   activerecord:

@@ -2,7 +2,7 @@ attributes:
   group:
     zip_codes: Code postal
 
-de:
+fr:
   zip_codes:
     separated_by_comma: Code postal (séparés par des virgules)
   activerecord:
