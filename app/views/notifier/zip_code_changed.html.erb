@@ -5,7 +5,11 @@
   </head>
   <body>
     <p>
-    <%=link_to("#{@person.first_name} #{@person.last_name}", person_path(@person))%> hat seine PLZ geändert. Bitte Zuordnung überprüfen.
+      <%="#{@person.first_name} #{@person.last_name}"%> hat seine PLZ geändert. Bitte Zuordnung überprüfen.
     </p>
+    <p><%= @person.first_name %></p>
+    <p><%= @person.last_name %></p>
+    <p><%= @person.email %></p>
+    <p><%= @person.zip_code %></p>
   </body>
 </html>
