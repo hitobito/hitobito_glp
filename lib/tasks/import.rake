@@ -22,7 +22,6 @@ namespace :import do
       person = Person.new(
         preferred_language: preferred_language,
         company_name: company,
-        company: !company.blank?,
         title: title,
         first_name: first_name,
         last_name: last_name,
