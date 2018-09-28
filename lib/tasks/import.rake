@@ -31,7 +31,6 @@ namespace :import do
         email: email,
         birthday: parse_date(birth_date),
         occupation: occupation,
-        nickname: short_name,
         joined_at: parse_date(joined_at),
         joining_journey: joining_journey,
         left_at: parse_date(left_at),
