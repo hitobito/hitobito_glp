@@ -29,7 +29,7 @@ class ExternalFormsController < ApplicationController
       <div class='form'>
         <div class='form-wrapper'>
           <p id='hitobito-external-form-message'></p>
-          <form action='#{@url}' method='post'>
+          <form action='#{@url}?locale=#{@language}' method='post'>
             <fieldset>
               <div class='form-row'>
                 <label for='first_name'>

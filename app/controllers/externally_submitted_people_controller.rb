@@ -81,7 +81,7 @@ class ExternallySubmittedPeopleController < ApplicationController
       end
       render json: @person, status: :ok
     rescue ActiveRecord::RecordInvalid => e
-      if e.message =~ /e-mail is already taken/
+      if e.message =~ /e-mail/i || e.message =~ /email/i
         render json: {error: t("external_form_js.submit_error_email_taken")}, status: :unprocessable_entity
       else
         render json: {error: t("external_form_js.submit_error")}, status: :unprocessable_entity
@@ -220,6 +220,6 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   def externally_submitted_person_params
-    params.require(:externally_submitted_person).permit(:email, :zip_code, :role, :first_name, :last_name, :preferred_language)
+    params.require(:externally_submitted_person).permit(:email, :zip_code, :role, :first_name, :last_name, :preferred_language, :terms_and_conditions)
   end
 end

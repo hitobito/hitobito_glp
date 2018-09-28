@@ -73,11 +73,12 @@
     return false;
   }
   function errorMessageForResponse(status, response){
-    if(status === 422){
+    try {
       errorResponse = JSON.parse(response).error;
-      return errorResponse
+      return errorResponse || s("submit_error")
+    } catch (e) {
+      return s("submit_error")
     }
-    return s("submit_error")
   }
 
   function disableForm(form, disabled = true){
