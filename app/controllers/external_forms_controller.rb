@@ -9,11 +9,11 @@ class ExternalFormsController < ApplicationController
 
   def loader
     @language = params[:language] || "de"
+    I18n.locale = @language
     @role = params[:role] || "mitglied"
     @form = external_form({
       :role => @role
     })
-    I18n.locale = @language
   end
 
   private
