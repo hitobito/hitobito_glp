@@ -41,7 +41,7 @@ namespace :import do
           ["Ausland-Adresse", address_foreign],
           ["Aktive Mitarbeit", interested == "0" ? "" : "Interessiert"],
           ["Interessen", interests],
-          ["glp-net Kategorie", additional_information_category]
+          ["Kategorie altes GLP Net", additional_information_category]
         ]),
         phone_numbers: generate_phone_numbers(phone_private, phone_business, phone_mobile),
         additional_emails: generate_additional_emails(additional_email),
