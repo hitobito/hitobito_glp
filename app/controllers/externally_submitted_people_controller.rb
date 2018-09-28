@@ -70,6 +70,7 @@ class ExternallySubmittedPeopleController < ApplicationController
             put_him_into_root_zugeordnete_groups
             send_him_a_mitglied_welcome_email
             send_him_login_information
+            notify_parent_group
           when "Sympathisant"
             put_him_into_root_zugeordnete_groups
             send_him_a_sympathisant_welcome_email
@@ -78,6 +79,7 @@ class ExternallySubmittedPeopleController < ApplicationController
             send_him_a_medien_und_dritte_welcome_email
           end
         end
+        notify_monitoring_address
       end
       render json: @person, status: :ok
     rescue ActiveRecord::RecordInvalid => e
@@ -122,6 +124,10 @@ class ExternallySubmittedPeopleController < ApplicationController
         end
       end
     end
+  end
+
+  def notify_monitoring_address
+    Notifier.mitglied_joined(@person, 'mitgliederdatenbank@grunliberale.ch').deliver_now
   end
 
   def put_him_into_root_zugeordnete_groups
