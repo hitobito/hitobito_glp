@@ -57,7 +57,13 @@ class ExternalFormsController < ApplicationController
               </div>
               <label for='terms_and_conditions'>
                 <input name='terms_and_conditions' id='terms_and_conditions' type='checkbox' />
-                <a href='#{t("external_form_js.terms_and_conditions_link")}' target='_blank'>#{t("external_form_js.terms_and_conditions_checkbox")}</a>
+                #{t("external_form_js.terms_and_conditions_checkbox_html", :link => (
+                  view_context.link_to(
+                    t("external_form_js.terms_and_conditions_link_text"),
+                    t("external_form_js.terms_and_conditions_link"),
+                    target: '_blank'
+                  ).gsub('"', "'")
+                ))}
               </label>
               <div class='button-wrapper'>
                 <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>

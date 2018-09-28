@@ -8,7 +8,8 @@ de:
     server_error_captcha: Das Captcha ("Ich bin kein Roboter") muss ausgefüllt werden.
     submit_success_member: Herzlich Dank, Du wirst in Kürze deine Zugangsdaten erhalten.
     submit_success_other: Vielen Dank, Du hast dich erfolgreich für unsere Partei-Updates angemeldet.
-    terms_and_conditions_checkbox: Ich akzeptiere die Datenschutzerklärung.
+    terms_and_conditions_checkbox_html: Ich akzeptiere die %{link}.
+    terms_and_conditions_link_text: Datenschutzerklärung
     terms_and_conditions_link: https://grunliberale.ch/datenschutz
 
   notifier:

@@ -8,7 +8,8 @@ it:
     server_error_captcha: È necessario compilare il captcha ("Non sono un robot").
     submit_success_member: Grazie mille, a breve riceverai i tuoi dati di accesso.
     submit_success_other: Grazie mille, ti sei abbonato con successo alle informazioni del nostro partito.
-    terms_and_conditions_checkbox: Accetto la dichiarazione sulla protezione dei dati.
+    terms_and_conditions_checkbox_html: Accetto la %{link}.
+    terms_and_conditions_link_text: dichiarazione sulla protezione dei dati
     terms_and_conditions_link: https://verdiliberali.ch/protezione-dei-dati
 
   notifier:
