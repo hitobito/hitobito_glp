@@ -4,8 +4,8 @@ application:
   languages:
     de: Deutsch
     en: English
-    fr: French
-    it: Italian
+    fr: Français
+    it: Italiano
 list_domain: grunliberale.ch
 
 # The person with this email has root access to everything
