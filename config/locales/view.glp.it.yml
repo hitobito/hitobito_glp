@@ -1,4 +1,10 @@
 it:
+  mailing_list_people_attributes:
+    title: Limitare per attributi di persone
+    age: Età
+    age_start: Età minima
+    age_finish: Età massima
+
   external_form_js:
     submitting: Grazie mille, i tuoi dati sono stati trasmessi con successo!
     submit_error_required_fields: Completa tutti i campi per favore.

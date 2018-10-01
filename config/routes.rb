@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     get 'external_forms/loader', to: "external_forms#loader"
 
     resources :externally_submitted_people, only: [:create]
+
+    post 'groups/:group_id/mailing_lists/:mailing_list_id/mailing_list_people_attributes',
+      to: 'mailing_list_people_attributes#update'
   end
 
 end

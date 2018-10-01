@@ -22,6 +22,8 @@ module HitobitoGlp
       GroupsController.permitted_attrs += [:zip_codes]
 
       GroupAbility.send     :include, Glp::GroupAbility
+
+      MailingList.send           :include, Glp::MailingList
     end
 
     initializer 'glp.add_settings' do |_app|

@@ -1,0 +1,37 @@
+%h2= t 'mailing_list_people_attributes.title'
+
+= form_tag 'mailing_list_people_attributes', class: 'form-horizontal', method: :post do |f|
+  .control-group
+    %label.control-label= t 'activerecord.attributes.person.gender'
+    .controls
+      - ::MailingListPeopleAttributesController::GENDERS.each do |gender|
+        = label_tag("mailing_list_genders_#{gender}", class: 'checkbox inline') do
+          = check_box_tag("genders[]",
+                          gender,
+                          @mailing_list.genders_array.include?(gender == '_nil' ? nil : gender),
+                          id: "mailing_list_genders_#{gender}")
+          = t "activerecord.attributes.person.genders.#{gender}"
+
+  .control-group
+    %label.control-label= t 'activerecord.attributes.person.preferred_language'
+    .controls
+      - ::MailingListPeopleAttributesController::LANGUAGES.each do |language|
+        = label_tag("mailing_list_languages_#{language}", class: 'checkbox inline') do
+          = check_box_tag("languages[]",
+                          language,
+                          @mailing_list.languages_array.include?(language.to_s),
+                          id: "mailing_list_languages_#{language}")
+          = Settings.application.languages[language]
+
+  .control-group
+    %label.control-label= t 'mailing_list_people_attributes.age_start'
+    .controls
+      = number_field_tag("age_start", @mailing_list.age_start)
+
+  .control-group
+    %label.control-label= t 'mailing_list_people_attributes.age_finish'
+    .controls
+      = number_field_tag("age_finish", @mailing_list.age_finish)
+
+  .btn-toolbar.bottom
+    = button_tag t("global.button.save"), class: 'btn'

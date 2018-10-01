@@ -1,0 +1,19 @@
+-#  Copyright (c) 2012-2013, Jungwacht Blauring Schweiz. This file is part of
+-#  hitobito and licensed under the Affero General Public License version 3
+-#  or later. See the COPYING file at the top-level directory or at
+-#  https://github.com/hitobito/hitobito.
+
+- title @mailing_list.to_s
+
+- if cannot?(:export_subscriptions, @mailing_list)
+  .alert.alert-info= t('.export_not_allowed')
+
+- if @person_add_requests.present?
+  = render 'person/add_requests/body_list'
+
+= render('subs_table', title: Person.model_name.human(count: 2), subs: @person_subs)
+= render('subs_table', title: [Group.model_name.human(count: 2), Role.model_name.human(count: 2)].join(' / '), subs: @group_subs)
+= render('subs_table', title: Event.model_name.human(count: 2), subs: @event_subs)
+= render('subs_table', title: t('.excluded_people'), subs: @excluded_person_subs)
+
+= render 'person_attribute_filters'
