@@ -24,6 +24,7 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   def create
+    I18n.locale = params[:locale] || "de"
     if !is_captcha_valid?
       render json: {error: t("external_form_js.server_error_captcha")}, status: :unprocessable_entity
       return
