@@ -38,6 +38,10 @@ class Notifier < ApplicationMailer
     @person = person
     @locale = locale
     I18n.locale = @locale
+
+    token = @person.generate_reset_password_token!
+    @login_url = edit_person_password_url(reset_password_token: token)
+
     mail(to: @person.email, from: t(".from"), subject: t(".subject"))
   end
 

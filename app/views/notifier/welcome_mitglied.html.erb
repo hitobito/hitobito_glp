@@ -7,7 +7,7 @@
     <p><%= t('.hello') %> <%= @person.first_name unless @locale == "fr" %></p>
     <p><%= t('.first_paragraph')%></p>
     <p><%= t('.second_paragraph')%></p>
-    <p>login link</p>
+    <p><%= @login_url %></p>
     <% if @locale != "it" %>
       <p><%= t('.third_paragraph')%></p>
       <p><a><%= t('.link_to_young_liberals')%></a></p>
