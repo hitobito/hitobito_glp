@@ -128,7 +128,7 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   def notify_monitoring_address
-    Notifier.mitglied_joined(@person, 'mitgliederdatenbank@grunliberale.ch').deliver_now
+    Notifier.mitglied_joined_monitoring(@person, submitted_role, 'mitgliederdatenbank@grunliberale.ch').deliver_now
   end
 
   def put_him_into_root_zugeordnete_groups

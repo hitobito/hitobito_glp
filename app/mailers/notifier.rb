@@ -16,6 +16,24 @@ class Notifier < ApplicationMailer
     mail(to: email, subject: "Achtung: Neues Mitglied.")
   end
 
+  def mitglied_joined_monitoring person, submitted_role, email
+    @person = person
+    @category = submitted_role.gsub("_und_", " & ")
+    case submitted_role
+    when "Mitglied"
+      @subject = "Achtung: Neues Mitglied"
+      @welcome = "Ein neues Mitglied hat sich registriert."
+    when "Sympathisant"
+      @subject = "Achtung: Neue/r Sympathisant"
+      @welcome = "Ein/e neue/r Sympathisant/in hat sich registriert."
+    when "Medien_und_dritte"
+      @subject = "Achtung: Neue News-Anmeldung"
+      @welcome = "Es gibt eine neue Anmeldung für Partei-News."
+    end
+
+    mail(to: email, subject: @subject)
+  end
+
   def welcome_mitglied person, locale
     @person = person
     @locale = locale
