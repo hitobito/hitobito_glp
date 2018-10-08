@@ -22,7 +22,7 @@ it:
     welcome_mitglied:
       from: svizzera@verdiliberali.ch
       subject: Un cordiale benvenuto dai verdi liberali!
-      hello: Caro
+      hello: Buongiorno
       first_paragraph: Siamo oltremodo lieti che tu abbia deciso di diventare socio del partito verde liberale. Sarà nostra premura contattarti al più presto per comunicarti in che modo puoi impegnarti a favore del partito.
       second_paragraph: "Per conoscerti meglio, ti preghiamo gentilmente di fornirci ulteriori dati sul tuo conto al seguente link, ciò che ci sarà di grande aiuto nella gestione dei dati dei nostri soci e garantisce che tu riceva da noi solo le informazioni basilari. I tuoi dati, naturalmente, saranno strettamente riservati e non saranno tramessi a terzi:"
       fourth_paragraph: Grazie in anticipo per la collaborazione! Restiamo volentieri a tua disposizione per eventuali domande all’indirizzo di posta elettronico svizzera@verdiliberali.ch.
