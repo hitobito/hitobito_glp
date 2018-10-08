@@ -24,6 +24,8 @@ module HitobitoGlp
       GroupAbility.send     :include, Glp::GroupAbility
 
       MailingList.send           :include, Glp::MailingList
+
+      ApplicationMailer.send :layout, 'mailer'
     end
 
     initializer 'glp.add_settings' do |_app|
