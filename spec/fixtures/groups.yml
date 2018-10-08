@@ -1,97 +1,101 @@
 root:
   parent:
   lft: 1
-  rgt: 2
+  rgt: 18
   name: Hauptgruppe
   type: Group::Root
   email: root@example.net
   address: Ophovener Str. 79a
   zip_code: 2843
-  town: Neu Carlscheid
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:root) %>
 
 root_zugeordnete:
-  parent:
-  lft: 1
-  rgt: 2
+  parent: root
+  lft: 2
+  rgt: 3
   name: Root Zugeordnete
   type: Group::RootZugeordnete
   email: root_zugeodnete@example.net
   address: Ophovener Str. 79a
   zip_code: 3012
-  town: Bern
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:root) %>
   parent: root
 
 root_kontakte:
-  parent:
-  lft: 1
-  rgt: 2
+  parent: root
+  lft: 4
+  rgt: 5
   name: Root Kontakte
   type: Group::RootKontakte
   email: root_kontakte@example.net
   address: Ophovener Str. 79a
   zip_code: 3012
-  town: Bern
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:root) %>
 
-kanton:
-  parent:
-  lft: 1
-  rgt: 2
+bern:
+  parent: root
+  lft: 6
+  rgt: 11
   name: Bern
   type: Group::Kanton
   email: kanton@bern.net
   address: Ophovener Str. 79a
   zip_code: 3012
   zip_codes: "9171, 3012"
-  town: Bern
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kanton) %>
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:bern) %>
 
-kanton_zugeordnete:
-  parent: kanton
-  lft: 1
-  rgt: 2
-  name: Bern
+bern_zugeordnete:
+  parent: bern
+  lft: 7
+  rgt: 8
+  name: Bern Zugeordnete
   type: Group::KantonZugeordnete
   email: kanton_zugeordnete@bern.net
   address: Ophovener Str. 79a
   zip_code: 3012
-  town: Bern
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kanton) %>
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:bern) %>
 
-another_kanton_zugeordnete:
-  parent: kanton
-  lft: 1
-  rgt: 2
-  name: Zurich
-  type: Group::KantonZugeordnete
-  email: kanton_zugeordnete2@bern.net
-  address: Ophovener Str. 79a
-  zip_code: 3012
-  town: Bern
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kanton) %>
-
-kanton_kontakte:
-  parent: kanton
-  lft: 1
-  rgt: 2
+bern_kontakte:
+  parent: bern
+  lft: 9
+  rgt: 10
   name: Bern Kontakte
   type: Group::KantonKontakte
   email: kanton_kontakte@bern.net
   address: Ophovener Str. 79a
   zip_code: 3012
-  town: Bern
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kanton) %>
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:bern) %>
 
-another_kanton_kontakte:
-  parent: kanton
-  lft: 1
-  rgt: 2
-  name: Bern Kontakte 2
+zurich:
+  parent: root
+  lft: 12
+  rgt: 17
+  name: Zurich
+  type: Group::Kanton
+  email: kanton@zurich.net
+  address: Ophovener Str. 79a
+  zip_code: 3012
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zurich) %>
+
+zurich_zugeordnete:
+  parent: zurich
+  lft: 13
+  rgt: 14
+  name: Zurich Zugeordnete
+  type: Group::KantonZugeordnete
+  email: kanton_zugeordnete@zurich.net
+  address: Ophovener Str. 79a
+  zip_code: 3012
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zurich) %>
+
+zurich_kontakte:
+  parent: zurich
+  lft: 15
+  rgt: 16
+  name: Zurich Kontakte
   type: Group::KantonKontakte
-  email: kanton_kontakte_2@bern.net
+  email: kanton_kontakte@zurich.net
   address: Ophovener Str. 79a
   zip_code: 3012
   town: Bern
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kanton) %>
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zurich) %>
