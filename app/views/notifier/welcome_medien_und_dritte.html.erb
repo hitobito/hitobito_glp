@@ -6,7 +6,7 @@
   <body>
     <p><%= t('.hello') %> <%= @person.first_name if @locale == "de"%> <%= @person.last_name if @locale == "de"%></p>
     <p><%= t('.first_paragraph')%></p>
-    <p><%= t('.second_paragraph_part_one')%> <a href="mailto:<%=t('.from')%>"><%= t('.second_paragraph_part_two')%> </a> <%= t('.second_paragraph_part_three') %>
+    <p><%= t('.second_paragraph_part_one')%> <a href="mailto:<%=t('.from')%>"><%= t('.second_paragraph_part_two')%></a> <%= t('.second_paragraph_part_three') %>
     <p>
       <%= t('.first_goodbye')%><br/>
       <%= t('.second_goodbye')%>
