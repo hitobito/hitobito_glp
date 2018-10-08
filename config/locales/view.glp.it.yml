@@ -17,6 +17,7 @@ it:
     terms_and_conditions_checkbox_html: Accetto la %{link}.
     terms_and_conditions_link_text: dichiarazione sulla protezione dei dati
     terms_and_conditions_link: https://verdiliberali.ch/protezione-dei-dati
+    zip_code: CAP
 
   notifier:
     welcome_mitglied:

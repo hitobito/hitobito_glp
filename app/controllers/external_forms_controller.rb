@@ -51,7 +51,7 @@ class ExternalFormsController < ApplicationController
               </div>
               <div class='form-row'>
                 <label for='zip_code'>
-                  #{t("activerecord.attributes.person.zip_code")} *
+                  #{t("external_form_js.zip_code")} *
                 </label>
                 <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
               </div>

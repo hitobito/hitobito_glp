@@ -17,6 +17,7 @@ de:
     terms_and_conditions_checkbox_html: Ich akzeptiere die %{link}.
     terms_and_conditions_link_text: Datenschutzerklärung
     terms_and_conditions_link: https://grunliberale.ch/datenschutz
+    zip_code: PLZ
 
   notifier:
     welcome_mitglied:
