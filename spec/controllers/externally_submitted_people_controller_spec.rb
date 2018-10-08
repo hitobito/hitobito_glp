@@ -7,11 +7,11 @@ describe ExternallySubmittedPeopleController do
   let!(:root_zugeordnete_group) { groups(:root_zugeordnete) }
   let!(:root_kontakte_group) { groups(:root_kontakte) }
 
-  let!(:kanton) { groups(:kanton) }
-  let!(:kanton_zugeordnete_group) { groups(:kanton_zugeordnete) }
-  let!(:another_kanton_zugeordnete_group) { groups(:another_kanton_zugeordnete) }
-  let!(:kanton_kontakte_group) { groups(:kanton_kontakte) }
-  let!(:another_kanton_kontakte_group) { groups(:another_kanton_kontakte) }
+  let!(:kanton) { groups(:bern) }
+  let!(:kanton_zugeordnete_group) { groups(:bern_zugeordnete) }
+  let!(:another_kanton_zugeordnete_group) { groups(:zurich_zugeordnete) }
+  let!(:kanton_kontakte_group) { groups(:bern_kontakte) }
+  let!(:another_kanton_kontakte_group) { groups(:zurich_kontakte) }
 
   def subject_with_args args={}
     post :create, externally_submitted_person: {zip_code: "9171",
