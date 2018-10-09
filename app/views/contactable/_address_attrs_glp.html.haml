@@ -1,1 +1,1 @@
-= link_to entry.website_url, "https://#{entry.website_url}" if entry.instance_of? Person
+= link_to(entry.website_url, "https://#{entry.website_url}") if entry.instance_of?(Person) && !entry.website_url.blank?
