@@ -19,7 +19,7 @@ class ExternalFormsController < ApplicationController
   private
 
   def set_url
-    @url = Rails.env.production? ? "https://glp.puzzle.ch/de/externally_submitted_people" : "http://localhost:3000/externally_submitted_people"
+    @url = Rails.env.production? ? "https://glp-community.ch/de/externally_submitted_people" : "http://localhost:3000/externally_submitted_people"
   end
 
   def external_form(options)

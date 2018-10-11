@@ -6,7 +6,7 @@
     <<-END.gsub(/^ {6}/, '')
       <div id="hitobito-external-form">Formular wird geladen…</div>
       <script src='https://www.google.com/recaptcha/api.js'></script>
-      <script src="#{Rails.env.production? ? "https://glp.puzzle.ch" : "http://localhost:3000"}/external_forms/loader.js?role=mitglied&language=de"></script>
+      <script src="#{Rails.env.production? ? "https://glp-community.ch" : "http://localhost:3000"}/external_forms/loader.js?role=mitglied&language=de"></script>
     END
   end
 
