@@ -25,6 +25,8 @@ module HitobitoGlp
 
       MailingList.send           :include, Glp::MailingList
 
+      Devise::SessionsController.send(:include, Glp::Devise::SessionsController)
+
       ApplicationMailer.send :layout, 'mailer'
     end
 

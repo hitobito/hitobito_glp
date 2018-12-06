@@ -1,0 +1,16 @@
+<%
+  @sheet = Sheet::Base.new(self)
+  title "2FA"
+%>
+
+<div class="alert alert-info">
+  Geben Sie bitte den Code ein, den Sie per SMS erhalten haben
+</div>
+<br />
+
+<%= standard_form(@person, {url: users_two_factor_authentication_confirmation_path, method: 'post'}) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :id, value: @person.id %>
+  <%= f.labeled_input_field(:second_factor_code, autofocus: true, value: '') %>
+  <%= f.indented(submit_button(f, t('.confirm'))) %>
+<% end %>
