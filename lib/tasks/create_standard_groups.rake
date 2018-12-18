@@ -1,4 +1,3 @@
-require 'aws-sdk'
 require 'dotenv/tasks'
 
 namespace :master_data do

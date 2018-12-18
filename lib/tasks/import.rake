@@ -1,8 +1,10 @@
-require 'aws-sdk'
+# require 'aws-sdk'
 require 'dotenv/tasks'
 
 namespace :import do
   task historical_data: :environment do
+    puts "Not applicable, please edit task and re-add 'aws-sdk' gem"
+    return
     Aws.config[:credentials] = Aws::Credentials.new(ENV["ACCESS_KEY_ID"], ENV["SECRET_ACCESS_KEY"])
     s3 = Aws::S3::Resource.new(region: 'us-east-2')
     object = s3.bucket('zw-glp').object(ENV["OBJECT_NAME"])
