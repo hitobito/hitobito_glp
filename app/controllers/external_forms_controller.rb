@@ -2,7 +2,6 @@ class ExternalFormsController < ApplicationController
   skip_authorization_check
   skip_before_action :authenticate_person!
   skip_before_filter :verify_authenticity_token, :only => [:loader]
-  before_action :set_url, :only => [:index, :loader]
 
   def index
   end
@@ -18,18 +17,15 @@ class ExternalFormsController < ApplicationController
 
   private
 
-  def set_url
-    @url = Rails.env.production? ? "https://glp-community.ch/de/externally_submitted_people" : "http://localhost:3000/externally_submitted_people"
-  end
-
   def external_form(options)
+    action = externally_submitted_people_url(locale: params.fetch(:language, :de))
     role = options[:role]
 
     <<-END
       <div class='form'>
         <div class='form-wrapper'>
           <p id='hitobito-external-form-message'></p>
-          <form action='#{@url}?locale=#{@language}' method='post'>
+          <form action='#{action}' method='post'>
             <fieldset>
               <div class='form-row'>
                 <label for='first_name'>
