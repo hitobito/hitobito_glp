@@ -29,6 +29,14 @@ describe MailingList do
         expect(list.people).not_to include(person_aged_20)
         expect(list.people).to include(person_aged_50)
       end
+
+      it 'includes explicitly subscribed person even though attribute filter does not match' do
+        list.subscriptions.create(subscriber: other_person)
+        expect(list.people).to include(other_person)
+        expect(list.people).not_to include(person)
+        expect(list.people).not_to include(person_aged_20)
+        expect(list.people).to include(person_aged_50)
+      end
     end
 
     describe '(age < 30)' do
