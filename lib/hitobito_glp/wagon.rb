@@ -18,10 +18,12 @@ module HitobitoGlp
       Person.send           :include, Glp::Person
       Group.send            :include, Glp::Group
 
+      GroupDecorator.send   :prepend, Glp::GroupDecorator
       PeopleController.send :include, Glp::PeopleController
       GroupsController.permitted_attrs += [:zip_codes]
 
       GroupAbility.send     :include, Glp::GroupAbility
+      RoleAbility.send      :include, Glp::RoleAbility
 
       MailingList.send           :include, Glp::MailingList
 
