@@ -69,7 +69,6 @@ class ExternallySubmittedPeopleController < ApplicationController
           when "Mitglied"
             put_him_into_root_zugeordnete_groups
             send_him_a_mitglied_welcome_email
-            send_him_login_information
             notify_parent_group
           when "Sympathisant"
             put_him_into_root_zugeordnete_groups
