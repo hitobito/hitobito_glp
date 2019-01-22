@@ -27,3 +27,5 @@ rubocop-results.xml
 .ruby-version
 tags
 .env
+.pry_history
+.tool-versions
