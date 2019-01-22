@@ -13,12 +13,15 @@ class Notifier < ApplicationMailer
 
   def mitglied_joined person, email
     @person = person
+    @preferred_language = preferred_language(person)
     mail(to: email, subject: "Achtung: Neues Mitglied.")
   end
 
   def mitglied_joined_monitoring person, submitted_role, email
     @person = person
     @category = submitted_role.gsub("_und_", " & ")
+    @preferred_language = preferred_language(person)
+
     case submitted_role
     when "Mitglied"
       @subject = "Achtung: Neues Mitglied"
@@ -57,5 +60,9 @@ class Notifier < ApplicationMailer
     @locale = locale
     I18n.locale = @locale
     mail(to: @person.email, from: t(".from"), subject: t(".subject"))
+  end
+
+  def preferred_language(person)
+    Settings.application.languages.to_hash[person.preferred_language.to_s.to_sym]
   end
 end
