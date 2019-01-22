@@ -2,9 +2,6 @@ require 'twilio-ruby'
 
 module Concerns
   module TwoFactorAuthentication
-    TWO_FACTOR_GROUPS = [
-      Group::Root
-    ].freeze
     TOO_MANY_TRIES = 5
 
     def first_factor_authenticated?
@@ -12,7 +9,7 @@ module Concerns
     end
 
     def two_factor_authentication_required?
-      (person.groups & TWO_FACTOR_GROUPS.map(&:all).flatten).any?
+      person.two_factor_authentication_required?
     end
 
     def too_man_tries?

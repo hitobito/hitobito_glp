@@ -8,6 +8,10 @@ module Glp::Person
     alias_method_chain :full_name, :title
   end
 
+  def two_factor_authentication_required?
+    roles.any? { |role| role.class.sti_name =~ /Administrator$/ }
+  end
+
   def full_name_with_title(format = :default)
     case format
     when :list, :print_list then "#{title} #{full_name_without_title(format)}".strip
