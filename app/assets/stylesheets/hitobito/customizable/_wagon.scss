@@ -1,39 +1,8 @@
 /* Logo */
 
-body .brand {
-  width: 100px;
-  height: 60px;
-  padding: 0;
-  background: transparent image-url("glp_logo.svg") no-repeat;
-  background-size: contain;
-}
-
-/* Navigation */
-#page-navigation {
-  .nav {
-    @include horizontal-list(5px);
-
-    li {
-      &.active a {
-        color: $white;
-        background-color: $glp;
-      }
-      a {
-        font-size: 0.9em;
-        letter-spacing: 0.1em;
-        color: $blue;
-
-        &:hover {
-          background-color: $blueDark;
-          color: white;
-        }
-      }
-    }
-  }
-}
 
 #page-header {
-  .options > ul > li > a {
+  a {
     // header links on the right side
     color: $blue;
     &:hover {

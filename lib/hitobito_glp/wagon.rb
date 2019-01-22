@@ -31,6 +31,11 @@ module HitobitoGlp
       Devise::SessionsController.send(:include, Glp::Devise::SessionsController)
 
       ApplicationMailer.send :layout, 'mailer'
+
+      # Main navigation
+      NavigationHelper::MAIN.find do |entry|
+        entry[:label] == :admin
+      end[:active_for].append('external_forms')
     end
 
     initializer 'glp.add_settings' do |_app|
