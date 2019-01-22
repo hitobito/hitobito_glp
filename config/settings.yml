@@ -14,3 +14,6 @@ list_domain: grunliberale.ch
 # Initially, a password reset token may be mailed from the application
 # to this address to set a password.
 root_email: hitobito-glp@grunliberale.ch
+
+impersonate:
+  notify: false
