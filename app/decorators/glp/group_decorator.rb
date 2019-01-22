@@ -3,7 +3,7 @@ module Glp
 
     def possible_roles
       super.select do |type|
-        can?(:create, parent.roles.build(type: type.sti_name))
+        can?(:create, group.roles.build(type: type.sti_name))
       end
     end
 
