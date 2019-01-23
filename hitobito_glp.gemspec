@@ -9,11 +9,10 @@ Gem::Specification.new do |s|
   # rubocop:disable SingleSpaceBeforeFirstArg
   s.name        = 'hitobito_glp'
   s.version     = HitobitoGlp::VERSION
-  s.authors     = ['Your name']
-  s.email       = ['Your email']
-  # s.homepage    = 'TODO'
-  s.summary     = 'Glp'
-  s.description = 'Wagon description'
+  s.authors     = ['Andreas Maierhofer']
+  s.email       = ['maierhofer@puzzle.ch']
+  s.summary     = 'Glp organization specific features'
+  s.description = 'Glp organization specific features'
 
   s.files = Dir['{app,config,db,lib}/**/*'] + ['Rakefile']
   s.test_files = Dir['test/**/*']
