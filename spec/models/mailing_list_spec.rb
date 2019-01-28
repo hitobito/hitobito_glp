@@ -39,9 +39,21 @@ describe MailingList do
       end
 
       it 'includes explicitly subscribed person even though attribute filter does not match' do
-        list.subscriptions.create(subscriber: other_person)
-        expect(list.people).to include(other_person)
+        list.subscriptions.create(subscriber: person_aged_20)
         expect(list.people).not_to include(person)
+        expect(list.people).to include(person_aged_20)
+      end
+
+      it 'includes explicitly subscribed person when no attribute filter is defined' do
+        list.update(age_start: nil)
+        list.subscriptions.create(subscriber: person_aged_20)
+        expect(list.people).to include(person_aged_20)
+        expect(list.people).to include(person_aged_50)
+      end
+
+      it 'but not if subscription is for a different list' do
+        other_list = Fabricate(:mailing_list, group: groups(:root))
+        other_list.subscriptions.create(subscriber: person_aged_20)
         expect(list.people).not_to include(person_aged_20)
         expect(list.people).to include(person_aged_50)
       end

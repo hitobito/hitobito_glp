@@ -30,8 +30,13 @@ module Glp::MailingList
   private
 
   def attributes_conditions_with_explicit_subscribers
-    if attribute_conditions.present?
-      attribute_conditions.join(' AND ') << " OR #{explicitly_subscribed})"
+    conditions = attribute_conditions.join(' AND ')
+    return unless conditions.present?
+
+    if explicitly_subscribed.present?
+      conditions << " OR #{sanitize_sql(id: explicitly_subscribed.pluck(:subscriber_id))}"
+    else
+      conditions
     end
   end
 
@@ -67,11 +72,10 @@ module Glp::MailingList
   end
 
   def explicitly_subscribed
-    subscribed = Subscription.select(:subscriber_id).
+    @explicitly_subscribed ||= Subscription.select(:subscriber_id).
       where(mailing_list_id: id,
             excluded: false,
             subscriber_type: Person.sti_name)
-    sanitize_sql(id: subscribed)
   end
 
   def sanitize_sql(*attrs)
