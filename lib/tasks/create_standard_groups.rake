@@ -6,6 +6,7 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
+require 'aws-sdk'
 require 'dotenv/tasks'
 
 namespace :master_data do
