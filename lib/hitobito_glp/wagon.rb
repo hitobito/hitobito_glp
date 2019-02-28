@@ -40,9 +40,9 @@ module HitobitoGlp
       ApplicationMailer.send :layout, 'mailer'
 
       # Main navigation
-      NavigationHelper::MAIN.find do |entry|
-        entry[:label] == :admin
-      end[:active_for].append('external_forms')
+      admin = NavigationHelper::MAIN.find { |entry| entry[:label] == :admin }
+      admin[:active_for].append('external_forms')
+      admin[:if] = ->(_) { can?(:manage_global, LabelFormat) }
     end
 
     initializer 'glp.add_settings' do |_app|
