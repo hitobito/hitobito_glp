@@ -8,7 +8,7 @@
 
 class Group::OrtsektionGeschaeftsstelle < Group
   class Leitung < Role
-    self.permissions = [:layer_and_below_full, :contact_data, :finance, :impersonation]
+    self.permissions = [:layer_and_below_full, :contact_data, :finance]
   end
 
   class Mitarbeiter < Role
