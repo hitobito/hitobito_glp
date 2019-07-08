@@ -19,7 +19,21 @@ class GlpPersonSeeder < PersonSeeder
 
 end
 
+puzzlers = ['Pascal Zumkehr',
+            'Andreas Maierhofer',
+            'Andre Kunz',
+            'Roland Studer',
+            'Mathis Hofer',
+            'Pascal Simon',
+            'Matthias Viehweger',
+            'Bruno Santschi',
+            'Janiss Binder']
+
 devs = {'Mat' => 'mat@zeilenwerk.ch', 'Zeilenwerk' => 'test@zeilenwerk.ch'} # add accounts for 'live' test users
+
+puzzlers.each do |puz|
+  devs[puz] = "#{puz.split.last.downcase}@puzzle.ch"
+end
 
 seeder = GlpPersonSeeder.new
 
