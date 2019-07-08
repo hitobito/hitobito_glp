@@ -10,6 +10,7 @@ module Glp::Person
   extend ActiveSupport::Concern
 
   PREFERRED_LANGUAGES = [:en, :de, :fr, :it]
+  SIMPLIFIED_VIEW_ROLES = %w[Kontakt Sympathisant Mitglied]
 
   included do
     Person::PUBLIC_ATTRS << :title
@@ -29,5 +30,9 @@ module Glp::Person
 
   def zugeordnete_roles_where_he_is_a_mitglied
     roles.select{|role| role.type.include? "Zugeordnete" and role.type.include? "Mitglied"}
+  end
+
+  def simplified_view?
+    roles.all? { |role| SIMPLIFIED_VIEW_ROLES.include?(role.class.to_s.demodulize) }
   end
 end
