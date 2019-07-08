@@ -35,4 +35,11 @@ module Glp::Person
   def simplified_view?
     roles.all? { |role| SIMPLIFIED_VIEW_ROLES.include?(role.class.to_s.demodulize) }
   end
+
+  private
+
+  def assert_is_valid_swiss_post_code
+    true
+  end
+
 end

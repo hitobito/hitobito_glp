@@ -57,7 +57,6 @@ describe ExternallySubmittedPeopleController do
         subject_with_args({role: "medien_und_dritte"})
         expect(Person.last.groups).to include bern_kontakte
       end
-
     end
   end
 
@@ -79,6 +78,13 @@ describe ExternallySubmittedPeopleController do
         expect(Person.last.groups).to include root_kontakte
       end
 
+    end
+  end
+
+  context 'zip_code' do
+    it 'accepts any string as zip_code' do
+      subject_with_args({zip_code: "asdf", role: "medien_und_dritte"})
+      expect(Person.last.groups).to include root_kontakte
     end
   end
 

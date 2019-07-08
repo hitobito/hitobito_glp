@@ -41,9 +41,19 @@ describe Person do
       build(:root_kontakte, Group::RootKontakte::Kontakt)
       expect(subject).to eq false
     end
+
+    def build(group, type)
+      person.roles.build(group: groups(group), type: type.sti_name)
+    end
   end
 
-  def build(group, type)
-    person.roles.build(group: groups(group), type: type.sti_name)
+  context 'zip_code' do
+    let(:person) { Person.new(first_name: 'a', last_name: 'b', email: 'a@b.com') }
+    it 'accepts anything as zip_code' do
+      expect(person).to be_valid
+      person.zip_code = 1
+      expect(person).to be_valid
+    end
   end
+
 end
