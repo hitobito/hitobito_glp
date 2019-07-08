@@ -100,6 +100,34 @@ describe ExternallySubmittedPeopleController do
     end
   end
 
+  context 'jglp_field' do
+    let(:mails) {  ActionMailer::Base.deliveries }
+
+    it 'works without jglp field does not include field in email' do
+      expect { subject_with_args }.to change(mails, :count).by(3)
+
+      monitoring_mail = mails.find { |m| m.to.include?('mitgliederdatenbank@grunliberale.ch') }
+      group_mail = mails.find { |m| m.to.include?('kanton@bern.net') }
+      youth_mail = mails.find { |m| m.to.include?('junge@grunliberale.ch') }
+
+      expect(monitoring_mail.body).not_to match /Ich bin unter 35 und möchte/
+      expect(group_mail.body).not_to match /Ich bin unter 35 und möchte/
+      expect(youth_mail).to be_nil
+    end
+
+    it 'accepts jglp field and includes it in emails' do
+      expect { subject_with_args({jglp: 1}) }.to change(mails, :count).by(4)
+
+      monitoring_mail = mails.find { |m| m.to.include?('mitgliederdatenbank@grunliberale.ch') }
+      group_mail = mails.find { |m| m.to.include?('kanton@bern.net') }
+      youth_mail = mails.find { |m| m.to.include?('junge@grunliberale.ch') }
+
+      expect(monitoring_mail.body).to match /Ich bin unter 35 und möchte/
+      expect(youth_mail.body).to match /Ich bin unter 35 und möchte/
+      expect(group_mail.body).to match /Ich bin unter 35 und möchte/
+    end
+  end
+
   context "fails gracefully" do
 
     it "when submitted email is a duplicate." do

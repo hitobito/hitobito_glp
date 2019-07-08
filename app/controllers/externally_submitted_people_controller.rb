@@ -87,6 +87,7 @@ class ExternallySubmittedPeopleController < ApplicationController
           end
         end
         notify_monitoring_address
+        notify_youth_address if jglp
       end
       render json: @person, status: :ok
     rescue ActiveRecord::RecordInvalid => e
@@ -121,14 +122,18 @@ class ExternallySubmittedPeopleController < ApplicationController
 
       zugeordnete_parent_groups.each do |group|
         if group.email.present?
-          Notifier.mitglied_joined(@person, group.email).deliver_now
+          Notifier.mitglied_joined(@person, group.email, jglp).deliver_now
         end
       end
     end
   end
 
   def notify_monitoring_address
-    Notifier.mitglied_joined_monitoring(@person, submitted_role, 'mitgliederdatenbank@grunliberale.ch').deliver_now
+    Notifier.mitglied_joined_monitoring(@person, submitted_role, 'mitgliederdatenbank@grunliberale.ch', jglp).deliver_now
+  end
+
+  def notify_youth_address
+    Notifier.mitglied_joined_monitoring(@person, submitted_role, 'junge@grunliberale.ch', jglp).deliver_now
   end
 
   def put_him_into_root_zugeordnete_groups
@@ -224,6 +229,10 @@ class ExternallySubmittedPeopleController < ApplicationController
 
   def zip_code
     externally_submitted_person_params[:zip_code]
+  end
+
+  def jglp
+    params.fetch(:externally_submitted_person, {})[:jglp]
   end
 
   def externally_submitted_person_params

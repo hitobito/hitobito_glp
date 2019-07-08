@@ -19,16 +19,18 @@ class Notifier < ApplicationMailer
     mail(to: email)
   end
 
-  def mitglied_joined person, email
+  def mitglied_joined person, email, jglp
     @person = person
     @preferred_language = preferred_language(person)
+    @jglp = jglp
     mail(to: email, subject: "Achtung: Neues Mitglied.")
   end
 
-  def mitglied_joined_monitoring person, submitted_role, email
+  def mitglied_joined_monitoring person, submitted_role, email, jglp
     @person = person
     @category = submitted_role.gsub("_und_", " & ")
     @preferred_language = preferred_language(person)
+    @jglp = jglp
 
     case submitted_role
     when "Mitglied"
