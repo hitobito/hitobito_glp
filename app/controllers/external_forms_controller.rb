@@ -59,6 +59,12 @@ class ExternalFormsController < ApplicationController
                 </label>
                 <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
               </div>
+              <div class='form-row'>
+                <label for='jglp'>
+                  #{t("external_form_js.jglp")} *
+                </label>
+                <input name='externally_submitted_person[jglp]' type='checkbox' id='jglp'/>
+              </div>
               <label for='terms_and_conditions'>
                 <input name='terms_and_conditions' id='terms_and_conditions' type='checkbox' />
                 #{t("external_form_js.terms_and_conditions_checkbox_html", :link => (

@@ -24,6 +24,7 @@ fr:
     terms_and_conditions_link_text: déclaration de protection des données
     terms_and_conditions_link: https://vertliberaux.ch/protection-des-donnees
     zip_code: Code postal
+    jglp: J'ai moins de 35 ans et souhaite devenir membre des Jeunes vert'libéraux également (recommandé).
 
   notifier:
     welcome_mitglied:
