@@ -219,7 +219,7 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   def preferred_language
-    externally_submitted_person_params[:preferred_language]
+    externally_submitted_person_params[:preferred_language].presence || 'de'
   end
 
   def zip_code

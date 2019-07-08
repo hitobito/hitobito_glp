@@ -88,6 +88,18 @@ describe ExternallySubmittedPeopleController do
     end
   end
 
+  context 'preferred_language' do
+    it 'defaults to german when value is blank' do
+      subject_with_args({role: "medien_und_dritte", preferred_language: ''})
+      expect(Person.last.preferred_language).to eq 'de'
+    end
+
+    it 'defaults to german when value is not send' do
+      subject_with_args({role: "medien_und_dritte"})
+      expect(Person.last.preferred_language).to eq 'de'
+    end
+  end
+
   context "fails gracefully" do
 
     it "when submitted email is a duplicate." do
