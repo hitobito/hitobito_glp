@@ -29,4 +29,23 @@ describe PeopleController, type: :controller do
       put :update, group_id: role.person.primary_group.id, id: role.person.id, person: { zip_code: "4321" }
     end.to change(ActionMailer::Base.deliveries, :count).by(1)
   end
+
+  context 'simplfied_view' do
+    render_views
+
+    let(:group)  { groups(:root_kontakte) }
+    let(:person) { Fabricate(:person) }
+
+    before do
+      Group::RootKontakte::Kontakt.create!(group: group, person: person)
+      sign_in(person)
+    end
+
+    it 'does not render main_nav when view is simplified' do
+      get :show, group_id: group.id, id: person.id
+      dom = Capybara::Node::Simple.new(response.body)
+      expect(dom).not_to have_text 'Gruppen'
+      expect(dom).not_to have_text 'Abos'
+    end
+  end
 end
