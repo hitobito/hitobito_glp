@@ -27,7 +27,8 @@ module Glp
           if send_two_factor_authentication_code
             redirect_to users_two_factor_authentication_confirmation_path(person: { id: person.id })
           else
-            flash[:alert] = 'Die Zustellung des 2FA-Codes hat nicht geklappt, bitte kontaktiere das Generalsekretariat'
+            flash[:alert] = 'Die Zustellung des 2FA-Codes hat nicht geklappt, ' \
+              'bitte kontaktiere das Generalsekretariat'
             redirect_to '/'
           end
         end

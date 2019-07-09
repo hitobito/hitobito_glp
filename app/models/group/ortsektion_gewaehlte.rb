@@ -23,5 +23,9 @@ class Group::OrtsektionGewaehlte < Group
   class MitgliedWeitereKommissionen < Role
   end
 
-  roles KommunaleExekutive, KommunaleLegislative, Schulpflegekommission, Rechnungspruefungskommission, MitgliedWeitereKommissionen
+  roles(KommunaleExekutive,
+        KommunaleLegislative,
+        Schulpflegekommission,
+        Rechnungspruefungskommission,
+        MitgliedWeitereKommissionen)
 end

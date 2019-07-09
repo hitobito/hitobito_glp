@@ -27,7 +27,8 @@ module Glp::PeopleController
     zugeordnete_roles_where_he_is_a_mitglied = entry.zugeordnete_roles_where_he_is_a_mitglied
 
     if zugeordnete_roles_where_he_is_a_mitglied.any?
-      zugeordnete_parent_groups = zugeordnete_roles_where_he_is_a_mitglied.map(&:group).map(&:parent).uniq
+      zugeordnete_parent_groups = zugeordnete_roles_where_he_is_a_mitglied.
+        map(&:group).map(&:parent).uniq
 
       zugeordnete_parent_groups.each do |group|
         if group.email.present?
@@ -39,13 +40,13 @@ module Glp::PeopleController
   end
 
   def notify_parent_group email
-    Notifier.mitglied_left(entry, email).deliver_now 
+    Notifier.mitglied_left(entry, email).deliver_now
   end
 
   def notify_root_group
     root_group = Group.find_by_type("Group::Root")
     if root_group.email.present?
-      Notifier.mitglied_left(entry, root_group.email).deliver_now 
+      Notifier.mitglied_left(entry, root_group.email).deliver_now
     end
   end
 end

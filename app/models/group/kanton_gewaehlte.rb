@@ -20,5 +20,10 @@ class Group::KantonGewaehlte < Group
   class ParlamentarischeGeschaeftsfuehrung < Role
   end
 
-  roles KantonaleExekutive, KantonaleLegislative, MitgliedKantonalesGerichtObereInstanz, MitgliedKantonalesGerichtErsteInstanz, Staatsanwaltschaft, ParlamentarischeGeschaeftsfuehrung 
+  roles(KantonaleExekutive,
+        KantonaleLegislative,
+        MitgliedKantonalesGerichtObereInstanz,
+        MitgliedKantonalesGerichtErsteInstanz,
+        Staatsanwaltschaft,
+        ParlamentarischeGeschaeftsfuehrung)
 end

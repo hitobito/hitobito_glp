@@ -15,5 +15,12 @@ class Group::Kanton < Group
 
   roles Administrator
 
-  children Group::KantonDelegierte, Group::KantonGewaehlte, Group::KantonGeschaeftsstelle, Group::KantonVorstand, Group::KantonArbeitsgruppe, Group::KantonZugeordnete, Group::KantonKontakte, Group::Bezirk
+  children(Group::KantonDelegierte,
+           Group::KantonGewaehlte,
+           Group::KantonGeschaeftsstelle,
+           Group::KantonVorstand,
+           Group::KantonArbeitsgruppe,
+           Group::KantonZugeordnete,
+           Group::KantonKontakte,
+           Group::Bezirk)
 end

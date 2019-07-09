@@ -75,7 +75,7 @@ namespace :import do
   end
 end
 
-def group_type_and_role_for_category category
+def group_type_and_role_for_category category # rubocop:disable Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/LineLength
   medien_und_andere_dritte = ["Kontakte", "Kontakt"]
   sympathisant = ["Zugeordnete", "Sympathisant"]
   mitglied = ["Zugeordnete", "Mitglied"]
@@ -111,7 +111,9 @@ def group_type_and_role_for_category category
 end
 
 def group_for_zip_code_with_group_type zip_code, group_type
-  groups_with_zip_codes = Group.without_deleted.where.not(zip_codes: '').where.not(type: 'Group::Root')
+  groups_with_zip_codes = Group.without_deleted
+    .where.not(zip_codes: '')
+    .where.not(type: 'Group::Root')
   matching_groups = groups_with_zip_codes.select do |group|
     group.zip_codes.split(",").map(&:strip).include? zip_code
   end

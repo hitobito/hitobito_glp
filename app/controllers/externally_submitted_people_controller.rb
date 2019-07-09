@@ -31,10 +31,13 @@ class ExternallySubmittedPeopleController < ApplicationController
     end
   end
 
-  def create
+  def create # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
     I18n.locale = params[:locale] || "de"
     if !is_captcha_valid?
-      render json: {error: t("external_form_js.server_error_captcha")}, status: :unprocessable_entity
+      render({
+        json: {error: t("external_form_js.server_error_captcha")},
+        status: :unprocessable_entity
+      })
       return
     end
     begin
@@ -92,7 +95,10 @@ class ExternallySubmittedPeopleController < ApplicationController
       render json: @person, status: :ok
     rescue ActiveRecord::RecordInvalid => e
       if e.message =~ /e-mail/i || e.message =~ /email/i
-        render json: {error: t("external_form_js.submit_error_email_taken")}, status: :unprocessable_entity
+        render({
+          json: {error: t("external_form_js.submit_error_email_taken")},
+          status: :unprocessable_entity
+        })
       else
         render json: {error: t("external_form_js.submit_error")}, status: :unprocessable_entity
       end
@@ -118,7 +124,8 @@ class ExternallySubmittedPeopleController < ApplicationController
     zugeordnete_roles_where_he_is_a_mitglied = @person.zugeordnete_roles_where_he_is_a_mitglied
 
     if zugeordnete_roles_where_he_is_a_mitglied.any?
-      zugeordnete_parent_groups = zugeordnete_roles_where_he_is_a_mitglied.map(&:group).map(&:parent).uniq
+      zugeordnete_parent_groups = zugeordnete_roles_where_he_is_a_mitglied
+        .map(&:group).map(&:parent).uniq
 
       zugeordnete_parent_groups.each do |group|
         if group.email.present?
@@ -129,11 +136,17 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   def notify_monitoring_address
-    Notifier.mitglied_joined_monitoring(@person, submitted_role, 'mitgliederdatenbank@grunliberale.ch', jglp).deliver_now
+    Notifier.mitglied_joined_monitoring(@person,
+                                        submitted_role,
+                                        'mitgliederdatenbank@grunliberale.ch',
+                                        jglp).deliver_now
   end
 
   def notify_youth_address
-    Notifier.mitglied_joined_monitoring(@person, submitted_role, 'junge@grunliberale.ch', jglp).deliver_now
+    Notifier.mitglied_joined_monitoring(@person,
+                                        submitted_role,
+                                        'junge@grunliberale.ch',
+                                        jglp).deliver_now
   end
 
   def put_him_into_root_zugeordnete_groups
@@ -236,6 +249,12 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   def externally_submitted_person_params
-    params.require(:externally_submitted_person).permit(:email, :zip_code, :role, :first_name, :last_name, :preferred_language, :terms_and_conditions)
+    params.require(:externally_submitted_person).permit(:email,
+                                                        :zip_code,
+                                                        :role,
+                                                        :first_name,
+                                                        :last_name,
+                                                        :preferred_language,
+                                                        :terms_and_conditions)
   end
 end

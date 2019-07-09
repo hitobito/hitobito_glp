@@ -31,5 +31,12 @@ class Group::RootGewaehlte < Group
   class Bundesstrafrichter < Role
   end
 
-  roles Bundesrat, Staenderat, Nationalrat, VollamtBundesrichter, NebenamtBundesRichter, Bundesverwaltungsrichter, Bundespatentrichter, Bundesstrafrichter
+  roles(Bundesrat,
+        Staenderat,
+        Nationalrat,
+        VollamtBundesrichter,
+        NebenamtBundesRichter,
+        Bundesverwaltungsrichter,
+        Bundespatentrichter,
+        Bundesstrafrichter)
 end

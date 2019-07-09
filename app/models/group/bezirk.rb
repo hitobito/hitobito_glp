@@ -15,5 +15,11 @@ class Group::Bezirk < Group
 
   roles Administrator
 
-  children Group::BezirkGewaehlte, Group::BezirkGeschaeftsstelle, Group::BezirkVorstand, Group::BezirkArbeitsgruppe, Group::BezirkZugeordnete, Group::BezirkKontakte, Group::Ortsektion
+  children(Group::BezirkGewaehlte,
+           Group::BezirkGeschaeftsstelle,
+           Group::BezirkVorstand,
+           Group::BezirkArbeitsgruppe,
+           Group::BezirkZugeordnete,
+           Group::BezirkKontakte,
+           Group::Ortsektion)
 end
