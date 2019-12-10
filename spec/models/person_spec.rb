@@ -56,4 +56,22 @@ describe Person do
     end
   end
 
+  context '#two_factor_authentication_required?' do
+    before { Settings.reload! }
+
+    def admin_with(email: )
+      Person.new(email: email).tap do |p|
+        p.roles.build(group: groups(:root), type: Group::Root::Administrator.sti_name)
+      end
+    end
+
+    it 'is false for puzzle domains' do
+      expect(admin_with(email: 'dummy@puzzle.ch')).not_to be_two_factor_authentication_required
+    end
+
+    it 'is true for other domains' do
+      expect(admin_with(email: 'dummy@other.ch')).to be_two_factor_authentication_required
+    end
+  end
+
 end

@@ -18,7 +18,11 @@ module Glp::Person
   end
 
   def two_factor_authentication_required?
-    roles.any? { |role| role.class.sti_name =~ /Administrator$/ }
+    !two_factor_skip_by_email? && roles.any? { |role| role.class.sti_name =~ /Administrator$/ }
+  end
+
+  def two_factor_skip_by_email?
+    Settings.two_factor_skip.any? { |string| Regexp.new(string).match(email) }
   end
 
   def full_name_with_title(format = :default)
