@@ -14,8 +14,8 @@ class Notifier < ApplicationMailer
     mail(to: email)
   end
 
-  def mitglied_left person, email
-    @person = person
+  def mitglied_left attrs, email
+    @person = Person.new(attrs)
     mail(to: email)
   end
 

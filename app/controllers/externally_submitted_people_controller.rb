@@ -109,15 +109,15 @@ class ExternallySubmittedPeopleController < ApplicationController
   private
 
   def send_him_a_mitglied_welcome_email
-    Notifier.welcome_mitglied(@person, preferred_language).deliver_now
+    Notifier.welcome_mitglied(@person, preferred_language).deliver_later
   end
 
   def send_him_a_sympathisant_welcome_email
-    Notifier.welcome_sympathisant(@person, preferred_language).deliver_now
+    Notifier.welcome_sympathisant(@person, preferred_language).deliver_later
   end
 
   def send_him_a_medien_und_dritte_welcome_email
-    Notifier.welcome_medien_und_dritte(@person, preferred_language).deliver_now
+    Notifier.welcome_medien_und_dritte(@person, preferred_language).deliver_later
   end
 
   def notify_parent_group
@@ -129,7 +129,7 @@ class ExternallySubmittedPeopleController < ApplicationController
 
       zugeordnete_parent_groups.each do |group|
         if group.email.present?
-          Notifier.mitglied_joined(@person, group.email, jglp).deliver_now
+          Notifier.mitglied_joined(@person, group.email, jglp).deliver_later
         end
       end
     end
@@ -139,14 +139,14 @@ class ExternallySubmittedPeopleController < ApplicationController
     Notifier.mitglied_joined_monitoring(@person,
                                         submitted_role,
                                         'mitgliederdatenbank@grunliberale.ch',
-                                        jglp).deliver_now
+                                        jglp).deliver_later
   end
 
   def notify_youth_address
     Notifier.mitglied_joined_monitoring(@person,
                                         submitted_role,
                                         'junge@grunliberale.ch',
-                                        jglp).deliver_now
+                                        jglp).deliver_later
   end
 
   def put_him_into_root_zugeordnete_groups

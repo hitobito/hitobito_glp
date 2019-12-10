@@ -19,7 +19,7 @@ module Glp::PeopleController
 
   def notify_schweiz_at_grunliberale_ch
     if entry.zip_code_changed? and entry.valid?
-      Notifier.zip_code_changed(entry, "mitgliederdatenbank@grunliberale.ch").deliver_now
+      Notifier.zip_code_changed(entry, "mitgliederdatenbank@grunliberale.ch").deliver_later
     end
   end
 
@@ -40,13 +40,17 @@ module Glp::PeopleController
   end
 
   def notify_parent_group email
-    Notifier.mitglied_left(entry, email).deliver_now
+    Notifier.mitglied_left(person_email_attrs, email).deliver_later
   end
 
   def notify_root_group
     root_group = Group.find_by_type("Group::Root")
     if root_group.email.present?
-      Notifier.mitglied_left(entry, root_group.email).deliver_now
+      Notifier.mitglied_left(person_email_attrs, root_group.email).deliver_later
     end
+  end
+
+  def person_email_attrs
+    entry.slice('first_name', 'last_name', 'address', 'zip_code', 'email')
   end
 end

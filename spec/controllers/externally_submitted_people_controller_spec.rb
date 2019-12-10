@@ -18,6 +18,8 @@ describe ExternallySubmittedPeopleController do
   let(:zurich_zugeordnete) { groups(:zurich_zugeordnete) }
   let(:zurich_kontakte)    { groups(:zurich_kontakte) }
 
+  include ActiveJob::TestHelper
+
   def subject_with_args args={}
     post :create, externally_submitted_person: {zip_code: "9171",
                                                 email: "sauron@evil.com",
@@ -37,7 +39,9 @@ describe ExternallySubmittedPeopleController do
   end
 
   it "sends 3 notification emails to." do
-    expect{subject_with_args}.to change(ActionMailer::Base.deliveries, :count).by(3)
+    perform_enqueued_jobs do
+      expect{subject_with_args}.to change(ActionMailer::Base.deliveries, :count).by(3)
+    end
   end
 
   context "when submitted zip code DOES match existing layer groups' zip_codes" do
@@ -104,7 +108,10 @@ describe ExternallySubmittedPeopleController do
     let(:mails) {  ActionMailer::Base.deliveries }
 
     it 'works without jglp field does not include field in email' do
-      expect { subject_with_args }.to change(mails, :count).by(3)
+
+      perform_enqueued_jobs do
+        expect { subject_with_args }.to change(mails, :count).by(3)
+      end
 
       monitoring_mail = mails.find { |m| m.to.include?('mitgliederdatenbank@grunliberale.ch') }
       group_mail = mails.find { |m| m.to.include?('kanton@bern.net') }
@@ -116,7 +123,9 @@ describe ExternallySubmittedPeopleController do
     end
 
     it 'accepts jglp field and includes it in emails' do
-      expect { subject_with_args({jglp: 1}) }.to change(mails, :count).by(4)
+      perform_enqueued_jobs do
+        expect { subject_with_args({jglp: 1}) }.to change(mails, :count).by(4)
+      end
 
       monitoring_mail = mails.find { |m| m.to.include?('mitgliederdatenbank@grunliberale.ch') }
       group_mail = mails.find { |m| m.to.include?('kanton@bern.net') }

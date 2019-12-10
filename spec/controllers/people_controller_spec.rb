@@ -18,16 +18,22 @@ describe PeopleController, type: :controller do
     sign_in(admin)
   end
 
+  include ActiveJob::TestHelper
+
   it 'notifies the layer group and the root group when a mitlied is deleted.' do
-    expect do
-      delete :destroy, group_id: role.person.primary_group.id, id: role.person.id
-    end.to change(ActionMailer::Base.deliveries, :count).by(2)
+    perform_enqueued_jobs do
+      expect do
+        delete :destroy, group_id: role.person.primary_group.id, id: role.person.id
+      end.to change(ActionMailer::Base.deliveries, :count).by(2)
+    end
   end
 
   it 'notifies schweiz@grunliberale.ch whenever a person changes his/her PLZ.' do
-    expect do
-      put :update, group_id: role.person.primary_group.id, id: role.person.id, person: { zip_code: "4321" }
-    end.to change(ActionMailer::Base.deliveries, :count).by(1)
+    perform_enqueued_jobs do
+      expect do
+        put :update, group_id: role.person.primary_group.id, id: role.person.id, person: { zip_code: "4321" }
+      end.to change(ActionMailer::Base.deliveries, :count).by(1)
+    end
   end
 
   context 'simplfied_view' do
