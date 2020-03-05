@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-class AddPeopleAttrs < ActiveRecord::Migration
+class AddPeopleAttrs < ActiveRecord::Migration[4.2]
   def change
     add_column :people, :title, :string
     add_column :people, :preferred_language, :string

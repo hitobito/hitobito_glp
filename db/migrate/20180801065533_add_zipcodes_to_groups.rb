@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-class AddZipcodesToGroups < ActiveRecord::Migration
+class AddZipcodesToGroups < ActiveRecord::Migration[4.2]
   def change
     add_column :groups, :zip_codes, :string
   end

@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-class AddTwoFactorAuthentication < ActiveRecord::Migration
+class AddTwoFactorAuthentication < ActiveRecord::Migration[4.2]
   def change
     add_column :people, :second_factor_code, :string
     add_column :people, :second_factor_generated_at, :datetime

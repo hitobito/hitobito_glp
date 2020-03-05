@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-class AddMailingListPeopleFilterAttrs < ActiveRecord::Migration
+class AddMailingListPeopleFilterAttrs < ActiveRecord::Migration[4.2]
   def change
     add_column :mailing_lists, :age_start, :integer
     add_column :mailing_lists, :age_finish, :integer

@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-class ChangeGroupsZipCodesToText < ActiveRecord::Migration
+class ChangeGroupsZipCodesToText < ActiveRecord::Migration[4.2]
   def change
     change_column :groups, :zip_codes, :text
 

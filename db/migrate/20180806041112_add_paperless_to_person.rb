@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-class AddPaperlessToPerson < ActiveRecord::Migration
+class AddPaperlessToPerson < ActiveRecord::Migration[4.2]
   def change
     add_column :people, :paperless, :boolean, default: false
   end

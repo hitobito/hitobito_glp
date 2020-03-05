@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-class AddPlaceOfOriginToPerson < ActiveRecord::Migration
+class AddPlaceOfOriginToPerson < ActiveRecord::Migration[4.2]
   def change
     add_column :people, :place_of_origin, :string, default: nil
   end
