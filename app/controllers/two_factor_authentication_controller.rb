@@ -10,7 +10,7 @@ class TwoFactorAuthenticationController < ApplicationController
   skip_authorization_check
   skip_before_action :authenticate_person!
 
-  include Concerns::TwoFactorAuthentication
+  include TwoFactorAuthentication
 
   def show
     @person = person

@@ -9,15 +9,11 @@
 module Glp
   module Devise::SessionsController
     extend ActiveSupport::Concern
-    include Concerns::TwoFactorAuthentication
-
-    included do
-      alias_method_chain :create, :two_factor_authentication
-    end
+    include TwoFactorAuthentication
 
     private
 
-    def create_with_two_factor_authentication # rubocop:disable Metrics/MethodLength
+    def create # rubocop:disable Metrics/MethodLength
       if first_factor_authenticated? && two_factor_authentication_required?
         sign_out
         if too_man_tries?
@@ -33,7 +29,7 @@ module Glp
           end
         end
       else
-        create_without_two_factor_authentication
+        super
       end
     end
 

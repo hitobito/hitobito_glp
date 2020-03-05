@@ -37,7 +37,7 @@ module HitobitoGlp
 
       Sheet::Base.send :prepend, Glp::Sheet::Base
 
-      Devise::SessionsController.send(:include, Glp::Devise::SessionsController)
+      Devise::SessionsController.send :prepend, Glp::Devise::SessionsController
 
       ApplicationMailer.send :layout, 'mailer'
 
