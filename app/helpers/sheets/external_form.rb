@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-module Sheet
+module Sheets
   class ExternalForm < Sheet::Admin
   end
 end
