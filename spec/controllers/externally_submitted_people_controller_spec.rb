@@ -21,12 +21,12 @@ describe ExternallySubmittedPeopleController do
   include ActiveJob::TestHelper
 
   def subject_with_args args={}
-    post :create, externally_submitted_person: {zip_code: "9171",
+    post :create, params: {externally_submitted_person: {zip_code: "9171",
                                                 email: "sauron@evil.com",
                                                 first_name: "Sauron",
                                                 last_name: "The Abominable",
                                                 preferred_language: "de",
-                                                role: "mitglied"}.merge(args), format: :js
+                                                role: "mitglied"}.merge(args)}, format: :js
   end
 
   it "creates a person and saves his/her attributes." do

@@ -23,7 +23,7 @@ describe PeopleController, type: :controller do
   it 'notifies the layer group and the root group when a mitlied is deleted.' do
     perform_enqueued_jobs do
       expect do
-        delete :destroy, group_id: role.person.primary_group.id, id: role.person.id
+        delete :destroy, params: { group_id: role.person.primary_group.id, id: role.person.id }
       end.to change(ActionMailer::Base.deliveries, :count).by(2)
     end
   end
@@ -31,7 +31,7 @@ describe PeopleController, type: :controller do
   it 'notifies schweiz@grunliberale.ch whenever a person changes his/her PLZ.' do
     perform_enqueued_jobs do
       expect do
-        put :update, group_id: role.person.primary_group.id, id: role.person.id, person: { zip_code: "4321" }
+        put :update, params: { group_id: role.person.primary_group.id, id: role.person.id, person: { zip_code: "4321" } }
       end.to change(ActionMailer::Base.deliveries, :count).by(1)
     end
   end
@@ -48,7 +48,7 @@ describe PeopleController, type: :controller do
     end
 
     it 'does not render main_nav when view is simplified' do
-      get :show, group_id: group.id, id: person.id
+      get :show, params: { group_id: group.id, id: person.id }
       dom = Capybara::Node::Simple.new(response.body)
       expect(dom).not_to have_text 'Gruppen'
       expect(dom).not_to have_text 'Abos'

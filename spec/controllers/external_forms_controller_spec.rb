@@ -23,7 +23,7 @@ describe ExternalFormsController do
     end
 
     it "uses passed language for locale in form action" do
-      get :loader, language: :it, format: :js
+      get :loader, params: { language: :it }, format: :js
       expect(response.body).to match (%r{action=.*it/externally_submitted_people})
     end
   end
