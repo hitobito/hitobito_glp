@@ -2,14 +2,37 @@ require 'spec_helper'
 
 describe SortingHat do
   let(:person) { Fabricate(:person) }
-  let(:notifier) { @notifier }
+  let(:root)   { groups(:root) }
+  let(:bern)   { groups(:bern) }
+
+  let(:foreign_zip_code) { SortingHat::FOREIGN_ZIP_CODE }
+  let(:jglp_zip_code)    { SortingHat::JGLP_ZIP_CODE }
+  let(:jglp)             {  false }
+
+  let(:notifier)         { @notifier }
+  let(:new_role)         {  person.roles.last }
 
   before { @notifier = class_double("Notifier").as_stubbed_const.as_null_object }
 
+  def update_email_and_zip_codes
+    root.update(email: 'root@example.com')
+    bern.update(zip_codes: '3000,3001', email: 'be@example.com')
+  end
+
+  def create_foreign_subtree
+    @foreign = Group::Kanton.create!(name: 'Ausland', parent: root, zip_codes: foreign_zip_code)
+    @foreign_kontakte = Group::KantonKontakte.create!(name: 'Kontakte', parent: @foreign)
+    @foreign_zugeordnete = Group::KantonZugeordnete.create!(name: 'Zugeordnete', parent: @foreign)
+  end
+
+  def create_jglp_subtree
+    @jglp = Group::Kanton.create!(name: 'jGLP', parent: root, zip_codes: jglp_zip_code)
+    @jglp_kontakte = Group::KantonKontakte.create!(name: 'Kontakte', parent: @jglp)
+    @jglp_zugeordnete = Group::KantonZugeordnete.create!(name: 'Zugeordnete', parent: @jglp)
+  end
+
   describe 'Mitglied' do
     let(:role)           {  'Mitglied' }
-    let(:jglp)           {  false }
-    let(:new_role)       {  person.roles.last }
 
     it 'notifies person and monitoring email address' do
       expect(notifier).to receive(:welcome_mitglied).with(person, 'de')
@@ -27,10 +50,7 @@ describe SortingHat do
     end
 
     context :zip_code do
-      before do
-        groups(:root).update(email: 'root@example.com')
-        groups(:bern).update(zip_codes: '3000,3001', email: 'be@example.com')
-      end
+      before { update_email_and_zip_codes }
 
       it 'puts person in Kanton with matching zip' do
         person.update(zip_code: 3000)
@@ -48,15 +68,8 @@ describe SortingHat do
         expect(new_role.group).to eq groups(:root_zugeordnete)
       end
 
-      context :invalid_zip_code do
-        let(:zip_code) { SortingHat::FOREIGN_ZIP_CODE }
-        let(:root)     { groups(:root) }
-
-        before do
-          @foreign = Group::Kanton.create!(name: 'Ausland', parent: root, zip_codes: zip_code)
-          @foreign_kontakte = Group::KantonKontakte.create!(name: 'Kontakte', parent: @foreign)
-          @foreign_zugeordnete = Group::KantonZugeordnete.create!(name: 'Zugeordnete', parent: @foreign)
-        end
+      context :foreign_zip_code do
+        before { create_foreign_subtree }
 
         it 'puts person in bern group for matching zip' do
           person.update(zip_code: 3000)
@@ -82,8 +95,6 @@ describe SortingHat do
 
   describe 'Sympathisant' do
     let(:role)           {  'Sympathisant' }
-    let(:jglp)           {  false }
-    let(:new_role)       {  person.roles.last }
 
     it 'notifies person and monitoring email address' do
       expect(notifier).to receive(:welcome_sympathisant).with(person, 'de')
@@ -101,10 +112,7 @@ describe SortingHat do
     end
 
     context :zip_code do
-      before do
-        groups(:root).update(email: 'root@example.com')
-        groups(:bern).update(zip_codes: '3000,3001', email: 'be@example.com')
-      end
+      before { update_email_and_zip_codes }
 
       it 'puts person in Kanton with matching zip' do
         person.update(zip_code: 3000)
@@ -119,15 +127,8 @@ describe SortingHat do
         expect(new_role.group).to eq groups(:root_zugeordnete)
       end
 
-      context :invalid_zip_code do
-        let(:zip_code) { SortingHat::FOREIGN_ZIP_CODE }
-        let(:root)     { groups(:root) }
-
-        before do
-          @foreign = Group::Kanton.create!(name: 'Ausland', parent: root, zip_codes: zip_code)
-          @foreign_kontakte = Group::KantonKontakte.create!(name: 'Kontakte', parent: @foreign)
-          @foreign_zugeordnete = Group::KantonZugeordnete.create!(name: 'Zugeordnete', parent: @foreign)
-        end
+      context :foreign_zip_code do
+        before { create_foreign_subtree }
 
         it 'puts person in bern group for matching zip' do
           person.update(zip_code: 3000)
@@ -153,8 +154,6 @@ describe SortingHat do
 
   describe 'Medien_und_dritte' do
     let(:role)           {  'Medien_und_dritte' }
-    let(:jglp)           {  false }
-    let(:new_role)       {  person.roles.last }
 
     it 'notifies person and monitoring email address' do
       expect(notifier).to receive(:welcome_medien_und_dritte).with(person, 'de')
@@ -172,10 +171,7 @@ describe SortingHat do
     end
 
     context :zip_code do
-      before do
-        groups(:root).update(email: 'root@example.com')
-        groups(:bern).update(zip_codes: '3000,3001', email: 'be@example.com')
-      end
+      before { update_email_and_zip_codes }
 
       it 'puts person in Kanton with matching zip' do
         person.update(zip_code: 3000)
@@ -190,15 +186,8 @@ describe SortingHat do
         expect(new_role.group).to eq groups(:root_kontakte)
       end
 
-      context :invalid_zip_code do
-        let(:zip_code) { SortingHat::FOREIGN_ZIP_CODE }
-        let(:root)     { groups(:root) }
-
-        before do
-          @foreign = Group::Kanton.create!(name: 'Ausland', parent: root, zip_codes: zip_code)
-          @foreign_kontakte = Group::KantonKontakte.create!(name: 'Kontakte', parent: @foreign)
-          @foreign_zugeordnete = Group::KantonZugeordnete.create!(name: 'Zugeordnete', parent: @foreign)
-        end
+      context :foreign_zip_code do
+        before { create_foreign_subtree }
 
         it 'puts person in bern group for matching zip' do
           person.update(zip_code: 3000)
