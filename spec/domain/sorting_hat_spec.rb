@@ -26,10 +26,17 @@ describe SortingHat do
   end
 
   def create_jglp_subtree
-    @jglp = Group::Kanton.create!(name: 'jGLP', parent: root, zip_codes: jglp_zip_code)
+    @jglp = Group::Kanton.create!(name: 'jGLP', parent: root, zip_codes: jglp_zip_code, email: 'jglp@example.com')
     @jglp_kontakte = Group::KantonKontakte.create!(name: 'Kontakte', parent: @jglp)
     @jglp_zugeordnete = Group::KantonZugeordnete.create!(name: 'Zugeordnete', parent: @jglp)
   end
+
+  def create_jglp_be_subtree
+    @jglp_be = Group::Bezirk.create!(name: 'be', parent: @jglp, zip_codes: '3000', email: 'jglp_be@example.com')
+    @jglp_be_kontakte = Group::BezirkKontakte.create!(name: 'Kontakte', parent: @jglp_be)
+    @jglp_be_zugeordnete = Group::BezirkZugeordnete.create!(name: 'Zugeordnete', parent: @jglp_be)
+  end
+
 
   describe 'Mitglied' do
     let(:role)           {  'Mitglied' }
@@ -49,6 +56,21 @@ describe SortingHat do
       SortingHat.new(person.reload, role, jglp).sing
     end
 
+    context :jglp do
+      let(:jglp) { true }
+
+      before { create_jglp_subtree }
+
+      it 'puts person in top level jglp group' do
+        expect(notifier).to receive(:mitglied_joined).with(person, 'jglp@example.com', jglp)
+
+        SortingHat.new(person, role, jglp).sing
+        expect(new_role).to be_a(Group::KantonZugeordnete::Mitglied)
+        expect(new_role.group).to eq @jglp_zugeordnete
+      end
+    end
+
+
     context :zip_code do
       before { update_email_and_zip_codes }
 
@@ -66,6 +88,42 @@ describe SortingHat do
         SortingHat.new(person, role, jglp).sing
         expect(new_role).to be_a(Group::RootZugeordnete::Mitglied)
         expect(new_role.group).to eq groups(:root_zugeordnete)
+      end
+
+      context :jglp do
+        let(:jglp) { true }
+
+        before do
+          create_jglp_subtree
+          create_jglp_be_subtree
+        end
+
+        it 'puts person in Bezirk with matching zip' do
+          person.update(zip_code: 3000)
+          expect(notifier).to receive(:mitglied_joined).with(person, 'jglp_be@example.com', jglp)
+
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::BezirkZugeordnete::Mitglied)
+          expect(new_role.group).to eq @jglp_be_zugeordnete
+        end
+
+        it 'puts person top level jglp group without matching zip' do
+          person.update(zip_code: 3001)
+          expect(notifier).to receive(:mitglied_joined).with(person, 'jglp@example.com', jglp)
+
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonZugeordnete::Mitglied)
+          expect(new_role.group).to eq @jglp_zugeordnete
+        end
+
+        it 'puts person top level jglp group with foreign zip' do
+          person.update(zip_code: 90210)
+          expect(notifier).to receive(:mitglied_joined).with(person, 'jglp@example.com', jglp)
+
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonZugeordnete::Mitglied)
+          expect(new_role.group).to eq @jglp_zugeordnete
+        end
       end
 
       context :foreign_zip_code do

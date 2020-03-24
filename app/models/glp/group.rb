@@ -14,6 +14,8 @@ module Glp::Group
 
 
     root_types Group::Root
+
+    scope :with_zip_codes, -> { where.not(zip_codes: ['', nil]) }
   end
 
 end

@@ -23,6 +23,7 @@ class SortingHat
   JGLP_ZIP_CODE    = 103
 
   MONITORING_EMAIL = 'mitgliederdatenbank@grunliberale.ch'
+  JGLP_EMAIL = 'junge@grunliberale.ch'
 
   def self.locked?(group)
     [FOREIGN_ZIP_CODE, JGLP_ZIP_CODE].any? { |code| code.to_s == group.zip_codes }
@@ -90,10 +91,13 @@ class SortingHat
     person.preferred_language
   end
 
+  def top_level_group
+    jglp ? Group.find_by(zip_codes: JGLP_ZIP_CODE) : Group::Root.first
+  end
+
   # eventuell like query?
   def zip_codes_matching_groups
-    groups_with_zip_codes = Group.where.not(zip_codes:  '').where.not(type: 'Group::Root')
-    groups_with_zip_codes.select do |group|
+    top_level_group.descendants.with_zip_codes.select do |group|
       group.zip_codes.split(",").map(&:strip).include?(zip_code.to_s)
     end
   end
@@ -135,13 +139,13 @@ class SortingHat
   def notify_youth_address
     Notifier.mitglied_joined_monitoring(@person,
                                         submitted_role,
-                                        'junge@grunliberale.ch',
+                                        JGLP_EMAIL,
                                         jglp).deliver_later
   end
 
   def put_him_into_root_zugeordnete_groups
     root_zugeordnete_groups.each do |group|
-      Role.create(type:   zugeordnete_role_type,
+      Role.create(type:   role_type(group),
                   person: @person,
                   group:  group)
     end
@@ -149,31 +153,28 @@ class SortingHat
 
   def put_him_into_root_kontakte_groups
     root_kontakte_groups.each do |group|
-      Role.create!(type:   kontakte_role_type,
+      Role.create!(type:   role_type(group),
                    person: @person,
                    group:  group)
     end
   end
 
   def root_zugeordnete_groups
-    Group.where(type: "Group::RootZugeordnete")
+    top_level_group.descendants.where(type: group_type('Zugeordnete'))
   end
 
   def root_kontakte_groups
-    Group.where(type: "Group::RootKontakte")
+    top_level_group.descendants.where(type: group_type('Kontakte'))
   end
 
-  def zugeordnete_role_type
-    "Group::RootZugeordnete::#{submitted_role}"
-  end
-
-  def kontakte_role_type
-    "Group::RootKontakte::Kontakt"
+  def group_type(type)
+    top_level_type = top_level_group.class.to_s.demodulize
+    "Group::#{top_level_type}#{type}"
   end
 
   def put_him_into_zugeordnete_children zugeordnete_children
     zugeordnete_children.each do |zugeordnete_child|
-      Role.create!(type:   "#{zugeordnete_child.type}::#{submitted_role}",
+      Role.create!(type:   role_type(zugeordnete_child),
                    person: @person,
                    group:  zugeordnete_child)
     end
@@ -181,10 +182,15 @@ class SortingHat
 
   def put_him_into_kontakte_children kontakte_children
     kontakte_children.each do |kontakte_child|
-      Role.create!(type:   "#{kontakte_child.type}::Kontakt",
+      Role.create!(type:   role_type(kontakte_child),
                    person: @person,
                    group:  kontakte_child)
     end
+  end
+
+  def role_type(group)
+    inferred_role = submitted_role == 'Medien_und_dritte' ? 'Kontakt' : submitted_role
+    "#{group.type}::#{inferred_role}"
   end
 
   def zugeordnete_children group
