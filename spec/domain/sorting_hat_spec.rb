@@ -7,15 +7,16 @@ describe SortingHat do
 
   let(:foreign_zip_code) { SortingHat::FOREIGN_ZIP_CODE }
   let(:jglp_zip_code)    { SortingHat::JGLP_ZIP_CODE }
-  let(:jglp)             {  false }
+  let(:jglp)             { false }
 
   let(:notifier)         { @notifier }
-  let(:new_role)         {  person.roles.last }
+  let(:new_role)         { person.roles.last }
 
-  before { @notifier = class_double("Notifier").as_stubbed_const.as_null_object }
+  before do
+    @notifier = stub_const('Notifier', double("notifier").as_null_object)
+  end
 
   def update_email_and_zip_codes
-    root.update(email: 'root@example.com')
     bern.update(zip_codes: '3000,3001', email: 'be@example.com')
   end
 
@@ -70,17 +71,24 @@ describe SortingHat do
     context :jglp do
       let(:jglp) { true }
 
-      before { create_jglp_subtree }
 
       it 'puts person in top level jglp group' do
+        create_jglp_subtree
         expect(notifier).to receive(:mitglied_joined).with(person, 'jglp@example.com', jglp)
 
         SortingHat.new(person, role, jglp).sing
         expect(new_role).to be_a(Group::KantonZugeordnete::Mitglied)
         expect(new_role.group).to eq @jglp_zugeordnete
       end
-    end
 
+      it 'falls back to root group if top level jglp group is missing' do
+        expect(notifier).to receive(:mitglied_joined).with(person, 'root@example.net', jglp)
+
+        SortingHat.new(person, role, jglp).sing
+        expect(new_role).to be_a(Group::RootZugeordnete::Mitglied)
+        expect(new_role.group).to eq groups(:root_zugeordnete)
+      end
+    end
 
     context :zip_code do
       before { update_email_and_zip_codes }
@@ -96,7 +104,7 @@ describe SortingHat do
       it 'puts person in root group if multiple zips match' do
         groups(:zurich).update(zip_codes: '3000')
         person.update(zip_code: 3000)
-        expect(notifier).to receive(:mitglied_joined).with(person, 'root@example.com', jglp)
+        expect(notifier).to receive(:mitglied_joined).with(person, 'root@example.net', jglp)
 
         SortingHat.new(person, role, jglp).sing
         expect(new_role).to be_a(Group::RootZugeordnete::Mitglied)
@@ -104,7 +112,7 @@ describe SortingHat do
       end
 
       it 'puts person in root group' do
-        expect(notifier).to receive(:mitglied_joined).with(person, 'root@example.com', jglp)
+        expect(notifier).to receive(:mitglied_joined).with(person, 'root@example.net', jglp)
 
         SortingHat.new(person, role, jglp).sing
         expect(new_role).to be_a(Group::RootZugeordnete::Mitglied)
