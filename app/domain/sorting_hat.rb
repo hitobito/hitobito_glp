@@ -81,7 +81,7 @@ class SortingHat
   end
 
   def zip_code
-    person.zip_code.to_s.length > 4 ? FOREIGN_ZIP_CODE : person.zip_code
+    person.zip_code.to_s.length != 4 ? FOREIGN_ZIP_CODE : person.zip_code
   end
 
   private
@@ -94,7 +94,7 @@ class SortingHat
   def zip_codes_matching_groups
     groups_with_zip_codes = Group.where.not(zip_codes:  '').where.not(type: 'Group::Root')
     groups_with_zip_codes.select do |group|
-      group.zip_codes.split(",").map(&:strip).include?(zip_code)
+      group.zip_codes.split(",").map(&:strip).include?(zip_code.to_s)
     end
   end
 

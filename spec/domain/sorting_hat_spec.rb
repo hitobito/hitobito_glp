@@ -47,6 +47,36 @@ describe SortingHat do
         expect(new_role).to be_a(Group::RootZugeordnete::Mitglied)
         expect(new_role.group).to eq groups(:root_zugeordnete)
       end
+
+      context :invalid_zip_code do
+        let(:zip_code) { SortingHat::FOREIGN_ZIP_CODE }
+        let(:root)     { groups(:root) }
+
+        before do
+          @foreign = Group::Kanton.create!(name: 'Ausland', parent: root, zip_codes: zip_code)
+          @foreign_kontakte = Group::KantonKontakte.create!(name: 'Kontakte', parent: @foreign)
+          @foreign_zugeordnete = Group::KantonZugeordnete.create!(name: 'Zugeordnete', parent: @foreign)
+        end
+
+        it 'puts person in bern group for matching zip' do
+          person.update(zip_code: 3000)
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonZugeordnete::Mitglied)
+          expect(new_role.group).to eq groups(:bern_zugeordnete)
+        end
+
+        it 'puts person in foreign group for more than 4 digits' do
+          person.update(zip_code: 90210)
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonZugeordnete::Mitglied)
+        end
+
+        it 'puts person in foreign group for less than 4 digits' do
+          person.update(zip_code: 210)
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonZugeordnete::Mitglied)
+        end
+      end
     end
   end
 
@@ -88,6 +118,36 @@ describe SortingHat do
         expect(new_role).to be_a(Group::RootZugeordnete::Sympathisant)
         expect(new_role.group).to eq groups(:root_zugeordnete)
       end
+
+      context :invalid_zip_code do
+        let(:zip_code) { SortingHat::FOREIGN_ZIP_CODE }
+        let(:root)     { groups(:root) }
+
+        before do
+          @foreign = Group::Kanton.create!(name: 'Ausland', parent: root, zip_codes: zip_code)
+          @foreign_kontakte = Group::KantonKontakte.create!(name: 'Kontakte', parent: @foreign)
+          @foreign_zugeordnete = Group::KantonZugeordnete.create!(name: 'Zugeordnete', parent: @foreign)
+        end
+
+        it 'puts person in bern group for matching zip' do
+          person.update(zip_code: 3000)
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonZugeordnete::Sympathisant)
+          expect(new_role.group).to eq groups(:bern_zugeordnete)
+        end
+
+        it 'puts person in foreign group for more than 4 digits' do
+          person.update(zip_code: 90210)
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonZugeordnete::Sympathisant)
+        end
+
+        it 'puts person in foreign group for less than 4 digits' do
+          person.update(zip_code: 210)
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonZugeordnete::Sympathisant)
+        end
+      end
     end
   end
 
@@ -128,6 +188,36 @@ describe SortingHat do
         SortingHat.new(person, role, jglp).sing
         expect(new_role).to be_a(Group::RootKontakte::Kontakt)
         expect(new_role.group).to eq groups(:root_kontakte)
+      end
+
+      context :invalid_zip_code do
+        let(:zip_code) { SortingHat::FOREIGN_ZIP_CODE }
+        let(:root)     { groups(:root) }
+
+        before do
+          @foreign = Group::Kanton.create!(name: 'Ausland', parent: root, zip_codes: zip_code)
+          @foreign_kontakte = Group::KantonKontakte.create!(name: 'Kontakte', parent: @foreign)
+          @foreign_zugeordnete = Group::KantonZugeordnete.create!(name: 'Zugeordnete', parent: @foreign)
+        end
+
+        it 'puts person in bern group for matching zip' do
+          person.update(zip_code: 3000)
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonKontakte::Kontakt)
+          expect(new_role.group).to eq groups(:bern_kontakte)
+        end
+
+        it 'puts person in foreign group for more than 4 digits' do
+          person.update(zip_code: 90210)
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonKontakte::Kontakt)
+        end
+
+        it 'puts person in foreign group for less than 4 digits' do
+          person.update(zip_code: 210)
+          SortingHat.new(person, role, jglp).sing
+          expect(new_role).to be_a(Group::KantonKontakte::Kontakt)
+        end
       end
     end
   end
