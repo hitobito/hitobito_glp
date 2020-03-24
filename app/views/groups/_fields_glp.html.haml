@@ -5,4 +5,4 @@
 
 
 - if ["Group::Bezirk", "Group::Ortsektion", "Group::Kanton" ].include? entry.type
-  = f.labeled_text_area :zip_codes, label: t('zip_codes.separated_by_comma')
+  = f.labeled_text_area :zip_codes, label: t('zip_codes.separated_by_comma') unless SortingHat.locked?(entry)

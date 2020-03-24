@@ -1,5 +1,32 @@
+# Wird via externem Formular angestossen
+#  Mitglied -> Gruppe Zugeordnete
+#  Sympathisant -> Gruppe Zugeordnete
+#  Medien_und_dritte -> Gruppe Medien_und_dritte
+#
+# in dem entsprechenden Kanton, falls die Zip dort definiert ist, sonst in der Root Gruppe
+# -> allerdings zip_codes nur für 2 Kantone definiert (stand 5 März 2020)
+#
+# Junge GLP
+# -> nur Gruppe Mitglieder und Sympathisanten
+#
+# Fragen zu glp#7
+# -> Alle Rollen in Mitglieder und Sympathisanten od. Gruppen entsprechend Kanton ergänzen?
+# -> Falls keine zuordnung über zip, person unter Root Gruppe oder jGLP, welche untergruppe?
+#
+#
+# !!! Wo ist das Formular für integration !!!
+
 class SortingHat
   attr_reader :submitted_role, :person, :jglp
+
+  FOREIGN_ZIP_CODE = 102
+  JGLP_ZIP_CODE    = 103
+
+  MONITORING_EMAIL = 'mitgliederdatenbank@grunliberale.ch'
+
+  def self.locked?(group)
+    [FOREIGN_ZIP_CODE, JGLP_ZIP_CODE].any? { |code| code.to_s == group.zip_codes }
+  end
 
   def initialize(person, submitted_role, jglp)
     @person = person
@@ -53,11 +80,11 @@ class SortingHat
     notify_youth_address if jglp
   end
 
-  private
-
   def zip_code
-    person.zip_code
+    person.zip_code.to_s.length > 4 ? FOREIGN_ZIP_CODE : person.zip_code
   end
+
+  private
 
   def preferred_language
     person.preferred_language
@@ -65,7 +92,7 @@ class SortingHat
 
   # eventuell like query?
   def zip_codes_matching_groups
-    groups_with_zip_codes = Group.where.not(zip_codes: '').where.not(type: 'Group::Root')
+    groups_with_zip_codes = Group.where.not(zip_codes:  '').where.not(type: 'Group::Root')
     groups_with_zip_codes.select do |group|
       group.zip_codes.split(",").map(&:strip).include?(zip_code)
     end
@@ -101,7 +128,7 @@ class SortingHat
   def notify_monitoring_address
     Notifier.mitglied_joined_monitoring(@person,
                                         submitted_role,
-                                        'mitgliederdatenbank@grunliberale.ch',
+                                        MONITORING_EMAIL,
                                         jglp).deliver_later
   end
 

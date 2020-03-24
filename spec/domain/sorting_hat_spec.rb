@@ -131,4 +131,10 @@ describe SortingHat do
       end
     end
   end
+
+  it '.locked? is true for top level foreign and jglp groups' do
+    expect(SortingHat.locked?(Group::Kanton.new(zip_codes: SortingHat::FOREIGN_ZIP_CODE))).to eq true
+    expect(SortingHat.locked?(Group::Kanton.new(zip_codes: SortingHat::JGLP_ZIP_CODE))).to eq true
+    expect(SortingHat.locked?(Group::Kanton.new(zip_codes: 'other'))).to eq false
+  end
 end
