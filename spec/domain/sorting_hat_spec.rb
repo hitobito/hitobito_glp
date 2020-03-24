@@ -37,6 +37,17 @@ describe SortingHat do
     @jglp_be_zugeordnete = Group::BezirkZugeordnete.create!(name: 'Zugeordnete', parent: @jglp_be)
   end
 
+  it 'raises on invalid role' do
+    expect do
+      SortingHat.new(person, 'Admin', jglp).sing
+    end.to raise_exception(ArgumentError)
+  end
+
+  it '.locked? is true for top level foreign and jglp groups' do
+    expect(SortingHat.locked?(Group::Kanton.new(zip_codes: SortingHat::FOREIGN_ZIP_CODE))).to eq true
+    expect(SortingHat.locked?(Group::Kanton.new(zip_codes: SortingHat::JGLP_ZIP_CODE))).to eq true
+    expect(SortingHat.locked?(Group::Kanton.new(zip_codes: 'other'))).to eq false
+  end
 
   describe 'Mitglied' do
     let(:role)           {  'Mitglied' }
@@ -80,6 +91,16 @@ describe SortingHat do
         SortingHat.new(person, role, jglp).sing
         expect(new_role).to be_a(Group::KantonZugeordnete::Mitglied)
         expect(new_role.group).to eq groups(:bern_zugeordnete)
+      end
+
+      it 'puts person in root group if multiple zips match' do
+        groups(:zurich).update(zip_codes: '3000')
+        person.update(zip_code: 3000)
+        expect(notifier).to receive(:mitglied_joined).with(person, 'root@example.com', jglp)
+
+        SortingHat.new(person, role, jglp).sing
+        expect(new_role).to be_a(Group::RootZugeordnete::Mitglied)
+        expect(new_role.group).to eq groups(:root_zugeordnete)
       end
 
       it 'puts person in root group' do
@@ -269,9 +290,4 @@ describe SortingHat do
     end
   end
 
-  it '.locked? is true for top level foreign and jglp groups' do
-    expect(SortingHat.locked?(Group::Kanton.new(zip_codes: SortingHat::FOREIGN_ZIP_CODE))).to eq true
-    expect(SortingHat.locked?(Group::Kanton.new(zip_codes: SortingHat::JGLP_ZIP_CODE))).to eq true
-    expect(SortingHat.locked?(Group::Kanton.new(zip_codes: 'other'))).to eq false
-  end
 end
