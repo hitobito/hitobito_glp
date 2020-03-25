@@ -14,6 +14,12 @@ class ExternalFormsController < ApplicationController
   def index
   end
 
+  def test
+    @language = params.fetch(:language, 'de')
+    @role = params.fetch(:role, 'mitglied')
+    render 'test', layout: false
+  end
+
   def loader
     @language = params[:language] || "de"
     I18n.locale = @language
@@ -60,7 +66,7 @@ class ExternalFormsController < ApplicationController
                 <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
               </div>
               <label for='jglp'>
-                <input name='externally_submitted_person[jglp]' type='checkbox' id='jglp'/>
+                <input name='externally_submitted_person[jglp]' type='checkbox' id='jglp' value='true'/>
                 #{t("external_form_js.jglp")}
               </label>
               <br/>

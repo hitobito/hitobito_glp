@@ -35,9 +35,18 @@
 
   <h2>Formular</h2>
   <%= render partial: "form_textarea", locals: { content: form_loader("mitglied") } %>
+  <br/>
+  <%= action_button 'Test', external_forms_test_url, nil, id: 'test_button' %>
 </div>
 
 <script>
+  function openTestWindow(url) {
+    var role = $("#ext_form_role").val();
+    var language = $("#ext_form_language").val();
+    console.log(url + "?role=" + role + "&language=" + language);
+    var win = window.open(url + "?role=" + role + "&language=" + language, '_blank');
+    win.focus();
+  }
   function external_forms_index(){
     $("#ext_form_role, #ext_form_language")
       .off("change")
@@ -46,6 +55,11 @@
   function on_select_change(){
     var role = $("#ext_form_role").val();
     var language = $("#ext_form_language").val();
+    var link = $('#test_button')
+
+    url = link[0]['href'].split('?')[0];
+    url += "?role=" + role + "&language=" + language;
+    link[0]['href'] = url;
 
     var textarea = $("textarea.external_forms");
     textarea.val(
