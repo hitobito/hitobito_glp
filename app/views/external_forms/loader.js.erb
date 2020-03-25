@@ -104,6 +104,9 @@
     traverseNodeList(form.querySelectorAll("input"), function(input){
       if(input.name !== ""){
         data[input.name] = input.value;
+        if (input.type == 'checkbox') {
+          data[input.name] = input.checked;
+        }
       }
     });
     return data;
