@@ -1,9 +1,9 @@
-# Wird via externem Formular angestossen
-#  Mitglied -> Gruppe Zugeordnete
-#  Sympathisant -> Gruppe Zugeordnete
-#  Medien_und_dritte -> Gruppe Medien_und_dritte
-#
-# in dem entsprechenden Kanton, oder Bezirk (JGLP), sonst parent
+# encoding: utf-8
+
+#  Copyright (c) 2012-2020, GLP Schweiz. This file is part of
+#  hitobito_glp and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_glp.
 
 class SortingHat
   FOREIGN_ZIP_CODE = 102
