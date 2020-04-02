@@ -41,6 +41,11 @@ module HitobitoGlp
 
       ApplicationMailer.send :layout, 'mailer'
 
+      # TODO: maybe better additional_merge fields, code gets execute on every code reload
+      Synchronize::Mailchimp::Synchronizator.member_fields = [
+        [ :language, ->(p) { p.preferred_language } ]
+      ]
+
       # Main navigation
       admin = NavigationHelper::MAIN.find { |entry| entry[:label] == :admin }
       admin[:active_for].append('external_forms')
