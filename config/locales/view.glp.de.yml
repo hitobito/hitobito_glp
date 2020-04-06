@@ -26,6 +26,9 @@ de:
     zip_code: PLZ
     jglp: Ich bin unter 35 und möchte auch Mitglied der Jungen Grünliberalen werden (empfohlen).
 
+  filter_navigation/people:
+    kanton_layer_members: Mitglieder im Kanton
+
   notifier:
     welcome_mitglied:
       from: schweiz@grunliberale.ch

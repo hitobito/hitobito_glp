@@ -43,6 +43,9 @@ module HitobitoGlp
 
       ApplicationMailer.send :layout, 'mailer'
 
+      FilterNavigation::People.send :prepend, Glp::FilterNavigation::People
+
+
       # TODO: maybe better additional_merge fields, code gets execute on every code reload
       Synchronize::Mailchimp::Synchronizator.member_fields = [
         [ :language, ->(p) { p.preferred_language } ]
