@@ -12,7 +12,8 @@ module Glp::EventAbility
   included do
     on(Event) do
       permission(:layer_and_below_full).
-        may(:create, :destroy, :application_market, :qualify, :qualifications_read).in_same_layer_or_below
+        may(:create, :destroy, :application_market, :qualify, :qualifications_read).
+        in_same_layer_or_below
     end
   end
 end
