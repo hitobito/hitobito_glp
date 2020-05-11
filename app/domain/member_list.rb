@@ -7,10 +7,16 @@
 
 class MemberList
 
-  def initialize(template, group,  range = 'deep')
+  KINDS = %w[
+    members
+    sympis
+    members_and_sympis
+  ]
+
+  def initialize(template, group, kind)
     @template  = template
-    @layer_group = find_layer_group(group)
-    @range = range
+    @layer_group = group.layer_group
+    @kind = kind
   end
 
   def count
@@ -23,43 +29,28 @@ class MemberList
     @template.group_people_path(@layer_group, params.merge(name: name))
   end
 
-  def applies?
-    !(root_layer? || special_layer?)
-  end
 
   def key
-    [@layer_group.class.to_s.demodulize.downcase, 'layer_members'].join('_')
+    [@layer_group.class.to_s.demodulize.downcase, @kind].join('.')
   end
-
 
   private
 
-  def root_layer?
-    @layer_group.is_a?(Group::Root)
-  end
-
-  def special_layer?
-    [SortingHat::FOREIGN_ZIP_CODE, SortingHat::JGLP_ZIP_CODE].any? do |code|
-      code.to_s == @layer_group.zip_codes
-    end
-  end
-
-  def find_layer_group(group)
-    case group.layer_group
-    when Group::Root, Group::Kanton then group.layer_group
-    else find_layer_group(group.layer_group.parent)
-    end
-  end
-
   def params
     {
-      range: @range,
+      range: 'deep',
       filters: { role: { role_type_ids: role_type_ids } }
     }
   end
 
   def role_type_ids
-    types = Role.all_types.select { |type| type.to_s =~ /Zugeordnete::Mitglied$/ }
+    types = if @kind == 'members'
+      Role.all_types.select { |type| type.to_s =~ /Zugeordnete::Mitglied$/ }
+    elsif @kind == 'sympis'
+      Role.all_types.select { |type| type.to_s =~ /Zugeordnete::Sympathisant$/ }
+    elsif @kind == 'members_and_sympis'
+      Role.all_types.select { |type| type.to_s =~ /Zugeordnete::(Mitglied|Sympathisant)$/ }
+    end
     types.collect(&:id).join(Person::Filter::Base::ID_URL_SEPARATOR)
   end
 

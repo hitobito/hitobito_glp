@@ -10,23 +10,32 @@ module Glp::FilterNavigation::People
   def init_kind_filter_names
     super
 
-    @kind_filter_names[:layer_members] = label if member_list.applies?
+    MemberList::KINDS.take(1).each do |kind|
+      member_list = MemberList.new(template, group, kind)
+      @kind_filter_names[kind] = label(member_list.key)
+    end
   end
 
   def init_kind_items
     super
 
-    if member_list.applies?
-      item(label, member_list.path(name: label), member_list.count)
+    MemberList::KINDS.each_with_index do |kind, index|
+      member_list = MemberList.new(template, group, kind)
+      name = label(member_list.key)
+
+      if index.zero?
+        item(name, member_list.path(name: name), member_list.count)
+      else
+        dropdown.add_item(name, member_list.path(name: name))
+      end
     end
   end
 
-  def label
-    translate(member_list.key)
+  def root?
+    group.layer_group.is_a?(Group::Root)
   end
 
-  def member_list
-    @member_list ||= MemberList.new(template, group)
+  def label(key)
+    translate(key)
   end
-
 end

@@ -12,10 +12,8 @@ module Glp::Group
     # self.used_attributes += [:zip_codes]
     # serialize :zip_codes, Array
 
-
     root_types Group::Root
 
     scope :with_zip_codes, -> { where.not(zip_codes: ['', nil]) }
   end
-
 end

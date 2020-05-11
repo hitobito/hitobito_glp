@@ -27,8 +27,22 @@ de:
     jglp: Ich bin unter 35 und möchte auch Mitglied der Jungen Grünliberalen werden (empfohlen).
 
   filter_navigation/people:
-    kanton_layer_members: Mitglieder im Kanton
-
+    root:
+      members: Mitglieder im Bund
+      sympis: Sympathisanten im Bund
+      members_and_sympis: Mitglieder und Sympathisanten im Bund
+    kanton:
+      members: Mitglieder im Kanton
+      sympis: Sympathisanten im Kanton
+      members_and_sympis: Mitglieder und Sympathisanten im Kanton
+    bezirk:
+      members: Mitglieder im Bezirk
+      sympis: Sympathisanten im Bezirk
+      members_and_sympis: Mitglieder und Sympathisanten im Bezirk
+    ortsektion:
+      members: Mitglieder in der Ortsektion
+      sympis: Sympathisanten in der Ortsektion
+      members_and_sympis: Mitglieder und Sympathisanten in der Ortsektion
   notifier:
     welcome_mitglied:
       from: schweiz@grunliberale.ch
