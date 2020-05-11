@@ -1,12 +1,10 @@
 notifications:
   email: false
 language: ruby
+dist: xenial
 cache: bundler
 services:
   - mysql
-branches:
-  only:
-    - master
 env:
   global:
     - HEADLESS=true
@@ -18,7 +16,7 @@ rvm:
 install:
   - unset BUNDLE_GEMFILE # we bundle in different directories
   - cd .. && git clone https://github.com/hitobito/hitobito.git hitobito
-  - cd hitobito && git checkout -f rails-5
+  - cd hitobito && git checkout -f master
   - export HITOBITO_CORE_DIR=$PWD
   - cp -v Wagonfile.ci Wagonfile
   - rvm use $TRAVIS_RUBY_VERSION --fuzzy
