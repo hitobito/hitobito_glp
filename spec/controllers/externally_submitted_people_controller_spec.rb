@@ -38,9 +38,9 @@ describe ExternallySubmittedPeopleController do
     expect(Person.last.preferred_language).to eq "de"
   end
 
-  it "sends 3 notification emails to." do
+  it "sends 5 notification emails to." do
     perform_enqueued_jobs do
-      expect{subject_with_args}.to change(ActionMailer::Base.deliveries, :count).by(3)
+      expect{subject_with_args}.to change(ActionMailer::Base.deliveries, :count).by(5)
     end
   end
 
@@ -110,7 +110,7 @@ describe ExternallySubmittedPeopleController do
     it 'works without jglp field does not include field in email' do
 
       perform_enqueued_jobs do
-        expect { subject_with_args }.to change(mails, :count).by(3)
+        expect { subject_with_args }.to change(mails, :count).by(5)
       end
 
       monitoring_mail = mails.find { |m| m.to.include?('mitgliederdatenbank@grunliberale.ch') }
@@ -124,7 +124,7 @@ describe ExternallySubmittedPeopleController do
 
     it 'accepts jglp field and includes it in emails' do
       perform_enqueued_jobs do
-        expect { subject_with_args({jglp: 1}) }.to change(mails, :count).by(4)
+        expect { subject_with_args({jglp: 1}) }.to change(mails, :count).by(6)
       end
 
       monitoring_mail = mails.find { |m| m.to.include?('mitgliederdatenbank@grunliberale.ch') }

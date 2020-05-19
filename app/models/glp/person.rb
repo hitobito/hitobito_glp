@@ -15,6 +15,7 @@ module Glp::Person
   included do
     Person::PUBLIC_ATTRS << :title
     alias_method_chain :full_name, :title
+    scope :admin, -> { joins(:roles).where('roles.type LIKE "%::Administrator"') }
   end
 
   def two_factor_authentication_required?

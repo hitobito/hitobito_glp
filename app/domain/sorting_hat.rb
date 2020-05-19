@@ -35,6 +35,7 @@ class SortingHat
     create_role
     send_welcome_mail
     notify_parent_group if mitglied?
+    notify_layer_admins
     notify_youth_address if jglp?
     notify_monitoring_address
   end
@@ -128,5 +129,11 @@ class SortingHat
 
   def notify_parent_group
     Notifier.mitglied_joined(@person, group.parent.email, jglp?).deliver_later if group.parent.email
+  end
+
+  def notify_layer_admins
+    Person.admin.where(roles: { group: group.layer_hierarchy } ).distinct.find_each do |admin|
+      Notifier.mitglied_joined_monitoring(@person, @role, admin.email, jglp?).deliver_later
+    end
   end
 end
