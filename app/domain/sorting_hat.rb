@@ -68,7 +68,7 @@ class SortingHat
   def find_group_for_role_and_zip(parent)
     parent ||= root_group # use root_group in case we have not parent
 
-    groups_for_zip = zip? ? parent.children.where('zip_codes LIKE ?', "%#{@zip}%") : Group.none
+    groups_for_zip = zip? ? parent.descendants.where('zip_codes LIKE ?', "%#{@zip}%") : Group.none
     group = find_group_for_role(groups_for_zip.first) if groups_for_zip.one?
 
     group || find_group_for_role(parent)

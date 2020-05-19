@@ -108,6 +108,16 @@ describe SortingHat do
         expect(new_role.group).to eq groups(:bern_zugeordnete)
       end
 
+      it 'puts person in Bezirk with matching zip' do
+        person.update(zip_code: 3002)
+        bezirk = Fabricate(Group::Bezirk.sti_name, parent: groups(:bern), zip_codes: '3002', email: 'bezirk@example.com')
+        bezirk_zugeordnete = Fabricate(Group::BezirkZugeordnete.sti_name, parent: bezirk)
+        expect(notifier).to receive(:mitglied_joined).with(person, 'bezirk@example.com', jglp)
+        SortingHat.new(person, role, jglp).sing
+        expect(new_role).to be_a(Group::BezirkZugeordnete::Mitglied)
+        expect(new_role.group).to eq bezirk_zugeordnete
+      end
+
       it 'notifies admin of kanton and root group' do
         person.update(zip_code: 3000)
         kantons_admin = Fabricate(Group::Kanton::Administrator.sti_name, group: groups(:bern)).person
