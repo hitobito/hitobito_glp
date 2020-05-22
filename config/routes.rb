@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   extend LanguageRouteScope
 
   language_scope do
-    match '*path', :controller => 'glp_application', :action => 'handle_options_request', via: :options
-
     get 'external_forms', to: "external_forms#index"
     get 'external_forms/test', to: "external_forms#test"
     get 'external_forms/loader', to: "external_forms#loader"
