@@ -3,10 +3,13 @@
   title "Externe Formulare"
 
   def form_loader(role)
+    hostname = ENV.fetch('RAILS_HOST_NAME', 'localhost:3000')
+    scheme = Rails.env.development? ? 'http' : 'https'
+
     <<-END.gsub(/^ {6}/, '')
       <div id="hitobito-external-form">Formular wird geladen…</div>
       <script src='https://www.google.com/recaptcha/api.js'></script>
-      <script src="#{Rails.env.production? ? "https://glp-community.ch" : "http://localhost:3000"}/external_forms/loader.js?role=mitglied&language=de"></script>
+      <script src="#{scheme}://#{hostname}/external_forms/loader.js?role=mitglied&language=de"></script>
     END
   end
 
