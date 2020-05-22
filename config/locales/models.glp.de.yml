@@ -22,6 +22,7 @@ de:
         joined_at: Datum Eintritt
         left_at: Datum Austritt
         website_link: Webseite
+        notify_on_join: Eintrittsbenachrichtung
         genders:
           _nil: unbekannt/anderes
     models:

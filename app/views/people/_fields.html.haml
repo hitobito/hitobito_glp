@@ -49,8 +49,9 @@
   = f.labeled(:preferred_language) do
     = f.collection_select(:preferred_language, Person::PREFERRED_LANGUAGES, :to_s, :to_s, {}, class: 'span2')
   = f.labeled_input_fields :paperless
-
-= render_extensions :fields, locals: { f: f }
+  - if @person.admin?
+    = field_set_tag do
+      = f.labeled_input_field(:notify_on_join)
 
 - if !without_relations && PeopleRelation.possible_kinds.present?
   = field_set_tag do
@@ -63,3 +64,4 @@
 
 = field_set_tag do
   = f.labeled_input_field(:joining_journey)
+

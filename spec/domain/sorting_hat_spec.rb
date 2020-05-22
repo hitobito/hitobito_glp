@@ -118,7 +118,7 @@ describe SortingHat do
         expect(new_role.group).to eq bezirk_zugeordnete
       end
 
-      it 'notifies admin of kanton and root group' do
+      it 'notifies admins of kanton and root group' do
         person.update(zip_code: 3000)
         kantons_admin = Fabricate(Group::Kanton::Administrator.sti_name, group: groups(:bern)).person
 
@@ -130,6 +130,20 @@ describe SortingHat do
         end
         SortingHat.new(person, role, jglp).sing
       end
+
+      it 'does not notify admins if they set notify_on_join to false' do
+        person.update(zip_code: 3000)
+        Person.update_all(notify_on_join: false)
+
+        [people(:leader), people(:admin)].each do |admin|
+          expect(notifier).not_to receive(:mitglied_joined_monitoring).with(person,
+                                                                        role,
+                                                                        admin.email,
+                                                                        jglp)
+        end
+        SortingHat.new(person, role, jglp).sing
+      end
+
 
       it 'puts person in root group if multiple zips match' do
         groups(:zurich).update(zip_codes: '3000')

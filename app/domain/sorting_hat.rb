@@ -132,7 +132,8 @@ class SortingHat
   end
 
   def notify_layer_admins
-    Person.admin.where(roles: { group: group.layer_hierarchy } ).distinct.find_each do |admin|
+    scope = Person.admin.notify_on_join.where(roles: { group: group.layer_hierarchy } )
+    scope.distinct.find_each do |admin|
       Notifier.mitglied_joined_monitoring(@person, @role, admin.email, jglp?).deliver_later
     end
   end

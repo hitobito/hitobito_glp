@@ -12,7 +12,7 @@ module Glp::PeopleController
     self.permitted_attrs += [:title, :preferred_language,
                              :joining_journey, :occupation,
                              :joined_at, :left_at, :website_url,
-                             :paperless, :place_of_origin]
+                             :paperless, :place_of_origin, :notify_on_join]
     before_update :notify_schweiz_at_grunliberale_ch
     before_destroy :notify_leadership
   end

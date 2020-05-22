@@ -16,6 +16,11 @@ module Glp::Person
     Person::PUBLIC_ATTRS << :title
     alias_method_chain :full_name, :title
     scope :admin, -> { joins(:roles).where('roles.type LIKE "%::Administrator"') }
+    scope :notify_on_join, -> { where(notify_on_join: true) }
+  end
+
+  def admin?
+    roles.any? { |role| role.type =~ /::Administrator/ }
   end
 
   def two_factor_authentication_required?
