@@ -26,5 +26,23 @@ describe ExternalFormsController do
       get :loader, params: { language: :it }, format: :js
       expect(response.body).to match (%r{action=.*it/externally_submitted_people})
     end
+
+    context 'jglp' do
+
+      it "checkbox is present for role mitglied" do
+        get :loader, params: { role: 'mitglied' }, format: :js
+        expect(response.body).to match (%r{label for='jglp'})
+      end
+
+      it "checkbox is absent for role sympathisant" do
+        get :loader, params: { role: 'sympathisant' }, format: :js
+        expect(response.body).not_to match (%r{label for='jglp'})
+      end
+
+      it "checkbox is absent for role medien_und_dritte" do
+        get :loader, params: { role: 'medien_und_dritte' }, format: :js
+        expect(response.body).not_to match (%r{label for='jglp'})
+      end
+    end
   end
 end

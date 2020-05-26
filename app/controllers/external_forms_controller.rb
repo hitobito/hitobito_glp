@@ -35,7 +35,7 @@ class ExternalFormsController < ApplicationController
     action = externally_submitted_people_url(locale: params.fetch(:language, :de))
     role = options[:role]
 
-    <<-END
+    <<-HTML
       <div class='form'>
         <div class='form-wrapper'>
           <p id='hitobito-external-form-message'></p>
@@ -65,10 +65,7 @@ class ExternalFormsController < ApplicationController
                 </label>
                 <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
               </div>
-              <label for='jglp'>
-                <input name='externally_submitted_person[jglp]' type='checkbox' id='jglp' value='true'/>
-                #{t("external_form_js.jglp")}
-              </label>
+              #{jglp_field(role)}
               <br/>
               <label for='terms_and_conditions'>
                 <input name='terms_and_conditions' id='terms_and_conditions' type='checkbox' />
@@ -89,7 +86,17 @@ class ExternalFormsController < ApplicationController
           </form>
         </div>
       </div>
-    END
+    HTML
   end
 
+  def jglp_field(role)
+    return '' unless role == 'mitglied'
+
+    <<-HTML
+      <label for='jglp'>
+        <input name='externally_submitted_person[jglp]' type='checkbox' id='jglp' value='true'/>
+        #{t('external_form_js.jglp')}
+      </label>
+    HTML
+  end
 end
