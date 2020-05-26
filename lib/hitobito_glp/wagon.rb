@@ -34,6 +34,7 @@ module HitobitoGlp
       RoleAbility.send         :include, Glp::RoleAbility
       EventAbility.send        :include, Glp::EventAbility
       MailingListAbility.send  :include, Glp::MailingListAbility
+      PeopleFilterAbility.send  :include, Glp::PeopleFilterAbility
 
       MailingList.send           :include, Glp::MailingList
 
