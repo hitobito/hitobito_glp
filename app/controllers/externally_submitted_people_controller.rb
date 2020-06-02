@@ -45,7 +45,7 @@ class ExternallySubmittedPeopleController < ApplicationController
       attrs[:preferred_language] = 'de' if attrs[:preferred_language].blank?
 
       @person = Person.create!(attrs)
-      SortingHat.new(@person, submitted_role, jglp).sing
+      SortingHat::Song.new(@person, submitted_role, jglp).sing
       render json: @person, status: :ok
     end
   rescue ActiveRecord::RecordInvalid => e
