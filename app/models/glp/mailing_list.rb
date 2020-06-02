@@ -19,12 +19,12 @@ module Glp::MailingList
       .where(attributes_conditions_with_explicit_subscribers)
   end
 
-  def genders_array
-    genders ? genders.split(",").map { |g| g == '_nil' ? nil : g } : []
+  def gender_value(gender)
+    genders_array.include?(gender == '_nil' ? nil : gender)
   end
 
-  def languages_array
-    languages ? languages.split(",") : []
+  def language_value(language)
+    languages_array.include?(language.to_s)
   end
 
   private
@@ -82,5 +82,14 @@ module Glp::MailingList
     Person.where(*attrs).to_sql.split('WHERE ')[1]
   end
 
+  def genders_array
+    return [] unless genders
+
+    genders.split(',').map { |g| g == '_nil' ? nil : g }
+  end
+
+  def languages_array
+    languages ? languages.split(',') : []
+  end
 
 end

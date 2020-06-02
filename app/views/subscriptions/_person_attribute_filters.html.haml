@@ -14,7 +14,7 @@
         = label_tag("mailing_list_genders_#{gender}", class: 'checkbox inline') do
           = check_box_tag("genders[]",
                           gender,
-                          @mailing_list.genders_array.include?(gender == '_nil' ? nil : gender),
+                          @mailing_list.gender_value(gender),
                           id: "mailing_list_genders_#{gender}")
           = t "activerecord.attributes.person.genders.#{gender}"
 
@@ -25,7 +25,7 @@
         = label_tag("mailing_list_languages_#{language}", class: 'checkbox inline') do
           = check_box_tag("languages[]",
                           language,
-                          @mailing_list.languages_array.include?(language.to_s),
+                          @mailing_list.language_value(language),
                           id: "mailing_list_languages_#{language}")
           = Settings.application.languages[language]
 

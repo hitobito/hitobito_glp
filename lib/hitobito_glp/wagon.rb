@@ -37,6 +37,7 @@ module HitobitoGlp
       PeopleFilterAbility.send  :include, Glp::PeopleFilterAbility
 
       MailingList.send           :include, Glp::MailingList
+      Person::Subscriptions.send :prepend, Glp::Person::Subscriptions
 
       Sheet::Base.send :prepend, Glp::Sheet::Base
 
