@@ -51,10 +51,6 @@ class SortingHat
     group.roles.create!(type: "#{group.class.sti_name}::#{role_type}", person: @person)
   end
 
-  def send_welcome_mail
-    send("send_him_a_#{role.downcase}_welcome_email")
-  end
-
   def find_group
     if jglp?
       find_group_for_role_and_zip(jglp_group)
