@@ -51,7 +51,7 @@ describe PeopleController, type: :controller do
       get :show, params: { group_id: group.id, id: person.id }
       dom = Capybara::Node::Simple.new(response.body)
       expect(dom).not_to have_text 'Gruppen'
-      expect(dom).not_to have_text 'Abos'
+      expect(dom).not_to have_text 'Personen'
     end
   end
 end
