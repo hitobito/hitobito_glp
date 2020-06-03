@@ -71,7 +71,9 @@ module SortingHat
     end
 
     def notify_parent_group(group)
-      Notifier.mitglied_joined(@person, group.parent.email, jglp?).deliver_later if group.parent.email
+      if group.parent.email && group.parent.email != JGLP_EMAIL
+        Notifier.mitglied_joined(@person, group.parent.email, jglp?).deliver_later
+      end
     end
 
     def notify_layer_admins(groups)
