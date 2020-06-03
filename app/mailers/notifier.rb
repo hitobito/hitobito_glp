@@ -28,7 +28,7 @@ class Notifier < ApplicationMailer
 
   def mitglied_joined_monitoring person, submitted_role, email, jglp
     @person = person
-    @category = submitted_role.gsub("_und_", " & ")
+    @category = submitted_role
     @preferred_language = preferred_language(person)
     @jglp = jglp
 
@@ -37,11 +37,12 @@ class Notifier < ApplicationMailer
       @subject = "Achtung: Neues Mitglied"
       @welcome = "Ein neues Mitglied hat sich registriert."
     when "Sympathisant"
-      @subject = "Achtung: Neue/r Sympathisant"
+      @subject = "Achtung: Neue/r Sympathisant/in"
       @welcome = "Ein/e neue/r Sympathisant/in hat sich registriert."
     when "Medien_und_dritte"
       @subject = "Achtung: Neue News-Anmeldung"
       @welcome = "Es gibt eine neue Anmeldung für Partei-News."
+      @category = 'Medien & Dritte'
     end
 
     mail(to: email, subject: @subject)

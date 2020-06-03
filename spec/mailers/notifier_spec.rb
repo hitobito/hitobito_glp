@@ -13,23 +13,38 @@ describe Notifier do
   let(:jglp)   { false }
 
   context :mitglied_joined_monitoring do
-    let(:role)   { roles(:mitglied) }
-    let(:person) { role.person }
+    let(:person) { Person.new(email: 'me@example.com') }
+    subject { Notifier.mitglied_joined_monitoring(person, role, person.email, jglp) }
 
-    subject { Notifier.mitglied_joined_monitoring(role.person, role.to_s, role.person.email, jglp) }
+    describe 'role Mitglied' do
+      let(:role)   { 'Mitglied' }
 
-    it 'does not fail if preferred_language language is nil' do
-      person.update(preferred_language: nil)
-      expect(subject.subject).to eq 'Achtung: Neues Mitglied'
-      expect(subject.body).to match %r{Ein neues Mitglied hat sich registriert}
-      expect(subject.body).to match %r{Sprache:\s+}
+      it 'does not fail if preferred_language language is nil' do
+        expect(subject.subject).to eq 'Achtung: Neues Mitglied'
+        expect(subject.body).to match %r{Ein neues Mitglied hat sich registriert}
+        expect(subject.body).to match %r{Sprache:\s+}
+      end
+
+      it 'includes preferred_language language in email body' do
+        person.preferred_language = 'de'
+        expect(subject.subject).to eq 'Achtung: Neues Mitglied'
+        expect(subject.body).to match %r{Ein neues Mitglied hat sich registriert}
+        expect(subject.body).to match %r{Sprache:\s+Deutsch}
+      end
     end
 
-    it 'includes preferred_language language in email body' do
-      person.update(preferred_language: :de)
-      expect(subject.subject).to eq 'Achtung: Neues Mitglied'
-      expect(subject.body).to match %r{Ein neues Mitglied hat sich registriert}
-      expect(subject.body).to match %r{Sprache:\s+Deutsch}
+    describe 'role Sympathisant' do
+      let(:role) { 'Sympathisant' }
+      it 'has gender neutral subject' do
+        expect(subject.subject).to eq 'Achtung: Neue/r Sympathisant/in'
+      end
+    end
+
+    describe 'role Medien_und_dritte' do
+      let(:role) { 'Medien_und_dritte' }
+      it 'has translated Role' do
+        expect(subject.body).to match(/Medien &amp; Dritte/)
+      end
     end
   end
 
