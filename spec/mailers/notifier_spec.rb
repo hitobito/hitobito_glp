@@ -13,7 +13,7 @@ describe Notifier do
   let(:jglp)   { false }
 
   context :mitglied_joined_monitoring do
-    let(:person) { Person.new(email: 'me@example.com') }
+    let(:person) { Person.new(email: 'me@example.com', first_name: 'Gerd', last_name: 'Gärtner') }
     subject { Notifier.mitglied_joined_monitoring(person, role, person.email, jglp) }
 
     describe 'role Mitglied' do
@@ -23,6 +23,8 @@ describe Notifier do
         expect(subject.subject).to eq 'Achtung: Neues Mitglied'
         expect(subject.body).to match %r{Ein neues Mitglied hat sich registriert}
         expect(subject.body).to match %r{Sprache:\s+}
+        expect(subject.body).to match %r{Gerd}
+        expect(subject.body).to match %r{Gärtner}
       end
 
       it 'includes preferred_language language in email body' do
