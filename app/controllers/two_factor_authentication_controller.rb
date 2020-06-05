@@ -36,4 +36,8 @@ class TwoFactorAuthenticationController < ApplicationController
     params[:person][:second_factor_code]
   end
 
+  def permitted_params
+    params.require(:person)
+  end
+
 end
