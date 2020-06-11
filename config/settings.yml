@@ -26,3 +26,5 @@ impersonate:
 
 two_factor_skip:
   - '@puzzle.ch'
+
+table_displays: false
