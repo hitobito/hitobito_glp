@@ -27,4 +27,7 @@ impersonate:
 two_factor_skip:
   - '@puzzle.ch'
 
+people:
+  abos: true
+
 table_displays: false
