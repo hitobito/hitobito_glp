@@ -21,26 +21,25 @@ en:
         genders:
           _nil: unknown/other
     models:
-      ### GROUPS
       group/root:
         one: Main group
         other: Main groups
-      group/root_geschaeftsstelle: &GESCHAEFTSSTELLE
+      group/root_geschaeftsstelle:
         one: Secretariat
         other: Secretariats
-      group/root_vorstand: &VORSTAND
+      group/root_vorstand:
         one: Board
         other: Boards
-      group/root_arbeitsgruppe: &ARBEITSGRUPPE
+      group/root_arbeitsgruppe:
         one: Task force
         other: Task forces
-      group/root_kontakte: &KONTAKTE
+      group/root_kontakte:
         one: Contact
         other: Contacts
-      group/root_gewaehlte: &GEWAEHLTE
+      group/root_gewaehlte:
         one: Mandate holder
         other: Mandate holders
-      group/root_zugeordnete: &ZUGEORDNETE
+      group/root_zugeordnete:
         one: Member/sympathiser
         other: Members and sympathisers
       group/kanton:
@@ -53,101 +52,113 @@ en:
         one: District
         other: Districts
       group/kanton_vorstand:
-        *VORSTAND
+        one: Board
+        other: Boards
       group/kanton_geschaeftsstelle:
-        *GESCHAEFTSSTELLE
+        one: Secretariat
+        other: Secretariats
       group/kanton_gewaehlte:
-        *GEWAEHLTE
+        one: Mandate holder
+        other: Mandate holders
       group/kanton_arbeitsgruppe:
-        *ARBEITSGRUPPE
+        one: Task force
+        other: Task forces
       group/kanton_zugeordnete:
-        *ZUGEORDNETE
+        one: Member/sympathiser
+        other: Members and sympathisers
       group/kanton_kontakte:
-        *KONTAKTE
+        one: Contact
+        other: Contacts
       group/ortsektion:
         one: Local section
         other: Local sections
       group/ortsektion_gewaehlte:
-        *GEWAEHLTE
+        one: Mandate holder
+        other: Mandate holders
       group/ortsektion_vorstand:
-        *VORSTAND
+        one: Board
+        other: Boards
       group/ortsektion_geschaeftsstelle:
-        *GESCHAEFTSSTELLE
-      group/ortsektion_gewaehlte:
-        *GEWAEHLTE
+        one: Secretariat
+        other: Secretariats
       group/ortsektion_arbeitsgruppe:
-        *ARBEITSGRUPPE
+        one: Task force
+        other: Task forces
       group/ortsektion_zugeordnete:
-        *ZUGEORDNETE
+        one: Member/sympathiser
+        other: Members and sympathisers
       group/ortsektion_kontakte:
-        *KONTAKTE
-      group/bezirk_vorstand:
-        *VORSTAND
-      group/bezirk_geschaeftsstelle:
-        *GESCHAEFTSSTELLE
-      group/bezirk_gewaehlte:
-        *GEWAEHLTE
-      group/bezirk_arbeitsgruppe:
-        *ARBEITSGRUPPE
-      group/bezirk_zugeordnete:
-        *ZUGEORDNETE
-      group/bezirk_kontakte:
-        *KONTAKTE
-
-      ### ROLES
-      group/root/administrator: &ADMINISTRATOR
-        one: Administrator
-        other: Administrators
-      group/root/eventverantwortliche: &EVENTVERANTWORTLICHE
-        one: Responsible for event
-        other: Responsible for event
-
-      group/root_geschaeftsstelle/leitung: &LEITUNG
-        one: Direction
-        other: Direction
-      group/root_geschaeftsstelle/mitarbeiter: &MITARBEITER
-        one: Contributor
-        other: Contributors
-      group/root_geschaeftsstelle/finanzen: &FINANZEN
-        one: Finances
-        other: Finances
-
-      group/root_vorstand/praesidentln: &PRAESIDENTLN
-        one: President
-        other: President
-      group/root_vorstand/vizepraesidentln: &VIZEPRAESIDENTLN
-        one: Vice president
-        other: Vice presidents
-      group/root_vorstand/geschaeftsleitung: &GESCHAEFTSLEITUNG
-        one: Party leadership
-        other: Party leadership
-      group/root_vorstand/kassier: &KASSIER
-        one: Treasurer
-        other: Treasurers
-      group/root_vorstand/vorstandsmitglied: &VORSTANDSMITGLIED
-        one: Board member
-        other: Board members
-      group/root_arbeitsgruppe/leitung: 
-        *LEITUNG
-      group/root_arbeitsgruppe/mitglied: &AGMITGLIED
-        one: Task force member
-        other: Task force members
-      group/root_zugeordnete/mitglied: &MITGLIED
-        one: Party member
-        other: Party members
-      group/root_zugeordnete/sympathisant: &SYMPATHISANT
-        one: Sympathiser
-        other: Sympathisers
-      group/root_zugeordnete/adressverwaltung: &ADRESSVERWALTUNG
-        one: Address management
-        other: Address management
-
-      group/root_kontakte/adressverwaltung:
-        *ADRESSVERWALTUNG
-      group/root_kontakte/kontakt: &KONTAKT
         one: Contact
         other: Contacts
-
+      group/bezirk_vorstand:
+        one: Board
+        other: Boards
+      group/bezirk_geschaeftsstelle:
+        one: Secretariat
+        other: Secretariats
+      group/bezirk_gewaehlte:
+        one: Mandate holder
+        other: Mandate holders
+      group/bezirk_arbeitsgruppe:
+        one: Task force
+        other: Task forces
+      group/bezirk_zugeordnete:
+        one: Member/sympathiser
+        other: Members and sympathisers
+      group/bezirk_kontakte:
+        one: Contact
+        other: Contacts
+      group/root/administrator:
+        one: Administrator
+        other: Administrators
+      group/root/eventverantwortliche:
+        one: Responsible for event
+        other: Responsible for event
+      group/root_geschaeftsstelle/leitung:
+        one: Direction
+        other: Direction
+      group/root_geschaeftsstelle/mitarbeiter:
+        one: Contributor
+        other: Contributors
+      group/root_geschaeftsstelle/finanzen:
+        one: Finances
+        other: Finances
+      group/root_vorstand/praesidentln:
+        one: President
+        other: President
+      group/root_vorstand/vizepraesidentln:
+        one: Vice president
+        other: Vice presidents
+      group/root_vorstand/geschaeftsleitung:
+        one: Party leadership
+        other: Party leadership
+      group/root_vorstand/kassier:
+        one: Treasurer
+        other: Treasurers
+      group/root_vorstand/vorstandsmitglied:
+        one: Board member
+        other: Board members
+      group/root_arbeitsgruppe/leitung:
+        one: Direction
+        other: Direction
+      group/root_arbeitsgruppe/mitglied:
+        one: Task force member
+        other: Task force members
+      group/root_zugeordnete/mitglied:
+        one: Party member
+        other: Party members
+      group/root_zugeordnete/sympathisant:
+        one: Sympathiser
+        other: Sympathisers
+      group/root_zugeordnete/adressverwaltung:
+        one: Address management
+        other: Address management
+      group/root_kontakte/adressverwaltung:
+        one: Address management
+        other: Address management
+      group/root_kontakte/kontakt:
+        one: Contact
+        other: Contacts
       group/root_gewaehlte/bundesrat:
         one: Federal Council
         other: Federal Council
@@ -172,16 +183,15 @@ en:
       group/root_gewaehlte/bundesstrafrichter:
         one: Federal Criminal Court
         other: Federal Criminal Court
-
       group/kanton/administrator:
-        *ADMINISTRATOR
+        one: Administrator
+        other: Administrators
       group/kanton_delegierte/delegierte:
         one: Delegate
         other: Delegates
       group/kanton_delegierte/ersatzdelegierte:
         one: Delegate (deputy)
         other: Delegates (deputies)
-
       group/kanton_gewaehlte/kantonale_exekutive:
         one: Cantonal executive
         other: Cantonal executives
@@ -200,46 +210,61 @@ en:
       group/kanton_gewaehlte/parlamentarische_geschaeftsfuehrung:
         one: Secretariat of parliamentary group
         other: Secretariats of parliamentary group
-      group/kanton_arbeitsgruppe/leitung: 
-        *LEITUNG
+      group/kanton_arbeitsgruppe/leitung:
+        one: Direction
+        other: Direction
       group/kanton_arbeitsgruppe/mitglied:
-        *AGMITGLIED
+        one: Task force member
+        other: Task force members
       group/kanton_zugeordnete/mitglied:
-        *MITGLIED
-      group/kanton_zugeordnete/sympathisant: 
-        *SYMPATHISANT
-      group/kanton_zugeordnete/adressverwaltung: 
-        *ADRESSVERWALTUNG
+        one: Party member
+        other: Party members
+      group/kanton_zugeordnete/sympathisant:
+        one: Sympathiser
+        other: Sympathisers
+      group/kanton_zugeordnete/adressverwaltung:
+        one: Address management
+        other: Address management
       group/kanton_kontakte/adressverwaltung:
-        *ADRESSVERWALTUNG
-      group/kanton_kontakte/kontakt: 
-        *KONTAKT
-      group/kanton_geschaeftsstelle/leitung: 
-        *LEITUNG
-      group/kanton_geschaeftsstelle/mitarbeiter: 
-        *MITARBEITER
+        one: Address management
+        other: Address management
+      group/kanton_kontakte/kontakt:
+        one: Contact
+        other: Contacts
+      group/kanton_geschaeftsstelle/leitung:
+        one: Direction
+        other: Direction
+      group/kanton_geschaeftsstelle/mitarbeiter:
+        one: Contributor
+        other: Contributors
       group/kanton_geschaeftsstelle/finanzen:
-        *FINANZEN
-      group/kanton_vorstand/praesidentln: 
-        *PRAESIDENTLN
-      group/kanton_vorstand/vizepraesidentln: 
-        *VIZEPRAESIDENTLN
-      group/kanton_vorstand/geschaeftsleitung: 
-        *GESCHAEFTSLEITUNG
-      group/kanton_vorstand/kassier: 
-        *KASSIER
-      group/kanton_vorstand/mitglied: 
-        *MITGLIED
-
+        one: Finances
+        other: Finances
+      group/kanton_vorstand/praesidentln:
+        one: President
+        other: President
+      group/kanton_vorstand/vizepraesidentln:
+        one: Vice president
+        other: Vice presidents
+      group/kanton_vorstand/geschaeftsleitung:
+        one: Party leadership
+        other: Party leadership
+      group/kanton_vorstand/kassier:
+        one: Treasurer
+        other: Treasurers
+      group/kanton_vorstand/mitglied:
+        one: Party member
+        other: Party members
       group/ortsektion/administrator:
-        *ADMINISTRATOR
+        one: Administrator
+        other: Administrators
       group/ortsektion_gewaehlte/kommunale_exekutive:
         one: Local executive
         other: Local executives
       group/ortsektion_gewaehlte/kommunale_legislative:
         one: Local legislature
         other: Local legislatures
-      group/ortsektion_gewaehlte/schulpflegekommission :
+      group/ortsektion_gewaehlte/schulpflegekommission:
         one: School board
         other: School boards
       group/ortsektion_gewaehlte/rechnungspruefungskommission:
@@ -248,69 +273,99 @@ en:
       group/ortsektion_gewaehlte/mitglied_weitere_kommissionen:
         one: Member of other commissions
         other: Members of other commissions
-      group/ortsektion_arbeitsgruppe/leitung: 
-        *LEITUNG
+      group/ortsektion_arbeitsgruppe/leitung:
+        one: Direction
+        other: Direction
       group/ortsektion_arbeitsgruppe/mitglied:
-        *AGMITGLIED
+        one: Task force member
+        other: Task force members
       group/ortsektion_zugeordnete/mitglied:
-        *MITGLIED
-      group/ortsektion_zugeordnete/sympathisant: 
-        *SYMPATHISANT
-      group/ortsektion_zugeordnete/adressverwaltung: 
-        *ADRESSVERWALTUNG
+        one: Party member
+        other: Party members
+      group/ortsektion_zugeordnete/sympathisant:
+        one: Sympathiser
+        other: Sympathisers
+      group/ortsektion_zugeordnete/adressverwaltung:
+        one: Address management
+        other: Address management
       group/ortsektion_kontakte/adressverwaltung:
-        *ADRESSVERWALTUNG
-      group/ortsektion_kontakte/kontakt: 
-        *KONTAKT
-      group/ortsektion_geschaeftsstelle/leitung: 
-        *LEITUNG
-      group/ortsektion_geschaeftsstelle/mitarbeiter: 
-        *MITARBEITER
+        one: Address management
+        other: Address management
+      group/ortsektion_kontakte/kontakt:
+        one: Contact
+        other: Contacts
+      group/ortsektion_geschaeftsstelle/leitung:
+        one: Direction
+        other: Direction
+      group/ortsektion_geschaeftsstelle/mitarbeiter:
+        one: Contributor
+        other: Contributors
       group/ortsektion_geschaeftsstelle/finanzen:
-        *FINANZEN
-      group/ortsektion_vorstand/praesidentln: 
-        *PRAESIDENTLN
-      group/ortsektion_vorstand/vizepraesidentln: 
-        *VIZEPRAESIDENTLN
-      group/ortsektion_vorstand/geschaeftsleitung: 
-        *GESCHAEFTSLEITUNG
-      group/ortsektion_vorstand/kassier: 
-        *KASSIER
-      group/ortsektion_vorstand/mitglied: 
-        *MITGLIED
-
+        one: Finances
+        other: Finances
+      group/ortsektion_vorstand/praesidentln:
+        one: President
+        other: President
+      group/ortsektion_vorstand/vizepraesidentln:
+        one: Vice president
+        other: Vice presidents
+      group/ortsektion_vorstand/geschaeftsleitung:
+        one: Party leadership
+        other: Party leadership
+      group/ortsektion_vorstand/kassier:
+        one: Treasurer
+        other: Treasurers
+      group/ortsektion_vorstand/mitglied:
+        one: Party member
+        other: Party members
       group/bezirk/administrator:
-        *ADMINISTRATOR
+        one: Administrator
+        other: Administrators
       group/bezirk_gewaehlte/regierungsstatthalter:
         one: Prefect
         other: Prefects
-      group/bezirk_arbeitsgruppe/leitung: 
-        *LEITUNG
+      group/bezirk_arbeitsgruppe/leitung:
+        one: Direction
+        other: Direction
       group/bezirk_arbeitsgruppe/mitglied:
-        *AGMITGLIED
+        one: Task force member
+        other: Task force members
       group/bezirk_zugeordnete/mitglied:
-        *MITGLIED
-      group/bezirk_zugeordnete/sympathisant: 
-        *SYMPATHISANT
-      group/bezirk_zugeordnete/adressverwaltung: 
-        *ADRESSVERWALTUNG
+        one: Party member
+        other: Party members
+      group/bezirk_zugeordnete/sympathisant:
+        one: Sympathiser
+        other: Sympathisers
+      group/bezirk_zugeordnete/adressverwaltung:
+        one: Address management
+        other: Address management
       group/bezirk_kontakte/adressverwaltung:
-        *ADRESSVERWALTUNG
-      group/bezirk_kontakte/kontakt: 
-        *KONTAKT
-      group/bezirk_geschaeftsstelle/leitung: 
-        *LEITUNG
-      group/bezirk_geschaeftsstelle/mitarbeiter: 
-        *MITARBEITER
+        one: Address management
+        other: Address management
+      group/bezirk_kontakte/kontakt:
+        one: Contact
+        other: Contacts
+      group/bezirk_geschaeftsstelle/leitung:
+        one: Direction
+        other: Direction
+      group/bezirk_geschaeftsstelle/mitarbeiter:
+        one: Contributor
+        other: Contributors
       group/bezirk_geschaeftsstelle/finanzen:
-        *FINANZEN
-      group/bezirk_vorstand/praesidentln: 
-        *PRAESIDENTLN
-      group/bezirk_vorstand/vizepraesidentln: 
-        *VIZEPRAESIDENTLN
-      group/bezirk_vorstand/geschaeftsleitung: 
-        *GESCHAEFTSLEITUNG
-      group/bezirk_vorstand/kassier: 
-        *KASSIER
-      group/bezirk_vorstand/mitglied: 
-        *MITGLIED
+        one: Finances
+        other: Finances
+      group/bezirk_vorstand/praesidentln:
+        one: President
+        other: President
+      group/bezirk_vorstand/vizepraesidentln:
+        one: Vice president
+        other: Vice presidents
+      group/bezirk_vorstand/geschaeftsleitung:
+        one: Party leadership
+        other: Party leadership
+      group/bezirk_vorstand/kassier:
+        one: Treasurer
+        other: Treasurers
+      group/bezirk_vorstand/mitglied:
+        one: Party member
+        other: Party members

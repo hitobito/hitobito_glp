@@ -21,26 +21,25 @@ it:
         genders:
           _nil: ignoto/altro
     models:
-      ### GROUPS
       group/root:
         one: Gruppo principale
         other: Gruppi principali
-      group/root_geschaeftsstelle: &GESCHAEFTSSTELLE
+      group/root_geschaeftsstelle:
         one: Segretariato
         other: Segretariati
-      group/root_vorstand: &VORSTAND
+      group/root_vorstand:
         one: Comitato direttivo
         other: Comitato direttivo
-      group/root_arbeitsgruppe: &ARBEITSGRUPPE
+      group/root_arbeitsgruppe:
         one: Gruppo di lavoro
         other: Gruppi di lavoro
-      group/root_kontakte: &KONTAKTE
+      group/root_kontakte:
         one: Contatto
         other: Contatti
-      group/root_gewaehlte: &GEWAEHLTE
+      group/root_gewaehlte:
         one: Eletto/a
         other: Eletti
-      group/root_zugeordnete: &ZUGEORDNETE
+      group/root_zugeordnete:
         one: Attribuito/a
         other: Attribuiti
       group/kanton:
@@ -53,101 +52,113 @@ it:
         one: Distretto
         other: Distretti
       group/kanton_vorstand:
-        *VORSTAND
+        one: Comitato direttivo
+        other: Comitato direttivo
       group/kanton_geschaeftsstelle:
-        *GESCHAEFTSSTELLE
+        one: Segretariato
+        other: Segretariati
       group/kanton_gewaehlte:
-        *GEWAEHLTE
+        one: Eletto/a
+        other: Eletti
       group/kanton_arbeitsgruppe:
-        *ARBEITSGRUPPE
+        one: Gruppo di lavoro
+        other: Gruppi di lavoro
       group/kanton_zugeordnete:
-        *ZUGEORDNETE
+        one: Attribuito/a
+        other: Attribuiti
       group/kanton_kontakte:
-        *KONTAKTE
+        one: Contatto
+        other: Contatti
       group/ortsektion:
         one: Sezione locale
         other: Sezioni locali
       group/ortsektion_gewaehlte:
-        *GEWAEHLTE
+        one: Eletto/a
+        other: Eletti
       group/ortsektion_vorstand:
-        *VORSTAND
+        one: Comitato direttivo
+        other: Comitato direttivo
       group/ortsektion_geschaeftsstelle:
-        *GESCHAEFTSSTELLE
-      group/ortsektion_gewaehlte:
-        *GEWAEHLTE
+        one: Segretariato
+        other: Segretariati
       group/ortsektion_arbeitsgruppe:
-        *ARBEITSGRUPPE
+        one: Gruppo di lavoro
+        other: Gruppi di lavoro
       group/ortsektion_zugeordnete:
-        *ZUGEORDNETE
+        one: Attribuito/a
+        other: Attribuiti
       group/ortsektion_kontakte:
-        *KONTAKTE
-      group/bezirk_vorstand:
-        *VORSTAND
-      group/bezirk_geschaeftsstelle:
-        *GESCHAEFTSSTELLE
-      group/bezirk_gewaehlte:
-        *GEWAEHLTE
-      group/bezirk_arbeitsgruppe:
-        *ARBEITSGRUPPE
-      group/bezirk_zugeordnete:
-        *ZUGEORDNETE
-      group/bezirk_kontakte:
-        *KONTAKTE
-
-      ### ROLES
-      group/root/administrator: &ADMINISTRATOR
-        one: Amministratore
-        other: Amministratori
-      group/root/eventverantwortliche: &EVENTVERANTWORTLICHE
-        one: Responsabile
-        other: Responsabili
-
-      group/root_geschaeftsstelle/leitung: &LEITUNG
-        one: Direzione
-        other: Direzione
-      group/root_geschaeftsstelle/mitarbeiter: &MITARBEITER
-        one: Collaboratore/trice
-        other: Collaboratori/trici
-      group/root_geschaeftsstelle/finanzen: &FINANZEN
-        one: Finanze
-        other: Finanze
-
-      group/root_vorstand/praesidentln: &PRAESIDENTLN
-        one: Presidente/tessa
-        other: Presidenti/tesse
-      group/root_vorstand/vizepraesidentln: &VIZEPRAESIDENTLN
-        one: Vicepresidente/tessa
-        other: Vicepresidenti/tesse
-      group/root_vorstand/geschaeftsleitung: &GESCHAEFTSLEITUNG
-        one: Comitato
-        other: Comitato
-      group/root_vorstand/kassier: &KASSIER
-        one: Tesoriere/a
-        other: Tesorieri/e
-      group/root_vorstand/vorstandsmitglied: &VORSTANDSMITGLIED
-        one: Membro del Comitato direttivo
-        other: Membri del Comitato direttivo
-      group/root_arbeitsgruppe/leitung: 
-        *LEITUNG
-      group/root_arbeitsgruppe/mitglied: &AGMITGLIED
-        one: Membro del gruppo di lavoro
-        other: Membri del gruppo di lavoro
-      group/root_zugeordnete/mitglied: &MITGLIED
-        one: Membro
-        other: Membri
-      group/root_zugeordnete/sympathisant: &SYMPATHISANT
-        one: Simpatizzante
-        other: Simpatizzanti
-      group/root_zugeordnete/adressverwaltung: &ADRESSVERWALTUNG
-        one: Gestione degli indirizzi
-        other: Gestione degli indirizzi
-
-      group/root_kontakte/adressverwaltung:
-        *ADRESSVERWALTUNG
-      group/root_kontakte/kontakt: &KONTAKT
         one: Contatto
         other: Contatti
-
+      group/bezirk_vorstand:
+        one: Comitato direttivo
+        other: Comitato direttivo
+      group/bezirk_geschaeftsstelle:
+        one: Segretariato
+        other: Segretariati
+      group/bezirk_gewaehlte:
+        one: Eletto/a
+        other: Eletti
+      group/bezirk_arbeitsgruppe:
+        one: Gruppo di lavoro
+        other: Gruppi di lavoro
+      group/bezirk_zugeordnete:
+        one: Attribuito/a
+        other: Attribuiti
+      group/bezirk_kontakte:
+        one: Contatto
+        other: Contatti
+      group/root/administrator:
+        one: Amministratore
+        other: Amministratori
+      group/root/eventverantwortliche:
+        one: Responsabile
+        other: Responsabili
+      group/root_geschaeftsstelle/leitung:
+        one: Direzione
+        other: Direzione
+      group/root_geschaeftsstelle/mitarbeiter:
+        one: Collaboratore/trice
+        other: Collaboratori/trici
+      group/root_geschaeftsstelle/finanzen:
+        one: Finanze
+        other: Finanze
+      group/root_vorstand/praesidentln:
+        one: Presidente/tessa
+        other: Presidenti/tesse
+      group/root_vorstand/vizepraesidentln:
+        one: Vicepresidente/tessa
+        other: Vicepresidenti/tesse
+      group/root_vorstand/geschaeftsleitung:
+        one: Comitato
+        other: Comitato
+      group/root_vorstand/kassier:
+        one: Tesoriere/a
+        other: Tesorieri/e
+      group/root_vorstand/vorstandsmitglied:
+        one: Membro del Comitato direttivo
+        other: Membri del Comitato direttivo
+      group/root_arbeitsgruppe/leitung:
+        one: Direzione
+        other: Direzione
+      group/root_arbeitsgruppe/mitglied:
+        one: Membro del gruppo di lavoro
+        other: Membri del gruppo di lavoro
+      group/root_zugeordnete/mitglied:
+        one: Membro
+        other: Membri
+      group/root_zugeordnete/sympathisant:
+        one: Simpatizzante
+        other: Simpatizzanti
+      group/root_zugeordnete/adressverwaltung:
+        one: Gestione degli indirizzi
+        other: Gestione degli indirizzi
+      group/root_kontakte/adressverwaltung:
+        one: Gestione degli indirizzi
+        other: Gestione degli indirizzi
+      group/root_kontakte/kontakt:
+        one: Contatto
+        other: Contatti
       group/root_gewaehlte/bundesrat:
         one: Consiglio federale
         other: Consiglio federale
@@ -172,16 +183,15 @@ it:
       group/root_gewaehlte/bundesstrafrichter:
         one: Giudice del Tribunale penale federale
         other: Giudici del Tribunale penale federale
-
       group/kanton/administrator:
-        *ADMINISTRATOR
+        one: Amministratore
+        other: Amministratori
       group/kanton_delegierte/delegierte:
         one: Delegato/a
         other: Delegati
       group/kanton_delegierte/ersatzdelegierte:
         one: Delegato/a supplente
         other: Delegati supplenti
-
       group/kanton_gewaehlte/kantonale_exekutive:
         one: Esecutivo cantonale
         other: Esecutivi cantonali
@@ -200,39 +210,54 @@ it:
       group/kanton_gewaehlte/parlamentarische_geschaeftsfuehrung:
         one: Segretariato del gruppo parlamentare
         other: Segretariati di gruppi parlamentari
-      group/kanton_arbeitsgruppe/leitung: 
-        *LEITUNG
+      group/kanton_arbeitsgruppe/leitung:
+        one: Direzione
+        other: Direzione
       group/kanton_arbeitsgruppe/mitglied:
-        *AGMITGLIED
+        one: Membro del gruppo di lavoro
+        other: Membri del gruppo di lavoro
       group/kanton_zugeordnete/mitglied:
-        *MITGLIED
-      group/kanton_zugeordnete/sympathisant: 
-        *SYMPATHISANT
-      group/kanton_zugeordnete/adressverwaltung: 
-        *ADRESSVERWALTUNG
+        one: Membro
+        other: Membri
+      group/kanton_zugeordnete/sympathisant:
+        one: Simpatizzante
+        other: Simpatizzanti
+      group/kanton_zugeordnete/adressverwaltung:
+        one: Gestione degli indirizzi
+        other: Gestione degli indirizzi
       group/kanton_kontakte/adressverwaltung:
-        *ADRESSVERWALTUNG
-      group/kanton_kontakte/kontakt: 
-        *KONTAKT
-      group/kanton_geschaeftsstelle/leitung: 
-        *LEITUNG
-      group/kanton_geschaeftsstelle/mitarbeiter: 
-        *MITARBEITER
+        one: Gestione degli indirizzi
+        other: Gestione degli indirizzi
+      group/kanton_kontakte/kontakt:
+        one: Contatto
+        other: Contatti
+      group/kanton_geschaeftsstelle/leitung:
+        one: Direzione
+        other: Direzione
+      group/kanton_geschaeftsstelle/mitarbeiter:
+        one: Collaboratore/trice
+        other: Collaboratori/trici
       group/kanton_geschaeftsstelle/finanzen:
-        *FINANZEN
-      group/kanton_vorstand/praesidentln: 
-        *PRAESIDENTLN
-      group/kanton_vorstand/vizepraesidentln: 
-        *VIZEPRAESIDENTLN
-      group/kanton_vorstand/geschaeftsleitung: 
-        *GESCHAEFTSLEITUNG
-      group/kanton_vorstand/kassier: 
-        *KASSIER
-      group/kanton_vorstand/mitglied: 
-        *MITGLIED
-
-      groui/ortsektion/administrator:
-        *ADMINISTRATOR
+        one: Finanze
+        other: Finanze
+      group/kanton_vorstand/praesidentln:
+        one: Presidente/tessa
+        other: Presidenti/tesse
+      group/kanton_vorstand/vizepraesidentln:
+        one: Vicepresidente/tessa
+        other: Vicepresidenti/tesse
+      group/kanton_vorstand/geschaeftsleitung:
+        one: Comitato
+        other: Comitato
+      group/kanton_vorstand/kassier:
+        one: Tesoriere/a
+        other: Tesorieri/e
+      group/kanton_vorstand/mitglied:
+        one: Membro
+        other: Membri
+      group/ortsektion/administrator:
+        one: Amministratore
+        other: Amministratori
       group/ortsektion_gewaehlte/kommunale_exekutive:
         one: Esecutivo comunale
         other: Esecutivi comunali
@@ -248,69 +273,99 @@ it:
       group/ortsektion_gewaehlte/mitglied_weitere_kommissionen:
         one: Membro di altre commissioni
         other: Membri di altre commissioni
-      group/ortsektion_arbeitsgruppe/leitung: 
-        *LEITUNG
+      group/ortsektion_arbeitsgruppe/leitung:
+        one: Direzione
+        other: Direzione
       group/ortsektion_arbeitsgruppe/mitglied:
-        *AGMITGLIED
+        one: Membro del gruppo di lavoro
+        other: Membri del gruppo di lavoro
       group/ortsektion_zugeordnete/mitglied:
-        *MITGLIED
-      group/ortsektion_zugeordnete/sympathisant: 
-        *SYMPATHISANT
-      group/ortsektion_zugeordnete/adressverwaltung: 
-        *ADRESSVERWALTUNG
+        one: Membro
+        other: Membri
+      group/ortsektion_zugeordnete/sympathisant:
+        one: Simpatizzante
+        other: Simpatizzanti
+      group/ortsektion_zugeordnete/adressverwaltung:
+        one: Gestione degli indirizzi
+        other: Gestione degli indirizzi
       group/ortsektion_kontakte/adressverwaltung:
-        *ADRESSVERWALTUNG
-      group/ortsektion_kontakte/kontakt: 
-        *KONTAKT
-      group/ortsektion_geschaeftsstelle/leitung: 
-        *LEITUNG
-      group/ortsektion_geschaeftsstelle/mitarbeiter: 
-        *MITARBEITER
+        one: Gestione degli indirizzi
+        other: Gestione degli indirizzi
+      group/ortsektion_kontakte/kontakt:
+        one: Contatto
+        other: Contatti
+      group/ortsektion_geschaeftsstelle/leitung:
+        one: Direzione
+        other: Direzione
+      group/ortsektion_geschaeftsstelle/mitarbeiter:
+        one: Collaboratore/trice
+        other: Collaboratori/trici
       group/ortsektion_geschaeftsstelle/finanzen:
-        *FINANZEN
-      group/ortsektion_vorstand/praesidentln: 
-        *PRAESIDENTLN
-      group/ortsektion_vorstand/vizepraesidentln: 
-        *VIZEPRAESIDENTLN
-      group/ortsektion_vorstand/geschaeftsleitung: 
-        *GESCHAEFTSLEITUNG
-      group/ortsektion_vorstand/kassier: 
-        *KASSIER
-      group/ortsektion_vorstand/mitglied: 
-        *MITGLIED
-
+        one: Finanze
+        other: Finanze
+      group/ortsektion_vorstand/praesidentln:
+        one: Presidente/tessa
+        other: Presidenti/tesse
+      group/ortsektion_vorstand/vizepraesidentln:
+        one: Vicepresidente/tessa
+        other: Vicepresidenti/tesse
+      group/ortsektion_vorstand/geschaeftsleitung:
+        one: Comitato
+        other: Comitato
+      group/ortsektion_vorstand/kassier:
+        one: Tesoriere/a
+        other: Tesorieri/e
+      group/ortsektion_vorstand/mitglied:
+        one: Membro
+        other: Membri
       group/bezirk/administrator:
-        *ADMINISTRATOR
+        one: Amministratore
+        other: Amministratori
       group/bezirk_gewaehlte/regierungsstatthalter:
         one: Prefettura
         other: Prefetture
-      group/bezirk_arbeitsgruppe/leitung: 
-        *LEITUNG
+      group/bezirk_arbeitsgruppe/leitung:
+        one: Direzione
+        other: Direzione
       group/bezirk_arbeitsgruppe/mitglied:
-        *AGMITGLIED
+        one: Membro del gruppo di lavoro
+        other: Membri del gruppo di lavoro
       group/bezirk_zugeordnete/mitglied:
-        *MITGLIED
-      group/bezirk_zugeordnete/sympathisant: 
-        *SYMPATHISANT
-      group/bezirk_zugeordnete/adressverwaltung: 
-        *ADRESSVERWALTUNG
+        one: Membro
+        other: Membri
+      group/bezirk_zugeordnete/sympathisant:
+        one: Simpatizzante
+        other: Simpatizzanti
+      group/bezirk_zugeordnete/adressverwaltung:
+        one: Gestione degli indirizzi
+        other: Gestione degli indirizzi
       group/bezirk_kontakte/adressverwaltung:
-        *ADRESSVERWALTUNG
-      group/bezirk_kontakte/kontakt: 
-        *KONTAKT
-      group/bezirk_geschaeftsstelle/leitung: 
-        *LEITUNG
-      group/bezirk_geschaeftsstelle/mitarbeiter: 
-        *MITARBEITER
+        one: Gestione degli indirizzi
+        other: Gestione degli indirizzi
+      group/bezirk_kontakte/kontakt:
+        one: Contatto
+        other: Contatti
+      group/bezirk_geschaeftsstelle/leitung:
+        one: Direzione
+        other: Direzione
+      group/bezirk_geschaeftsstelle/mitarbeiter:
+        one: Collaboratore/trice
+        other: Collaboratori/trici
       group/bezirk_geschaeftsstelle/finanzen:
-        *FINANZEN
-      group/bezirk_vorstand/praesidentln: 
-        *PRAESIDENTLN
-      group/bezirk_vorstand/vizepraesidentln: 
-        *VIZEPRAESIDENTLN
-      group/bezirk_vorstand/geschaeftsleitung: 
-        *GESCHAEFTSLEITUNG
-      group/bezirk_vorstand/kassier: 
-        *KASSIER
-      group/bezirk_vorstand/mitglied: 
-        *MITGLIED
+        one: Finanze
+        other: Finanze
+      group/bezirk_vorstand/praesidentln:
+        one: Presidente/tessa
+        other: Presidenti/tesse
+      group/bezirk_vorstand/vizepraesidentln:
+        one: Vicepresidente/tessa
+        other: Vicepresidenti/tesse
+      group/bezirk_vorstand/geschaeftsleitung:
+        one: Comitato
+        other: Comitato
+      group/bezirk_vorstand/kassier:
+        one: Tesoriere/a
+        other: Tesorieri/e
+      group/bezirk_vorstand/mitglied:
+        one: Membro
+        other: Membri
