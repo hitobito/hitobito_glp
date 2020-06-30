@@ -5,6 +5,9 @@
 
 
 de:
+  groups:
+    form:
+      label_zip_codes: PLZ (getrennt durch Kommas)
   mailing_list_people_attributes:
     title: Einschränken nach Personen-Attributen
     age: Alter

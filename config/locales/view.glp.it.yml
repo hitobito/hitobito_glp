@@ -5,6 +5,9 @@
 
 
 it:
+  group:
+    form:
+      label_zip_codes: Codice postale (separati da virgole)
   mailing_list_people_attributes:
     title: Limitare per attributi di persone
     age: Età

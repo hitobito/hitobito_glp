@@ -4,15 +4,11 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-attributes:
-  group:
-    zip_codes: PLZ
-
 de:
-  zip_codes:
-    separated_by_comma: PLZ (getrennt durch Kommas)
   activerecord:
     attributes:
+      group:
+        zip_codes: PLZ
       person:
         title: Anrede
         preferred_language: Sprache

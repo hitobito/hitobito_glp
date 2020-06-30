@@ -4,15 +4,11 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-attributes:
-  group:
-    zip_codes: Code postal
-
 fr:
-  zip_codes:
-    separated_by_comma: Code postal (séparés par des virgules)
   activerecord:
     attributes:
+      group:
+        zip_codes: Code postal
       person:
         title: Civilité
         preferred_language: Langue
