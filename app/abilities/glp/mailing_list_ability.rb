@@ -12,7 +12,7 @@ module Glp::MailingListAbility
   included do
     on(MailingList) do
       permission(:layer_and_below_full).
-        may(:index_subscriptions, :export_subscriptions, :create, :update, :destroy).
+        may(:index_subscriptions, :export_subscriptions, :show, :create, :update, :destroy).
         in_same_layer_or_below
     end
   end
