@@ -1,6 +1,23 @@
-Hitobito Glp is created by the following people:
+Hitobito GLP is created by the following people:
 
 Code:
+  Andreas Maierhofer, Puzzle ITC
+  Matthias Viehweger, Puzzle ITC
+  Carlo Beltrame, Puzzle ITC
+
+Design & Style:
+  Roland Studer, Puzzle ITC
+  Pierre Fritsch, Puzzle ITC
+
+With help from many libraries and frameworks including:
+  Ruby on Rails
+  Wagons
+  Haml
+  CanCan
+  Delayed Job
+  RSpec
+  Dry Crud
+  ...and many others
 
 Design & Style:
 
