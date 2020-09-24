@@ -78,7 +78,8 @@ module HitobitoGlp
                    'http://markusstadler.ch/',
                    'http://tianamoser.ch/',
                    'http://verenadiener.ch/',
-                   'http://greenliberals.ch/'
+                   'http://greenliberals.ch/',
+                   /https:\/\/(.*?)\.grunliberale\.ch/,
                  ]
           resource '*', headers: :any, methods: [:get, :post, :options]
         end
