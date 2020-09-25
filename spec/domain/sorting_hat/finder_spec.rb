@@ -47,10 +47,40 @@ describe SortingHat::Finder do
         expect(subject).to eq [groups(:"bern_#{group_type}")]
       end
 
+      it "is bern_#{group_type} if zip matches multiple but one is deleted" do
+        groups(:bern).update(zip_codes: zip)
+        groups(:zurich).update(zip_codes: zip, deleted_at: Time.zone.now)
+        expect(subject).to eq [groups(:"bern_#{group_type}")]
+      end
+
+      it "is bern_#{group_type} if zip matches and multiple matching types exist" do
+        groups(:bern).update(zip_codes: zip)
+        groups(:zurich).update(zip_codes: zip, deleted_at: Time.zone.now)
+        expect(subject).to eq [groups(:"bern_#{group_type}")]
+      end
+
       it "is root_#{group_type} if multiple zips match" do
         groups(:bern).update(zip_codes: zip)
         groups(:zurich).update(zip_codes: zip)
         expect(subject).to eq [groups(:"root_#{group_type}")]
+      end
+
+      it "is root_#{group_type} if zip matches and multiple matching types exist" do
+        groups(:bern).update(zip_codes: zip)
+        groups(:bern).children.create!(type: "Group::Kanton#{group_type.camelcase}", name: 'dummy')
+        expect(subject).to eq [groups(:"root_#{group_type}")]
+      end
+
+      it "is bern_#{group_type} if multiple zips match and one is deleted" do
+        groups(:bern).update(zip_codes: zip)
+        groups(:zurich).update(zip_codes: zip, deleted_at: Time.zone.now)
+        expect(subject).to eq [groups(:"bern_#{group_type}")]
+      end
+
+      it "is bern_#{group_type} if zip matches and multiple matching types exist but one is deleted " do
+        groups(:bern).update(zip_codes: zip)
+        groups(:bern).children.create!(type: "Group::Kanton#{group_type.camelcase}", name: 'dummy', deleted_at: Time.zone.now)
+        expect(subject).to eq [groups(:"bern_#{group_type}")]
       end
 
       describe 'without zip' do

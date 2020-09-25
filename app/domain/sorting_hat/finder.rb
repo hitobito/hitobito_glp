@@ -26,11 +26,14 @@ module SortingHat
 
     private
 
-    def find_for_zip(scope = Group::Root.first.descendants)
+    def find_for_zip(scope = root.descendants)
       return Group.none if @zip.blank?
       return Group.none if foreign?
 
-      scope = scope.joins(:parent).where('parents_groups.zip_codes LIKE ?', "%#{@zip}%")
+      scope = scope.without_deleted.joins(:parent)
+                   .where('parents_groups.zip_codes LIKE ?', "%#{@zip}%")
+                   .where('parents_groups.deleted_at IS NULL')
+
       group_for_role(scope)
     end
 
@@ -45,24 +48,26 @@ module SortingHat
     def group_for_role(scope)
       return Group.none unless scope
 
-      groups = scope.where('groups.type LIKE ?', "%#{SortingHat::ROLES.fetch(@role)}")
+      scope = scope.where('groups.type LIKE ?', "%#{SortingHat::ROLES.fetch(@role)}")
+      groups = scope.without_deleted
       groups.one? ? groups : Group.none
     end
 
     def root
-      @root ||= Group::Root.first
+      @root ||= without_deleted.root
     end
 
     def foreign_root
-      @foreign_root ||= Group.find_by(zip_codes: SortingHat::FOREIGN_ZIP_CODE)
+      @foreign_root ||= without_deleted.find_by(zip_codes: SortingHat::FOREIGN_ZIP_CODE)
     end
 
     def jglp_root
-      @jglp_root ||= Group.find_by(zip_codes: SortingHat::JGLP_ZIP_CODE)
+      @jglp_root ||= without_deleted.find_by(zip_codes: SortingHat::JGLP_ZIP_CODE)
     end
 
+    # rubocop:disable Metrics/LineLength
     def subtree_jglp
-      jglp_root ? Group.where('lft > ? AND rgt < ?', jglp_root.lft, jglp_root.rgt) : Group.none
+      jglp_root ? without_deleted.where('lft > ? AND rgt < ?', jglp_root.lft, jglp_root.rgt) : Group.none
     end
 
     def foreign?
@@ -71,6 +76,10 @@ module SortingHat
 
     def jglp?
       jglp_root && @jglp
+    end
+
+    def without_deleted
+      Group.without_deleted
     end
   end
 end
