@@ -80,6 +80,8 @@ module HitobitoGlp
                    'http://verenadiener.ch/',
                    'http://greenliberals.ch/',
                    /https:\/\/(.*?)\.grunliberale\.ch/,
+                   /https:\/\/(.*?)\.vertliberaux\.ch/,
+                   /https:\/\/(.*?)\.verdiliberali\.ch/,
                  ]
           resource '*', headers: :any, methods: [:get, :post, :options]
         end
