@@ -26,8 +26,7 @@ puzzlers = ['Pascal Zumkehr',
             'Mathis Hofer',
             'Pascal Simon',
             'Matthias Viehweger',
-            'Bruno Santschi',
-            'Janiss Binder']
+            'Bruno Santschi']
 
 devs = {'Mat' => 'mat@zeilenwerk.ch', 'Zeilenwerk' => 'test@zeilenwerk.ch'} # add accounts for 'live' test users
 
