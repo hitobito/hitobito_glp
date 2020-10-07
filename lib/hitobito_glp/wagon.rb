@@ -1,4 +1,5 @@
 # encoding: utf-8
+# frozen_string_literal: true
 
 #  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
@@ -16,41 +17,42 @@ module HitobitoGlp
     app_requirement '>= 0'
 
     # Add a load path for this specific wagon
-    config.autoload_paths += %W( #{config.root}/app/abilities
-                                 #{config.root}/app/domain
-                                 #{config.root}/app/jobs
-    )
+    config.autoload_paths += %W[
+      #{config.root}/app/abilities
+      #{config.root}/app/domain
+      #{config.root}/app/jobs
+    ]
 
     config.to_prepare do
-      Person.send           :include, Glp::Person
-      Group.send            :include, Glp::Group
+      Person.include Glp::Person
+      Group.include Glp::Group
 
-      GroupDecorator.send   :prepend, Glp::GroupDecorator
-      PeopleController.send :include, Glp::PeopleController
+      GroupDecorator.prepend Glp::GroupDecorator
+      PeopleController.include Glp::PeopleController
       GroupsController.permitted_attrs += [:zip_codes]
 
-      GroupAbility.send        :include, Glp::GroupAbility
-      PersonAbility.send       :include, Glp::PersonAbility
-      RoleAbility.send         :include, Glp::RoleAbility
-      EventAbility.send        :include, Glp::EventAbility
-      MailingListAbility.send  :include, Glp::MailingListAbility
-      PeopleFilterAbility.send  :include, Glp::PeopleFilterAbility
+      GroupAbility.include Glp::GroupAbility
+      PersonAbility.include Glp::PersonAbility
+      RoleAbility.include Glp::RoleAbility
+      EventAbility.include Glp::EventAbility
+      MailingListAbility.include Glp::MailingListAbility
+      PeopleFilterAbility.include Glp::PeopleFilterAbility
 
-      MailingList.send           :include, Glp::MailingList
-      Person::Subscriptions.send :prepend, Glp::Person::Subscriptions
+      MailingList.include Glp::MailingList
+      Person::Subscriptions.prepend Glp::Person::Subscriptions
 
-      Sheet::Base.send :prepend, Glp::Sheet::Base
+      Sheet::Base.prepend Glp::Sheet::Base
 
-      Devise::SessionsController.send :prepend, Glp::Devise::SessionsController
+      Devise::SessionsController.prepend Glp::Devise::SessionsController
 
       ApplicationMailer.send :layout, 'mailer'
 
-      FilterNavigation::People.send :prepend, Glp::FilterNavigation::People
+      FilterNavigation::People.prepend Glp::FilterNavigation::People
 
 
       # TODO: maybe better additional_merge fields, code gets execute on every code reload
       Synchronize::Mailchimp::Synchronizator.member_fields = [
-        [ :language, ->(p) { p.preferred_language } ]
+        [:language, ->(p) { p.preferred_language }]
       ]
 
       # Main navigation
@@ -81,8 +83,7 @@ module HitobitoGlp
                    'http://greenliberals.ch/',
                    /https:\/\/(.*?)\.grunliberale\.ch/,
                    /https:\/\/(.*?)\.vertliberaux\.ch/,
-                   /https:\/\/(.*?)\.verdiliberali\.ch/,
-                 ]
+                   /https:\/\/(.*?)\.verdiliberali\.ch/]
           resource '*', headers: :any, methods: [:get, :post, :options]
         end
       end
