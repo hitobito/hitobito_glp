@@ -36,6 +36,7 @@ module HitobitoGlp
       RoleAbility.include Glp::RoleAbility
       EventAbility.include Glp::EventAbility
       MailingListAbility.include Glp::MailingListAbility
+      SubscriptionAbility.include Glp::SubscriptionAbility
       PeopleFilterAbility.include Glp::PeopleFilterAbility
 
       MailingList.include Glp::MailingList
