@@ -126,4 +126,4 @@ Status](https://travis-ci.org/hitobito/hitobito_glp.svg)](https://travis-ci.org/
         * Adressverwaltung: [:group_and_below_full]
         * Medien und Dritte: []
 
-    (Output of rake app:hitobito:roles)
+(Output of rake app:hitobito:roles)
