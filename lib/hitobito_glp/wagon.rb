@@ -23,7 +23,7 @@ module HitobitoGlp
       #{config.root}/app/jobs
     ]
 
-    config.to_prepare do
+    config.to_prepare do # rubocop:disable Metrics/BlockLength
       Person.include Glp::Person
       Group.include Glp::Group
 
@@ -35,9 +35,11 @@ module HitobitoGlp
       PersonAbility.include Glp::PersonAbility
       RoleAbility.include Glp::RoleAbility
       EventAbility.include Glp::EventAbility
+      Event::ParticipationAbility.include Glp::Event::ParticipationAbility
       MailingListAbility.include Glp::MailingListAbility
       SubscriptionAbility.include Glp::SubscriptionAbility
       PeopleFilterAbility.include Glp::PeopleFilterAbility
+      ServiceTokenAbility.include Glp::ServiceTokenAbility
 
       MailingList.include Glp::MailingList
       Person::Subscriptions.prepend Glp::Person::Subscriptions
