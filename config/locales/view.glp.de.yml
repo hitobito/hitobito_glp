@@ -48,7 +48,6 @@ de:
       members_and_sympis: Mitglieder und Sympathisanten in der Ortsektion
   notifier:
     welcome_mitglied:
-      from: schweiz@grunliberale.ch
       subject: Herzlich willkommen bei den Grünliberalen!
       hello: Hallo
       first_paragraph: Es freut uns sehr, dass Du Dich entschieden hast, Mitglied der Grünliberalen Partei zu sein. Wir werden uns so rasch wie möglich persönlich bei Dir melden und Dir aufzeigen, wie Du Dich in der Partei engagieren kannst.
@@ -63,7 +62,6 @@ de:
       phone: Telefon +41 31 311 33 03
       opening_hours: (Mo-Fr 10-12 und 14-16 Uhr)
     welcome_sympathisant:
-      from: schweiz@grunliberale.ch
       subject: Herzlich willkommen bei den Grünliberalen!
       hello: Hallo
       first_paragraph: Vielen Dank für Deine Anmeldung für unsere News und Infos. Gerne haben wir Deine Adresse der Versandliste hinzugefügt.
@@ -79,7 +77,6 @@ de:
       phone: Telefon +41 31 311 33 03
       opening_hours: (Mo-Fr 10-12 und 14-16 Uhr)
     welcome_medien_und_dritte:
-      from: schweiz@grunliberale.ch
       subject: Vielen Dank für Ihre Anmeldung!
       hello: Guten Tag
       first_paragraph: Vielen Dank für Ihre Anmeldung für unsere News und Infos. Gerne haben wir Ihre Adresse der Versandliste hinzugefügt.
