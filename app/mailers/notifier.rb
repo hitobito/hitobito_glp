@@ -54,21 +54,21 @@ class Notifier < ApplicationMailer
     token = @person.generate_reset_password_token!
     @login_url = edit_person_password_url(reset_password_token: token)
 
-    mail(to: @person.email, from: t(".from"), subject: t(".subject"))
+    mail(to: @person.email, subject: t(".subject"))
   end
 
   def welcome_sympathisant person, locale
     @person = person
     @locale = locale
     I18n.locale = @locale
-    mail(to: @person.email, from: t(".from"), subject: t(".subject"))
+    mail(to: @person.email, subject: t(".subject"))
   end
 
   def welcome_medien_und_dritte person, locale
     @person = person
     @locale = locale
     I18n.locale = @locale
-    mail(to: @person.email, from: t(".from"), subject: t(".subject"))
+    mail(to: @person.email, subject: t(".subject"))
   end
 
   def preferred_language(person)
