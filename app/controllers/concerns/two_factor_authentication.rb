@@ -12,19 +12,19 @@ module TwoFactorAuthentication
   TOO_MANY_TRIES = 5
 
   def first_factor_authenticated?
-    person && person.valid_password?(params[:person][:password])
+    two_fa_person && two_fa_person.valid_password?(params[:person][:password])
   end
 
   def two_factor_authentication_required?
-    person.two_factor_authentication_required?
+    two_fa_person.two_factor_authentication_required?
   end
 
-  def too_man_tries?
-    if person.second_factor_generated_at &&
-        person.second_factor_generated_at.to_date == Time.zone.now.to_date
-      person.second_factor_unsuccessful_tries >= TOO_MANY_TRIES
+  def too_many_tries?
+    if two_fa_person.second_factor_generated_at &&
+        two_fa_person.second_factor_generated_at.to_date == Time.zone.now.to_date
+      two_fa_person.second_factor_unsuccessful_tries >= TOO_MANY_TRIES
     else
-      person.update!(second_factor_unsuccessful_tries: 0)
+      two_fa_person.update!(second_factor_unsuccessful_tries: 0)
       false
     end
   end
@@ -33,19 +33,19 @@ module TwoFactorAuthentication
     # generate code
     code = generate_authentication_code
     # save to db
-    person.second_factor_code = code
-    person.second_factor_generated_at = Time.zone.now
-    person.second_factor_unsuccessful_tries += 1
-    person.save!
+    two_fa_person.second_factor_code = code
+    two_fa_person.second_factor_generated_at = Time.zone.now
+    two_fa_person.second_factor_unsuccessful_tries += 1
+    two_fa_person.save!
     # send code via twilio
-    send_authentication_code(person, code)
+    send_authentication_code(two_fa_person, code)
   end
 
   def two_factor_authenticate(code)
-    if person.second_factor_generated_at < (Time.zone.now - 5.minutes)
+    if two_fa_person.second_factor_generated_at < (Time.zone.now - 5.minutes)
       false
-    elsif person.second_factor_code == code
-      person.update!(second_factor_unsuccessful_tries: 0)
+    elsif two_fa_person.second_factor_code == code
+      two_fa_person.update!(second_factor_unsuccessful_tries: 0)
       true
     else
       false

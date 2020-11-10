@@ -11,18 +11,23 @@ module Glp
     extend ActiveSupport::Concern
     include TwoFactorAuthentication
 
-    private
+    attr_reader :two_fa_person
 
     def create # rubocop:disable Metrics/MethodLength
+      @two_fa_person = current_person
       if first_factor_authenticated? && two_factor_authentication_required?
         sign_out
-        if too_man_tries?
+        session[:two_fa_person_id] = @two_fa_person.id
+
+        if too_many_tries?
+          reset_session
           flash[:alert] = 'Zu viele falsche 2FA-Codes, bitte versuche es morgen wieder'
           redirect_to '/'
         else
           if send_two_factor_authentication_code
-            redirect_to users_two_factor_authentication_confirmation_path(person: { id: person.id })
+            redirect_to users_two_factor_authentication_confirmation_path
           else
+            reset_session
             flash[:alert] = 'Die Zustellung des 2FA-Codes hat nicht geklappt, ' \
               'bitte kontaktiere das Generalsekretariat'
             redirect_to '/'
@@ -31,10 +36,6 @@ module Glp
       else
         super
       end
-    end
-
-    def person
-      @person ||= ::Person.find_by(email: params[:person][:email])
     end
   end
 end
