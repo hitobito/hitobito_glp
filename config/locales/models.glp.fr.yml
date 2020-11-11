@@ -18,6 +18,7 @@ fr:
         joined_at: Date d'adhésion
         left_at: Date de démission
         website_link: Site web
+        notify_on_join: Notification d'entrée
         genders:
           _nil: inconnu/autre
     models:
@@ -33,15 +34,15 @@ fr:
       group/root_arbeitsgruppe:
         one: Groupe de travail
         other: Groupes de travail
-      group/root_zugeordnete:
-        one: Attribué/e
-        other: Attribués
       group/root_kontakte:
         one: Contact
         other: Contacts
       group/root_gewaehlte:
         one: Élu/e
         other: Élus
+      group/root_zugeordnete:
+        one: Attribué/e
+        other: Attribués
       group/kanton:
         one: Canton
         other: Cantons

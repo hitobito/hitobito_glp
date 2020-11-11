@@ -18,6 +18,7 @@ it:
         joined_at: Data di iscrizione
         left_at: Data di uscita
         website_link: Sito web
+        notify_on_join: Notifica di entrata
         genders:
           _nil: ignoto/altro
     models:

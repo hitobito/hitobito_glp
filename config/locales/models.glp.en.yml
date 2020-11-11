@@ -12,12 +12,13 @@ en:
       person:
         title: Form of address
         preferred_language: Language
-        joining_journey: How did you hear about us?
+        joining_journey: "How did you hear about us?"
         occupation: Profession
         place_of_origin: Place of origin
         joined_at: Joined the party on
         left_at: Left the party on
         website_link: Website
+        notify_on_join: ""
         genders:
           _nil: unknown/other
     models:

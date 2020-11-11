@@ -8,3 +8,85 @@ en:
   groups:
     form:
       label_zip_codes: Zip codes (separated by commas)
+  mailing_list_people_attributes:
+    title: ""
+    age: ""
+    age_start: ""
+    age_finish: ""
+
+  external_form_js:
+    submitting: ""
+    submit_error_required_fields: ""
+    submit_error_email_taken: ""
+    submit_error_terms_conditions: ""
+    submit_error: ""
+    server_error_captcha: ""
+    submit_success_member: ""
+    submit_success_other: ""
+    terms_and_conditions_checkbox_html: ""
+    terms_and_conditions_link_text: ""
+    terms_and_conditions_link: ""
+    zip_code: ""
+    jglp: ""
+
+  filter_navigation/people:
+    root:
+      members: ""
+      sympis: ""
+      members_and_sympis: ""
+    kanton:
+      members: ""
+      sympis: ""
+      members_and_sympis: ""
+    bezirk:
+      members: ""
+      sympis: ""
+      members_and_sympis: ""
+    ortsektion:
+      members: ""
+      sympis: ""
+      members_and_sympis: ""
+  notifier:
+    welcome_mitglied:
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph: ""
+      link_to_young_liberals: ""
+      fourth_paragraph: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""
+    welcome_sympathisant:
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph: ""
+      third_paragraph_part_one: ""
+      third_paragraph_part_two: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      pc_konto: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""
+    welcome_medien_und_dritte:
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph_part_one: ""
+      second_paragraph_part_two: ""
+      second_paragraph_part_three: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""

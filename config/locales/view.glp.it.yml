@@ -5,7 +5,7 @@
 
 
 it:
-  group:
+  groups:
     form:
       label_zip_codes: Codice postale (separati da virgole)
   mailing_list_people_attributes:
@@ -15,27 +15,44 @@ it:
     age_finish: Età massima
 
   external_form_js:
-    submitting: Grazie mille, i tuoi dati sono stati trasmessi con successo!
+    submitting: "Grazie mille, i tuoi dati sono stati trasmessi con successo!"
     submit_error_required_fields: Completa tutti i campi per favore.
     submit_error_email_taken: Purtroppo il tuo indirizzo e-mail è già stato assegnato. Contattaci allo +41 31 311 33 03 o all'indirizzo di posta elettronica (svizzera@verdiliberali.ch) per aggiornare il tuo stato di socio o per evadere la tua richiesta.
     submit_error_terms_conditions: Devi accettare la dichiarazione sulla protezione dei dati.
     submit_error: Si è verificato un errore.
     server_error_captcha: È necessario compilare il captcha ("Non sono un robot").
-    submit_success_member: Grazie mille, a breve riceverai i tuoi dati di accesso.
-    submit_success_other: Grazie mille, ti sei abbonato/a con successo alle informazioni del nostro partito.
-    terms_and_conditions_checkbox_html: Accetto la %{link}.
+    submit_success_member: "Grazie mille, a breve riceverai i tuoi dati di accesso."
+    submit_success_other: "Grazie mille, ti sei abbonato/a con successo alle informazioni del nostro partito."
+    terms_and_conditions_checkbox_html: "Accetto la %{link}."
     terms_and_conditions_link_text: dichiarazione sulla protezione dei dati
-    terms_and_conditions_link: https://verdiliberali.ch/protezione-dei-dati
+    terms_and_conditions_link: "https://verdiliberali.ch/protezione-dei-dati"
     zip_code: CAP
     jglp: Ho meno di 35 anni e vorrei divenire membro anche dei giovani verdi liberali (raccomandato).
 
+  filter_navigation/people:
+    root:
+      members: ""
+      sympis: ""
+      members_and_sympis: ""
+    kanton:
+      members: ""
+      sympis: ""
+      members_and_sympis: ""
+    bezirk:
+      members: ""
+      sympis: ""
+      members_and_sympis: ""
+    ortsektion:
+      members: ""
+      sympis: ""
+      members_and_sympis: ""
   notifier:
     welcome_mitglied:
-      from: svizzera@verdiliberali.ch
       subject: Un cordiale benvenuto dai verdi liberali!
       hello: Buongiorno
       first_paragraph: Siamo oltremodo lieti che tu abbia deciso di diventare socio del partito verde liberale. Sarà nostra premura contattarti al più presto per comunicarti in che modo puoi impegnarti a favore del partito.
       second_paragraph: "Per conoscerti meglio, ti preghiamo gentilmente di fornirci ulteriori dati sul tuo conto al seguente link, ciò che ci sarà di grande aiuto nella gestione dei dati dei nostri soci e garantisce che tu riceva da noi solo le informazioni basilari. I tuoi dati, naturalmente, saranno strettamente riservati e non saranno tramessi a terzi:"
+      link_to_young_liberals: ""
       fourth_paragraph: Grazie in anticipo per la collaborazione! Restiamo volentieri a tua disposizione per eventuali domande all’indirizzo di posta elettronico svizzera@verdiliberali.ch.
       first_goodbye: Con i migliori saluti
       second_goodbye: Il team del Segretariato generale
@@ -43,28 +60,27 @@ it:
       address_second_line: Segretariato generale
       address_city: 3011 Berna
       phone: Telefono +41 31 311 33 03
-      opening_hours: (lun-ven 10.00-12.00, 14.00-16.00)
+      opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
     welcome_sympathisant:
-      from: svizzera@verdiliberali.ch
       subject: Un cordiale benvenuto dai verdi liberali!
       hello: Buongiorno
       first_paragraph: Grazie per esserti iscritto/a alle nostre news & info. È con piacere che abbiamo aggiunto il tuo indirizzo alla nostra mailing list.
-      second_paragraph: Per conoscerti meglio, hai la possibilità di elaborare i tuoi dati direttamente nella nostra banca dati. Su tua richiesta saremo lieti di inviarti i dati di login.
-      third_paragraph_part_one: Se avessi altre domande o volessi saperne di più, puoi sempre contattarci
+      second_paragraph: "Per conoscerti meglio, hai la possibilità di elaborare i tuoi dati direttamente nella nostra banca dati. Su tua richiesta saremo lieti di inviarti i dati di login."
+      third_paragraph_part_one: "Se avessi altre domande o volessi saperne di più, puoi sempre contattarci"
       third_paragraph_part_two: a questo indirizzo e-mail.
       first_goodbye: Cordiali saluti
       second_goodbye: Il team del Segretariato generale
       address_first_line: Partito verde liberale svizzero
       address_second_line: Segretariato generale
+      pc_konto: ""
       address_city: 3011 Berna
       phone: Telefono +41 31 311 33 03
-      opening_hours: (lun-ven 10.00-12.00, 14.00-16.00)
+      opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
     welcome_medien_und_dritte:
-      from: svizzera@verdiliberali.ch
       subject: Grazie mille per la sua iscrizione!
       hello: Buongiorno
       first_paragraph: La ringraziamo per essersi iscritto/a alle nostre news & info. È con piacere che abbiamo aggiunto il suo indirizzo alla mailing list.
-      second_paragraph_part_one: Se avesse ulteriori domande o desiderasse maggiori ragguagli in merito, può sempre contattarci
+      second_paragraph_part_one: "Se avesse ulteriori domande o desiderasse maggiori ragguagli in merito, può sempre contattarci"
       second_paragraph_part_two: a questo indirizzo e-mail
       second_paragraph_part_three: .
       first_goodbye: Cordiali saluti
@@ -73,4 +89,4 @@ it:
       address_second_line: Segretariato generale
       address_city: 3011 Berna
       phone: Telefono +41 31 311 33 03
-      opening_hours: (lun-ven 10.00-12.00, 14.00-16.00)
+      opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
