@@ -90,3 +90,6 @@ en:
       address_city: ""
       phone: ""
       opening_hours: ""
+  two_factor_authentication:
+    show:
+      confirm: Confirm

@@ -9,35 +9,37 @@
 class TwoFactorAuthenticationController < ApplicationController
   skip_authorization_check
   skip_before_action :authenticate_person!
+  before_action :redirect_unless_2fa_pending
 
   include TwoFactorAuthentication
 
   def show
-    @person = person
+    @person = two_fa_person
   end
 
   def create
     if two_factor_authenticate(second_factor_code)
-      sign_in person
+      sign_in two_fa_person
+      session.delete(:two_fa_person_id)
       redirect_to '/'
     else
       flash[:alert] = '2FA-Code falsch oder abgelaufen, bitte versuche es erneut'
-      redirect_to users_two_factor_authentication_confirmation_path(person: { id: person.id })
+      redirect_to users_two_factor_authentication_confirmation_path
     end
   end
 
   private
 
-  def person
-    Person.find(params[:person][:id])
+  def two_fa_person
+    @two_fa_person ||= Person.find(session[:two_fa_person_id])
   end
 
   def second_factor_code
     params[:person][:second_factor_code]
   end
 
-  def permitted_params
-    params.require(:person)
+  def redirect_unless_2fa_pending
+    redirect_to root_path unless pending_two_factor_auth?
   end
 
 end
