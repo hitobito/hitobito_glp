@@ -12,6 +12,11 @@ application:
     en: English
     fr: Français
     it: Italiano
+  logo:
+    image: glp_logo.svg
+    width: 100
+    height: 60
+
 list_domain: grunliberale.ch
 
 # The person with this email has root access to everything
