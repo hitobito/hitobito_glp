@@ -15,13 +15,13 @@ class ExternalFormsController < ApplicationController
   end
 
   def test
-    @language = params.fetch(:language, 'de')
+    @language = language
     @role = params.fetch(:role, 'mitglied')
     render 'test', layout: false
   end
 
   def loader
-    @language = params[:language] || "de"
+    @language = language
     I18n.locale = @language
     @role = params[:role] || "mitglied"
     @form = external_form({
@@ -31,8 +31,15 @@ class ExternalFormsController < ApplicationController
 
   private
 
+  def language
+    @language ||= begin
+      locale = params.fetch(:language, I18n.default_locale).to_sym
+      I18n.available_locales.include?(locale) ? locale : I18n.default_locale
+    end.to_s
+  end
+
   def external_form(options)
-    action = externally_submitted_people_url(locale: params.fetch(:language, :de))
+    action = externally_submitted_people_url(locale: language)
     role = options[:role]
 
     <<-HTML
