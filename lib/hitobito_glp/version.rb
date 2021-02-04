@@ -7,5 +7,5 @@
 
 
 module HitobitoGlp
-  VERSION = '1.22.21'
+  VERSION = '1.22.22'
 end
