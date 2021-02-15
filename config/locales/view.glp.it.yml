@@ -62,6 +62,7 @@ it:
       phone: Telefono +41 31 311 33 03
       opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
     welcome_sympathisant:
+      reply_email: ""
       subject: Un cordiale benvenuto dai verdi liberali!
       hello: Buongiorno
       first_paragraph: Grazie per esserti iscritto/a alle nostre news & info. È con piacere che abbiamo aggiunto il tuo indirizzo alla nostra mailing list.
@@ -77,6 +78,7 @@ it:
       phone: Telefono +41 31 311 33 03
       opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
     welcome_medien_und_dritte:
+      reply_email: ""
       subject: Grazie mille per la sua iscrizione!
       hello: Buongiorno
       first_paragraph: La ringraziamo per essersi iscritto/a alle nostre news & info. È con piacere che abbiamo aggiunto il suo indirizzo alla mailing list.
@@ -90,3 +92,6 @@ it:
       address_city: 3011 Berna
       phone: Telefono +41 31 311 33 03
       opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
+  two_factor_authentication:
+    show:
+      confirm: ""

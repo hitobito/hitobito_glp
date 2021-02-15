@@ -62,6 +62,7 @@ fr:
       phone: Téléphone +41 31 311 33 03
       opening_hours: "(lun-ven 10h00-12h00, 14h00-16h00)"
     welcome_sympathisant:
+      reply_email: ""
       subject: Bienvenue chez les vert’libéraux !
       hello: "Bonjour,"
       first_paragraph: Nous vous remercions de vous être abonné(e) à nos nouvelles et informations. C'est avec plaisir que nous avons ajouté votre adresse à notre liste de diffusion.
@@ -77,6 +78,7 @@ fr:
       phone: Téléphone +41 31 311 33 03
       opening_hours: "(lun-ven 10h00-12h00, 14h00-16h00)"
     welcome_medien_und_dritte:
+      reply_email: ""
       subject: Merci beaucoup pour votre inscription !
       hello: "Bonjour,"
       first_paragraph: Nous vous remercions de vous être abonné(e) à nos nouvelles et informations. C'est avec plaisir que nous avons ajouté votre adresse à notre liste de diffusion.
@@ -90,3 +92,6 @@ fr:
       address_city: 3011 Berne
       phone: Téléphone +41 31 311 33 03
       opening_hours: "(lun-ven 10h00-12h00, 14h00-16h00)"
+  two_factor_authentication:
+    show:
+      confirm: ""
