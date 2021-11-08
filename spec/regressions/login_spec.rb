@@ -11,18 +11,17 @@ describe 'Login', type: :request do
 
   subject { page }
 
-  let(:admin) do 
+  let(:admin) do
     p = Fabricate('Group::Root::Administrator', group: groups(:root)).person
-    p.update!(password: 'hito42bito')
+    p.update!(password: 'hito42bito-but-secure')
     p.phone_numbers.create!(number: '+41 77 222 78 90', label: 'Mobil')
     p
   end
 
   before do
-    stub_request(:post, /api.twilio.com/).
-      with(
-        body: {"Body"=>/[0-9]+ ist dein 2FA-Code für glp community/, "From"=>"glp", "To"=>"+41772227890"})
-        .to_return(status: 200, body: "", headers: {})
+    stub_request(:post, /api.twilio.com/)
+      .with(body: {"Body"=>/[0-9]+ ist dein 2FA-Code für glp community/, "From"=>"glp", "To"=>"+41772227890"})
+      .to_return(status: 200, body: "", headers: {})
   end
 
   context 'with 2FA' do
@@ -58,7 +57,7 @@ describe 'Login', type: :request do
         second_factor_generated_at: Time.zone.today,
         second_factor_unsuccessful_tries: 5)
 
-      post person_session_path, params: { person: { email: admin.email, password: 'hito42bito' } }
+      post person_session_path, params: { person: { email: admin.email, password: 'hito42bito-but-secure' } }
 
       expect(response).to redirect_to('/')
 
@@ -72,7 +71,7 @@ describe 'Login', type: :request do
           body: {"Body"=>/[0-9]+ ist dein 2FA-Code für glp community/, "From"=>"glp", "To"=>"+41772227890"})
         .to_raise(StandardError)
 
-      post person_session_path, params: { person: { email: admin.email, password: 'hito42bito' } }
+      post person_session_path, params: { person: { email: admin.email, password: 'hito42bito-but-secure' } }
 
       expect(response).to redirect_to('/')
 
@@ -92,7 +91,7 @@ describe 'Login', type: :request do
 
     expect(response.status).to eq 200
 
-    post person_session_path, params: { person: { email: admin.email, password: 'hito42bito' } }
+    post person_session_path, params: { person: { email: admin.email, password: 'hito42bito-but-secure' } }
 
     expect(response).to redirect_to(users_two_factor_authentication_confirmation_path)
     follow_redirect!
