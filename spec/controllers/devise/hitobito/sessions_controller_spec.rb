@@ -8,7 +8,7 @@
 
 require 'spec_helper'
 
-describe Devise::SessionsController do
+describe Devise::Hitobito::SessionsController do
 
   before { request.env['devise.mapping'] = Devise.mappings[:person] }
 
