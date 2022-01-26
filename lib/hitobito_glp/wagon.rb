@@ -46,7 +46,7 @@ module HitobitoGlp
 
       Sheet::Base.prepend Glp::Sheet::Base
 
-      Devise::SessionsController.prepend Glp::Devise::SessionsController
+      Devise::Hitobito::SessionsController.prepend Glp::Devise::SessionsController
       ApplicationController.prepend Glp::Concerns::Authenticatable
 
       ApplicationMailer.send :layout, 'mailer'
