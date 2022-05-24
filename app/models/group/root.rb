@@ -20,6 +20,8 @@ class Group::Root < Group
 
   class Administrator < Role
     self.permissions = [:layer_and_below_full, :admin, :impersonation, :contact_data]
+
+    self.two_factor_authentication_enforced = true
   end
 
   class Eventverantwortliche < Role

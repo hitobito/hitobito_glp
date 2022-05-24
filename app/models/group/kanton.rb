@@ -11,6 +11,8 @@ class Group::Kanton < Group
 
   class Administrator < Role
     self.permissions = [:layer_and_below_full, :contact_data]
+
+    self.two_factor_authentication_enforced = true
   end
 
   roles Administrator

@@ -23,14 +23,6 @@ module Glp::Person
     roles.any? { |role| role.type =~ /::Administrator/ }
   end
 
-  def two_factor_authentication_required?
-    !two_factor_skip_by_email? && roles.any? { |role| role.class.sti_name =~ /Administrator$/ }
-  end
-
-  def two_factor_skip_by_email?
-    Settings.two_factor_skip.any? { |string| Regexp.new(string).match(email) }
-  end
-
   def full_name_with_title(format = :default)
     case format
     when :list, :print_list then "#{title} #{full_name_without_title(format)}".strip
