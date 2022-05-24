@@ -46,7 +46,10 @@ class ExternallySubmittedPeopleController < ApplicationController
 
       @person = Person.create!(attrs)
       SortingHat::Song.new(@person, submitted_role, jglp).sing
-      render json: @person, status: :ok
+      render json: PersonSerializer.new(@person.decorate,
+                                        group: @person.primary_group,
+                                        controller: self),
+                                        status: :ok
     end
   rescue ActiveRecord::RecordInvalid => e
     if e.message =~ /e-mail/i || e.message =~ /email/i
