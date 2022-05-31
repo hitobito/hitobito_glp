@@ -92,6 +92,3 @@ de:
       address_city: 3011 Bern
       phone: Telefon +41 31 311 33 03
       opening_hours: (Mo-Fr 10-12 und 14-16 Uhr)
-  two_factor_authentication:
-    show:
-      confirm: Bestätigen

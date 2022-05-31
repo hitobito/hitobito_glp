@@ -92,6 +92,3 @@ fr:
       address_city: 3011 Berne
       phone: Téléphone +41 31 311 33 03
       opening_hours: "(lun-ven 10h00-12h00, 14h00-16h00)"
-  two_factor_authentication:
-    show:
-      confirm: ""

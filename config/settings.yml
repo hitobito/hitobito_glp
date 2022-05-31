@@ -29,9 +29,6 @@ root_email: hitobito-glp@grunliberale.ch
 impersonate:
   notify: false
 
-two_factor_skip:
-  - '@puzzle.ch'
-
 people:
   abos: true
 
