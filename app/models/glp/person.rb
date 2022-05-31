@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-#  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
+#  Copyright (c) 2012-2022, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
@@ -21,14 +21,6 @@ module Glp::Person
 
   def admin?
     roles.any? { |role| role.type =~ /::Administrator/ }
-  end
-
-  def two_factor_authentication_required?
-    !two_factor_skip_by_email? && roles.any? { |role| role.class.sti_name =~ /Administrator$/ }
-  end
-
-  def two_factor_skip_by_email?
-    Settings.two_factor_skip.any? { |string| Regexp.new(string).match(email) }
   end
 
   def full_name_with_title(format = :default)
