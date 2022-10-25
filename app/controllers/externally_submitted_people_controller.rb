@@ -63,6 +63,12 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   private
+  
+  # Since there is no current_user but the serializer tries to make a can? call,
+  # we need to define an ability using nil as current_user
+  def current_ability
+    @current_ability ||= ::Ability.new(nil)
+  end
 
   def submitted_role
     model_params[:role].capitalize
