@@ -8,6 +8,15 @@ de:
   groups:
     form:
       label_zip_codes: PLZ (getrennt durch Kommas)
+  layouts:
+    unauthorized:
+
+      first_login: Erstes Login? Hier Passwort setzen
+      first_password: Passwort setzen
+  devise:
+    passwords:
+      new:
+        set_password_button: Passwort setzen
   mailing_list_people_attributes:
     title: Einschränken nach Personen-Attributen
     age: Alter

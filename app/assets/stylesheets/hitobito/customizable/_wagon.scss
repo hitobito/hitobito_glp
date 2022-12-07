@@ -3,9 +3,7 @@
 //  or later. See the COPYING file at the top-level directory or at
 //  https://github.com/hitobito/hitobito_glp.
 
-
 /* Logo */
-
 
 #page-header {
   a {
@@ -21,4 +19,13 @@ textarea.external_forms {
   width: auto;
   font-family: Consolas, Monaco, Lucida Console, Liberation Mono,
     DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+body.is-logged-out .container-fluid {
+  width: 60%;
+}
+
+#new_person input[type="email"],
+#new_person input[type="password"] {
+  width: 90%;
 }
