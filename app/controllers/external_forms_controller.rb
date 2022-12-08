@@ -54,7 +54,7 @@ class ExternalFormsController < ApplicationController
     mitglied_additional_fields = if mitglied
                                    [input_field('phone_number'),
                                     gender_field,
-                                    input_field('birthday', type: 'date')].join
+                                    input_field('birthday', type: 'date', max: Time.zone.today)].join
                                  else
                                    ''
                                  end
@@ -65,7 +65,7 @@ class ExternalFormsController < ApplicationController
                              input_field('town'),
                              input_field('phone_number'),
                              gender_field,
-                             input_field('birthday', type: 'date'),
+                             input_field('birthday', type: 'date', max: Time.zone.today),
                              '</div>',
                              "<a role='button' href='#' id='sympathisant-fields-collapse-toggle' data-show-more='#{t('external_form_js.show_more')}' data-show-less='#{t('external_form_js.show_less')}'>#{t('external_form_js.show_more')}</a>"].join
                           else
@@ -79,7 +79,7 @@ class ExternalFormsController < ApplicationController
             <fieldset>
               #{input_field('first_name', required: true)}
               #{input_field('last_name', required: true)}
-              #{input_field('email', required: true)}
+              #{input_field('email', required: true, type: 'email')}
               #{mitglied_address_fields}
               #{input_field('zip_code')}
               #{mitglied_additional_fields}
@@ -119,13 +119,13 @@ class ExternalFormsController < ApplicationController
     HTML
   end
 
-  def input_field(key, required: false, type: 'text')
+  def input_field(key, required: false, type: 'text', max: '')
     <<-HTML
       <div class='form-row'>
         <label for='#{key}'>
           #{t("external_form_js.#{key}")} #{required ? '*' : ''}
         </label>
-        <input name='externally_submitted_person[#{key}]' #{required ? "required='required'" : ''} type='#{type}' id='#{key}'/>
+        <input name='externally_submitted_person[#{key}]' #{required ? "required='required'" : ''} type='#{type}' id='#{key}' max='#{max}'/>
       </div>
     HTML
   end

@@ -46,21 +46,27 @@ class ExternallySubmittedPeopleController < ApplicationController
       attrs[:phone_numbers_attributes] = phone_numbers_attributes
       attrs[:preferred_language] = 'de' if attrs[:preferred_language].blank?
 
-      @person = Person.create!(attrs)
-      SortingHat::Song.new(@person, submitted_role, jglp).sing
-      render json: PersonSerializer.new(@person.decorate,
-                                        group: @person.primary_group,
-                                        controller: self),
-                                        status: :ok
-    end
-  rescue ActiveRecord::RecordInvalid => e
-    if e.message =~ /e-mail/i || e.message =~ /email/i
-      render({
-        json: {error: t("external_form_js.submit_error_email_taken")},
-        status: :unprocessable_entity
-      })
-    else
-      render json: {error: t("external_form_js.submit_error")}, status: :unprocessable_entity
+      @person = Person.new(attrs)
+      if @person.save
+        SortingHat::Song.new(@person, submitted_role, jglp).sing
+        render json: PersonSerializer.new(@person.decorate,
+                                          group: @person.primary_group,
+                                          controller: self),
+                                          status: :ok
+      else
+        errors = @person.errors
+        taken_email = errors.find { |e| e.attribute == :email && e.type == :taken }
+        message = if taken_email
+                    # show only this since it means they already own an account and the message advises them to not fill out the form
+                    t("external_form_js.submit_error_email_taken")
+                  else
+                    errors.uniq(&:attribute).map(&:full_message).join(', ')
+                  end
+        render({
+          json: { error: message },
+          status: :unprocessable_entity
+        })
+      end
     end
   end
 
