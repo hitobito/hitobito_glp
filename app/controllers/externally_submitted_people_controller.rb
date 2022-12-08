@@ -41,7 +41,9 @@ class ExternallySubmittedPeopleController < ApplicationController
       return
     end
     ActiveRecord::Base.transaction do
-      attrs = model_params.except(:role, :terms_and_conditions)
+      attrs = model_params.except(:role, :terms_and_conditions, :address, :house_number, :phone_number)
+      attrs[:address] = [model_params[:address], model_params[:house_number]].join(' ')
+      attrs[:phone_numbers_attributes] = phone_numbers_attributes
       attrs[:preferred_language] = 'de' if attrs[:preferred_language].blank?
 
       @person = Person.create!(attrs)
@@ -84,7 +86,24 @@ class ExternallySubmittedPeopleController < ApplicationController
                                                         :role,
                                                         :first_name,
                                                         :last_name,
+                                                        :address,
+                                                        :house_number,
+                                                        :town,
+                                                        :phone_number,
+                                                        :gender,
+                                                        :birthday,
                                                         :preferred_language,
                                                         :terms_and_conditions)
+  end
+
+  def phone_numbers_attributes
+    return unless model_params[:phone_number]
+
+    {
+      :'0' => {
+        number: model_params[:phone_number],
+        label: PhoneNumber.predefined_labels.first
+      }
+    }
   end
 end
