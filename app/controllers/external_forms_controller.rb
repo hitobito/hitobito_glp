@@ -38,6 +38,7 @@ class ExternalFormsController < ApplicationController
     end.to_s
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def external_form(options)
     action = externally_submitted_people_url(locale: language)
     role = options[:role]
@@ -54,12 +55,16 @@ class ExternalFormsController < ApplicationController
     mitglied_additional_fields = if mitglied
                                    [input_field('phone_number'),
                                     gender_field,
-                                    input_field('birthday', type: 'date', max: Time.zone.today)].join
+                                    input_field('birthday',
+                                                type: 'date',
+                                                max: Time.zone.today)].join
                                  else
                                    ''
                                  end
     sympathisant_fields = if sympathisant
-                            ["<div id='sympathisant_fields' style='max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out;'>",
+                            [["<div id='sympathisant_fields'",
+                              "style='max-height: 0; overflow: hidden;",
+                              "transition: max-height 0.2s ease-out;'>"].join(' '),
                              input_field('address'),
                              input_field('house_number'),
                              input_field('town'),
@@ -67,7 +72,10 @@ class ExternalFormsController < ApplicationController
                              gender_field,
                              input_field('birthday', type: 'date', max: Time.zone.today),
                              '</div>',
-                             "<a role='button' href='#' id='sympathisant-fields-collapse-toggle' data-show-more='#{t('external_form_js.show_more')}' data-show-less='#{t('external_form_js.show_less')}'>#{t('external_form_js.show_more')}</a>"].join
+                             ["<a role='button' href='#' id='sympathisant-fields-collapse-toggle'",
+                              "data-show-more='#{t('external_form_js.show_more')}'",
+                              "data-show-less='#{t('external_form_js.show_less')}'>",
+                              "#{t('external_form_js.show_more')}</a>"].join(' ')].join
                           else
                             ''
                           end
@@ -107,6 +115,7 @@ class ExternalFormsController < ApplicationController
       </div>
     HTML
   end
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
 
   def jglp_field(role)
     return '' unless role == 'mitglied'

@@ -41,7 +41,8 @@ class ExternallySubmittedPeopleController < ApplicationController
       return
     end
     ActiveRecord::Base.transaction do
-      attrs = model_params.except(:role, :terms_and_conditions, :address, :house_number, :phone_number)
+      attrs = model_params.except(:role, :terms_and_conditions, :address,
+                                  :house_number, :phone_number)
       attrs[:address] = [model_params[:address], model_params[:house_number]].join(' ')
       attrs[:phone_numbers_attributes] = phone_numbers_attributes
       attrs[:preferred_language] = 'de' if attrs[:preferred_language].blank?
@@ -57,7 +58,8 @@ class ExternallySubmittedPeopleController < ApplicationController
         errors = @person.errors
         taken_email = errors.find { |e| e.attribute == :email && e.type == :taken }
         message = if taken_email
-                    # show only this since it means they already own an account and the message advises them to not fill out the form
+                    # show only this since it means they already own an account
+                    # and the message advises them to not fill out the form
                     t("external_form_js.submit_error_email_taken")
                   else
                     errors.uniq(&:attribute).map(&:full_message).join(', ')
