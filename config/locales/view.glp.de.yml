@@ -26,8 +26,23 @@ de:
     terms_and_conditions_checkbox_html: Ich akzeptiere die %{link}.
     terms_and_conditions_link_text: Datenschutzerklärung
     terms_and_conditions_link: https://grunliberale.ch/datenschutz
+    first_name: Vorname
+    last_name: Nachname
+    email: E-Mail
+    address: Strasse
+    house_number: Hausnummer
     zip_code: PLZ
+    town: Ort
+    phone_number: Telefonnummer
+    gender: Geschlecht
+    genders:
+      m: männlich
+      w: weiblich
+      diverse: unbekannt/anderes/divers
+    birthdate: Geburtsdatum
     jglp: Ich bin unter 35 und möchte auch Mitglied der Jungen Grünliberalen werden (empfohlen).
+    show_more: Mehr anzeigen
+    show_less: Weniger anzeigen
 
   filter_navigation/people:
     root:

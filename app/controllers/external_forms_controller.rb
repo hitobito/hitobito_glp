@@ -42,37 +42,49 @@ class ExternalFormsController < ApplicationController
     action = externally_submitted_people_url(locale: language)
     role = options[:role]
 
+    mitglied = role == 'mitglied'
+    sympathisant = role == 'sympathisant'
+    mitglied_address_fields = if mitglied
+                                [input_field('address', required: true),
+                                 input_field('house_number', required: true),
+                                 input_field('town', required: true)].join
+                              else
+                                ''
+                              end
+    mitglied_additional_fields = if mitglied
+                                   [input_field('phone_number'),
+                                    gender_field,
+                                    input_field('birthdate', type: 'date')].join
+                                 else
+                                   ''
+                                 end
+    sympathisant_fields = if sympathisant
+                            ["<div id='sympathisant_fields' style='max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out;'>",
+                             input_field('address'),
+                             input_field('house_number'),
+                             input_field('town'),
+                             input_field('phone_number'),
+                             gender_field,
+                             input_field('birthdate', type: 'date'),
+                             '</div>',
+                             "<a role='button' href='#' id='sympathisant-fields-collapse-toggle' data-show-more='#{t('external_form_js.show_more')}' data-show-less='#{t('external_form_js.show_less')}'>#{t('external_form_js.show_more')}</a>"].join
+                          else
+                            ''
+                          end
     <<-HTML
       <div class='form'>
         <div class='form-wrapper'>
           <p id='hitobito-external-form-message'></p>
           <form action='#{action}' method='post'>
             <fieldset>
-              <div class='form-row'>
-                <label for='first_name'>
-                  #{t("activerecord.attributes.person.first_name")} *
-                </label>
-                <input name='externally_submitted_person[first_name]' type='text' id='first_name'/>
-              </div>
-              <div class='form-row'>
-                <label for='last_name'>
-                  #{t("activerecord.attributes.person.last_name")} *
-                </label>
-                <input name='externally_submitted_person[last_name]' type='text' id='last_name'/>
-              </div>
-              <div class='form-row'>
-                <label for='email'>
-                  #{t("activerecord.attributes.additional_email.email")} *
-                </label>
-                <input name='externally_submitted_person[email]' type='email' id='email'/>
-              </div>
-              <div class='form-row'>
-                <label for='zip_code'>
-                  #{t("external_form_js.zip_code")} *
-                </label>
-                <input name='externally_submitted_person[zip_code]' type='text' id='zip_code'/>
-              </div>
+              #{input_field('first_name', required: true)}
+              #{input_field('last_name', required: true)}
+              #{input_field('email', required: true)}
+              #{mitglied_address_fields}
+              #{input_field('zip_code')}
+              #{mitglied_additional_fields}
               #{jglp_field(role)}
+              #{sympathisant_fields}
               <br/>
               <label for='terms_and_conditions'>
                 <input name='terms_and_conditions' id='terms_and_conditions' type='checkbox' />
@@ -86,7 +98,7 @@ class ExternalFormsController < ApplicationController
               </label>
               <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
               <input type='hidden' name='externally_submitted_person[preferred_language]' value='#{@language}'/>
-              <div class='g-recaptcha' data-sitekey='6LcBNGoUAAAAAO3PJDEgWoN9f0zFFag1WdBRHjYO' data-size='compact'></div>
+              <div class='g-recaptcha' required='required' data-sitekey='6LcBNGoUAAAAAO3PJDEgWoN9f0zFFag1WdBRHjYO' data-size='compact'></div>
               <div class='button-wrapper'>
                 <input type='submit' value='#{t("global.button.save")}'/>
               </div>
@@ -104,6 +116,39 @@ class ExternalFormsController < ApplicationController
         <input name='externally_submitted_person[jglp]' type='checkbox' id='jglp' value='true'/>
         #{t('external_form_js.jglp')}
       </label>
+    HTML
+  end
+
+  def input_field(key, required: false, type: 'text')
+    <<-HTML
+      <div class='form-row'>
+        <label for='#{key}'>
+          #{t("external_form_js.#{key}")} #{required ? '*' : ''}
+        </label>
+        <input name='externally_submitted_person[#{key}]' #{required ? "required='required'" : ''} type='#{type}' id='#{key}'/>
+      </div>
+    HTML
+  end
+
+  def gender_field(required: false)
+    <<-HTML
+      <div class='form-row'>
+        <label for='gender'>
+          #{t("external_form_js.gender")} #{required ? '*' : ''}
+        </label>
+        <input name='externally_submitted_person[gender]' type='radio' id='gender_m' value='m'/>
+        <label for='gender_m'>
+          #{t("external_form_js.genders.m")}
+        </label>
+        <input name='externally_submitted_person[gender]' type='radio' id='gender_w' value='w'/>
+        <label for='gender_w'>
+          #{t("external_form_js.genders.w")}
+        </label>
+        <input name='externally_submitted_person[gender]' type='radio' id='gender_diverse' value='', checked='checked'/>
+        <label for='gender_diverse'>
+          #{t("external_form_js.genders.diverse")}
+        </label>
+      </div>
     HTML
   end
 end
