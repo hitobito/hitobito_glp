@@ -44,7 +44,7 @@ class ExternallySubmittedPeopleController < ApplicationController
       attrs = model_params.except(:role, :terms_and_conditions, :address,
                                   :house_number, :phone_number)
       attrs[:address] = [model_params[:address], model_params[:house_number]].join(' ')
-      attrs[:phone_numbers_attributes] = phone_numbers_attributes
+      attrs[:phone_numbers_attributes] = phone_numbers_attributes unless model_params[:phone_number]
       attrs[:preferred_language] = 'de' if attrs[:preferred_language].blank?
 
       @person = Person.new(attrs)
@@ -105,8 +105,6 @@ class ExternallySubmittedPeopleController < ApplicationController
   end
 
   def phone_numbers_attributes
-    return unless model_params[:phone_number]
-
     {
       :'0' => {
         number: model_params[:phone_number],
