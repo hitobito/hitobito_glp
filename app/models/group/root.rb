@@ -16,7 +16,8 @@ class Group::Root < Group
            Group::RootZugeordnete,
            Group::RootKontakte,
            Group::RootGewaehlte,
-           Group::Kanton
+           Group::Kanton,
+           Group::Spender
 
   class Administrator < Role
     self.permissions = [:layer_and_below_full, :admin, :impersonation, :contact_data]

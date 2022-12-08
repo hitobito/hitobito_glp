@@ -109,6 +109,12 @@ de:
       group/bezirk_kontakte:
         one: Kontakte
         other: Kontakte
+      group/spender:
+        one: Spendergruppe
+        other: Spendergruppe
+      group/spender/spender:
+        one: Spender:in
+        other: Spender:innen
       group/root/administrator:
         one: Administrator
         other: Administratoren

@@ -22,5 +22,6 @@ class Group::Ortsektion < Group
            Group::OrtsektionVorstand,
            Group::OrtsektionArbeitsgruppe,
            Group::OrtsektionZugeordnete,
-           Group::OrtsektionKontakte)
+           Group::OrtsektionKontakte,
+           Group::Spender)
 end

@@ -23,5 +23,6 @@ class Group::Bezirk < Group
            Group::BezirkArbeitsgruppe,
            Group::BezirkZugeordnete,
            Group::BezirkKontakte,
-           Group::Ortsektion)
+           Group::Ortsektion,
+           Group::Spender)
 end

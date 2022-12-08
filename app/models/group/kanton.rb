@@ -24,5 +24,6 @@ class Group::Kanton < Group
            Group::KantonArbeitsgruppe,
            Group::KantonZugeordnete,
            Group::KantonKontakte,
-           Group::Bezirk)
+           Group::Bezirk,
+           Group::Spender)
 end
