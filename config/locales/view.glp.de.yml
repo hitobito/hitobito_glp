@@ -14,6 +14,9 @@ de:
       first_login: Erstes Login? Hier Passwort setzen
       first_password: Passwort setzen
   devise:
+    sessions:
+      new:
+        2fa_explanation: "Hier gehts zur Erklärung der 2FA:<br>https://hitobito.readthedocs.io/de/latest/two_factor_authentication.html"
     passwords:
       new:
         set_password_button: Passwort setzen

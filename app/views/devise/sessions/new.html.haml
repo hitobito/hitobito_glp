@@ -1,6 +1,9 @@
 #main.row
-  .col-lg-6
+  .col-lg-6.d-flex.flex-column.justify-content-between
     = render 'info'
+
+    %div
+      = auto_link(t('.2fa_explanation'))
 
     .row.justify-content-center
       = action_button(t('layouts.unauthorized.first_login'), new_person_password_path(context: 'first_login'))
