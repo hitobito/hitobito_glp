@@ -14,6 +14,8 @@ module SortingHat
     end
 
     def groups # rubocop:disable Metrics/AbcSize
+      return group_for_role(Group::RootZugeordnete.all) if @zip.blank?
+
       groups = if jglp?
                  inside_jglp = find_for_zip(jglp_root.descendants)
                  inside_jglp += group_for_role(jglp_root.children) if inside_jglp.none?
@@ -27,7 +29,6 @@ module SortingHat
     private
 
     def find_for_zip(scope = root.descendants)
-      return Group.none if @zip.blank?
       return Group.none if foreign?
 
       scope = scope.without_deleted.joins(:parent)

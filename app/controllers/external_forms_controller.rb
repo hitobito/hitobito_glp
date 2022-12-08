@@ -54,7 +54,7 @@ class ExternalFormsController < ApplicationController
     mitglied_additional_fields = if mitglied
                                    [input_field('phone_number'),
                                     gender_field,
-                                    input_field('birthdate', type: 'date')].join
+                                    input_field('birthday', type: 'date')].join
                                  else
                                    ''
                                  end
@@ -65,7 +65,7 @@ class ExternalFormsController < ApplicationController
                              input_field('town'),
                              input_field('phone_number'),
                              gender_field,
-                             input_field('birthdate', type: 'date'),
+                             input_field('birthday', type: 'date'),
                              '</div>',
                              "<a role='button' href='#' id='sympathisant-fields-collapse-toggle' data-show-more='#{t('external_form_js.show_more')}' data-show-less='#{t('external_form_js.show_less')}'>#{t('external_form_js.show_more')}</a>"].join
                           else
@@ -144,7 +144,7 @@ class ExternalFormsController < ApplicationController
         <label for='gender_w'>
           #{t("external_form_js.genders.w")}
         </label>
-        <input name='externally_submitted_person[gender]' type='radio' id='gender_diverse' value='', checked='checked'/>
+        <input name='externally_submitted_person[gender]' type='radio' id='gender_diverse' value='' checked='checked'/>
         <label for='gender_diverse'>
           #{t("external_form_js.genders.diverse")}
         </label>
