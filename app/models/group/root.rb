@@ -25,10 +25,16 @@ class Group::Root < Group
     self.two_factor_authentication_enforced = true
   end
 
+  class Spendenverwalter < Role
+    self.permissions = [:financials]
+
+    self.two_factor_authentication_enforced = true
+  end
+
   class Eventverantwortliche < Role
     #TODO: What is the "Events erstellen" permission in the GLP Strukturdokument
     self.permissions = []
   end
 
-  roles Administrator
+  roles Administrator, Spendenverwalter
 end
