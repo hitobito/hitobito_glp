@@ -40,6 +40,9 @@ module HitobitoGlp
       PeopleFilterAbility.include Glp::PeopleFilterAbility
       ServiceTokenAbility.include Glp::ServiceTokenAbility
 
+      PersonReadables.include Glp::PersonReadables
+      PersonReadables.same_layer_permissions += [:financials]
+
       MailingList.include Glp::MailingList
       Person::Subscriptions.prepend Glp::Person::Subscriptions
 
@@ -49,7 +52,7 @@ module HitobitoGlp
 
       FilterNavigation::People.prepend Glp::FilterNavigation::People
 
-      Role::Permissions << :financials << :unconfined_below
+      Role::Permissions << :financials
 
       AbilityDsl::UserContext::LAYER_PERMISSIONS += [:financials]
       AbilityDsl::UserContext::GROUP_PERMISSIONS += [:financials]

@@ -10,6 +10,8 @@ class Group::Spender < Group
 
   class Spender < Role
     self.permissions = []
+
+    self.visible_from_above = false
   end
 
   roles Spender

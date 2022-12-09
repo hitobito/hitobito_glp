@@ -21,6 +21,11 @@ de:
         notify_on_join: Eintrittsbenachrichtung
         genders:
           _nil: unbekannt/anderes
+      role:
+        class:
+          permission:
+            description:
+              financials: Bearbeiten von Personen in Spender Gruppen.
     models:
       group/root:
         one: Schweiz

@@ -15,6 +15,11 @@ module Glp::GroupAbility
       permission(:layer_and_below_full).
         may(:activate_person_add_requests, :deactivate_person_add_requests, :index_service_tokens).
         in_same_layer_or_national_admin
+      
+      permission(:financials).
+        may(:show_donors).
+        in_same_layer
+
     end
   end
 
