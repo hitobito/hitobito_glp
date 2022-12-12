@@ -16,7 +16,7 @@ class Group::Ortsektion < Group
   end
 
   class Spendenverwalter < Role
-    self.permissions = [:financials]
+    self.permissions = [:financials, :layer_full]
 
     self.two_factor_authentication_enforced = true
   end
