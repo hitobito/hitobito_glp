@@ -31,6 +31,7 @@ module HitobitoGlp
 
       PeopleController.include Glp::PeopleController
       GroupsController.permitted_attrs += [:zip_codes]
+      Person::HistoryController.prepend Glp::Person::HistoryController
 
       GroupAbility.include Glp::GroupAbility
       PersonAbility.include Glp::PersonAbility
