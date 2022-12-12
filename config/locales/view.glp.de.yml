@@ -10,7 +10,6 @@ de:
       label_zip_codes: PLZ (getrennt durch Kommas)
   layouts:
     unauthorized:
-
       first_login: Erstes Login? Hier Passwort setzen
       first_password: Passwort setzen
   devise:
