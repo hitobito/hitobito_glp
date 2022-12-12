@@ -26,7 +26,9 @@ module HitobitoGlp
       Person.include Glp::Person
       Group.include Glp::Group
 
+      PersonDecorator.include Glp::PersonDecorator
       GroupDecorator.prepend Glp::GroupDecorator
+
       PeopleController.include Glp::PeopleController
       GroupsController.permitted_attrs += [:zip_codes]
 
