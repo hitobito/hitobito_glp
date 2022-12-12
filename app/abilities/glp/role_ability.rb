@@ -12,6 +12,8 @@ module Glp::RoleAbility
   included do
     on(Role) do
       general(:create, :update).require_admin_permission_for_precious_roles
+
+      general(:create, :update, :show, :destroy).require_financials_permission_for_financial_roles
     end
   end
 
@@ -19,7 +21,15 @@ module Glp::RoleAbility
     user_context.admin || !precious_roles.include?(subject.class.sti_name.split('::').last)
   end
 
+  def require_financials_permission_for_financial_roles
+    subject.permissions.exclude?(:financials) || user.groups_with_permission(:financials).any?
+  end
+
   def precious_roles
     %w(Administrator Adressverwaltung)
+  end
+
+  def financial_roles
+    
   end
 end
