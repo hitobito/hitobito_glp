@@ -25,6 +25,9 @@ module HitobitoGlp
     config.to_prepare do # rubocop:disable Metrics/BlockLength
       Person.include Glp::Person
       Group.include Glp::Group
+      
+      # Skips paper_trail for this role type
+      PaperTrail.request.disable_model(Group::Spender::Spender)
 
       PersonDecorator.include Glp::PersonDecorator
       GroupDecorator.prepend Glp::GroupDecorator

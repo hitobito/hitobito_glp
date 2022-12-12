@@ -9,9 +9,6 @@
 class Group::Spender < Group
 
   class Spender < Role
-    # Skips paper_trail for this role type
-    has_paper_trail on: []
-
     self.permissions = []
 
     self.visible_from_above = false
