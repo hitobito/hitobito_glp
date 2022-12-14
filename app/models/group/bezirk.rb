@@ -15,7 +15,13 @@ class Group::Bezirk < Group
     self.two_factor_authentication_enforced = true
   end
 
-  roles Administrator
+  class Spendenverwalter < Role
+    self.permissions = [:financials, :layer_full]
+
+    self.two_factor_authentication_enforced = true
+  end
+
+  roles Administrator, Spendenverwalter
 
   children(Group::BezirkGewaehlte,
            Group::BezirkGeschaeftsstelle,
@@ -23,5 +29,6 @@ class Group::Bezirk < Group
            Group::BezirkArbeitsgruppe,
            Group::BezirkZugeordnete,
            Group::BezirkKontakte,
-           Group::Ortsektion)
+           Group::Ortsektion,
+           Group::Spender)
 end

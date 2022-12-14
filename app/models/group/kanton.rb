@@ -15,7 +15,13 @@ class Group::Kanton < Group
     self.two_factor_authentication_enforced = true
   end
 
-  roles Administrator
+  class Spendenverwalter < Role
+    self.permissions = [:financials, :layer_full]
+
+    self.two_factor_authentication_enforced = true
+  end
+
+  roles Administrator, Spendenverwalter
 
   children(Group::KantonDelegierte,
            Group::KantonGewaehlte,
@@ -24,5 +30,6 @@ class Group::Kanton < Group
            Group::KantonArbeitsgruppe,
            Group::KantonZugeordnete,
            Group::KantonKontakte,
-           Group::Bezirk)
+           Group::Bezirk,
+           Group::Spender)
 end

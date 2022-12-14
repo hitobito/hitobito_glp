@@ -21,6 +21,11 @@ de:
         notify_on_join: Eintrittsbenachrichtung
         genders:
           _nil: unbekannt/anderes
+      role:
+        class:
+          permission:
+            description:
+              financials: Bearbeiten von Personen in Spender-Gruppen.
     models:
       group/root:
         one: Schweiz
@@ -109,9 +114,18 @@ de:
       group/bezirk_kontakte:
         one: Kontakte
         other: Kontakte
+      group/spender:
+        one: Spendergruppe
+        other: Spendergruppe
+      group/spender/spender:
+        one: Spender:in
+        other: Spender:innen
       group/root/administrator:
         one: Administrator
         other: Administratoren
+      group/root/spendenverwalter:
+        one: Spendenverwalter:in
+        other: Spendenverwalter:innen
       group/root/eventverantwortliche:
         one: Eventverantwortliche
         other: Eventverantwortlichen
@@ -187,6 +201,9 @@ de:
       group/kanton/administrator:
         one: Administrator
         other: Administratoren
+      group/kanton/spendenverwalter:
+        one: Spendenverwalter:in
+        other: Spendenverwalter:innen
       group/kanton_delegierte/delegierte:
         one: Delegierte
         other: Delegierte
@@ -259,6 +276,9 @@ de:
       group/ortsektion/administrator:
         one: Administrator
         other: Administratoren
+      group/ortsektion/spendenverwalter:
+        one: Spendenverwalter:in
+        other: Spendenverwalter:innen
       group/ortsektion_gewaehlte/kommunale_exekutive:
         one: Kommunale Exekutive
         other: Kommunale Exekutiven
@@ -322,6 +342,9 @@ de:
       group/bezirk/administrator:
         one: Administrator
         other: Administratoren
+      group/bezirk/spendenverwalter:
+        one: Spendenverwalter:in
+        other: Spendenverwalter:innen
       group/bezirk_gewaehlte/regierungsstatthalter:
         one: Regierungsstatthalter/-in
         other: Regierungsstatthalter/-innen

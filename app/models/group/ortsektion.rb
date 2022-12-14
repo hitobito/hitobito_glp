@@ -15,12 +15,19 @@ class Group::Ortsektion < Group
     self.two_factor_authentication_enforced = true
   end
 
-  roles Administrator
+  class Spendenverwalter < Role
+    self.permissions = [:financials, :layer_full]
+
+    self.two_factor_authentication_enforced = true
+  end
+
+  roles Administrator, Spendenverwalter
 
   children(Group::OrtsektionGewaehlte,
            Group::OrtsektionGeschaeftsstelle,
            Group::OrtsektionVorstand,
            Group::OrtsektionArbeitsgruppe,
            Group::OrtsektionZugeordnete,
-           Group::OrtsektionKontakte)
+           Group::OrtsektionKontakte,
+           Group::Spender)
 end

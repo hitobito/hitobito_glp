@@ -16,10 +16,17 @@ class Group::Root < Group
            Group::RootZugeordnete,
            Group::RootKontakte,
            Group::RootGewaehlte,
-           Group::Kanton
+           Group::Kanton,
+           Group::Spender
 
   class Administrator < Role
     self.permissions = [:layer_and_below_full, :admin, :impersonation, :contact_data]
+
+    self.two_factor_authentication_enforced = true
+  end
+
+  class Spendenverwalter < Role
+    self.permissions = [:financials, :layer_full]
 
     self.two_factor_authentication_enforced = true
   end
@@ -29,5 +36,5 @@ class Group::Root < Group
     self.permissions = []
   end
 
-  roles Administrator
+  roles Administrator, Spendenverwalter
 end

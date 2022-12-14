@@ -11,6 +11,7 @@ require 'spec_helper'
 describe RoleAbility do
   let(:root)             { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)) }
   let(:administrator)    { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)) }
+  let(:spendenverwaltung) { Fabricate(Group::Kanton::Spendenverwalter.name.to_sym, group: groups(:bern)) }
   let(:adressverwaltung) { Fabricate(Group::KantonZugeordnete::Adressverwaltung.name.to_sym, group: groups(:bern_zugeordnete)) }
   let(:mitglied)         { Fabricate(Group::KantonZugeordnete::Mitglied.name.to_sym, group: groups(:bern_zugeordnete)) }
 
@@ -30,6 +31,10 @@ describe RoleAbility do
     it 'may create Mitglied' do
       is_expected.to be_able_to(:create, mitglied)
     end
+
+    it 'may not create Spendenverwalter' do
+      is_expected.to_not be_able_to(:create, spendenverwaltung)
+    end
   end
 
   context :kanton_admin do
@@ -45,6 +50,30 @@ describe RoleAbility do
 
     it 'may create Mitglied' do
       is_expected.to be_able_to(:create, mitglied)
+    end
+
+    it 'may not create Spendenverwalter' do
+      is_expected.to_not be_able_to(:create, spendenverwaltung)
+    end
+  end
+
+  context :kanton_spendenverwaltung do
+    let(:person)  { spendenverwaltung.person }
+
+    it 'may not create Administrator' do
+      is_expected.not_to be_able_to(:create, administrator)
+    end
+
+    it 'may not create Versandaddresse' do
+      is_expected.not_to be_able_to(:create, adressverwaltung)
+    end
+
+    it 'may create Mitglied' do
+      is_expected.to be_able_to(:create, mitglied)
+    end
+
+    it 'may create Spendenverwalter' do
+      is_expected.to be_able_to(:create, spendenverwaltung)
     end
   end
 end

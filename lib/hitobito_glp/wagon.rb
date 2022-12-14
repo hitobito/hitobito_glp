@@ -25,10 +25,16 @@ module HitobitoGlp
     config.to_prepare do # rubocop:disable Metrics/BlockLength
       Person.include Glp::Person
       Group.include Glp::Group
+      
+      # Skips paper_trail for this role type
+      PaperTrail.request.disable_model(Group::Spender::Spender)
 
+      PersonDecorator.include Glp::PersonDecorator
       GroupDecorator.prepend Glp::GroupDecorator
+
       PeopleController.include Glp::PeopleController
       GroupsController.permitted_attrs += [:zip_codes]
+      Person::HistoryController.prepend Glp::Person::HistoryController
 
       GroupAbility.include Glp::GroupAbility
       PersonAbility.include Glp::PersonAbility
@@ -40,6 +46,9 @@ module HitobitoGlp
       PeopleFilterAbility.include Glp::PeopleFilterAbility
       ServiceTokenAbility.include Glp::ServiceTokenAbility
 
+      PersonReadables.include Glp::PersonReadables
+      PersonReadables.same_layer_permissions += [:financials]
+
       MailingList.include Glp::MailingList
       Person::Subscriptions.prepend Glp::Person::Subscriptions
 
@@ -49,6 +58,10 @@ module HitobitoGlp
 
       FilterNavigation::People.prepend Glp::FilterNavigation::People
 
+      Role::Permissions << :financials
+
+      AbilityDsl::UserContext::LAYER_PERMISSIONS += [:financials]
+      AbilityDsl::UserContext::GROUP_PERMISSIONS += [:financials]
 
       # TODO: maybe better additional_merge fields, code gets execute on every code reload
       Synchronize::Mailchimp::Synchronizator.member_fields = [
