@@ -148,4 +148,48 @@ describe ExternallySubmittedPeopleController do
 
   end
 
+  it 'builds phone_number' do
+    expect do
+      subject_with_args({ phone_number: '078 421 92 10' })
+    end.to change { PhoneNumber.count }.by(1)
+
+    phone_number = PhoneNumber.last
+    expect(phone_number.label).to eq('Privat')
+    expect(phone_number.number).to eq('+41 78 421 92 10')
+  end
+
+  it 'combines address and house_number' do
+    expect do
+      subject_with_args({ address: 'Belpstrasse', house_number: '37' })
+    end.to change { Person.count }.by(1)
+
+    person = Person.last
+    expect(person.address).to eq('Belpstrasse 37')
+  end
+
+  it 'shows only email taken error' do
+    expect do
+      subject_with_args({ email: Person.first.email })
+    end.to_not change { Person.count }
+
+    error = JSON.parse(response.body)['error']
+    msg = 'Deine E-Mail-Adresse ist leider schon vergeben. ' \
+          'Melde Dich unter +41 31 311 33 03 oder schweiz@grunliberale.ch, ' \
+          'damit wir Dich zum Mitglied upgraden bzw. ' \
+          'Dir bei Deinem Anliegen weiterhelfen können.'
+    expect(error).to eq(msg)
+  end
+
+  it 'shows all validation errors' do
+    expect do
+      subject_with_args({ email: 'invalid', phone_number: 'abc' })
+    end.to_not change { Person.count }
+
+    error = JSON.parse(response.body)['error']
+    msg = [
+      'Haupt-E-Mail ist nicht gültig',
+      'Telefonnummer ist nicht gültig'
+    ].join(', ')
+    expect(error).to eq(msg)
+  end
 end

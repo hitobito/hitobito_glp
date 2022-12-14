@@ -31,11 +31,6 @@
     onSubmit(form, function(event){
       event.preventDefault();
 
-      var validation_error_message = validateFormFields(form);
-      if(validation_error_message){
-        displayError(validation_error_message);
-        return;
-      }
       disableForm(form);
       displayNeutral(s("submitting"));
 
@@ -51,27 +46,25 @@
         disableForm(form, false);
       })
     })
+
+    var fields = document.getElementById("sympathisant_fields");
+    var toggle = document.getElementById("sympathisant-fields-collapse-toggle");
+    if(!fields) return;
+
+    toggle.addEventListener("click", function() {
+      this.classList.toggle("active");
+      if (this.className !== "active"){
+        fields.style.maxHeight = '0';
+        this.innerText = this.dataset.showMore
+      } else {
+        fields.style.maxHeight = fields.scrollHeight + "px";
+        this.innerText = this.dataset.showLess
+      }
+    })
   }
 
   /* Helper functions: Forms */
 
-  function validateFormFields(form){
-    var is_fully_filled_out = Object.values(getInputDataFromForm(form)).map(function(value){
-      return value !== "";
-    }).reduce(function(a, b){
-      return a && b;
-    })
-    if(!is_fully_filled_out){
-      return s("submit_error_required_fields");
-    }
-
-    var terms_and_conditions_checkbox = form.querySelector("#terms_and_conditions");
-    if(!terms_and_conditions_checkbox.checked){
-      return s("submit_error_terms_conditions");
-    }
-
-    return false;
-  }
   function errorMessageForResponse(status, response){
     try {
       errorResponse = JSON.parse(response).error;
@@ -103,8 +96,9 @@
     var data = {};
     traverseNodeList(form.querySelectorAll("input"), function(input){
       if(input.name !== ""){
+        if (input.type === 'radio' && !input.checked) return;
         data[input.name] = input.value;
-        if (input.type == 'checkbox') {
+        if (input.type === 'checkbox') {
           data[input.name] = input.checked;
         }
       }

@@ -41,24 +41,35 @@ class ExternallySubmittedPeopleController < ApplicationController
       return
     end
     ActiveRecord::Base.transaction do
-      attrs = model_params.except(:role, :terms_and_conditions)
+      attrs = model_params.except(:role, :terms_and_conditions, :address,
+                                  :house_number, :phone_number)
+
+      attrs[:address] = [model_params[:address], model_params[:house_number]].join(' ')
+      attrs[:phone_numbers_attributes] = phone_numbers_attributes if model_params[:phone_number]
       attrs[:preferred_language] = 'de' if attrs[:preferred_language].blank?
 
-      @person = Person.create!(attrs)
-      SortingHat::Song.new(@person, submitted_role, jglp).sing
-      render json: PersonSerializer.new(@person.decorate,
-                                        group: @person.primary_group,
-                                        controller: self),
-                                        status: :ok
-    end
-  rescue ActiveRecord::RecordInvalid => e
-    if e.message =~ /e-mail/i || e.message =~ /email/i
-      render({
-        json: {error: t("external_form_js.submit_error_email_taken")},
-        status: :unprocessable_entity
-      })
-    else
-      render json: {error: t("external_form_js.submit_error")}, status: :unprocessable_entity
+      @person = Person.new(attrs)
+      if @person.save
+        SortingHat::Song.new(@person, submitted_role, jglp).sing
+        render json: PersonSerializer.new(@person.decorate,
+                                          group: @person.primary_group,
+                                          controller: self),
+                                          status: :ok
+      else
+        errors = @person.errors
+        taken_email = errors.find { |e| e.attribute == :email && e.type == :taken }
+        message = if taken_email
+                    # show only this since it means they already own an account
+                    # and the message advises them to not fill out the form
+                    t("external_form_js.submit_error_email_taken")
+                  else
+                    errors.uniq(&:attribute).map(&:full_message).join(', ')
+                  end
+        render({
+          json: { error: message },
+          status: :unprocessable_entity
+        })
+      end
     end
   end
 
@@ -84,7 +95,22 @@ class ExternallySubmittedPeopleController < ApplicationController
                                                         :role,
                                                         :first_name,
                                                         :last_name,
+                                                        :address,
+                                                        :house_number,
+                                                        :town,
+                                                        :phone_number,
+                                                        :gender,
+                                                        :birthday,
                                                         :preferred_language,
                                                         :terms_and_conditions)
+  end
+
+  def phone_numbers_attributes
+    {
+      :'0' => {
+        number: model_params[:phone_number],
+        label: PhoneNumber.predefined_labels.first
+      }
+    }
   end
 end
