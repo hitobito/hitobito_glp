@@ -9,11 +9,11 @@ require 'spec_helper'
 
 describe PersonDecorator do
 
-  let(:admin)       { people(:admin) }
+  let(:admin) { people(:admin) }
   let(:root) { groups(:root) }
 
-  let(:person)   { Fabricate(Group::Root::Administrator.name, group: root).person }
-  let(:spender)  { Fabricate(Group::Spender.name, parent: groups(:bern)) }
+  let(:person) { Fabricate(Group::Root::Administrator.name, group: root).person }
+  let(:spender) { Fabricate(Group::Spender.name, parent: groups(:bern)) }
 
   let(:decorator) { PersonDecorator.new(person.reload) }
   subject { decorator.roles_grouped }

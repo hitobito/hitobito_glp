@@ -41,15 +41,6 @@ describe PersonReadables do
             is_expected.not_to include(other.person)
           end
         end
-
-        xcontext 'lower stufe group' do
-          # let(:group) { groups(:) }
-
-          it 'may not get non-visible people' do
-            other = Fabricate(Group::Stufe::Teilnehmer.name, group: group)
-            is_expected.not_to include(other.person)
-          end
-        end
       end
 
       describe 'layer_and_below_full on same layer' do
