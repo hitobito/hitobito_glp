@@ -15,6 +15,7 @@ de:
     age_finish: Maximalalter
 
   external_form_js:
+    submit: Senden
     submitting: Daten wurden übermittelt, vielen Dank!
     submit_error_required_fields: Bitte fülle alle Felder aus.
     submit_error_email_taken: Deine E-Mail-Adresse ist leider schon vergeben. Melde Dich unter +41 31 311 33 03 oder schweiz@grunliberale.ch, damit wir Dich zum Mitglied upgraden bzw. Dir bei Deinem Anliegen weiterhelfen können.
@@ -36,10 +37,11 @@ de:
     phone_number: Telefonnummer
     gender: Geschlecht
     genders:
+      not_stated: keine Angabe
       m: männlich
       w: weiblich
-      diverse: unbekannt/anderes/divers
-    birthday: Geburtsdatum
+      diverse: anderes
+    birthday: Geburtsdatum (TT.MM.JJJJ)
     jglp: Ich bin unter 35 und möchte auch Mitglied der Jungen Grünliberalen werden (empfohlen).
     show_more: Mehr anzeigen
     show_less: Weniger anzeigen

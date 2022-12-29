@@ -56,7 +56,8 @@ class ExternalFormsController < ApplicationController
                                    [input_field('phone_number'),
                                     gender_field,
                                     input_field('birthday',
-                                                type: 'date',
+                                                type: 'text',
+                                                pattern: '(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}',
                                                 max: Time.zone.today)].join
                                  else
                                    ''
@@ -70,9 +71,12 @@ class ExternalFormsController < ApplicationController
                              input_field('town'),
                              input_field('phone_number'),
                              gender_field,
-                             input_field('birthday', type: 'date', max: Time.zone.today),
+                             input_field('birthday',
+                                         type: 'text',
+                                         pattern: '(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}',
+                                         max: Time.zone.today),
                              '</div>',
-                             ["<a role='button' href='#' id='sympathisant-fields-collapse-toggle'",
+                             ["<a role='button' href='javascript:void(0)' id='sympathisant-fields-collapse-toggle'",
                               "data-show-more='#{t('external_form_js.show_more')}'",
                               "data-show-less='#{t('external_form_js.show_less')}'>",
                               "#{t('external_form_js.show_more')}</a>"].join(' ')].join
@@ -82,33 +86,33 @@ class ExternalFormsController < ApplicationController
     <<-HTML
       <div class='form'>
         <div class='form-wrapper'>
-          <p id='hitobito-external-form-message'></p>
           <form action='#{action}' method='post'>
             <fieldset>
               #{input_field('first_name', required: true)}
               #{input_field('last_name', required: true)}
               #{input_field('email', required: true, type: 'email')}
               #{mitglied_address_fields}
-              #{input_field('zip_code')}
+              #{input_field('zip_code', required: mitglied)}
               #{mitglied_additional_fields}
               #{jglp_field(role)}
               #{sympathisant_fields}
               <br/>
               <label for='terms_and_conditions'>
-                <input name='terms_and_conditions' id='terms_and_conditions' type='checkbox' />
+                <input name='terms_and_conditions' id='terms_and_conditions' type='checkbox' required='required' />
                 #{t("external_form_js.terms_and_conditions_checkbox_html", :link => (
                   view_context.link_to(
                     t("external_form_js.terms_and_conditions_link_text"),
                     t("external_form_js.terms_and_conditions_link"),
                     target: '_blank'
                   ).gsub('"', "'")
-                ))}
+                ))} *
               </label>
               <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
               <input type='hidden' name='externally_submitted_person[preferred_language]' value='#{@language}'/>
               <div class='g-recaptcha' required='required' data-sitekey='6LcBNGoUAAAAAO3PJDEgWoN9f0zFFag1WdBRHjYO' data-size='compact'></div>
+              <p id='hitobito-external-form-message'></p>
               <div class='button-wrapper'>
-                <input type='submit' value='#{t("global.button.save")}'/>
+                <input type='submit' value='#{t("external_form_js.submit")}'/>
               </div>
           </form>
         </div>
@@ -128,13 +132,14 @@ class ExternalFormsController < ApplicationController
     HTML
   end
 
-  def input_field(key, required: false, type: 'text', max: '')
+  def input_field(key, required: false, type: 'text', max: '', pattern: nil)
+    pattern_attr = pattern.nil? ? '' : " pattern='#{pattern}'"
     <<-HTML
       <div class='form-row'>
         <label for='#{key}'>
           #{t("external_form_js.#{key}")} #{required ? '*' : ''}
         </label>
-        <input name='externally_submitted_person[#{key}]' #{required ? "required='required'" : ''} type='#{type}' id='#{key}' max='#{max}'/>
+        <input name='externally_submitted_person[#{key}]' #{required ? "required='required'" : ''} type='#{type}' id='#{key}' max='#{max}' #{pattern_attr}/>
       </div>
     HTML
   end
@@ -145,16 +150,20 @@ class ExternalFormsController < ApplicationController
         <label for='gender'>
           #{t("external_form_js.gender")} #{required ? '*' : ''}
         </label>
-        <input name='externally_submitted_person[gender]' type='radio' id='gender_m' value='m'/>
-        <label for='gender_m'>
+        <label for='gender_not_stated' style='width: auto'>
+          <input name='externally_submitted_person[gender]' type='radio' id='gender_not_stated' value='not_stated' checked='checked' style='width: 2rem'/>
+          #{t("external_form_js.genders.not_stated")}
+        </label>
+        <label for='gender_m' style='width: auto'>
+          <input name='externally_submitted_person[gender]' type='radio' id='gender_m' value='m' style='width: 2rem'/>
           #{t("external_form_js.genders.m")}
         </label>
-        <input name='externally_submitted_person[gender]' type='radio' id='gender_w' value='w'/>
-        <label for='gender_w'>
+        <label for='gender_w' style='width: auto'>
+          <input name='externally_submitted_person[gender]' type='radio' id='gender_w' value='w' style='width: 2rem'/>
           #{t("external_form_js.genders.w")}
         </label>
-        <input name='externally_submitted_person[gender]' type='radio' id='gender_diverse' value='' checked='checked'/>
-        <label for='gender_diverse'>
+        <label for='gender_diverse' style='width: auto'>
+          <input name='externally_submitted_person[gender]' type='radio' id='gender_diverse' value='' style='width: 2rem'/>
           #{t("external_form_js.genders.diverse")}
         </label>
       </div>
