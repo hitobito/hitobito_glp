@@ -43,6 +43,7 @@ class ExternalFormsController < ApplicationController
     action = externally_submitted_people_url(locale: language)
     role = options[:role]
 
+    birthday_pattern = '(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}'
     mitglied = role == 'mitglied'
     sympathisant = role == 'sympathisant'
     mitglied_address_fields = if mitglied
@@ -57,7 +58,7 @@ class ExternalFormsController < ApplicationController
                                     gender_field,
                                     input_field('birthday',
                                                 type: 'text',
-                                                pattern: '(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}',
+                                                pattern: birthday_pattern,
                                                 max: Time.zone.today)].join
                                  else
                                    ''
@@ -73,10 +74,11 @@ class ExternalFormsController < ApplicationController
                              gender_field,
                              input_field('birthday',
                                          type: 'text',
-                                         pattern: '(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}',
+                                         pattern: birthday_pattern,
                                          max: Time.zone.today),
                              '</div>',
-                             ["<a role='button' href='javascript:void(0)' id='sympathisant-fields-collapse-toggle'",
+                             ["<a role='button' href='javascript:void(0)'",
+                              "id='sympathisant-fields-collapse-toggle'",
                               "data-show-more='#{t('external_form_js.show_more')}'",
                               "data-show-less='#{t('external_form_js.show_less')}'>",
                               "#{t('external_form_js.show_more')}</a>"].join(' ')].join
