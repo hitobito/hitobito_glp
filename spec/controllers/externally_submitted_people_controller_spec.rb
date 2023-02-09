@@ -85,6 +85,13 @@ describe ExternallySubmittedPeopleController do
     end
   end
 
+  context 'gender' do
+    it 'accepts blank as nil' do
+      subject_with_args({ gender: '' })
+      expect(Person.last.gender).to be_nil
+    end
+  end
+
   context 'zip_code' do
     it 'accepts any string as zip_code' do
       subject_with_args({zip_code: "asdf", role: "medien_und_dritte"})

@@ -86,6 +86,7 @@ class ExternalFormsController < ApplicationController
                             ''
                           end
     <<-HTML
+      <p id='hitobito-external-form-message'></p>
       <div class='form'>
         <div class='form-wrapper'>
           <form action='#{action}' method='post'>
@@ -112,7 +113,6 @@ class ExternalFormsController < ApplicationController
               <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
               <input type='hidden' name='externally_submitted_person[preferred_language]' value='#{@language}'/>
               <div class='g-recaptcha' required='required' data-sitekey='6LcBNGoUAAAAAO3PJDEgWoN9f0zFFag1WdBRHjYO' data-size='compact'></div>
-              <p id='hitobito-external-form-message'></p>
               <div class='button-wrapper'>
                 <input type='submit' value='#{t("external_form_js.submit")}'/>
               </div>
@@ -153,7 +153,7 @@ class ExternalFormsController < ApplicationController
           #{t("external_form_js.gender")} #{required ? '*' : ''}
         </label>
         <label for='gender_not_stated' style='width: auto'>
-          <input name='externally_submitted_person[gender]' type='radio' id='gender_not_stated' value='not_stated' checked='checked' style='width: 2rem'/>
+          <input name='externally_submitted_person[gender]' type='radio' id='gender_not_stated' value='' checked='checked' style='width: 2rem'/>
           #{t("external_form_js.genders.not_stated")}
         </label>
         <label for='gender_m' style='width: auto'>
