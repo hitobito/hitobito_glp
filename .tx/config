@@ -1,15 +1,13 @@
 [main]
 host = https://www.transifex.com
-type = YML
 
-[hitobito_glp.view-glp]
-file_filter = config/locales/view.glp.<lang>.yml
-source_file = config/locales/view.glp.de.yml
-source_lang = de
-
-
-[hitobito_glp.models-glp]
+[o:hitobito:p:hitobito_glp:r:models-glp]
 file_filter = config/locales/models.glp.<lang>.yml
 source_file = config/locales/models.glp.de.yml
+source_lang = de
+
+[o:hitobito:p:hitobito_glp:r:view-glp]
+file_filter = config/locales/view.glp.<lang>.yml
+source_file = config/locales/view.glp.de.yml
 source_lang = de
 
