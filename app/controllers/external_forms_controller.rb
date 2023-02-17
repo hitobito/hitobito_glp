@@ -86,9 +86,9 @@ class ExternalFormsController < ApplicationController
                             ''
                           end
     <<-HTML
-      <p id='hitobito-external-form-message'></p>
       <div class='form'>
         <div class='form-wrapper'>
+          <p id='hitobito-external-form-message'></p>
           <form action='#{action}' method='post'>
             <fieldset>
               #{input_field('first_name', required: true)}
