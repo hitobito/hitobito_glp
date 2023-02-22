@@ -71,7 +71,7 @@ module SortingHat
     end
 
     def notify_parent_group(group)
-      if group.parent.email && group.parent.email != JGLP_EMAIL
+      if group.parent.email.present? && group.parent.email != JGLP_EMAIL
         Notifier.mitglied_joined(@person, group.parent.email, jglp?).deliver_later
       end
     end
