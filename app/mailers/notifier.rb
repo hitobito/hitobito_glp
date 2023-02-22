@@ -41,6 +41,13 @@ class Notifier < ApplicationMailer
       @subject = 'Achtung: Neue News-Anmeldung'
       @welcome = 'Es gibt eine neue Anmeldung für Partei-News.'
       @category = 'Medien & Dritte'
+    else
+      @subject = 'Achtung: Neue Anmeldung'
+      Raven.capture_exception(RuntimeError.new(<<~MESSAGE))
+        Kategorie "#{submitted_role}" wird von "mitglied_joined_monitoring" nicht direkt erwartet.
+
+        Person-ID: #{person.id}
+      MESSAGE
     end
 
     mail(to: email, subject: @subject)
