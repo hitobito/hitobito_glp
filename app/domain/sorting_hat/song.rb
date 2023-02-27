@@ -77,11 +77,15 @@ module SortingHat
     end
 
     def notify_layer_admins(groups)
-      parent_groups = groups.flat_map(&:layer_hierarchy)
-      scope = Person.admin.notify_on_join.where(roles: { group: parent_groups })
-      scope.distinct.find_each do |admin|
-        Notifier.mitglied_joined_monitoring(@person, @role, admin.email, jglp?).deliver_later
+      layer_admins(groups).pluck(:email).each do |email|
+        Notifier.mitglied_joined_monitoring(@person, @role, email, jglp?).deliver_later
       end
+    end
+
+    def layer_admins(groups)
+      Person.admin.notify_on_join
+            .where(roles: { group: groups.flat_map(&:layer_hierarchy) })
+            .distinct
     end
   end
 end
