@@ -21,7 +21,7 @@ module SortingHat
                elsif !foreign?
                  find_for_zip(root.descendants.where.not(id: subtree_jglp))
                end
-      groups.presence || fallback
+      Array.wrap(groups.presence || fallback)
     end
 
     private
