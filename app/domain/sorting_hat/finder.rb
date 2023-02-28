@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-#  Copyright (c) 2012-2020, GLP Schweiz. This file is part of
+#  Copyright (c) 2012-2023, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
@@ -21,7 +21,7 @@ module SortingHat
                elsif !foreign?
                  find_for_zip(root.descendants.where.not(id: subtree_jglp))
                end
-      groups.presence || fallback
+      Array.wrap(groups.presence || fallback)
     end
 
     private
@@ -65,9 +65,12 @@ module SortingHat
       @jglp_root ||= without_deleted.find_by(zip_codes: SortingHat::JGLP_ZIP_CODE)
     end
 
-    # rubocop:disable Metrics/LineLength
     def subtree_jglp
-      jglp_root ? without_deleted.where('lft > ? AND rgt < ?', jglp_root.lft, jglp_root.rgt) : Group.none
+      if jglp_root
+        without_deleted.where('lft > ? AND rgt < ?', jglp_root.lft, jglp_root.rgt)
+      else
+        Group.none
+      end
     end
 
     def foreign?
