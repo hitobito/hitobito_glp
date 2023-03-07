@@ -8,6 +8,17 @@ en:
   groups:
     form:
       label_zip_codes: Zip codes (separated by commas)
+  layouts:
+    unauthorized:
+      first_login: ""
+      first_password: ""
+  devise:
+    sessions:
+      new:
+        2fa_explanation: ""
+    passwords:
+      new:
+        set_password_button: ""
   mailing_list_people_attributes:
     title: ""
     age: ""
@@ -15,6 +26,7 @@ en:
     age_finish: ""
 
   external_form_js:
+    submit: ""
     submitting: ""
     submit_error_required_fields: ""
     submit_error_email_taken: ""
@@ -26,8 +38,24 @@ en:
     terms_and_conditions_checkbox_html: ""
     terms_and_conditions_link_text: ""
     terms_and_conditions_link: ""
+    first_name: ""
+    last_name: ""
+    email: ""
+    address: ""
+    house_number: ""
     zip_code: ""
+    town: ""
+    phone_number: ""
+    gender: ""
+    genders:
+      not_stated: ""
+      m: ""
+      w: ""
+      diverse: ""
+    birthday: ""
     jglp: ""
+    show_more: ""
+    show_less: ""
 
   filter_navigation/people:
     root:
@@ -92,6 +120,3 @@ en:
       address_city: ""
       phone: ""
       opening_hours: ""
-  two_factor_authentication:
-    show:
-      confirm: ""

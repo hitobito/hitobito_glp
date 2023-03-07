@@ -21,352 +21,497 @@ it:
         notify_on_join: Notifica di entrata
         genders:
           _nil: ignoto/altro
+      role:
+        class:
+          permission:
+            description:
+              financials: Modifiche per Persone nel gruppo dei donatori.
     models:
       group/root:
         one: Gruppo principale
+        many: Gruppi principali
         other: Gruppi principali
       group/root_geschaeftsstelle:
         one: Segretariato
+        many: Segretariati
         other: Segretariati
       group/root_vorstand:
         one: Comitato direttivo
-        other: Comitato direttivo
+        many: Comitato direttivo
+        other: Comitati direttivi
       group/root_arbeitsgruppe:
         one: Gruppo di lavoro
+        many: Gruppi di lavoro
         other: Gruppi di lavoro
       group/root_kontakte:
         one: Contatto
-        other: Contatti
+        many: Contatti
+        other: Contatto
       group/root_gewaehlte:
         one: Eletto/a
+        many: Eletti
         other: Eletti
       group/root_zugeordnete:
         one: Attribuito/a
-        other: Attribuiti
+        many: Attribuiti
+        other: Incaricati
       group/kanton:
         one: Cantone
+        many: Cantoni
         other: Cantoni
       group/kanton_delegierte:
         one: Delegato/a
+        many: Delegati
         other: Delegati
       group/bezirk:
         one: Distretto
+        many: Distretti
         other: Distretti
       group/kanton_vorstand:
         one: Comitato direttivo
-        other: Comitato direttivo
+        many: Comitato direttivo
+        other: Comitati direttivi
       group/kanton_geschaeftsstelle:
         one: Segretariato
+        many: Segretariati
         other: Segretariati
       group/kanton_gewaehlte:
         one: Eletto/a
+        many: Eletti
         other: Eletti
       group/kanton_arbeitsgruppe:
         one: Gruppo di lavoro
+        many: Gruppi di lavoro
         other: Gruppi di lavoro
       group/kanton_zugeordnete:
         one: Attribuito/a
-        other: Attribuiti
+        many: Attribuiti
+        other: Incaricati
       group/kanton_kontakte:
         one: Contatto
+        many: Contatti
         other: Contatti
       group/ortsektion:
         one: Sezione locale
+        many: Sezioni locali
         other: Sezioni locali
       group/ortsektion_gewaehlte:
         one: Eletto/a
+        many: Eletti
         other: Eletti
       group/ortsektion_vorstand:
         one: Comitato direttivo
-        other: Comitato direttivo
+        many: Comitato direttivo
+        other: Comitati
       group/ortsektion_geschaeftsstelle:
         one: Segretariato
+        many: Segretariati
         other: Segretariati
       group/ortsektion_arbeitsgruppe:
         one: Gruppo di lavoro
+        many: Gruppi di lavoro
         other: Gruppi di lavoro
       group/ortsektion_zugeordnete:
         one: Attribuito/a
-        other: Attribuiti
+        many: Attribuiti
+        other: Incaricati
       group/ortsektion_kontakte:
         one: Contatto
+        many: Contatti
         other: Contatti
       group/bezirk_vorstand:
         one: Comitato direttivo
+        many: Comitato direttivo
         other: Comitato direttivo
       group/bezirk_geschaeftsstelle:
         one: Segretariato
+        many: Segretariati
         other: Segretariati
       group/bezirk_gewaehlte:
         one: Eletto/a
+        many: Eletti
         other: Eletti
       group/bezirk_arbeitsgruppe:
         one: Gruppo di lavoro
+        many: Gruppi di lavoro
         other: Gruppi di lavoro
       group/bezirk_zugeordnete:
         one: Attribuito/a
+        many: Attribuiti
         other: Attribuiti
       group/bezirk_kontakte:
         one: Contatto
+        many: Contatti
         other: Contatti
+      group/spender:
+        one: ''
+        many: ''
+        other: ''
+      group/spender/spender:
+        one: ''
+        many: ''
+        other: ''
       group/root/administrator:
         one: Amministratore
+        many: Amministratori
         other: Amministratori
+      group/root/spendenverwalter:
+        one: ''
+        many: ''
+        other: ''
       group/root/eventverantwortliche:
         one: Responsabile
-        other: Responsabili
+        many: Responsabili
+        other: Responsabili di evento
       group/root_geschaeftsstelle/leitung:
         one: Direzione
+        many: Direzione
         other: Direzione
       group/root_geschaeftsstelle/mitarbeiter:
         one: Collaboratore/trice
+        many: Collaboratori/trici
         other: Collaboratori/trici
       group/root_geschaeftsstelle/finanzen:
         one: Finanze
+        many: Finanze
         other: Finanze
       group/root_vorstand/praesidentln:
         one: Presidente/tessa
-        other: Presidenti/tesse
+        many: Presidenti/tesse
+        other: Presidenti
       group/root_vorstand/vizepraesidentln:
         one: Vicepresidente/tessa
-        other: Vicepresidenti/tesse
+        many: Vicepresidenti/tesse
+        other: Vicepresidenti
       group/root_vorstand/geschaeftsleitung:
         one: Comitato
-        other: Comitato
+        many: Comitato
+        other: Direzione
       group/root_vorstand/kassier:
         one: Tesoriere/a
-        other: Tesorieri/e
+        many: Tesorieri/e
+        other: Cassiere/a
       group/root_vorstand/vorstandsmitglied:
         one: Membro del Comitato direttivo
-        other: Membri del Comitato direttivo
+        many: Membri del Comitato direttivo
+        other: Membro del Comitato direttivo
       group/root_arbeitsgruppe/leitung:
         one: Direzione
+        many: Direzione
         other: Direzione
       group/root_arbeitsgruppe/mitglied:
         one: Membro del gruppo di lavoro
+        many: Membri del gruppo di lavoro
         other: Membri del gruppo di lavoro
       group/root_zugeordnete/mitglied:
         one: Membro
-        other: Membri
+        many: Membri
+        other: Membro
       group/root_zugeordnete/sympathisant:
         one: Simpatizzante
+        many: Simpatizzanti
         other: Simpatizzanti
       group/root_zugeordnete/adressverwaltung:
         one: Gestione degli indirizzi
+        many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/root_kontakte/adressverwaltung:
         one: Gestione degli indirizzi
+        many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/root_kontakte/kontakt:
         one: Contatto
-        other: Contatti
+        many: Contatti
+        other: Media e terzi
       group/root_gewaehlte/bundesrat:
         one: Consiglio federale
-        other: Consiglio federale
+        many: Consiglio federale
+        other: Consigliere federale
       group/root_gewaehlte/staenderat:
         one: Consiglio degli Stati
-        other: Consiglio degli Stati
+        many: Consiglio degli Stati
+        other: Consigliere/a degli Stati
       group/root_gewaehlte/nationalrat:
         one: Consiglio nazionale
-        other: Consiglio nazionale
+        many: Consiglio nazionale
+        other: Consigliere/a nazionale
       group/root_gewaehlte/vollamt_bundesrichter:
         one: Giudice federale (a tempo pieno)
+        many: Giudici federali (a tempo pieno)
         other: Giudici federali (a tempo pieno)
       group/root_gewaehlte/nebenamt_bundes_richter:
         one: Giudice federale (supplente)
+        many: Giudici federali (supplenti)
         other: Giudici federali (supplenti)
       group/root_gewaehlte/bundesverwaltungsrichter:
         one: Giudice del Tribunale amministrativo federale
+        many: Giudici del Tribunale amministrativo federale
         other: Giudici del Tribunale amministrativo federale
       group/root_gewaehlte/bundespatentrichter:
         one: Giudice del Tribunale federale dei brevetti
+        many: Giudici del Tribunale federale dei brevetti
         other: Giudici del Tribunale federale dei brevetti
       group/root_gewaehlte/bundesstrafrichter:
         one: Giudice del Tribunale penale federale
+        many: Giudici del Tribunale penale federale
         other: Giudici del Tribunale penale federale
       group/kanton/administrator:
         one: Amministratore
+        many: Amministratori
         other: Amministratori
+      group/kanton/spendenverwalter:
+        one: ''
+        many: ''
+        other: ''
       group/kanton_delegierte/delegierte:
         one: Delegato/a
+        many: Delegati
         other: Delegati
       group/kanton_delegierte/ersatzdelegierte:
         one: Delegato/a supplente
+        many: Delegati supplenti
         other: Delegati supplenti
       group/kanton_gewaehlte/kantonale_exekutive:
         one: Esecutivo cantonale
+        many: Esecutivi cantonali
         other: Esecutivi cantonali
       group/kanton_gewaehlte/kantonale_legislative:
         one: Legislativo cantonale
+        many: Legislativi cantonali
         other: Legislativi cantonali
       group/kanton_gewaehlte/mitglied_kantonales_gericht_erste_instanz:
         one: Membro del Tribunale cantonale di prima istanza
+        many: Membri del Tribunale cantonale di prima istanza
         other: Membri del Tribunale cantonale di prima istanza
       group/kanton_gewaehlte/mitglied_kantonales_gericht_obere_instanz:
         one: Membro del Tribunale cantonale di istanza superiore
+        many: Membro del Tribunale cantonali di istanza superiore
         other: Membro del Tribunale cantonali di istanza superiore
       group/kanton_gewaehlte/staatsanwaltschaft:
         one: Ministero pubblico
+        many: Ministeri pubblici
         other: Ministeri pubblici
       group/kanton_gewaehlte/parlamentarische_geschaeftsfuehrung:
         one: Segretariato del gruppo parlamentare
-        other: Segretariati di gruppi parlamentari
+        many: Segretariati di gruppi parlamentari
+        other: Segretariato di gruppi parlamentari
       group/kanton_arbeitsgruppe/leitung:
         one: Direzione
+        many: Direzione
         other: Direzione
       group/kanton_arbeitsgruppe/mitglied:
         one: Membro del gruppo di lavoro
+        many: Membri del gruppo di lavoro
         other: Membri del gruppo di lavoro
       group/kanton_zugeordnete/mitglied:
         one: Membro
+        many: Membri
         other: Membri
       group/kanton_zugeordnete/sympathisant:
         one: Simpatizzante
+        many: Simpatizzanti
         other: Simpatizzanti
       group/kanton_zugeordnete/adressverwaltung:
         one: Gestione degli indirizzi
+        many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/kanton_kontakte/adressverwaltung:
         one: Gestione degli indirizzi
+        many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/kanton_kontakte/kontakt:
         one: Contatto
-        other: Contatti
+        many: Contatti
+        other: Media e terzi
       group/kanton_geschaeftsstelle/leitung:
         one: Direzione
+        many: Direzione
         other: Direzione
       group/kanton_geschaeftsstelle/mitarbeiter:
         one: Collaboratore/trice
+        many: Collaboratori/trici
         other: Collaboratori/trici
       group/kanton_geschaeftsstelle/finanzen:
         one: Finanze
+        many: Finanze
         other: Finanze
       group/kanton_vorstand/praesidentln:
         one: Presidente/tessa
-        other: Presidenti/tesse
+        many: Presidenti/tesse
+        other: Presidenti
       group/kanton_vorstand/vizepraesidentln:
         one: Vicepresidente/tessa
-        other: Vicepresidenti/tesse
+        many: Vicepresidenti/tesse
+        other: Vicepresidenti
       group/kanton_vorstand/geschaeftsleitung:
         one: Comitato
-        other: Comitato
+        many: Comitato
+        other: Direzione
       group/kanton_vorstand/kassier:
         one: Tesoriere/a
-        other: Tesorieri/e
+        many: Tesorieri/e
+        other: Cassiere/a
       group/kanton_vorstand/mitglied:
         one: Membro
+        many: Membri
         other: Membri
       group/ortsektion/administrator:
         one: Amministratore
+        many: Amministratori
         other: Amministratori
+      group/ortsektion/spendenverwalter:
+        one: ''
+        many: ''
+        other: ''
       group/ortsektion_gewaehlte/kommunale_exekutive:
         one: Esecutivo comunale
+        many: Esecutivi comunali
         other: Esecutivi comunali
       group/ortsektion_gewaehlte/kommunale_legislative:
         one: Legislativo comunale
+        many: Legislativi comunali
         other: Legislativi comunali
       group/ortsektion_gewaehlte/schulpflegekommission:
         one: Autorità didattica/commissione scolastica
+        many: Autorità didattiche/commissioni scolastiche
         other: Autorità didattiche/commissioni scolastiche
       group/ortsektion_gewaehlte/rechnungspruefungskommission:
         one: Commissione di verifica dei conti
+        many: Commissioni di verifica dei conti
         other: Commissioni di verifica dei conti
       group/ortsektion_gewaehlte/mitglied_weitere_kommissionen:
         one: Membro di altre commissioni
+        many: Membri di altre commissioni
         other: Membri di altre commissioni
       group/ortsektion_arbeitsgruppe/leitung:
         one: Direzione
+        many: Direzione
         other: Direzione
       group/ortsektion_arbeitsgruppe/mitglied:
         one: Membro del gruppo di lavoro
+        many: Membri del gruppo di lavoro
         other: Membri del gruppo di lavoro
       group/ortsektion_zugeordnete/mitglied:
         one: Membro
+        many: Membri
         other: Membri
       group/ortsektion_zugeordnete/sympathisant:
         one: Simpatizzante
+        many: Simpatizzanti
         other: Simpatizzanti
       group/ortsektion_zugeordnete/adressverwaltung:
         one: Gestione degli indirizzi
+        many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/ortsektion_kontakte/adressverwaltung:
         one: Gestione degli indirizzi
+        many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/ortsektion_kontakte/kontakt:
         one: Contatto
+        many: Contatti
         other: Contatti
       group/ortsektion_geschaeftsstelle/leitung:
         one: Direzione
+        many: Direzione
         other: Direzione
       group/ortsektion_geschaeftsstelle/mitarbeiter:
         one: Collaboratore/trice
+        many: Collaboratori/trici
         other: Collaboratori/trici
       group/ortsektion_geschaeftsstelle/finanzen:
         one: Finanze
+        many: Finanze
         other: Finanze
       group/ortsektion_vorstand/praesidentln:
         one: Presidente/tessa
-        other: Presidenti/tesse
+        many: Presidenti/tesse
+        other: Presidenti
       group/ortsektion_vorstand/vizepraesidentln:
         one: Vicepresidente/tessa
-        other: Vicepresidenti/tesse
+        many: Vicepresidenti/tesse
+        other: Vicepresidenti
       group/ortsektion_vorstand/geschaeftsleitung:
         one: Comitato
+        many: Comitato
         other: Comitato
       group/ortsektion_vorstand/kassier:
         one: Tesoriere/a
-        other: Tesorieri/e
+        many: Tesorieri/e
+        other: Cassiere/a
       group/ortsektion_vorstand/mitglied:
         one: Membro
-        other: Membri
+        many: Membri
+        other: Membro
       group/bezirk/administrator:
         one: Amministratore
+        many: Amministratori
         other: Amministratori
+      group/bezirk/spendenverwalter:
+        one: ''
+        many: ''
+        other: ''
       group/bezirk_gewaehlte/regierungsstatthalter:
         one: Prefettura
+        many: Prefetture
         other: Prefetture
       group/bezirk_arbeitsgruppe/leitung:
         one: Direzione
+        many: Direzione
         other: Direzione
       group/bezirk_arbeitsgruppe/mitglied:
         one: Membro del gruppo di lavoro
+        many: Membri del gruppo di lavoro
         other: Membri del gruppo di lavoro
       group/bezirk_zugeordnete/mitglied:
         one: Membro
-        other: Membri
+        many: Membri
+        other: Membro
       group/bezirk_zugeordnete/sympathisant:
         one: Simpatizzante
+        many: Simpatizzanti
         other: Simpatizzanti
       group/bezirk_zugeordnete/adressverwaltung:
         one: Gestione degli indirizzi
+        many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/bezirk_kontakte/adressverwaltung:
         one: Gestione degli indirizzi
+        many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/bezirk_kontakte/kontakt:
         one: Contatto
+        many: Contatti
         other: Contatti
       group/bezirk_geschaeftsstelle/leitung:
         one: Direzione
+        many: Direzione
         other: Direzione
       group/bezirk_geschaeftsstelle/mitarbeiter:
         one: Collaboratore/trice
+        many: Collaboratori/trici
         other: Collaboratori/trici
       group/bezirk_geschaeftsstelle/finanzen:
         one: Finanze
+        many: Finanze
         other: Finanze
       group/bezirk_vorstand/praesidentln:
         one: Presidente/tessa
-        other: Presidenti/tesse
+        many: Presidenti/tesse
+        other: Presidenti
       group/bezirk_vorstand/vizepraesidentln:
         one: Vicepresidente/tessa
-        other: Vicepresidenti/tesse
+        many: Vicepresidenti/tesse
+        other: Vicepresidenti
       group/bezirk_vorstand/geschaeftsleitung:
         one: Comitato
+        many: Comitato
         other: Comitato
       group/bezirk_vorstand/kassier:
         one: Tesoriere/a
-        other: Tesorieri/e
+        many: Tesorieri/e
+        other: Cassiera/e
       group/bezirk_vorstand/mitglied:
         one: Membro
-        other: Membri
+        many: Membri
+        other: Membro
