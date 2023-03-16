@@ -35,7 +35,7 @@ module Glp::Person
   end
 
   def simplified_view?
-    roles.all? { |role| SIMPLIFIED_VIEW_ROLES.include?(role.class.to_s.demodulize) }
+    roles.all? { |role| SIMPLIFIED_VIEW_ROLES.include?(role.class.to_s.demodulize) } && !root?
   end
 
   private
