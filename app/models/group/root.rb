@@ -26,7 +26,7 @@ class Group::Root < Group
   end
 
   class Spendenverwalter < Role
-    self.permissions = [:financials, :layer_full]
+    self.permissions = [:financials, :layer_and_below_full, :manage_invisible_people]
 
     self.two_factor_authentication_enforced = true
   end
