@@ -25,6 +25,11 @@ describe Person do
       expect(subject).to eq true
     end
 
+    it 'is true for person with single Spendenverwalter role' do
+      build(:root, Group::Root::Spendenverwalter)
+      expect(subject).to eq true
+    end
+
     it 'is true for person with multiple of those roles' do
       build(:root_kontakte, Group::RootKontakte::Kontakt)
       build(:root_zugeordnete, Group::RootZugeordnete::Adressverwaltung)

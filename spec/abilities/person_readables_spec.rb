@@ -26,14 +26,14 @@ describe PersonReadables do
 
       subject { all_accessibles }
 
-      describe 'layer_and_below_full on upper layer' do
+      describe 'layer_and_below_full' do
         let(:role) { Fabricate(Group::Root::Administrator.name, group: groups(:root)) }
 
-        it 'has layer and below full permission' do
+        it 'has layer_and_below_full permission' do
           expect(role.permissions).to include(:layer_and_below_full)
         end
 
-        context 'lower spender group' do
+        context 'with spender group on same layer' do
           let(:group) { Fabricate(Group::Spender.name, parent: groups(:root)) }
 
           it 'may not get spender people' do
@@ -41,13 +41,8 @@ describe PersonReadables do
             is_expected.not_to include(other.person)
           end
         end
-      end
 
-      describe 'layer_and_below_full on same layer' do
-        let(:role) { Fabricate(Group::Kanton::Administrator.name, group: groups(:bern)) }
-
-
-        context 'spender group' do
+        context 'with spender group on lower layer' do
           let(:group) { Fabricate(Group::Spender.name, parent: groups(:bern)) }
 
           it 'may not get spender people' do
@@ -58,9 +53,22 @@ describe PersonReadables do
       end
 
       describe 'financials on same layer' do
-        let(:role) { Fabricate(Group::Kanton::Spendenverwalter.name, group: groups(:bern)) }
+        let(:role) { Fabricate(Group::Root::Spendenverwalter.name, group: groups(:root)) }
 
-        context 'lower spender group' do
+        it 'has financials permission' do
+          expect(role.permissions).to include(:financials)
+        end
+
+        context 'with spender group on same layer' do
+          let(:group) { Fabricate(Group::Spender.name, parent: groups(:root)) }
+
+          it 'may get spender people' do
+            other = Fabricate(Group::Spender::Spender.name, group: group)
+            is_expected.to include(other.person)
+          end
+        end
+
+        context 'with spender group on lower layer' do
           let(:group) { Fabricate(Group::Spender.name, parent: groups(:bern)) }
 
           it 'may get spender people' do

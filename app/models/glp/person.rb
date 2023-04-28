@@ -10,7 +10,7 @@ module Glp::Person
   extend ActiveSupport::Concern
 
   PREFERRED_LANGUAGES = [:en, :de, :fr, :it]
-  SIMPLIFIED_VIEW_ROLES = %w[Kontakt Sympathisant Mitglied]
+  SIMPLIFIED_VIEW_ROLES = %w[Kontakt Sympathisant Mitglied Spendenverwalter]
 
   included do
     Person::PUBLIC_ATTRS << :title << :preferred_language

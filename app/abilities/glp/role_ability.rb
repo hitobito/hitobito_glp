@@ -28,6 +28,6 @@ module Glp::RoleAbility
   end
 
   def precious_roles
-    %w(Administrator Adressverwaltung)
+    %w(Administrator Adressverwaltung Spendenverwalter)
   end
 end

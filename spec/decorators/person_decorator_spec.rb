@@ -55,10 +55,7 @@ describe PersonDecorator do
 
     context :root_spendenverwalter do
       let(:root_spender) { Fabricate(Group::Spender.name, parent: root) }
-
-      before do
-        Fabricate(Group::Root::Spendenverwalter.name, group: root, person: admin)
-      end
+      let(:person) { Fabricate(Group::Root::Spendenverwalter.name, group: root).person }
 
       it 'includes root but not spender group' do
         expect(subject).to have_key(root)

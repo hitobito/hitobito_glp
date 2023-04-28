@@ -16,7 +16,7 @@ class Group::Kanton < Group
   end
 
   class Spendenverwalter < Role
-    self.permissions = [:financials, :layer_full]
+    self.permissions = [:financials, :layer_and_below_full, :see_invisible_from_above]
 
     self.two_factor_authentication_enforced = true
   end

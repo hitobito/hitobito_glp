@@ -19,7 +19,7 @@ module Glp::PersonReadables
   def donor_visible?
     group_read_in_this_group? ||
       group_read_in_above_group? ||
-      financial_layers_ids.include?(group.layer_group_id)
+      (financial_layers_ids & group.layer_hierarchy.map(&:id)).present?
   end
 
   private
