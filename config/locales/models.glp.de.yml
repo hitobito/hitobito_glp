@@ -26,6 +26,7 @@ de:
           permission:
             description:
               financials: Bearbeiten von Personen in Spender-Gruppen.
+              create_spendenverwalter: Erstellen von Spendenverwalter Rollen
     models:
       group/root:
         one: Schweiz

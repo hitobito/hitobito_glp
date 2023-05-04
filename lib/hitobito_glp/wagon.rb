@@ -58,7 +58,7 @@ module HitobitoGlp
 
       FilterNavigation::People.prepend Glp::FilterNavigation::People
 
-      Role::Permissions << :financials
+      Role::Permissions << :financials << :create_spendenverwalter
 
       AbilityDsl::UserContext::LAYER_PERMISSIONS += [:financials]
       AbilityDsl::UserContext::GROUP_PERMISSIONS += [:financials]

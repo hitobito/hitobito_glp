@@ -26,7 +26,7 @@ class Group::Root < Group
   end
 
   class Spendenverwalter < Role
-    self.permissions = [:financials, :layer_and_below_full, :see_invisible_from_above]
+    self.permissions = [:financials, :layer_and_below_full, :see_invisible_from_above, :create_spendenverwalter]
 
     self.two_factor_authentication_enforced = true
   end
