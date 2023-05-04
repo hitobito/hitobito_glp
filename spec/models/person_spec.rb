@@ -25,8 +25,8 @@ describe Person do
       expect(subject).to eq true
     end
 
-    it 'is true for person with single Spendenverwalter role' do
-      build(:root, Group::Root::Spendenverwalter)
+    it 'is true for person with single Spender role' do
+      build(:root, Group::Spender::Spender)
       expect(subject).to eq true
     end
 
