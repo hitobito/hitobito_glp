@@ -81,7 +81,7 @@ describe RoleAbility do
     let(:person) { Fabricate(Group::Root::Spendenverwalter.name.to_sym, group: groups(:root)).person }
 
     it 'may create Spendenverwalter' do
-      is_expected.not_to be_able_to(:create, spendenverwaltung)
+      is_expected.to be_able_to(:create, spendenverwaltung)
     end
   end
 end

@@ -58,10 +58,10 @@ module HitobitoGlp
 
       FilterNavigation::People.prepend Glp::FilterNavigation::People
 
-      Role::Permissions << :financials
+      Role::Permissions << :financials << :create_spendenverwalter
 
-      AbilityDsl::UserContext::LAYER_PERMISSIONS += [:financials]
-      AbilityDsl::UserContext::GROUP_PERMISSIONS += [:financials]
+      AbilityDsl::UserContext::LAYER_PERMISSIONS += [:financials, :create_spendenverwalter]
+      AbilityDsl::UserContext::GROUP_PERMISSIONS += [:financials, :create_spendenverwalter]
 
       # TODO: maybe better additional_merge fields, code gets execute on every code reload
       Synchronize::Mailchimp::Synchronizator.member_fields = [
