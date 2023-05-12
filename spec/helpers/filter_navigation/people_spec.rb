@@ -24,6 +24,7 @@ describe 'FilterNavigation::People' do
   let(:navigation)  { FilterNavigation::People.new(template, group.decorate, filter) }
   let(:main_items)  { Capybara::Node::Simple.new(navigation.main_items.join) }
   let(:dropdown)    { navigation.dropdown.items }
+  let(:dropdown_item_attrs) { dropdown.map {|i| attrs_hash_from_item(i) } }
 
 
   def item(name, regex)
@@ -34,6 +35,18 @@ describe 'FilterNavigation::People' do
     types = Role.all_types.select { |type| type.to_s =~ regex }
     role_type_ids = types.collect(&:id).join(Person::Filter::Base::ID_URL_SEPARATOR)
     template.group_people_path(group.layer_group, filters: { role: { role_type_ids:  role_type_ids } }, name: name, range: 'deep')
+  end
+
+  def attrs_hash_from_item(item)
+    return {} if item.is_a? Dropdown::Divider
+
+    {
+      disabled_msg: item.disabled_msg,
+      label: item.label,
+      options: item.options,
+      sub_items: item.sub_items,
+      url: item.url
+    }
   end
 
   context 'Group::Root' do
@@ -51,11 +64,11 @@ describe 'FilterNavigation::People' do
     end
 
     it 'dropdown has link for Sympathisanten im Bund' do
-      expect(dropdown).to include item('Sympathisanten im Bund', /Zugeordnete::Sympathisant$/)
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item('Sympathisanten im Bund', /Zugeordnete::Sympathisant$/))
     end
 
     it 'dropdown has link for Mitglieder and Sympathisanten im Bund' do
-      expect(dropdown).to include item('Mitglieder und Sympathisanten im Bund', /Zugeordnete::(Mitglied|Sympathisant)$/)
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item('Mitglieder und Sympathisanten im Bund', /Zugeordnete::(Mitglied|Sympathisant)$/))
     end
   end
 
@@ -67,11 +80,11 @@ describe 'FilterNavigation::People' do
     end
 
     it 'dropdown has link for Sympathisanten im Kanton' do
-      expect(dropdown).to include item('Sympathisanten im Kanton', /Zugeordnete::Sympathisant$/)
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item('Sympathisanten im Kanton', /Zugeordnete::Sympathisant$/))
     end
 
     it 'dropdown has link for Mitglieder and Sympathisanten im Kanton' do
-      expect(dropdown).to include item('Mitglieder und Sympathisanten im Kanton', /Zugeordnete::(Mitglied|Sympathisant)$/)
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item('Mitglieder und Sympathisanten im Kanton', /Zugeordnete::(Mitglied|Sympathisant)$/))
     end
   end
 
@@ -83,11 +96,11 @@ describe 'FilterNavigation::People' do
     end
 
     it 'dropdown has link for Sympathisanten im Bezirk' do
-      expect(dropdown).to include item('Sympathisanten im Bezirk', /Zugeordnete::Sympathisant$/)
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item('Sympathisanten im Bezirk', /Zugeordnete::Sympathisant$/))
     end
 
     it 'dropdown has link for Mitglieder and Sympathisanten im Bezirk' do
-      expect(dropdown).to include item('Mitglieder und Sympathisanten im Bezirk', /Zugeordnete::(Mitglied|Sympathisant)$/)
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item('Mitglieder und Sympathisanten im Bezirk', /Zugeordnete::(Mitglied|Sympathisant)$/))
     end
   end
 
@@ -100,11 +113,11 @@ describe 'FilterNavigation::People' do
     end
 
     it 'dropdown has link for Sympathisanten im Ortsektion' do
-      expect(dropdown).to include item('Sympathisanten in der Ortsektion', /Zugeordnete::Sympathisant$/)
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item('Sympathisanten in der Ortsektion', /Zugeordnete::Sympathisant$/))
     end
 
     it 'dropdown has link for Mitglieder and Sympathisanten in der Ortsektion' do
-      expect(dropdown).to include item('Mitglieder und Sympathisanten in der Ortsektion', /Zugeordnete::(Mitglied|Sympathisant)$/)
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item('Mitglieder und Sympathisanten in der Ortsektion', /Zugeordnete::(Mitglied|Sympathisant)$/))
     end
   end
 end
