@@ -48,14 +48,6 @@ class ExternalFormsController < ApplicationController
     mitglied = role == 'mitglied'
     sympathisant = role == 'sympathisant'
 
-    zip_code_field = if mitglied
-                       input_field('zip_code', required: true,
-                                               min_length: 4,
-                                               max_length: 4,
-                                               pattern: zip_pattern)
-                     else
-                       input_field('zip_code', required: false)
-                     end
     mitglied_address_fields = if mitglied
                                 [input_field('address', required: true),
                                  input_field('house_number', required: true),
@@ -105,7 +97,7 @@ class ExternalFormsController < ApplicationController
               #{input_field('last_name', required: true)}
               #{input_field('email', required: true, type: 'email')}
               #{mitglied_address_fields}
-              #{zip_code_field}
+              #{input_field('zip_code', required: mitglied, min_length: 4, max_length: 4, pattern: zip_pattern)}
               #{mitglied_additional_fields}
               #{jglp_field(role)}
               #{sympathisant_fields}
