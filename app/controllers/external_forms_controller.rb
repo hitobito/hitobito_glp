@@ -44,8 +44,18 @@ class ExternalFormsController < ApplicationController
     role = options[:role]
 
     birthday_pattern = '(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}'
+    zip_pattern = '^[0-9][0-9][0-9][0-9]$'
     mitglied = role == 'mitglied'
     sympathisant = role == 'sympathisant'
+
+    zip_code_field = if mitglied
+                       input_field('zip_code', required: true,
+                                               min_length: 4,
+                                               max_length: 4,
+                                               pattern: zip_pattern)
+                     else
+                       input_field('zip_code', required: false)
+                     end
     mitglied_address_fields = if mitglied
                                 [input_field('address', required: true),
                                  input_field('house_number', required: true),
@@ -95,7 +105,7 @@ class ExternalFormsController < ApplicationController
               #{input_field('last_name', required: true)}
               #{input_field('email', required: true, type: 'email')}
               #{mitglied_address_fields}
-              #{input_field('zip_code', required: mitglied)}
+              #{zip_code_field}
               #{mitglied_additional_fields}
               #{jglp_field(role)}
               #{sympathisant_fields}
@@ -134,17 +144,20 @@ class ExternalFormsController < ApplicationController
     HTML
   end
 
-  def input_field(key, required: false, type: 'text', max: '', pattern: nil)
+  # rubocop:disable Metrics/ParameterLists
+  def input_field(key, required: false, type: 'text', min: '', max: '',
+                  min_length: '', max_length: '', pattern: nil)
     pattern_attr = pattern.nil? ? '' : " pattern='#{pattern}'"
     <<-HTML
       <div class='form-row'>
         <label for='#{key}'>
           #{t("external_form_js.#{key}")} #{required ? '*' : ''}
         </label>
-        <input name='externally_submitted_person[#{key}]' #{required ? "required='required'" : ''} type='#{type}' id='#{key}' max='#{max}' #{pattern_attr}/>
+        <input name='externally_submitted_person[#{key}]' #{required ? "required='required'" : ''} type='#{type}' id='#{key}' min='#{min}' max='#{max}' minlength='#{min_length}' maxlength='#{max_length}' #{pattern_attr}/>
       </div>
     HTML
   end
+  # rubocop:enable Metrics/ParameterLists
 
   def gender_field(required: false)
     <<-HTML
