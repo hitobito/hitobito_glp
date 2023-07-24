@@ -28,3 +28,4 @@ rubocop-results.xml
 tags
 .env
 .pry_history
+.tool-versions
