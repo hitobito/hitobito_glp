@@ -16,9 +16,9 @@ module Glp::PersonDecorator
   private
 
   def filtered_roles_with_donors_removed(group, multiple_groups = false)
-    filtered_roles_without_donors_removed(group).reject do |role|
-      role.is_a?(::Group::Spender::Spender) &&
-        role.person_id != current_user&.id
+    filtered_roles_without_donors_removed(group, multiple_groups).select do |role|
+      !role.is_a?(::Group::Spender::Spender) ||
+        (role.person_id == current_user&.id || donor_visible?(group))
     end
   end
 
