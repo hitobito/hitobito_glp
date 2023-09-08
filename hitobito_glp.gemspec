@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir['test/**/*']
   # rubocop:enable SingleSpaceBeforeFirstArg
 
-  s.add_runtime_dependency 'aws-sdk'
+  s.add_runtime_dependency 'aws-sdk-s3'
   s.add_runtime_dependency 'dotenv-rails'
   s.add_runtime_dependency 'rack-cors'
   s.add_runtime_dependency 'twilio-ruby'

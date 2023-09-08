@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-require 'aws-sdk'
+require 'aws-sdk-s3'
 require 'dotenv/tasks'
 
 namespace :import do
