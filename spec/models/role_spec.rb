@@ -9,9 +9,9 @@ require 'spec_helper'
 
 describe Role do
   context 'paper_trail', versioning: true do
-    let(:person) { people(:admin) }
-    let(:donor_group) { Fabricate(Group::Spender.to_s, parent: groups(:root)) }
-    let(:donor) { Fabricate(Group::Spender::Spender.to_s, group: donor_group).person }
+    let!(:person) { people(:admin) }
+    let!(:donor_group) { Fabricate(Group::Spender.to_s, parent: groups(:root)) }
+    let!(:donor) { Fabricate(Group::Spender::Spender.to_s, group: donor_group).person }
 
     context 'on non donor role' do
       it 'sets main on create' do
