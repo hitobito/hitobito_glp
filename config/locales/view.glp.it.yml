@@ -8,6 +8,17 @@ it:
   groups:
     form:
       label_zip_codes: Codice postale (separati da virgole)
+  layouts:
+    unauthorized:
+      first_login: ""
+      first_password: ""
+  devise:
+    sessions:
+      new:
+        2fa_explanation: ""
+    passwords:
+      new:
+        set_password_button: ""
   mailing_list_people_attributes:
     title: Limitare per attributi di persone
     age: Età
@@ -15,6 +26,7 @@ it:
     age_finish: Età massima
 
   external_form_js:
+    submit: Inviare
     submitting: "Grazie mille, i tuoi dati sono stati trasmessi con successo!"
     submit_error_required_fields: Completa tutti i campi per favore.
     submit_error_email_taken: Purtroppo il tuo indirizzo e-mail è già stato assegnato. Contattaci allo +41 31 311 33 03 o all'indirizzo di posta elettronica (svizzera@verdiliberali.ch) per aggiornare il tuo stato di socio o per evadere la tua richiesta.
@@ -26,34 +38,50 @@ it:
     terms_and_conditions_checkbox_html: "Accetto la %{link}."
     terms_and_conditions_link_text: dichiarazione sulla protezione dei dati
     terms_and_conditions_link: "https://verdiliberali.ch/protezione-dei-dati"
-    zip_code: CAP
-    jglp: Ho meno di 35 anni e vorrei divenire membro anche dei giovani verdi liberali (raccomandato).
+    first_name: Nome
+    last_name: Cognome
+    email: E-mail
+    address: Via
+    house_number: Numero
+    zip_code: Codice postale
+    town: Luogo
+    phone_number: Numero di telefono
+    gender: Genere
+    genders:
+      not_stated: Nessuna informazione
+      m: Uomo
+      w: Donne
+      diverse: Altro
+    birthday: Data di nascita (GG.MM.AAAA)
+    jglp: Ho meno di 30-35 anni (a dipendenza dalle sezioni) e vorrei diventare membro anche dei giovani verdi liberali (raccomandato).
+    show_more: Mostrare di più
+    show_less: Mostrare di meno
 
   filter_navigation/people:
     root:
-      members: ""
-      sympis: ""
-      members_and_sympis: ""
+      members: Membro nazionale
+      sympis: Simpatizzante nazionale
+      members_and_sympis: Membro e simpatizzante nazionale
     kanton:
-      members: ""
-      sympis: ""
-      members_and_sympis: ""
+      members: Membro cantonale
+      sympis: Simpatizzante cantonale
+      members_and_sympis: Membro e simpatizzante cantonale
     bezirk:
-      members: ""
-      sympis: ""
-      members_and_sympis: ""
+      members: Membro distrettuale
+      sympis: Simpatizzante distrettuale
+      members_and_sympis: Membro e simpatizzante distrettuale
     ortsektion:
-      members: ""
-      sympis: ""
-      members_and_sympis: ""
+      members: Membro della sezione comunale
+      sympis: Simpatizzante della sezione comunale
+      members_and_sympis: Membro e simpatizzante della sezione comunale
   notifier:
     welcome_mitglied:
       subject: Un cordiale benvenuto dai verdi liberali!
       hello: Buongiorno
-      first_paragraph: Siamo oltremodo lieti che tu abbia deciso di diventare socio del partito verde liberale. Sarà nostra premura contattarti al più presto per comunicarti in che modo puoi impegnarti a favore del partito.
+      first_paragraph: Siamo oltremodo lieti che tu abbia deciso di diventare socio/a del partito verde liberale. Ti ricontatteremo al più presto per comunicarti in che modo puoi impegnarti a favore del partito.
       second_paragraph: "Per conoscerti meglio, ti preghiamo gentilmente di fornirci ulteriori dati sul tuo conto al seguente link, ciò che ci sarà di grande aiuto nella gestione dei dati dei nostri soci e garantisce che tu riceva da noi solo le informazioni basilari. I tuoi dati, naturalmente, saranno strettamente riservati e non saranno tramessi a terzi:"
-      link_to_young_liberals: ""
-      fourth_paragraph: Grazie in anticipo per la collaborazione! Restiamo volentieri a tua disposizione per eventuali domande all’indirizzo di posta elettronico svizzera@verdiliberali.ch.
+      link_to_young_liberals: "https://jungegrunliberale.ch/mitglied-werden/"
+      fourth_paragraph: "Grazie in anticipo per la collaborazione! Restiamo volentieri a tua disposizione per eventuali domande all’indirizzo email: svizzera@verdiliberali.ch."
       first_goodbye: Con i migliori saluti
       second_goodbye: Il team del Segretariato generale
       address_first_line: Partito verde liberale svizzero
@@ -62,29 +90,29 @@ it:
       phone: Telefono +41 31 311 33 03
       opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
     welcome_sympathisant:
-      reply_email: ""
+      reply_email: svizzera@verdiliberali.ch
       subject: Un cordiale benvenuto dai verdi liberali!
       hello: Buongiorno
       first_paragraph: Grazie per esserti iscritto/a alle nostre news & info. È con piacere che abbiamo aggiunto il tuo indirizzo alla nostra mailing list.
       second_paragraph: "Per conoscerti meglio, hai la possibilità di elaborare i tuoi dati direttamente nella nostra banca dati. Su tua richiesta saremo lieti di inviarti i dati di login."
-      third_paragraph_part_one: "Se avessi altre domande o volessi saperne di più, puoi sempre contattarci"
+      third_paragraph_part_one: "Se hai altre domande o vuoi saperne di più, puoi sempre contattarci"
       third_paragraph_part_two: a questo indirizzo e-mail.
       first_goodbye: Cordiali saluti
       second_goodbye: Il team del Segretariato generale
       address_first_line: Partito verde liberale svizzero
       address_second_line: Segretariato generale
-      pc_konto: ""
+      pc_konto: "Conto postale: 85-136086-0"
       address_city: 3011 Berna
       phone: Telefono +41 31 311 33 03
       opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
     welcome_medien_und_dritte:
-      reply_email: ""
+      reply_email: svizzera@verdiliberali.ch
       subject: Grazie mille per la sua iscrizione!
       hello: Buongiorno
       first_paragraph: La ringraziamo per essersi iscritto/a alle nostre news & info. È con piacere che abbiamo aggiunto il suo indirizzo alla mailing list.
       second_paragraph_part_one: "Se avesse ulteriori domande o desiderasse maggiori ragguagli in merito, può sempre contattarci"
       second_paragraph_part_two: a questo indirizzo e-mail
-      second_paragraph_part_three: .
+      second_paragraph_part_three: raggiungere.
       first_goodbye: Cordiali saluti
       second_goodbye: Il team del Segretariato generale
       address_first_line: Partito verde liberale svizzero

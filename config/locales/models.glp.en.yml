@@ -21,6 +21,12 @@ en:
         notify_on_join: ""
         genders:
           _nil: unknown/other
+      role:
+        class:
+          permission:
+            description:
+              financials: ""
+              create_spendenverwalter: ""
     models:
       group/root:
         one: Main group
@@ -109,9 +115,18 @@ en:
       group/bezirk_kontakte:
         one: Contact
         other: Contacts
+      group/spender:
+        one: ''
+        other: ''
+      group/spender/spender:
+        one: ''
+        other: ''
       group/root/administrator:
         one: Administrator
         other: Administrators
+      group/root/spendenverwalter:
+        one: ''
+        other: ''
       group/root/eventverantwortliche:
         one: Responsible for event
         other: Responsible for event
@@ -187,6 +202,9 @@ en:
       group/kanton/administrator:
         one: Administrator
         other: Administrators
+      group/kanton/spendenverwalter:
+        one: ''
+        other: ''
       group/kanton_delegierte/delegierte:
         one: Delegate
         other: Delegates
@@ -259,6 +277,9 @@ en:
       group/ortsektion/administrator:
         one: Administrator
         other: Administrators
+      group/ortsektion/spendenverwalter:
+        one: ''
+        other: ''
       group/ortsektion_gewaehlte/kommunale_exekutive:
         one: Local executive
         other: Local executives
@@ -322,6 +343,9 @@ en:
       group/bezirk/administrator:
         one: Administrator
         other: Administrators
+      group/bezirk/spendenverwalter:
+        one: ''
+        other: ''
       group/bezirk_gewaehlte/regierungsstatthalter:
         one: Prefect
         other: Prefects
