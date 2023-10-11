@@ -10,113 +10,113 @@ en:
       label_zip_codes: Zip codes (separated by commas)
   layouts:
     unauthorized:
-      first_login: ""
-      first_password: ""
+      first_login: "First login? Set password here"
+      first_password: Set password
   devise:
     sessions:
       new:
-        2fa_explanation: ""
+        2fa_explanation: "Here is the explanation of the 2FA:<br>https://hitobito.readthedocs.io/de/latest/two_factor_authentication.html"
     passwords:
       new:
-        set_password_button: ""
+        set_password_button: Set password
   mailing_list_people_attributes:
-    title: ""
-    age: ""
-    age_start: ""
-    age_finish: ""
+    title: Restrict by person attributes
+    age: Age
+    age_start: Minimum age
+    age_finish: Maximum age
 
   external_form_js:
-    submit: ""
-    submitting: ""
-    submit_error_required_fields: ""
-    submit_error_email_taken: ""
-    submit_error_terms_conditions: ""
-    submit_error: ""
-    server_error_captcha: ""
-    submit_success_member: ""
-    submit_success_other: ""
-    terms_and_conditions_checkbox_html: ""
-    terms_and_conditions_link_text: ""
-    terms_and_conditions_link: ""
-    first_name: ""
-    last_name: ""
-    email: ""
-    address: ""
-    house_number: ""
-    zip_code: ""
-    town: ""
-    phone_number: ""
-    gender: ""
+    submit: Send
+    submitting: "Data has been submitted, thank you!"
+    submit_error_required_fields: Please fill in all fields.
+    submit_error_email_taken: "Sorry, your email address is already taken. Please contact us at +41 31 311 33 03 or schweiz@grunliberale.ch so that we can upgrade you to a member or help you with your request."
+    submit_error_terms_conditions: You must agree to the privacy policy.
+    submit_error: An error has occurred.
+    server_error_captcha: The captcha ("I am not a robot") must be filled in.
+    submit_success_member: "Thank you very much, you will receive your access data shortly."
+    submit_success_other: "Thank you, you have successfully signed up for our party updates."
+    terms_and_conditions_checkbox_html: "I accept the %{link}."
+    terms_and_conditions_link_text: Privacy policy
+    terms_and_conditions_link: "https://grunliberale.ch/datenschutz"
+    first_name: First name
+    last_name: Last name
+    email: E-mail
+    address: Street
+    house_number: House number
+    zip_code: ZIP CODE
+    town: Location
+    phone_number: Phone number
+    gender: Gender
     genders:
-      not_stated: ""
-      m: ""
-      w: ""
-      diverse: ""
-    birthday: ""
-    jglp: ""
-    show_more: ""
-    show_less: ""
+      not_stated: not specified
+      m: male
+      w: female
+      diverse: other
+    birthday: Date of birth (DD.MM.YYYY)
+    jglp: I am under 35 and would also like to become a member of the Young Green Liberals (recommended).
+    show_more: Show more
+    show_less: Show less
 
   filter_navigation/people:
     root:
-      members: ""
-      sympis: ""
-      members_and_sympis: ""
+      members: Members on the national level
+      sympis: Sympathizers on the national level
+      members_and_sympis: Members and sympathizers on the national level
     kanton:
-      members: ""
-      sympis: ""
-      members_and_sympis: ""
+      members: Members in the canton
+      sympis: Sympathizers in the canton
+      members_and_sympis: Members and sympathizers in the canton
     bezirk:
-      members: ""
-      sympis: ""
-      members_and_sympis: ""
+      members: Members in the district
+      sympis: Sympathizers in the district
+      members_and_sympis: Members and sympathizers in the district
     ortsektion:
-      members: ""
-      sympis: ""
-      members_and_sympis: ""
+      members: Members in the local section
+      sympis: Sympathizers in the local section
+      members_and_sympis: Members and sympathizers in the local section
   notifier:
     welcome_mitglied:
-      subject: ""
-      hello: ""
-      first_paragraph: ""
-      second_paragraph: ""
-      link_to_young_liberals: ""
-      fourth_paragraph: ""
-      first_goodbye: ""
-      second_goodbye: ""
-      address_first_line: ""
-      address_second_line: ""
-      address_city: ""
-      phone: ""
-      opening_hours: ""
+      subject: Welcome to the Green Liberals!
+      hello: Hello
+      first_paragraph: We are very pleased that you have decided to become a member of the Green Liberal Party. We will contact you personally as soon as possible and show you how you can get involved in the party.
+      second_paragraph: "To help us get to know you better, we ask that you provide additional information about yourself using the following link. This helps us a lot in maintaining our membership data and ensures that you only receive relevant information from us. All information will be kept strictly confidential and will not be passed on to third parties:"
+      link_to_young_liberals: "https://jungegrunliberale.ch/mitglied-werden/"
+      fourth_paragraph: We thank you in advance and are also very happy to answer any questions on our part at schweiz@grunliberale.ch.
+      first_goodbye: "Best wishes,"
+      second_goodbye: The team of the General Secretariat
+      address_first_line: Green Liberals Switzerland
+      address_second_line: General Secretariat
+      address_city: 3011 Bern
+      phone: Phone +41 31 311 33 03
+      opening_hours: (Mon-Fri 10-12 and 14-16)
     welcome_sympathisant:
-      reply_email: ""
-      subject: ""
-      hello: ""
-      first_paragraph: ""
-      second_paragraph: ""
-      third_paragraph_part_one: ""
-      third_paragraph_part_two: ""
-      first_goodbye: ""
-      second_goodbye: ""
-      address_first_line: ""
-      address_second_line: ""
-      pc_konto: ""
-      address_city: ""
-      phone: ""
-      opening_hours: ""
+      reply_email: schweiz@grunliberale.ch
+      subject: Welcome to the Green Liberals!
+      hello: Hello
+      first_paragraph: Thank you for subscribing to our news and information. We have gladly added your address to the mailing list.
+      second_paragraph: "So that we get to know you better, you have the opportunity to edit the information about you directly in our database. All information will be kept strictly confidential and will not be passed on to third parties. We will gladly send you the login for this upon request."
+      third_paragraph_part_one: "If you have further questions or would like to learn more, please feel free to contact us at any time."
+      third_paragraph_part_two: reach via this e-mail address.
+      first_goodbye: Kind regards
+      second_goodbye: The General Secretariat Team
+      address_first_line: Green Liberals Switzerland
+      address_second_line: General Secretariat
+      pc_konto: "PC account: 85-136086-0"
+      address_city: 3011 Bern
+      phone: Phone +41 31 311 33 03
+      opening_hours: (Mon-Fri 10-12 and 14-16)
     welcome_medien_und_dritte:
-      reply_email: ""
-      subject: ""
-      hello: ""
-      first_paragraph: ""
-      second_paragraph_part_one: ""
-      second_paragraph_part_two: ""
-      second_paragraph_part_three: ""
-      first_goodbye: ""
-      second_goodbye: ""
-      address_first_line: ""
-      address_second_line: ""
-      address_city: ""
-      phone: ""
-      opening_hours: ""
+      reply_email: schweiz@grunliberale.ch
+      subject: Thank you for your registration!
+      hello: Good day
+      first_paragraph: Thank you for subscribing to our news and info. We have gladly added your address to the mailing list.
+      second_paragraph_part_one: "If you have any further questions or would like to learn more, you can always contact us at"
+      second_paragraph_part_two: via this e-mail address
+      second_paragraph_part_three: reach
+      first_goodbye: Kind regards
+      second_goodbye: The General Secretariat Team
+      address_first_line: Green Liberals Switzerland
+      address_second_line: General Secretariat
+      address_city: 3011 Bern
+      phone: Phone +41 31 311 33 03
+      opening_hours: (Mon-Fri 10-12 and 14-16)

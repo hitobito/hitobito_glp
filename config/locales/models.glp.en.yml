@@ -18,15 +18,15 @@ en:
         joined_at: Joined the party on
         left_at: Left the party on
         website_link: Website
-        notify_on_join: ""
+        notify_on_join: Entry notification
         genders:
           _nil: unknown/other
       role:
         class:
           permission:
             description:
-              financials: ""
-              create_spendenverwalter: ""
+              financials: Editing people in donor groups.
+              create_spendenverwalter: Create donation manager roles
     models:
       group/root:
         one: Main group
@@ -116,17 +116,17 @@ en:
         one: Contact
         other: Contacts
       group/spender:
-        one: ''
-        other: ''
+        one: Donor Group
+        other: Donor Group
       group/spender/spender:
-        one: ''
-        other: ''
+        one: Donor:in
+        other: Donors
       group/root/administrator:
         one: Administrator
         other: Administrators
       group/root/spendenverwalter:
-        one: ''
-        other: ''
+        one: Donation administrator:in
+        other: Donation administrators
       group/root/eventverantwortliche:
         one: Responsible for event
         other: Responsible for event
@@ -203,8 +203,8 @@ en:
         one: Administrator
         other: Administrators
       group/kanton/spendenverwalter:
-        one: ''
-        other: ''
+        one: Donation administrator:in
+        other: Donation administrators
       group/kanton_delegierte/delegierte:
         one: Delegate
         other: Delegates
@@ -278,8 +278,8 @@ en:
         one: Administrator
         other: Administrators
       group/ortsektion/spendenverwalter:
-        one: ''
-        other: ''
+        one: Donation administrator:in
+        other: Donation administrators
       group/ortsektion_gewaehlte/kommunale_exekutive:
         one: Local executive
         other: Local executives
@@ -344,8 +344,8 @@ en:
         one: Administrator
         other: Administrators
       group/bezirk/spendenverwalter:
-        one: ''
-        other: ''
+        one: Donation administrator:in
+        other: Donation administrators
       group/bezirk_gewaehlte/regierungsstatthalter:
         one: Prefect
         other: Prefects

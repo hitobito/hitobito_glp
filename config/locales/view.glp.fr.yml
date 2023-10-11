@@ -10,15 +10,15 @@ fr:
       label_zip_codes: NPA (séparés par des virgules)
   layouts:
     unauthorized:
-      first_login: ""
-      first_password: ""
+      first_login: "Première connexion ? Définir le mot de passe ici"
+      first_password: Définir un mot de passe
   devise:
     sessions:
       new:
-        2fa_explanation: ""
+        2fa_explanation: "Cliquez ici pour obtenir des explications sur la 2FA :<br>https://hitobito.readthedocs.io/fr/latest/two_factor_authentication.html"
     passwords:
       new:
-        set_password_button: ""
+        set_password_button: Définir un mot de passe
   mailing_list_people_attributes:
     title: Réduire par attributs des personnes
     age: Âge
@@ -60,20 +60,20 @@ fr:
   filter_navigation/people:
     root:
       members: Membres au sein de la Confédération
-      sympis: Sympathisant/es au sein de la Confédération
-      members_and_sympis: Membres et sympathisants/es au sein de la Confédération
+      sympis: Sympathisant·es au sein de la Confédération
+      members_and_sympis: Membres et sympathisant·es au sein de la Confédération
     kanton:
       members: Membres dans le canton
-      sympis: Sympathisants/es dans le canton
-      members_and_sympis: Membres et sympathisants/es dans le canton
+      sympis: Sympathisant·es dans le canton
+      members_and_sympis: Membres et sympathisant·es dans le canton
     bezirk:
       members: Membres dans le district
-      sympis: Sympathisants/es dans le district
-      members_and_sympis: Membres et sympathisants/es dans le district
+      sympis: Sympathisant·es dans le district
+      members_and_sympis: Membres et sympathisant·es dans le district
     ortsektion:
       members: Membres dans la section locale
-      sympis: Sympathisants/es dans la section locale
-      members_and_sympis: Membres et sympathisants/es dans la section locale
+      sympis: Sympathisant·es dans la section locale
+      members_and_sympis: Membres et sympathisant·es dans la section locale
   notifier:
     welcome_mitglied:
       subject: Bienvenue chez les Vert’libéraux !
@@ -93,8 +93,8 @@ fr:
       reply_email: suisse@vertliberaux.ch
       subject: Bienvenue chez les Vert’libéraux !
       hello: "Bonjour,"
-      first_paragraph: Nous vous remercions de vous être abonné(e) à nos actualités et informations. C'est avec plaisir que nous avons ajouté votre adresse à notre liste de diffusion.
-      second_paragraph: "Afin de mieux vous connaître, nous vous offrons la possibilité de modifier vos données directement dans notre base de données. Toutes les données sont traitées de manière strictement confidentielle et ne sont pas transmises à des tiers. Si vous êtes intéressé(e) par cette possibilité, c’est avec plaisir que nous vous transmettrons votre login personnel sur demande."
+      first_paragraph: Nous vous remercions de vous être abonné·e à nos actualités et informations. C'est avec plaisir que nous avons ajouté votre adresse à notre liste de diffusion.
+      second_paragraph: "Afin de mieux vous connaître, nous vous offrons la possibilité de modifier vos données directement dans notre base de données. Toutes les données sont traitées de manière strictement confidentielle et ne sont pas transmises à des tiers. Si vous êtes intéressé·e par cette possibilité, c’est avec plaisir que nous vous transmettrons votre login personnel sur demande."
       third_paragraph_part_one: "Si vous avez d'autres questions ou si vous souhaitez en savoir plus, n'hésitez pas à nous contacter."
       third_paragraph_part_two: à cette adresse e-mail.
       first_goodbye: Meilleures salutations
@@ -109,7 +109,7 @@ fr:
       reply_email: suisse@vertliberaux.ch
       subject: Merci beaucoup pour votre inscription !
       hello: "Bonjour,"
-      first_paragraph: Nous vous remercions de vous être abonné(e) à nos actualités et informations. C'est avec plaisir que nous avons ajouté votre adresse à notre liste de diffusion.
+      first_paragraph: Nous vous remercions de vous être abonné·e à nos actualités et informations. C'est avec plaisir que nous avons ajouté votre adresse à notre liste de diffusion.
       second_paragraph_part_one: "Si vous avez d'autres questions ou si vous souhaitez en savoir plus, n'hésitez pas à nous contacter."
       second_paragraph_part_two: à cette adresse e-mail
       second_paragraph_part_three: atteindre.
