@@ -15,7 +15,7 @@ de:
   devise:
     sessions:
       new:
-        2fa_explanation: "Hier gehts zur Erklärung der 2FA:<br>https://hitobito.readthedocs.io/de/latest/two_factor_authentication.html"
+        2fa_explanation: "Hier gehts zur Erklärung der 2FA:<br>https://grunliberale.ch/2fa"
     passwords:
       new:
         set_password_button: Passwort setzen
