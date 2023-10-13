@@ -87,7 +87,7 @@ it:
       group/kanton_zugeordnete:
         one: Attribuito/a
         many: Attribuiti
-        other: Incaricati
+        other: Attribuiti
       group/kanton_kontakte:
         one: Contatto
         many: Contatti
@@ -102,7 +102,7 @@ it:
         other: Eletti
       group/ortsektion_vorstand:
         one: Comitato direttivo
-        many: Comitato direttivo
+        many: Comitati
         other: Comitati
       group/ortsektion_geschaeftsstelle:
         one: Segretariato
@@ -115,15 +115,15 @@ it:
       group/ortsektion_zugeordnete:
         one: Attribuito/a
         many: Attribuiti
-        other: Incaricati
+        other: Attribuiti
       group/ortsektion_kontakte:
         one: Contatto
         many: Contatti
         other: Contatti
       group/bezirk_vorstand:
         one: Comitato direttivo
-        many: Comitato direttivo
-        other: Comitato direttivo
+        many: Comitati
+        other: Comitati
       group/bezirk_geschaeftsstelle:
         one: Segretariato
         many: Segretariati
@@ -146,28 +146,28 @@ it:
         other: Contatti
       group/spender:
         one: Gruppo di donatori
-        many: Gruppo di donatori
-        other: Gruppo di donatori
+        many: Gruppi di donatori
+        other: Gruppi di donatori
       group/spender/spender:
-        one: Donatore:in
-        many: Donatore:interno
+        one: Donatore
+        many: Donatori
         other: Donatori
       group/root/administrator:
         one: Amministratore
         many: Amministratori
         other: Amministratori
       group/root/spendenverwalter:
-        one: 'Fiduciario della donazione: in'
-        many: 'Raccolta fondi: all''interno'
+        one: Amministratore di donazioni
+        many: Amministratori di donazioni
         other: Amministratori di donazioni
       group/root/eventverantwortliche:
-        one: Responsabile
-        many: Responsabili
+        one: Responsabile di evento
+        many: Responsabili di evento
         other: Responsabili di evento
       group/root_geschaeftsstelle/leitung:
         one: Direzione
-        many: Direzione
-        other: Direzione
+        many: Direzioni
+        other: Direzioni
       group/root_geschaeftsstelle/mitarbeiter:
         one: Collaboratore/trice
         many: Collaboratori/trici
@@ -185,21 +185,21 @@ it:
         many: Vicepresidenti/tesse
         other: Vicepresidenti
       group/root_vorstand/geschaeftsleitung:
-        one: Comitato
-        many: Comitato
-        other: Direzione
+        one: Direzione
+        many: Direzioni
+        other: Direzioni
       group/root_vorstand/kassier:
         one: Tesoriere/a
         many: Tesorieri/e
-        other: Cassiere/a
+        other: Tesoriere/i
       group/root_vorstand/vorstandsmitglied:
         one: Membro del Comitato direttivo
         many: Membri del Comitato direttivo
         other: Membro del Comitato direttivo
       group/root_arbeitsgruppe/leitung:
         one: Direzione
-        many: Direzione
-        other: Direzione
+        many: Direzioni
+        other: Direzioni
       group/root_arbeitsgruppe/mitglied:
         one: Membro del gruppo di lavoro
         many: Membri del gruppo di lavoro
@@ -221,21 +221,21 @@ it:
         many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/root_kontakte/kontakt:
-        one: Contatto
-        many: Contatti
+        one: Media e terzi
+        many: Media e terzi
         other: Media e terzi
       group/root_gewaehlte/bundesrat:
-        one: Consiglio federale
-        many: Consiglio federale
-        other: Consigliere federale
+        one: Consigliere federale
+        many: Consiglieri federali
+        other: Consiglieri federali
       group/root_gewaehlte/staenderat:
-        one: Consiglio degli Stati
-        many: Consiglio degli Stati
-        other: Consigliere/a degli Stati
+        one: Consigliere/a degli Stati
+        many: Consiglieri degli Stati
+        other: Consiglieri degli Stati
       group/root_gewaehlte/nationalrat:
-        one: Consiglio nazionale
-        many: Consiglio nazionale
-        other: Consigliere/a nazionale
+        one: Consigliere/a nazionale
+        many: Consiglieri nazionali
+        other: Consiglieri nazionali
       group/root_gewaehlte/vollamt_bundesrichter:
         one: Giudice federale (a tempo pieno)
         many: Giudici federali (a tempo pieno)
@@ -261,8 +261,8 @@ it:
         many: Amministratori
         other: Amministratori
       group/kanton/spendenverwalter:
-        one: 'Fiduciario della donazione: in'
-        many: 'Raccolta fondi: all''interno'
+        one: Amministratore di donazioni
+        many: Amministratori di donazioni
         other: Amministratori di donazioni
       group/kanton_delegierte/delegierte:
         one: Delegato/a
@@ -295,11 +295,11 @@ it:
       group/kanton_gewaehlte/parlamentarische_geschaeftsfuehrung:
         one: Segretariato del gruppo parlamentare
         many: Segretariati di gruppi parlamentari
-        other: Segretariato di gruppi parlamentari
+        other: Segretariati di gruppi parlamentari
       group/kanton_arbeitsgruppe/leitung:
         one: Direzione
-        many: Direzione
-        other: Direzione
+        many: Direzioni
+        other: Direzioni
       group/kanton_arbeitsgruppe/mitglied:
         one: Membro del gruppo di lavoro
         many: Membri del gruppo di lavoro
@@ -321,13 +321,13 @@ it:
         many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/kanton_kontakte/kontakt:
-        one: Contatto
-        many: Contatti
+        one: Media e terzi
+        many: Media e terzi
         other: Media e terzi
       group/kanton_geschaeftsstelle/leitung:
         one: Direzione
-        many: Direzione
-        other: Direzione
+        many: Direzioni
+        other: Direzioni
       group/kanton_geschaeftsstelle/mitarbeiter:
         one: Collaboratore/trice
         many: Collaboratori/trici
@@ -338,20 +338,20 @@ it:
         other: Finanze
       group/kanton_vorstand/praesidentln:
         one: Presidente/tessa
-        many: Presidenti/tesse
+        many: Presidenti
         other: Presidenti
       group/kanton_vorstand/vizepraesidentln:
         one: Vicepresidente/tessa
-        many: Vicepresidenti/tesse
+        many: Vicepresidenti
         other: Vicepresidenti
       group/kanton_vorstand/geschaeftsleitung:
-        one: Comitato
-        many: Comitato
-        other: Direzione
+        one: Direzione
+        many: Direzioni
+        other: Direzioni
       group/kanton_vorstand/kassier:
         one: Tesoriere/a
         many: Tesorieri/e
-        other: Cassiere/a
+        other: Tesoriere/i
       group/kanton_vorstand/mitglied:
         one: Membro
         many: Membri
@@ -361,8 +361,8 @@ it:
         many: Amministratori
         other: Amministratori
       group/ortsektion/spendenverwalter:
-        one: 'Fiduciario della donazione: in'
-        many: 'Raccolta fondi: all''interno'
+        one: Amministratore di donazioni
+        many: Amministratori di donazioni
         other: Amministratori di donazioni
       group/ortsektion_gewaehlte/kommunale_exekutive:
         one: Esecutivo comunale
@@ -386,8 +386,8 @@ it:
         other: Membri di altre commissioni
       group/ortsektion_arbeitsgruppe/leitung:
         one: Direzione
-        many: Direzione
-        other: Direzione
+        many: Direzioni
+        other: Direzioni
       group/ortsektion_arbeitsgruppe/mitglied:
         one: Membro del gruppo di lavoro
         many: Membri del gruppo di lavoro
@@ -409,13 +409,13 @@ it:
         many: Gestione degli indirizzi
         other: Gestione degli indirizzi
       group/ortsektion_kontakte/kontakt:
-        one: Contatto
-        many: Contatti
-        other: Contatti
+        one: Media e terzi
+        many: Media e terzi
+        other: Media e terzi
       group/ortsektion_geschaeftsstelle/leitung:
         one: Direzione
-        many: Direzione
-        other: Direzione
+        many: Direzioni
+        other: Direzioni
       group/ortsektion_geschaeftsstelle/mitarbeiter:
         one: Collaboratore/trice
         many: Collaboratori/trici
@@ -426,20 +426,20 @@ it:
         other: Finanze
       group/ortsektion_vorstand/praesidentln:
         one: Presidente/tessa
-        many: Presidenti/tesse
+        many: Presidenti
         other: Presidenti
       group/ortsektion_vorstand/vizepraesidentln:
         one: Vicepresidente/tessa
-        many: Vicepresidenti/tesse
+        many: Vicepresidenti
         other: Vicepresidenti
       group/ortsektion_vorstand/geschaeftsleitung:
-        one: Comitato
-        many: Comitato
-        other: Comitato
+        one: Direzione
+        many: Direzioni
+        other: Direzioni
       group/ortsektion_vorstand/kassier:
         one: Tesoriere/a
-        many: Tesorieri/e
-        other: Cassiere/a
+        many: Tesoriere/i
+        other: Tesoriere/i
       group/ortsektion_vorstand/mitglied:
         one: Membro
         many: Membri
@@ -510,9 +510,9 @@ it:
         other: Comitato
       group/bezirk_vorstand/kassier:
         one: Tesoriere/a
-        many: Tesorieri/e
-        other: Cassiera/e
+        many: Tesoriere/i
+        other: Tesoriere/i
       group/bezirk_vorstand/mitglied:
         one: Membro
         many: Membri
-        other: Membro
+        other: Membri

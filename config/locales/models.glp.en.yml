@@ -8,13 +8,13 @@ en:
   activerecord:
     attributes:
       group:
-        zip_codes: Zip codes
+        zip_codes: Zip code
       person:
         title: Form of address
         preferred_language: Language
         joining_journey: "How did you hear about us?"
         occupation: Profession
-        place_of_origin: Place of origin
+        place_of_origin: Place of origin (Heimatort)
         joined_at: Joined the party on
         left_at: Left the party on
         website_link: Website
@@ -53,7 +53,7 @@ en:
         one: Canton
         other: Cantons
       group/kanton_delegierte:
-        one: Delegates
+        one: Delegate
         other: Delegates
       group/bezirk:
         one: District
@@ -117,22 +117,22 @@ en:
         other: Contacts
       group/spender:
         one: Donor Group
-        other: Donor Group
+        other: Donor Groups
       group/spender/spender:
-        one: Donor:in
+        one: Donor
         other: Donors
       group/root/administrator:
         one: Administrator
         other: Administrators
       group/root/spendenverwalter:
-        one: Donation administrator:in
+        one: Donation administrator
         other: Donation administrators
       group/root/eventverantwortliche:
-        one: Responsible for event
-        other: Responsible for event
+        one: Event manager
+        other: Event managers
       group/root_geschaeftsstelle/leitung:
-        one: Direction
-        other: Direction
+        one: Management
+        other: Management
       group/root_geschaeftsstelle/mitarbeiter:
         one: Contributor
         other: Contributors
@@ -141,7 +141,7 @@ en:
         other: Finances
       group/root_vorstand/praesidentln:
         one: President
-        other: President
+        other: Presidents
       group/root_vorstand/vizepraesidentln:
         one: Vice president
         other: Vice presidents
@@ -176,34 +176,34 @@ en:
         one: Contact
         other: Contacts
       group/root_gewaehlte/bundesrat:
-        one: Federal Council
-        other: Federal Council
+        one: Federal Councillor
+        other: Federal Councillors
       group/root_gewaehlte/staenderat:
-        one: Council of States
-        other: Council of States
+        one: Member of the Council of States
+        other: Members of the Council of States
       group/root_gewaehlte/nationalrat:
-        one: National Council
-        other: National Council
+        one: National Councillors
+        other: National Councillors
       group/root_gewaehlte/vollamt_bundesrichter:
-        one: Federal Supreme Court (full time)
-        other: Federal Supreme Court (full time)
+        one: Member of the Federal Supreme Court (full time)
+        other: Members of the Federal Supreme Court (full time)
       group/root_gewaehlte/nebenamt_bundes_richter:
-        one: Federal Supreme Court (deputy)
-        other: Federal Supreme Court (deputies)
+        one: Member of the Federal Supreme Court (part time)
+        other: Members of the Federal Supreme Court (part time)
       group/root_gewaehlte/bundesverwaltungsrichter:
-        one: Federal Administrative Court
-        other: Federal Administrative Court
+        one: Member of the Federal Administrative Court
+        other: Members of the Federal Administrative Court
       group/root_gewaehlte/bundespatentrichter:
-        one: Federal Patent Court
-        other: Federal Patent Court
+        one: Member of the Federal Patent Court
+        other: Members of the Federal Patent Court
       group/root_gewaehlte/bundesstrafrichter:
-        one: Federal Criminal Court
-        other: Federal Criminal Court
+        one: Member of the Federal Criminal Court
+        other: Members of the Federal Criminal Court
       group/kanton/administrator:
         one: Administrator
         other: Administrators
       group/kanton/spendenverwalter:
-        one: Donation administrator:in
+        one: Donation administrator
         other: Donation administrators
       group/kanton_delegierte/delegierte:
         one: Delegate
@@ -219,10 +219,10 @@ en:
         other: Cantonal legislatures
       group/kanton_gewaehlte/mitglied_kantonales_gericht_erste_instanz:
         one: Cantonal court first recourse
-        other: Cantonal courts first recourse
+        other: Cantonal court first recourse
       group/kanton_gewaehlte/mitglied_kantonales_gericht_obere_instanz:
         one: Higher cantonal court
-        other: Higher cantonal courts
+        other: Higher cantonal court
       group/kanton_gewaehlte/staatsanwaltschaft:
         one: Public prosecution authority
         other: Public prosecution authorities
@@ -230,8 +230,8 @@ en:
         one: Secretariat of parliamentary group
         other: Secretariats of parliamentary group
       group/kanton_arbeitsgruppe/leitung:
-        one: Direction
-        other: Direction
+        one: Management
+        other: Management
       group/kanton_arbeitsgruppe/mitglied:
         one: Task force member
         other: Task force members
@@ -248,20 +248,20 @@ en:
         one: Address management
         other: Address management
       group/kanton_kontakte/kontakt:
-        one: Contact
-        other: Contacts
+        one: Media and third parties
+        other: Media and third parties
       group/kanton_geschaeftsstelle/leitung:
-        one: Direction
-        other: Direction
+        one: Management
+        other: Management
       group/kanton_geschaeftsstelle/mitarbeiter:
-        one: Contributor
-        other: Contributors
+        one: Employee(s)
+        other: Employee(s)
       group/kanton_geschaeftsstelle/finanzen:
         one: Finances
         other: Finances
       group/kanton_vorstand/praesidentln:
-        one: President
-        other: President
+        one: Presidents
+        other: Presidents
       group/kanton_vorstand/vizepraesidentln:
         one: Vice president
         other: Vice presidents
@@ -278,7 +278,7 @@ en:
         one: Administrator
         other: Administrators
       group/ortsektion/spendenverwalter:
-        one: Donation administrator:in
+        one: Donation administrator
         other: Donation administrators
       group/ortsektion_gewaehlte/kommunale_exekutive:
         one: Local executive
@@ -296,8 +296,8 @@ en:
         one: Member of other commissions
         other: Members of other commissions
       group/ortsektion_arbeitsgruppe/leitung:
-        one: Direction
-        other: Direction
+        one: Management
+        other: Management
       group/ortsektion_arbeitsgruppe/mitglied:
         one: Task force member
         other: Task force members
@@ -314,20 +314,20 @@ en:
         one: Address management
         other: Address management
       group/ortsektion_kontakte/kontakt:
-        one: Contact
-        other: Contacts
+        one: Media and third parties
+        other: Media and third parties
       group/ortsektion_geschaeftsstelle/leitung:
-        one: Direction
-        other: Direction
+        one: Management
+        other: Management
       group/ortsektion_geschaeftsstelle/mitarbeiter:
-        one: Contributor
-        other: Contributors
+        one: Employee(s)
+        other: Employee(s)
       group/ortsektion_geschaeftsstelle/finanzen:
         one: Finances
         other: Finances
       group/ortsektion_vorstand/praesidentln:
         one: President
-        other: President
+        other: Presidents
       group/ortsektion_vorstand/vizepraesidentln:
         one: Vice president
         other: Vice presidents
@@ -344,14 +344,14 @@ en:
         one: Administrator
         other: Administrators
       group/bezirk/spendenverwalter:
-        one: Donation administrator:in
+        one: Donation administrator
         other: Donation administrators
       group/bezirk_gewaehlte/regierungsstatthalter:
         one: Prefect
         other: Prefects
       group/bezirk_arbeitsgruppe/leitung:
-        one: Direction
-        other: Direction
+        one: Management
+        other: Management
       group/bezirk_arbeitsgruppe/mitglied:
         one: Task force member
         other: Task force members
@@ -368,20 +368,20 @@ en:
         one: Address management
         other: Address management
       group/bezirk_kontakte/kontakt:
-        one: Contact
-        other: Contacts
+        one: Media and third parties
+        other: Media and third parties
       group/bezirk_geschaeftsstelle/leitung:
-        one: Direction
-        other: Direction
+        one: Management
+        other: Management
       group/bezirk_geschaeftsstelle/mitarbeiter:
-        one: Contributor
-        other: Contributors
+        one: Employee(s)
+        other: Employee(s)
       group/bezirk_geschaeftsstelle/finanzen:
         one: Finances
         other: Finances
       group/bezirk_vorstand/praesidentln:
         one: President
-        other: President
+        other: Presidents
       group/bezirk_vorstand/vizepraesidentln:
         one: Vice president
         other: Vice presidents

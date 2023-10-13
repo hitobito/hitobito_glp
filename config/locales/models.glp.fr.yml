@@ -12,7 +12,7 @@ fr:
       person:
         title: Civilité
         preferred_language: Langue
-        joining_journey: Comment avez-vous connu le PVL
+        joining_journey: "Comment avez-vous connu le PVL ?"
         occupation: Profession et secteur d'activité
         place_of_origin: Lieu d'origine
         joined_at: Date d'adhésion
@@ -37,7 +37,7 @@ fr:
         many: Secrétariats
         other: Secrétariats
       group/root_vorstand:
-        one: Comité
+        one: Comité directeur
         many: Comités
         other: Comités
       group/root_arbeitsgruppe:
@@ -69,7 +69,7 @@ fr:
         many: Districts
         other: Districts
       group/kanton_vorstand:
-        one: 'Comité '
+        one: Comité directeur
         many: Comités
         other: Comités
       group/kanton_geschaeftsstelle:
@@ -101,7 +101,7 @@ fr:
         many: Élu·e·s
         other: Élu·e·s
       group/ortsektion_vorstand:
-        one: 'Comité '
+        one: Comité directeur
         many: Comités
         other: Comités
       group/ortsektion_geschaeftsstelle:
@@ -121,7 +121,7 @@ fr:
         many: Contacts
         other: Contacts
       group/bezirk_vorstand:
-        one: 'Comité '
+        one: Comité directeur
         many: Comités
         other: Comités
       group/bezirk_geschaeftsstelle:
@@ -186,16 +186,16 @@ fr:
         other: Vice-président·e·s
       group/root_vorstand/geschaeftsleitung:
         one: Direction
-        many: Direction
-        other: Direction
+        many: Directions
+        other: Directions
       group/root_vorstand/kassier:
         one: Trésorier·ère
         many: Trésorier·ère·s
         other: Trésorier·ère·s
       group/root_vorstand/vorstandsmitglied:
-        one: 'Membre du comité '
-        many: 'Membres du comité '
-        other: Membres du comité
+        one: Membre du comité directeur
+        many: Membres du comité directeur
+        other: Membres du comité directeur
       group/root_arbeitsgruppe/leitung:
         one: Direction
         many: Directions
@@ -225,37 +225,37 @@ fr:
         many: Médias et tiers
         other: Médias et tiers
       group/root_gewaehlte/bundesrat:
-        one: Conseil fédéral
-        many: Conseil fédéral
-        other: Conseil fédéral
+        one: Conseiller/Conseillère fédéral·e
+        many: Conseillers/Conseillères fédéraux
+        other: Conseillers/Conseillères fédéraux
       group/root_gewaehlte/staenderat:
-        one: Conseil des États
-        many: Conseil des États
-        other: Conseil des États
+        one: Conseiller/Conseillère aux États
+        many: Conseillers/Conseillères aux États
+        other: Conseillers/Conseillères aux États
       group/root_gewaehlte/nationalrat:
-        one: Conseil national
-        many: Conseil national
-        other: Conseil national
+        one: Conseiller/Conseillère national·e
+        many: Conseillers/Conseillères nationaux
+        other: Conseillers/Conseillères nationaux
       group/root_gewaehlte/vollamt_bundesrichter:
         one: Juge fédéral·e (temps plein)
-        many: Juge fédéral·e (temps plein)
-        other: Juge fédéral·e (temps plein)
+        many: Juges fédéraux (temps plein)
+        other: Juges fédéraux (temps plein)
       group/root_gewaehlte/nebenamt_bundes_richter:
         one: Juge fédéral·e (suppléance)
-        many: Juge fédéral·e (suppléance)
-        other: Juge fédéral·e (suppléance)
+        many: Juges fédéraux (suppléance)
+        other: Juges fédéraux (suppléance)
       group/root_gewaehlte/bundesverwaltungsrichter:
         one: Juge du Tribunal administratif fédéral
-        many: Juge du Tribunal administratif fédéral
-        other: Juge du Tribunal administratif fédéral
+        many: Juges du Tribunal administratif fédéral
+        other: Juges du Tribunal administratif fédéral
       group/root_gewaehlte/bundespatentrichter:
         one: Juge du Tribunal fédéral des brevets
-        many: Juge du Tribunal fédéral des brevets
-        other: Juge du Tribunal fédéral des brevets
+        many: Juges du Tribunal fédéral des brevets
+        other: Juges du Tribunal fédéral des brevets
       group/root_gewaehlte/bundesstrafrichter:
         one: Juge du Tribunal pénal fédéral
-        many: Juge du Tribunal pénal fédéral
-        other: Juge du Tribunal pénal fédéral
+        many: Juges du Tribunal pénal fédéral
+        other: Juges du Tribunal pénal fédéral
       group/kanton/administrator:
         one: Administrateur·trice
         many: Administrateur·trice·s
@@ -346,8 +346,8 @@ fr:
         other: Vice-président·e·s
       group/kanton_vorstand/geschaeftsleitung:
         one: Direction
-        many: Direction
-        other: Direction
+        many: Directions
+        other: Directions
       group/kanton_vorstand/kassier:
         one: Trésorier·ère
         many: Trésorier·ère·s

@@ -60,8 +60,8 @@ en:
   filter_navigation/people:
     root:
       members: Members on the national level
-      sympis: Sympathizers on the national level
-      members_and_sympis: Members and sympathizers on the national level
+      sympis: Sympathisers on the national level
+      members_and_sympis: Members and sympathisers on the national level
     kanton:
       members: Members in the canton
       sympis: Sympathizers in the canton
@@ -73,7 +73,7 @@ en:
     ortsektion:
       members: Members in the local section
       sympis: Sympathizers in the local section
-      members_and_sympis: Members and sympathizers in the local section
+      members_and_sympis: Members and sympathisers in the local section
   notifier:
     welcome_mitglied:
       subject: Welcome to the Green Liberals!
