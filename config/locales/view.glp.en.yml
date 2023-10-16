@@ -15,7 +15,7 @@ en:
   devise:
     sessions:
       new:
-        2fa_explanation: ""
+        2fa_explanation: "Here is the explanation of the 2FA: https://grunliberale.ch/2fa"
     passwords:
       new:
         set_password_button: Set password

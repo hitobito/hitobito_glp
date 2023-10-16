@@ -15,7 +15,7 @@ fr:
   devise:
     sessions:
       new:
-        2fa_explanation: ""
+        2fa_explanation: " Cliquez ici pour obtenir des explications sur la 2FA: https://vertliberaux.ch/2fa"
     passwords:
       new:
         set_password_button: Définir un mot de passe

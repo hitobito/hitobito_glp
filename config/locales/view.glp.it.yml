@@ -15,7 +15,7 @@ it:
   devise:
     sessions:
       new:
-        2fa_explanation: ""
+        2fa_explanation: " Fare clic qui per una spiegazione del 2FA: https://verdiliberali.ch/2fa"
     passwords:
       new:
         set_password_button: Impostare la password
