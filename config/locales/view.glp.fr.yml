@@ -15,7 +15,7 @@ fr:
   devise:
     sessions:
       new:
-        2fa_explanation: "Cliquez ici pour obtenir des explications sur la 2FA :<br>https://hitobito.readthedocs.io/fr/latest/two_factor_authentication.html"
+        2fa_explanation: ""
     passwords:
       new:
         set_password_button: Définir un mot de passe

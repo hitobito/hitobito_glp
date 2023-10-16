@@ -15,7 +15,7 @@ it:
   devise:
     sessions:
       new:
-        2fa_explanation: "Fare clic qui per una spiegazione del 2FA:<br>https://hitobito.readthedocs.io/it/latest/two_factor_authentication.html"
+        2fa_explanation: ""
     passwords:
       new:
         set_password_button: Impostare la password
