@@ -134,8 +134,8 @@ en:
         one: Management
         other: Management
       group/root_geschaeftsstelle/mitarbeiter:
-        one: Contributor
-        other: Contributors
+        one: Employee(s)
+        other: Employee(s)
       group/root_geschaeftsstelle/finanzen:
         one: Finances
         other: Finances
