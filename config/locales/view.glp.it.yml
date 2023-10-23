@@ -10,12 +10,12 @@ it:
       label_zip_codes: Codice postale (separati da virgole)
   layouts:
     unauthorized:
-      first_login: "Primo Login? Imposta una password"
+      first_login: "Primo accesso? Impostare la password qui"
       first_password: Impostare la password
   devise:
     sessions:
       new:
-        2fa_explanation: "Maggiori informazioni sull'autenticazione a due fattori 2FA: https://hitobito.readthedocs.io/de/latest/two_factor_authentication.html"
+        2fa_explanation: " Fare clic qui per una spiegazione del 2FA: https://verdiliberali.ch/2fa"
     passwords:
       new:
         set_password_button: Impostare la password
