@@ -22,8 +22,8 @@ module Glp::PersonDecorator
     end
   end
 
-  def roles_grouped_with_filtered_donor_roles
-    roles_grouped_without_filtered_donor_roles.collect do |group, roles|
+  def roles_grouped_with_filtered_donor_roles(scope: roles)
+    roles_grouped_without_filtered_donor_roles(scope: scope).collect do |group, roles|
       next [group, roles] if !group.is_a?(Group::Spender) || donor_visible?(group)
 
       visible_roles = roles.select(&:visible_from_above?)
