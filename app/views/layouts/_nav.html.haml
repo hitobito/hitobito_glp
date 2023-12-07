@@ -5,10 +5,10 @@
 
 .nav-left-overlay
 %nav#page-navigation
-  .nav-left-section.text-right.visible-phone
+  .nav-left-section.text-right.d-md-none
     %a.nav-left-close.toggle-nav
       = t('global.button.close')
-      = icon('close')
+      = icon('times')
   = render_main_nav unless current_person.simplified_view?
 
   .nav-left-section.options

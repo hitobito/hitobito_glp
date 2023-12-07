@@ -30,13 +30,13 @@
 <div id="main">
   <h2>Optionen</h2>
   <label>
-    Rolle <%= select_tag "ext_form_role", options_for_select(role_options) %>
+    Rolle <%= select_tag "ext_form_role", options_for_select(role_options), class: 'form-select form-select-sm' %>
   </label>
   <label>
-    Sprache <%= select_tag "ext_form_language", options_for_select(language_options) %>
+    Sprache <%= select_tag "ext_form_language", options_for_select(language_options), class: 'form-select form-select-sm' %>
   </label>
 
-  <h2>Formular</h2>
+  <h2 class="mt-3">Formular</h2>
   <%= render partial: "form_textarea", locals: { content: form_loader("mitglied") } %>
   <br/>
   <%= action_button 'Test', external_forms_test_url, nil, id: 'test_button' %>

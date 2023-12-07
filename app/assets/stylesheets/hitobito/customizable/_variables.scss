@@ -13,7 +13,7 @@ $glpDark:               #004b32;
 $glpGrey:               #e3ebe8;
 
 $glpDarkGreen:   #004B32;
-$glpMediumGreen: #82B43C;
+$glpMediumGreen: #82B43C !default;
 $glpLightBlue:   #119CD4;
 
 $glp_color_a:           #004b32;
@@ -33,59 +33,59 @@ $bsv_color_h:           #626262;
 // Grays
 // -------------------------
 $black:                 #474E5D !default;
-$grayDarker:            #797E89 !default;
-$grayDark:              #8b8b8b !default;
+$gray-darker:            #797E89 !default;
+$gray-dark:              #8b8b8b !default;
 $gray:                  #979CA6 !default;
-$grayLight:             #E8EBF0 !default;
-$grayLighter:           #F8F9FA !default;
+$gray-light:             #E8EBF0 !default;
+$gray-lighter:           #F8F9FA !default;
 $white:                 #fff !default;
 
 // Colors
 // ----------------------------
-$blue:                  $grayDark !default;
-$blueDark:              darken($grayDark, 10%) !default;
+$blue:                  $gray-dark !default;
+$blue-dark:              darken($gray-dark, 10%) !default;
 $green:                 #8DB850 !default;
-$greenDark:             darken($green, 10%) !default;
+$green-dark:             darken($green, 10%) !default;
 
 $orange:                lighten($bsv_color_b, 10%) !default;
-$orangeDark:            $bsv_color_b;
-$purple:                $grayDark;
-$purpleDark:            $grayDarker !default;
+$orange-dark:            $bsv_color_b;
+$purple:                $gray-dark;
+$purple-dark:            $gray-darker !default;
 
 $red:                   $orange !default;
 
-$textColor:             $glpDark !default;
-$borderColor:           $glpGrey !default;
+$text-color:             $glpDark !default;
+$border-color:           $glpGrey !default;
 
-$pageBackground:        mix($gray, $grayLight, .65); //$glpGrey;
-$contentBackground:     mix($gray, $grayLight, .4);
-$footerBackground:      $grayDarker;
-$bodyBackground:        $footerBackground !default;
+$page-background:        mix($gray, $gray-light, .65); //$glpGrey;
+$content-background:     mix($gray, $gray-light, .4);
+$footer-background:      $gray-darker;
+$body-background:        $footer-background !default;
 
-$focusColor:            $gray;
-$shadowColor:           transparentize($glpDark, .8);
-$linkColor:             $glpMediumGreen !default;
-$linkColorHover:        $glpDark !default;
+$focus-color:            $gray;
+$shadow-color:           transparentize($glpDark, .8);
+$link-color:             $glpMediumGreen !default;
+$link-color-hover:        $glpDark !default;
 
-$footerColor:           transparentize($white, .5);
-$footerColorHover:      $white;
+$footer-color:           transparentize($white, .5);
+$footer-color-hover:      $white;
 
-$tableColorHover:       lighten($purple, 50%);
+$table-color-hover:       lighten($purple, 50%);
 
 // Typography
 // -------------------------
-$sansFontFamily:        Helvetica, Arial, sans-serif !default;
-$headingFontFamily:     $sansFontFamily !default;
-$baseFontFamily:        $sansFontFamily !default;
-$headingsFontWeight:    normal !default; // instead of browser default, bold
+$sans-font-family:        Helvetica, Arial, sans-serif !default;
+$heading-font-family:     $sans-font-family !default;
+$base-font-family:        $sans-font-family !default;
+$headings-font-weight:    normal !default; // instead of browser default, bold
 
 // Decoration
 // -------------------------
-$borderRadius:           6px;
+$border-radius:           6px;
 
 // Rhythm
 // -------------------------
-$vSpace:                24px;
+$v-space:                24px;
 
 
 // FLUID GRID
@@ -93,18 +93,18 @@ $vSpace:                24px;
 
 // Default
 // -------------------------
-$fluidGridColumnWidth:         6.382978723% !default;
-$fluidGridGutterWidth:         2.127659574% !default;
+$fluid-grid-column-width:         6.382978723% !default;
+$fluid-grid-gutter-width:         2.127659574% !default;
 
 // Portrait tablet to default desktop
 // -------------------------
-$fluidGridColumnWidthTablet:   5.801104972% !default;
-$fluidGridGutterWidthTablet:   2.762430939% !default;
+$fluid-grid-column-width-tablet:   5.801104972% !default;
+$fluid-grid-gutter-width-tablet:   2.762430939% !default;
 
 // Large desktop and up
 // -------------------------
-$fluidGridColumnWidthLarge:    5.982905983% !default;
-$fluidGridGutterWidthLarge:    2.564102564% !default;
+$fluid-grid-column-width-large:    5.982905983% !default;
+$fluid-grid-gutter-width-large:    2.564102564% !default;
 
 
 // RESPONSIVE DESIGN
@@ -112,7 +112,7 @@ $fluidGridGutterWidthLarge:    2.564102564% !default;
 
 // Media widths
 // -------------------------
-$mediaPhone:              480px !default;
-$mediaTablet:             768px !default;
-$mediaDesktop:            980px !default;
-$mediaLarge:              1200px !default; // and upper
+$media-phone:              480px !default;
+$media-tablet:             768px !default;
+$media-desktop:            980px !default;
+$media-large:              1200px !default; // and upper
