@@ -25,7 +25,21 @@ body.is-logged-out .container-fluid {
   width: 60%;
 }
 
-#new_person input[type="email"],
+#new_person input[type="text"],
 #new_person input[type="password"] {
   width: 90%;
+}
+
+.new_person label {
+  overflow-wrap: break-word;
+}
+
+.new_person {
+  label {
+    width: 120px;
+  }
+
+  div.offset-md-3.offset-xl-2  {
+    width: 70%;
+  }
 }
