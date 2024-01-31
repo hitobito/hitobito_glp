@@ -11,7 +11,7 @@ describe Person::Subscriptions do
   let(:root)         { groups(:root) }
   let(:list)         { root.mailing_lists.create!(name: 'test') }
 
-  subject { Person::Subscriptions.new(person).mailing_lists }
+  subject { Person::Subscriptions.new(person).subscribed }
 
   before do
     list.subscriptions.create!(subscriber: root, role_types: ['Group::Root::Administrator'])
