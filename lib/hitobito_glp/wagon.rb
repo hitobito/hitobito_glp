@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2022, GLP Schweiz. This file is part of
+#  Copyright (c) 2012-2024, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
@@ -25,7 +25,7 @@ module HitobitoGlp
     config.to_prepare do # rubocop:disable Metrics/BlockLength
       Person.include Glp::Person
       Group.include Glp::Group
-      
+
       # Skips paper_trail for this role type
       PaperTrail.request.disable_model(Group::Spender::Spender)
 
@@ -60,8 +60,8 @@ module HitobitoGlp
 
       Role::Permissions << :financials << :create_spendenverwalter
 
-      AbilityDsl::UserContext::LAYER_PERMISSIONS += [:financials, :create_spendenverwalter]
-      AbilityDsl::UserContext::GROUP_PERMISSIONS += [:financials, :create_spendenverwalter]
+      AbilityDsl::UserContext::LAYER_PERMISSIONS << :financials << :create_spendenverwalter
+      AbilityDsl::UserContext::GROUP_PERMISSIONS << :financials << :create_spendenverwalter
 
       # TODO: maybe better additional_merge fields, code gets execute on every code reload
       Synchronize::Mailchimp::Synchronizator.member_fields = [
