@@ -19,7 +19,5 @@ Gem::Specification.new do |s|
   # rubocop:enable SingleSpaceBeforeFirstArg
 
   s.add_runtime_dependency 'aws-sdk-s3'
-  s.add_runtime_dependency 'dotenv-rails'
   s.add_runtime_dependency 'rack-cors'
-  s.add_runtime_dependency 'twilio-ruby'
 end

@@ -7,7 +7,6 @@
 
 
 require 'aws-sdk-s3'
-require 'dotenv/tasks'
 
 namespace :import do
   task historical_data: :environment do

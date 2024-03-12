@@ -6,9 +6,6 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 
-require 'aws-sdk-s3'
-require 'dotenv/tasks'
-
 namespace :master_data do
   task create_standard_groups: :environment do
     groups_to_create = [
