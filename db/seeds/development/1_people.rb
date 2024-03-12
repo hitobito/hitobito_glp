@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
+#  Copyright (c) 2012-2024, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
@@ -19,16 +19,21 @@ class GlpPersonSeeder < PersonSeeder
 
 end
 
-puzzlers = ['Pascal Zumkehr',
-            'Andreas Maierhofer',
-            'Andre Kunz',
-            'Roland Studer',
-            'Mathis Hofer',
-            'Pascal Simon',
-            'Matthias Viehweger',
-            'Bruno Santschi']
+puzzlers = [
+  'Andreas Maierhofer',
+  'Carlo Beltrame',
+  'Daniel Illi',
+  'Matthias Viehweger',
+  'Nils Rauch',
+  'Oliver Dietschi',
+  'Pascal Simon',
+  'Pascal Zumkehr',
+  'Thomas Ellenberger',
+]
 
-devs = {'Mat' => 'mat@zeilenwerk.ch', 'Zeilenwerk' => 'test@zeilenwerk.ch'} # add accounts for 'live' test users
+devs = {
+  'Niculin Detreköy' => 'niculin.detrekoey@grunliberale.ch'
+} # add accounts for 'live' test users
 
 puzzlers.each do |puz|
   devs[puz] = "#{puz.split.last.downcase}@puzzle.ch"
