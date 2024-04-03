@@ -26,8 +26,7 @@ module HitobitoGlp
       Person.include Glp::Person
       Group.include Glp::Group
 
-      # Skips paper_trail for this role type
-      PaperTrail.request.disable_model(Group::Spender::Spender)
+      HitobitoGlp::Wagon.configure_paper_trail!
 
       PersonDecorator.include Glp::PersonDecorator
       GroupDecorator.prepend Glp::GroupDecorator
@@ -100,6 +99,11 @@ module HitobitoGlp
           resource '*', headers: :any, methods: [:get, :post, :options]
         end
       end
+    end
+
+    def self.configure_paper_trail!
+      # Skips paper_trail for this role type
+      PaperTrail.request.disable_model(Group::Spender::Spender)
     end
 
     private

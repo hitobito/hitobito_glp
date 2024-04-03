@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2022, GLP Schweiz. This file is part of
+#  Copyright (c) 2022-2024, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
@@ -12,6 +12,10 @@ describe Role do
     let!(:person) { people(:admin) }
     let!(:donor_group) { Fabricate(Group::Spender.to_s, parent: groups(:root)) }
     let!(:donor) { Fabricate(Group::Spender::Spender.to_s, group: donor_group).person }
+
+    before do
+      HitobitoGlp::Wagon.configure_paper_trail!
+    end
 
     context 'on non donor role' do
       it 'sets main on create' do
