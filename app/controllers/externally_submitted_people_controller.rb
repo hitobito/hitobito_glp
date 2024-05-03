@@ -1,4 +1,4 @@
-#  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
+#  Copyright (c) 2012-2024, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
@@ -42,7 +42,8 @@ class ExternallySubmittedPeopleController < ApplicationController
       attrs = model_params.except(:role, :terms_and_conditions, :address,
                                   :house_number, :phone_number)
 
-      attrs[:address] = [model_params[:address], model_params[:house_number]].join(' ')
+      attrs[:street] = model_params[:address]
+      attrs[:housenumber] = model_params[:house_number]
       attrs[:phone_numbers_attributes] = phone_numbers_attributes if model_params[:phone_number]
       attrs[:preferred_language] = 'de' if attrs[:preferred_language].blank?
 

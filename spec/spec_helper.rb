@@ -1,10 +1,12 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
+#  Copyright (c) 2012-2024, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
+ENV['RAILS_STRUCTURED_ADDRESSES'] = '1'
+ENV['RAILS_ADDRESS_MIGRATION'] = '0'
 
 load File.expand_path('../../app_root.rb', __FILE__)
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
