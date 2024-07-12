@@ -5,15 +5,14 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
 module Glp::EventAbility
   extend ActiveSupport::Concern
 
   included do
     on(Event) do
-      permission(:layer_and_below_full).
-        may(:create, :destroy, :application_market, :qualify, :qualifications_read).
-        in_same_layer_or_below
+      permission(:layer_and_below_full)
+        .may(:create, :destroy, :application_market, :qualify, :qualifications_read)
+        .in_same_layer_or_below
     end
   end
 end

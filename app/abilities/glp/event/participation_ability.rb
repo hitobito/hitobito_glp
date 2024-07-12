@@ -17,5 +17,4 @@ module Glp::Event::ParticipationAbility
   def in_same_layer_or_national_admin
     in_same_layer || (role_type?(Group::Root::Administrator) && in_same_layer_or_below)
   end
-
 end

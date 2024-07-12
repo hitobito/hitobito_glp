@@ -5,7 +5,6 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
 class Group::Ortsektion < Group
   self.layer = true
 
@@ -24,10 +23,10 @@ class Group::Ortsektion < Group
   roles Administrator, Spendenverwalter
 
   children(Group::OrtsektionGewaehlte,
-           Group::OrtsektionGeschaeftsstelle,
-           Group::OrtsektionVorstand,
-           Group::OrtsektionArbeitsgruppe,
-           Group::OrtsektionZugeordnete,
-           Group::OrtsektionKontakte,
-           Group::Spender)
+    Group::OrtsektionGeschaeftsstelle,
+    Group::OrtsektionVorstand,
+    Group::OrtsektionArbeitsgruppe,
+    Group::OrtsektionZugeordnete,
+    Group::OrtsektionKontakte,
+    Group::Spender)
 end

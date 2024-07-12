@@ -5,7 +5,6 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
 class Group::Bezirk < Group
   self.layer = true
 
@@ -24,11 +23,11 @@ class Group::Bezirk < Group
   roles Administrator, Spendenverwalter
 
   children(Group::BezirkGewaehlte,
-           Group::BezirkGeschaeftsstelle,
-           Group::BezirkVorstand,
-           Group::BezirkArbeitsgruppe,
-           Group::BezirkZugeordnete,
-           Group::BezirkKontakte,
-           Group::Ortsektion,
-           Group::Spender)
+    Group::BezirkGeschaeftsstelle,
+    Group::BezirkVorstand,
+    Group::BezirkArbeitsgruppe,
+    Group::BezirkZugeordnete,
+    Group::BezirkKontakte,
+    Group::Ortsektion,
+    Group::Spender)
 end

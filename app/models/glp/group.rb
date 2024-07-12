@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2018, Grünliberale Partei Schweiz. This file is part of
 #  hitobito and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
@@ -14,6 +12,6 @@ module Glp::Group
 
     root_types Group::Root
 
-    scope :with_zip_codes, -> { where.not(zip_codes: ['', nil]) }
+    scope :with_zip_codes, -> { where.not(zip_codes: ["", nil]) }
   end
 end

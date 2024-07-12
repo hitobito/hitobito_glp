@@ -1,14 +1,10 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
 module Glp::MailingList
   extend ActiveSupport::Concern
-
 
   included do
     alias_method_chain :people, :filter
@@ -20,7 +16,7 @@ module Glp::MailingList
   end
 
   def gender_value(gender)
-    genders_array.include?(gender == '_nil' ? nil : gender)
+    genders_array.include?((gender == "_nil") ? nil : gender)
   end
 
   def language_value(language)
@@ -30,8 +26,8 @@ module Glp::MailingList
   private
 
   def attributes_conditions_with_explicit_subscribers
-    conditions = attribute_conditions.join(' AND ')
-    return unless conditions.present?
+    conditions = attribute_conditions.join(" AND ")
+    return if conditions.blank?
 
     if explicitly_subscribed.present?
       conditions << " OR #{sanitize_sql(id: explicitly_subscribed.pluck(:subscriber_id))}"
@@ -42,20 +38,20 @@ module Glp::MailingList
 
   def attribute_conditions
     [age_start_condition,
-     age_finish_condition,
-     gender_condition,
-     language_condition].compact
+      age_finish_condition,
+      gender_condition,
+      language_condition].compact
   end
 
   def age_start_condition
     if age_start.present?
-      sanitize_sql(['birthday <= ?', Time.zone.now - age_start.years])
+      sanitize_sql(["birthday <= ?", Time.zone.now - age_start.years])
     end
   end
 
   def age_finish_condition
     if age_finish.present?
-      sanitize_sql(['birthday >= ?', Time.zone.now - age_finish.years])
+      sanitize_sql(["birthday >= ?", Time.zone.now - age_finish.years])
     end
   end
 
@@ -72,24 +68,23 @@ module Glp::MailingList
   end
 
   def explicitly_subscribed
-    @explicitly_subscribed ||= Subscription.select(:subscriber_id).
-      where(mailing_list_id: id,
-            excluded: false,
-            subscriber_type: Person.sti_name)
+    @explicitly_subscribed ||= Subscription.select(:subscriber_id)
+      .where(mailing_list_id: id,
+        excluded: false,
+        subscriber_type: Person.sti_name)
   end
 
   def sanitize_sql(*attrs)
-    Person.where(*attrs).to_sql.split('WHERE ')[1]
+    Person.where(*attrs).to_sql.split("WHERE ")[1]
   end
 
   def genders_array
     return [] unless genders
 
-    genders.split(',').map { |g| g == '_nil' ? nil : g }
+    genders.split(",").map { |g| (g == "_nil") ? nil : g }
   end
 
   def languages_array
-    languages ? languages.split(',') : []
+    languages ? languages.split(",") : []
   end
-
 end

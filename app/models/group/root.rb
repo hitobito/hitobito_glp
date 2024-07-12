@@ -5,19 +5,17 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
 class Group::Root < Group
-
   self.layer = true
 
   children Group::RootGeschaeftsstelle,
-           Group::RootVorstand,
-           Group::RootArbeitsgruppe,
-           Group::RootZugeordnete,
-           Group::RootKontakte,
-           Group::RootGewaehlte,
-           Group::Kanton,
-           Group::Spender
+    Group::RootVorstand,
+    Group::RootArbeitsgruppe,
+    Group::RootZugeordnete,
+    Group::RootKontakte,
+    Group::RootGewaehlte,
+    Group::Kanton,
+    Group::Spender
 
   class Administrator < Role
     self.permissions = [:layer_and_below_full, :admin, :impersonation, :contact_data]
@@ -27,13 +25,13 @@ class Group::Root < Group
 
   class Spendenverwalter < Role
     self.permissions = [:financials, :layer_and_below_full,
-                        :see_invisible_from_above, :create_spendenverwalter]
+      :see_invisible_from_above, :create_spendenverwalter]
 
     self.two_factor_authentication_enforced = true
   end
 
   class Eventverantwortliche < Role
-    #TODO: What is the "Events erstellen" permission in the GLP Strukturdokument
+    # TODO: What is the "Events erstellen" permission in the GLP Strukturdokument
     self.permissions = []
   end
 

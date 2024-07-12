@@ -7,7 +7,6 @@
 
 module SortingHat
   class Song
-
     def initialize(person, role, jglp)
       @person = person
       @role = role
@@ -34,7 +33,7 @@ module SortingHat
     private
 
     def create_role(group)
-      role_type = medien? ? 'Kontakt' : @role
+      role_type = medien? ? "Kontakt" : @role
       group.roles.create!(type: "#{group.class.sti_name}::#{role_type}", person: @person)
     end
 
@@ -47,45 +46,45 @@ module SortingHat
     end
 
     def mitglied?
-      @role == 'Mitglied'
+      @role == "Mitglied"
     end
 
     def medien?
-      @role == 'Medien_und_dritte'
+      @role == "Medien_und_dritte"
     end
 
     def role_valid?
-      ROLES.keys.include?(@role)
+      ROLES.key?(@role)
     end
 
     def send_welcome_mail
-      Notifier.send("welcome_#{@role.downcase}", @person, @person.preferred_language).deliver_later
+      NotifierMailer.send(:"welcome_#{@role.downcase}", @person, @person.preferred_language).deliver_later
     end
 
     def notify_monitoring_address
-      Notifier.mitglied_joined_monitoring(@person, @role, MONITORING_EMAIL, jglp?).deliver_later
+      NotifierMailer.mitglied_joined_monitoring(@person, @role, MONITORING_EMAIL, jglp?).deliver_later
     end
 
     def notify_youth_address
-      Notifier.mitglied_joined_monitoring(@person, @role, JGLP_EMAIL, jglp?).deliver_later
+      NotifierMailer.mitglied_joined_monitoring(@person, @role, JGLP_EMAIL, jglp?).deliver_later
     end
 
     def notify_parent_group(group)
       if group.parent.email.present? && group.parent.email != JGLP_EMAIL
-        Notifier.mitglied_joined(@person, group.parent.email, jglp?).deliver_later
+        NotifierMailer.mitglied_joined(@person, group.parent.email, jglp?).deliver_later
       end
     end
 
     def notify_layer_admins(groups)
       layer_admins(groups).pluck(:email).each do |email|
-        Notifier.mitglied_joined_monitoring(@person, @role, email, jglp?).deliver_later
+        NotifierMailer.mitglied_joined_monitoring(@person, @role, email, jglp?).deliver_later
       end
     end
 
     def layer_admins(groups)
       Person.admin.notify_on_join
-            .where(roles: { group: groups.flat_map(&:layer_hierarchy) })
-            .distinct
+        .where(roles: {group: groups.flat_map(&:layer_hierarchy)})
+        .distinct
     end
   end
 end

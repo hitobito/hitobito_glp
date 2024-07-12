@@ -5,7 +5,6 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
 module Glp::Person
   extend ActiveSupport::Concern
 
@@ -31,7 +30,7 @@ module Glp::Person
   end
 
   def zugeordnete_roles_where_he_is_a_mitglied
-    roles.select{|role| role.type.include? "Zugeordnete" and role.type.include? "Mitglied"}
+    roles.select { |role| role.type.include? "Zugeordnete" and role.type.include? "Mitglied" }
   end
 
   def simplified_view?
@@ -43,5 +42,4 @@ module Glp::Person
   def assert_is_valid_swiss_post_code
     true
   end
-
 end

@@ -15,12 +15,12 @@ module SortingHat
 
     def groups # rubocop:disable Metrics/AbcSize
       groups = if jglp?
-                 inside_jglp = find_for_zip(jglp_root.descendants)
-                 inside_jglp += group_for_role(jglp_root.children) if inside_jglp.none?
-                 inside_jglp + find_for_zip(root.descendants.where.not(id: subtree_jglp))
-               elsif !foreign?
-                 find_for_zip(root.descendants.where.not(id: subtree_jglp))
-               end
+        inside_jglp = find_for_zip(jglp_root.descendants)
+        inside_jglp += group_for_role(jglp_root.children) if inside_jglp.none?
+        inside_jglp + find_for_zip(root.descendants.where.not(id: subtree_jglp))
+      elsif !foreign?
+        find_for_zip(root.descendants.where.not(id: subtree_jglp))
+      end
       Array.wrap(groups.presence || fallback)
     end
 
@@ -31,8 +31,8 @@ module SortingHat
       return Group.none if foreign?
 
       scope = scope.without_deleted.joins(:parent)
-                   .where('parents_groups.zip_codes LIKE ?', "%#{@zip}%")
-                   .where('parents_groups.deleted_at IS NULL')
+        .where("parents_groups.zip_codes LIKE ?", "%#{@zip}%")
+        .where(parents_groups: {deleted_at: nil})
 
       group_for_role(scope)
     end
@@ -48,7 +48,7 @@ module SortingHat
     def group_for_role(scope)
       return Group.none unless scope
 
-      scope = scope.where('groups.type LIKE ?', "%#{SortingHat::ROLES.fetch(@role)}")
+      scope = scope.where("groups.type LIKE ?", "%#{SortingHat::ROLES.fetch(@role)}")
       groups = scope.without_deleted
       groups.one? ? groups : Group.none
     end
@@ -67,7 +67,7 @@ module SortingHat
 
     def subtree_jglp
       if jglp_root
-        without_deleted.where('lft > ? AND rgt < ?', jglp_root.lft, jglp_root.rgt)
+        without_deleted.where("lft > ? AND rgt < ?", jglp_root.lft, jglp_root.rgt)
       else
         Group.none
       end

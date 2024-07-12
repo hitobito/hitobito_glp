@@ -5,34 +5,33 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
 namespace :master_data do
   task create_standard_groups: :environment do
     groups_to_create = [
       {
         parent: Group::Kanton,
         children_types: [
-          [Group::KantonZugeordnete, 'Mitglieder & Sympathisanten'],
-          [Group::KantonKontakte, 'Medien & Dritte'],
-          [Group::KantonDelegierte, 'Delegierte'],
-          [Group::KantonGewaehlte, 'Mandatsträger'],
-          [Group::KantonVorstand, 'Vorstand']
+          [Group::KantonZugeordnete, "Mitglieder & Sympathisanten"],
+          [Group::KantonKontakte, "Medien & Dritte"],
+          [Group::KantonDelegierte, "Delegierte"],
+          [Group::KantonGewaehlte, "Mandatsträger"],
+          [Group::KantonVorstand, "Vorstand"]
         ]
       },
       {
         parent: Group::Bezirk,
         children_types: [
-          [Group::BezirkZugeordnete, 'Mitglieder & Sympathisanten'],
-          [Group::BezirkKontakte, 'Medien & Dritte'],
-          [Group::BezirkVorstand, 'Vorstand']
+          [Group::BezirkZugeordnete, "Mitglieder & Sympathisanten"],
+          [Group::BezirkKontakte, "Medien & Dritte"],
+          [Group::BezirkVorstand, "Vorstand"]
         ]
       },
       {
         parent: Group::Ortsektion,
         children_types: [
-          [Group::OrtsektionZugeordnete, 'Mitglieder & Sympathisanten'],
-          [Group::OrtsektionKontakte, 'Medien & Dritte'],
-          [Group::OrtsektionVorstand, 'Vorstand']
+          [Group::OrtsektionZugeordnete, "Mitglieder & Sympathisanten"],
+          [Group::OrtsektionKontakte, "Medien & Dritte"],
+          [Group::OrtsektionVorstand, "Vorstand"]
         ]
       }
     ]

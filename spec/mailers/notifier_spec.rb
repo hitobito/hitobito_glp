@@ -8,13 +8,13 @@
 
 require 'spec_helper'
 
-describe Notifier do
+describe NotifierMailer do
 
   let(:jglp)   { false }
 
   context :mitglied_joined_monitoring do
     let(:person) { Person.new(email: 'me@example.com', first_name: 'Gerd', last_name: 'Gärtner') }
-    subject { Notifier.mitglied_joined_monitoring(person, role, person.email, jglp) }
+    subject { NotifierMailer.mitglied_joined_monitoring(person, role, person.email, jglp) }
 
     describe 'role Mitglied' do
       let(:role)   { 'Mitglied' }
@@ -54,7 +54,7 @@ describe Notifier do
     let(:role) { roles(:mitglied) }
     let(:person) { role.person }
 
-    subject { Notifier.mitglied_joined(role.person, role.person.email, jglp) }
+    subject { NotifierMailer.mitglied_joined(role.person, role.person.email, jglp) }
 
     it 'includes preferred_language language in email body' do
       person.update(preferred_language: :de)

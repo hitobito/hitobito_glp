@@ -58,12 +58,12 @@ module Glp::PersonReadables
   end
 
   def layer_group_query(layer_group_ids, role_types)
-    ['groups.layer_group_id IN (?) AND roles.type IN (?)',
-     layer_group_ids, role_types.map(&:sti_name)]
+    ["groups.layer_group_id IN (?) AND roles.type IN (?)",
+      layer_group_ids, role_types.map(&:sti_name)]
   end
 
   def financials_condition(condition)
-    return unless financial_layers_ids.present?
+    return if financial_layers_ids.blank?
 
     additional_layer_ids = layer_groups_same_layer.collect(&:id) & financial_layers_ids
     query = layer_group_query(additional_layer_ids, Role.all_types)

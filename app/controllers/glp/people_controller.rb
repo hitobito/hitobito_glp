@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2018, Grünliberale Partei Schweiz. This file is part of
 #  hitobito and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
@@ -10,16 +8,16 @@ module Glp::PeopleController
 
   included do
     self.permitted_attrs += [:title, :preferred_language,
-                             :joining_journey, :occupation,
-                             :joined_at, :left_at, :website_url,
-                             :paperless, :place_of_origin, :notify_on_join]
+      :joining_journey, :occupation,
+      :joined_at, :left_at, :website_url,
+      :paperless, :place_of_origin, :notify_on_join]
     before_update :notify_schweiz_at_grunliberale_ch
     before_destroy :notify_leadership
   end
 
   def notify_schweiz_at_grunliberale_ch
-    if entry.zip_code_changed? and entry.valid?
-      Notifier.zip_code_changed(entry, "mitgliederdatenbank@grunliberale.ch").deliver_later
+    if entry.zip_code_changed? && entry.valid?
+      NotifierMailer.zip_code_changed(entry, "mitgliederdatenbank@grunliberale.ch").deliver_later
     end
   end
 
@@ -27,8 +25,8 @@ module Glp::PeopleController
     zugeordnete_roles_where_he_is_a_mitglied = entry.zugeordnete_roles_where_he_is_a_mitglied
 
     if zugeordnete_roles_where_he_is_a_mitglied.any?
-      zugeordnete_parent_groups = zugeordnete_roles_where_he_is_a_mitglied.
-        map(&:group).map(&:parent).uniq
+      zugeordnete_parent_groups = zugeordnete_roles_where_he_is_a_mitglied
+        .map(&:group).map(&:parent).uniq
 
       zugeordnete_parent_groups.each do |group|
         if group.email.present?
@@ -40,17 +38,17 @@ module Glp::PeopleController
   end
 
   def notify_parent_group email
-    Notifier.mitglied_left(person_email_attrs, email).deliver_later
+    NotifierMailer.mitglied_left(person_email_attrs, email).deliver_later
   end
 
   def notify_root_group
     root_group = Group.find_by_type("Group::Root")
     if root_group.email.present?
-      Notifier.mitglied_left(person_email_attrs, root_group.email).deliver_later
+      NotifierMailer.mitglied_left(person_email_attrs, root_group.email).deliver_later
     end
   end
 
   def person_email_attrs
-    entry.slice('first_name', 'last_name', 'address', 'zip_code', 'email')
+    entry.slice("first_name", "last_name", "address", "zip_code", "email")
   end
 end

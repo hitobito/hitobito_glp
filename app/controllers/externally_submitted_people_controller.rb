@@ -3,9 +3,8 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
-require 'uri'
-require 'net/http'
+require "uri"
+require "net/http"
 
 class ExternallySubmittedPeopleController < ApplicationController
   skip_authorization_check
@@ -21,53 +20,53 @@ class ExternallySubmittedPeopleController < ApplicationController
     if Rails.env.test?
       true
     else
-      response = Net::HTTP.post_form(URI.parse('https://www.google.com/recaptcha/api/siteverify'), {
-                                       secret: '6LcBNGoUAAAAAKoQO8Rvw_H5DlKKkR64Q1ZoP3Is',
-                                       response: params['g-recaptcha-response']
-                                     })
-      JSON.parse(response.body)['success'] || false
+      response = Net::HTTP.post_form(URI.parse("https://www.google.com/recaptcha/api/siteverify"), {
+        secret: "6LcBNGoUAAAAAKoQO8Rvw_H5DlKKkR64Q1ZoP3Is",
+        response: params["g-recaptcha-response"]
+      })
+      JSON.parse(response.body)["success"] || false
     end
   end
 
   def create # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
-    I18n.locale = params[:locale] || 'de'
+    I18n.locale = params[:locale] || "de"
     unless is_captcha_valid?
       render({
-               json: { error: t('external_form_js.server_error_captcha') },
-               status: :unprocessable_entity
-             })
+        json: {error: t("external_form_js.server_error_captcha")},
+        status: :unprocessable_entity
+      })
       return
     end
     ActiveRecord::Base.transaction do
       attrs = model_params.except(:role, :terms_and_conditions, :address,
-                                  :house_number, :phone_number)
+        :house_number, :phone_number)
 
       attrs[:street] = model_params[:address]
       attrs[:housenumber] = model_params[:house_number]
       attrs[:phone_numbers_attributes] = phone_numbers_attributes if model_params[:phone_number]
-      attrs[:preferred_language] = 'de' if attrs[:preferred_language].blank?
+      attrs[:preferred_language] = "de" if attrs[:preferred_language].blank?
 
       @person = Person.new(attrs)
       if @person.save
         SortingHat::Song.new(@person, submitted_role, jglp).sing
         render json: PersonSerializer.new(@person.decorate,
-                                          group: @person.primary_group,
-                                          controller: self),
-               status: :ok
+          group: @person.primary_group,
+          controller: self),
+          status: :ok
       else
         errors = @person.errors
         taken_email = errors.find { |e| e.attribute == :email && e.type == :taken }
         message = if taken_email
-                    # show only this since it means they already own an account
-                    # and the message advises them to not fill out the form
-                    t('external_form_js.submit_error_email_taken')
-                  else
-                    errors.uniq(&:attribute).map(&:full_message).join(', ')
-                  end
+          # show only this since it means they already own an account
+          # and the message advises them to not fill out the form
+          t("external_form_js.submit_error_email_taken")
+        else
+          errors.uniq(&:attribute).map(&:full_message).join(", ")
+        end
         render({
-                 json: { error: message },
-                 status: :unprocessable_entity
-               })
+          json: {error: message},
+          status: :unprocessable_entity
+        })
       end
     end
   end
@@ -90,23 +89,23 @@ class ExternallySubmittedPeopleController < ApplicationController
 
   def model_params
     params.require(:externally_submitted_person).permit(:email,
-                                                        :zip_code,
-                                                        :role,
-                                                        :first_name,
-                                                        :last_name,
-                                                        :address,
-                                                        :house_number,
-                                                        :town,
-                                                        :phone_number,
-                                                        :gender,
-                                                        :birthday,
-                                                        :preferred_language,
-                                                        :terms_and_conditions)
+      :zip_code,
+      :role,
+      :first_name,
+      :last_name,
+      :address,
+      :house_number,
+      :town,
+      :phone_number,
+      :gender,
+      :birthday,
+      :preferred_language,
+      :terms_and_conditions)
   end
 
   def phone_numbers_attributes
     {
-      '0': {
+      "0": {
         number: model_params[:phone_number],
         label: PhoneNumber.predefined_labels.first
       }

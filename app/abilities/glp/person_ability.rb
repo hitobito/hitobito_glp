@@ -1,10 +1,7 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
-
 
 module Glp::PersonAbility
   extend ActiveSupport::Concern
@@ -29,7 +26,7 @@ module Glp::PersonAbility
 
   def precious_roles_group_ids
     @precious_roles_group_ids ||= user.roles.select do |role|
-      precious_roles.include?(role.class.sti_name.split('::').last)
+      precious_roles.include?(role.class.sti_name.split("::").last)
     end.collect(&:group_id)
   end
 
@@ -38,6 +35,6 @@ module Glp::PersonAbility
   end
 
   def precious_roles
-    %w(Administrator Adressverwaltung)
+    %w[Administrator Adressverwaltung]
   end
 end

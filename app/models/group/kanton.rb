@@ -5,7 +5,6 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
 class Group::Kanton < Group
   self.layer = true
 
@@ -24,12 +23,12 @@ class Group::Kanton < Group
   roles Administrator, Spendenverwalter
 
   children(Group::KantonDelegierte,
-           Group::KantonGewaehlte,
-           Group::KantonGeschaeftsstelle,
-           Group::KantonVorstand,
-           Group::KantonArbeitsgruppe,
-           Group::KantonZugeordnete,
-           Group::KantonKontakte,
-           Group::Bezirk,
-           Group::Spender)
+    Group::KantonGewaehlte,
+    Group::KantonGeschaeftsstelle,
+    Group::KantonVorstand,
+    Group::KantonArbeitsgruppe,
+    Group::KantonZugeordnete,
+    Group::KantonKontakte,
+    Group::Bezirk,
+    Group::Spender)
 end

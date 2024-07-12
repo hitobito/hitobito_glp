@@ -1,10 +1,7 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
-
 
 class Group::RootGewaehlte < Group
   class Bundesrat < Role
@@ -32,11 +29,11 @@ class Group::RootGewaehlte < Group
   end
 
   roles(Bundesrat,
-        Staenderat,
-        Nationalrat,
-        VollamtBundesrichter,
-        NebenamtBundesRichter,
-        Bundesverwaltungsrichter,
-        Bundespatentrichter,
-        Bundesstrafrichter)
+    Staenderat,
+    Nationalrat,
+    VollamtBundesrichter,
+    NebenamtBundesRichter,
+    Bundesverwaltungsrichter,
+    Bundespatentrichter,
+    Bundesstrafrichter)
 end

@@ -7,15 +7,15 @@
 
 module SortingHat
   FOREIGN_ZIP_CODE = 102
-  JGLP_ZIP_CODE    = 103
+  JGLP_ZIP_CODE = 103
 
-  MONITORING_EMAIL = 'mitgliederdatenbank@grunliberale.ch'
-  JGLP_EMAIL = 'junge@grunliberale.ch'
+  MONITORING_EMAIL = "mitgliederdatenbank@grunliberale.ch"
+  JGLP_EMAIL = "junge@grunliberale.ch"
 
   ROLES = {
-    'Mitglied' => 'Zugeordnete',
-    'Sympathisant' => 'Zugeordnete',
-    'Medien_und_dritte' => 'Kontakte'
+    "Mitglied" => "Zugeordnete",
+    "Sympathisant" => "Zugeordnete",
+    "Medien_und_dritte" => "Kontakte"
   }.freeze
 
   def self.locked?(group)

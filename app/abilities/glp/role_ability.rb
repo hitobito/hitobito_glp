@@ -1,10 +1,7 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
-
 
 module Glp::RoleAbility
   extend ActiveSupport::Concern
@@ -24,7 +21,7 @@ module Glp::RoleAbility
   end
 
   def require_admin_permission_for_precious_roles
-    !precious_roles.include?(subject.class.sti_name.split('::').last) || user_context.admin
+    !precious_roles.include?(subject.class.sti_name.split("::").last) || user_context.admin
   end
 
   def require_financials_permission_for_financial_roles
@@ -32,15 +29,15 @@ module Glp::RoleAbility
   end
 
   def require_create_spendenverwalter_permission_for_spendenverwalter_role
-    subject.class.sti_name.demodulize != 'Spendenverwalter' ||
+    subject.class.sti_name.demodulize != "Spendenverwalter" ||
       user_context.all_permissions.include?(:create_spendenverwalter) &&
-      contains_any?(
-        subject.group.layer_hierarchy.map(&:id),
-        user_context.permission_layer_ids(:create_spendenverwalter)
-      )
+        contains_any?(
+          subject.group.layer_hierarchy.map(&:id),
+          user_context.permission_layer_ids(:create_spendenverwalter)
+        )
   end
 
   def precious_roles
-    %w(Administrator Adressverwaltung)
+    %w[Administrator Adressverwaltung]
   end
 end

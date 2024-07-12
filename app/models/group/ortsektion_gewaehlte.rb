@@ -1,13 +1,9 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
 class Group::OrtsektionGewaehlte < Group
-
   class KommunaleExekutive < Role
   end
 
@@ -24,8 +20,8 @@ class Group::OrtsektionGewaehlte < Group
   end
 
   roles(KommunaleExekutive,
-        KommunaleLegislative,
-        Schulpflegekommission,
-        Rechnungspruefungskommission,
-        MitgliedWeitereKommissionen)
+    KommunaleLegislative,
+    Schulpflegekommission,
+    Rechnungspruefungskommission,
+    MitgliedWeitereKommissionen)
 end

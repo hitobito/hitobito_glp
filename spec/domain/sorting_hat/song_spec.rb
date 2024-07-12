@@ -20,7 +20,7 @@ describe SortingHat::Song do
   let(:new_role)         { person.roles.last }
 
   before do
-    @notifier = stub_const('Notifier', double("notifier").as_null_object)
+    @notifier = stub_const('NotifierMailer', double("notifier").as_null_object)
   end
 
   def update_email_and_zip_codes

@@ -5,16 +5,15 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
 module Glp::GroupAbility
   extend ActiveSupport::Concern
 
   included do
     on(Group) do
       # permission(:admin).may(:edit_zipcodes).in_group
-      permission(:layer_and_below_full).
-        may(:activate_person_add_requests, :deactivate_person_add_requests, :index_service_tokens).
-        in_same_layer_or_national_admin
+      permission(:layer_and_below_full)
+        .may(:activate_person_add_requests, :deactivate_person_add_requests, :index_service_tokens)
+        .in_same_layer_or_national_admin
     end
   end
 
