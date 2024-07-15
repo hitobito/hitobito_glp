@@ -74,7 +74,7 @@ en:
       members: Members in the local section
       sympis: Sympathizers in the local section
       members_and_sympis: Members and sympathisers in the local section
-  notifier_mailer:
+  notifier:
     welcome_mitglied:
       subject: Welcome to the Green Liberals!
       hello: Hello
