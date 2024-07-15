@@ -74,7 +74,7 @@ it:
       members: Membro della sezione comunale
       sympis: Simpatizzante della sezione comunale
       members_and_sympis: Membro e simpatizzante della sezione comunale
-  notifier:
+  notifier_mailer:
     welcome_mitglied:
       subject: Un cordiale benvenuto dai verdi liberali!
       hello: Buongiorno

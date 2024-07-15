@@ -74,7 +74,7 @@ de:
       members: Mitglieder in der Ortsektion
       sympis: Sympathisanten in der Ortsektion
       members_and_sympis: Mitglieder und Sympathisanten in der Ortsektion
-  notifier:
+  notifier_mailer:
     welcome_mitglied:
       subject: Herzlich willkommen bei den Grünliberalen!
       hello: Hallo
