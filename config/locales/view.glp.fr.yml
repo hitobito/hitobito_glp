@@ -74,7 +74,7 @@ fr:
       members: Membres dans la section locale
       sympis: Sympathisant·es dans la section locale
       members_and_sympis: Membres et sympathisant·es dans la section locale
-  notifier_mailer:
+  notifier:
     welcome_mitglied:
       subject: Bienvenue chez les Vert’libéraux !
       hello: "Bonjour,"
