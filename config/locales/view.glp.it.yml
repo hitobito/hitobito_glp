@@ -74,49 +74,49 @@ it:
       members: Membro della sezione comunale
       sympis: Simpatizzante della sezione comunale
       members_and_sympis: Membro e simpatizzante della sezione comunale
-  notifier:
+  notifier_mailer:
     welcome_mitglied:
-      subject: Un cordiale benvenuto dai verdi liberali!
-      hello: Buongiorno
-      first_paragraph: Siamo oltremodo lieti che tu abbia deciso di diventare socio/a del partito verde liberale. Ti ricontatteremo al più presto per comunicarti in che modo puoi impegnarti a favore del partito.
-      second_paragraph: "Per conoscerti meglio, ti preghiamo gentilmente di fornirci ulteriori dati sul tuo conto al seguente link, ciò che ci sarà di grande aiuto nella gestione dei dati dei nostri soci e garantisce che tu riceva da noi solo le informazioni basilari. I tuoi dati, naturalmente, saranno strettamente riservati e non saranno tramessi a terzi:"
-      link_to_young_liberals: "https://jungegrunliberale.ch/mitglied-werden/"
-      fourth_paragraph: "Grazie in anticipo per la collaborazione! Restiamo volentieri a tua disposizione per eventuali domande all’indirizzo email: svizzera@verdiliberali.ch."
-      first_goodbye: Con i migliori saluti
-      second_goodbye: Il team del Segretariato generale
-      address_first_line: Partito verde liberale svizzero
-      address_second_line: Segretariato generale
-      address_city: 3011 Berna
-      phone: Telefono +41 31 311 33 03
-      opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph: ""
+      link_to_young_liberals: ""
+      fourth_paragraph: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""
     welcome_sympathisant:
-      reply_email: svizzera@verdiliberali.ch
-      subject: Un cordiale benvenuto dai verdi liberali!
-      hello: Buongiorno
-      first_paragraph: Grazie per esserti iscritto/a alle nostre news & info. È con piacere che abbiamo aggiunto il tuo indirizzo alla nostra mailing list.
-      second_paragraph: "Per conoscerti meglio, hai la possibilità di elaborare i tuoi dati direttamente nella nostra banca dati. Su tua richiesta saremo lieti di inviarti i dati di login."
-      third_paragraph_part_one: "Se hai altre domande o vuoi saperne di più, puoi sempre contattarci"
-      third_paragraph_part_two: a questo indirizzo e-mail.
-      first_goodbye: Cordiali saluti
-      second_goodbye: Il team del Segretariato generale
-      address_first_line: Partito verde liberale svizzero
-      address_second_line: Segretariato generale
-      pc_konto: "Conto postale: 85-136086-0"
-      address_city: 3011 Berna
-      phone: Telefono +41 31 311 33 03
-      opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
+      reply_email: ""
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph: ""
+      third_paragraph_part_one: ""
+      third_paragraph_part_two: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      pc_konto: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""
     welcome_medien_und_dritte:
-      reply_email: svizzera@verdiliberali.ch
-      subject: Grazie mille per la sua iscrizione!
-      hello: Buongiorno
-      first_paragraph: La ringraziamo per essersi iscritto/a alle nostre news & info. È con piacere che abbiamo aggiunto il suo indirizzo alla mailing list.
-      second_paragraph_part_one: "Se avesse ulteriori domande o desiderasse maggiori ragguagli in merito, può sempre contattarci"
-      second_paragraph_part_two: a questo indirizzo e-mail
-      second_paragraph_part_three: raggiungere.
-      first_goodbye: Cordiali saluti
-      second_goodbye: Il team del Segretariato generale
-      address_first_line: Partito verde liberale svizzero
-      address_second_line: Segretariato generale
-      address_city: 3011 Berna
-      phone: Telefono +41 31 311 33 03
-      opening_hours: "(lun-ven 10.00-12.00, 14.00-16.00)"
+      reply_email: ""
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph_part_one: ""
+      second_paragraph_part_two: ""
+      second_paragraph_part_three: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""

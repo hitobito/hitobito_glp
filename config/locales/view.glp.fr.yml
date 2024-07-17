@@ -74,49 +74,49 @@ fr:
       members: Membres dans la section locale
       sympis: Sympathisant·es dans la section locale
       members_and_sympis: Membres et sympathisant·es dans la section locale
-  notifier:
+  notifier_mailer:
     welcome_mitglied:
-      subject: Bienvenue chez les Vert’libéraux !
-      hello: "Bonjour,"
-      first_paragraph: Nous nous réjouissons de votre choix d'adhérer au Parti vert'libéral. Nous prendrons contact avec vous le plus rapidement possible afin de vous détailler comment vous pouvez vous engager au sein du parti.
-      second_paragraph: "Afin de mieux vous connaître, nous vous prions de nous transmettre des informations plus détaillées. Cela nous aidera à gérer nos données de membres et garantira que vous recevrez toutes les informations importantes de notre part. Toutes vos données seront traitées de manière strictement confidentielle et ne seront pas transmises à des tiers :"
-      link_to_young_liberals: "https://jungegrunliberale.ch/fr/devenir-membre/"
-      fourth_paragraph: Nous vous remercions d'avance et nous tenons à votre disposition pour toute question – suisse@vertliberaux.ch
-      first_goodbye: Meilleures salutations
-      second_goodbye: L'équipe du secrétariat général
-      address_first_line: Parti vert’libéral Suisse
-      address_second_line: Secrétariat général
-      address_city: 3011 Berne
-      phone: Téléphone +41 31 311 33 03
-      opening_hours: "(lun-ven 10h00-12h00, 14h00-16h00)"
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph: ""
+      link_to_young_liberals: ""
+      fourth_paragraph: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""
     welcome_sympathisant:
-      reply_email: suisse@vertliberaux.ch
-      subject: Bienvenue chez les Vert’libéraux !
-      hello: "Bonjour,"
-      first_paragraph: Nous vous remercions de vous être abonné·e à nos actualités et informations. C'est avec plaisir que nous avons ajouté votre adresse à notre liste de diffusion.
-      second_paragraph: "Afin de mieux vous connaître, nous vous offrons la possibilité de modifier vos données directement dans notre base de données. Toutes les données sont traitées de manière strictement confidentielle et ne sont pas transmises à des tiers. Si vous êtes intéressé·e par cette possibilité, c’est avec plaisir que nous vous transmettrons votre login personnel sur demande."
-      third_paragraph_part_one: "Si vous avez d'autres questions ou si vous souhaitez en savoir plus, n'hésitez pas à nous contacter."
-      third_paragraph_part_two: à cette adresse e-mail.
-      first_goodbye: Meilleures salutations
-      second_goodbye: L'équipe du secrétariat général
-      address_first_line: Parti vert’libéral Suisse
-      address_second_line: Secrétariat général
-      pc_konto: "Compte CP : 85-136086-0"
-      address_city: 3011 Berne
-      phone: Téléphone +41 31 311 33 03
-      opening_hours: "(lun-ven 10h00-12h00, 14h00-16h00)"
+      reply_email: ""
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph: ""
+      third_paragraph_part_one: ""
+      third_paragraph_part_two: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      pc_konto: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""
     welcome_medien_und_dritte:
-      reply_email: suisse@vertliberaux.ch
-      subject: Merci beaucoup pour votre inscription !
-      hello: "Bonjour,"
-      first_paragraph: Nous vous remercions de vous être abonné·e à nos actualités et informations. C'est avec plaisir que nous avons ajouté votre adresse à notre liste de diffusion.
-      second_paragraph_part_one: "Si vous avez d'autres questions ou si vous souhaitez en savoir plus, n'hésitez pas à nous contacter."
-      second_paragraph_part_two: à cette adresse e-mail
-      second_paragraph_part_three: atteindre.
-      first_goodbye: Meilleures salutations
-      second_goodbye: L'équipe du secrétariat général
-      address_first_line: Parti vert’libéral Suisse
-      address_second_line: Secrétariat général
-      address_city: 3011 Berne
-      phone: Téléphone +41 31 311 33 03
-      opening_hours: "(lun-ven 10h00-12h00, 14h00-16h00)"
+      reply_email: ""
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph_part_one: ""
+      second_paragraph_part_two: ""
+      second_paragraph_part_three: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""

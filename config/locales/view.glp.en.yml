@@ -74,49 +74,49 @@ en:
       members: Members in the local section
       sympis: Sympathizers in the local section
       members_and_sympis: Members and sympathisers in the local section
-  notifier:
+  notifier_mailer:
     welcome_mitglied:
-      subject: Welcome to the Green Liberals!
-      hello: Hello
-      first_paragraph: We are very pleased that you have decided to become a member of the Green Liberal Party. We will contact you personally as soon as possible and show you how you can get involved in the party.
-      second_paragraph: "To help us get to know you better, we ask that you provide additional information about yourself using the following link. This helps us a lot in maintaining our membership data and ensures that you only receive relevant information from us. All information will be kept strictly confidential and will not be passed on to third parties:"
-      link_to_young_liberals: "https://jungegrunliberale.ch/mitglied-werden/"
-      fourth_paragraph: We thank you in advance and are also very happy to answer any questions on our part at schweiz@grunliberale.ch.
-      first_goodbye: "Best wishes,"
-      second_goodbye: The team of the General Secretariat
-      address_first_line: Green Liberals Switzerland
-      address_second_line: General Secretariat
-      address_city: 3011 Bern
-      phone: Phone +41 31 311 33 03
-      opening_hours: (Mon-Fri 10-12 and 14-16)
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph: ""
+      link_to_young_liberals: ""
+      fourth_paragraph: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""
     welcome_sympathisant:
-      reply_email: schweiz@grunliberale.ch
-      subject: Welcome to the Green Liberals!
-      hello: Hello
-      first_paragraph: Thank you for subscribing to our news and information. We have gladly added your address to the mailing list.
-      second_paragraph: "So that we get to know you better, you have the opportunity to edit the information about you directly in our database. All information will be kept strictly confidential and will not be passed on to third parties. We will gladly send you the login for this upon request."
-      third_paragraph_part_one: "If you have further questions or would like to learn more, please feel free to contact us at any time."
-      third_paragraph_part_two: reach via this e-mail address.
-      first_goodbye: Kind regards
-      second_goodbye: The General Secretariat Team
-      address_first_line: Green Liberals Switzerland
-      address_second_line: General Secretariat
-      pc_konto: "PC account: 85-136086-0"
-      address_city: 3011 Bern
-      phone: Phone +41 31 311 33 03
-      opening_hours: (Mon-Fri 10-12 and 14-16)
+      reply_email: ""
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph: ""
+      third_paragraph_part_one: ""
+      third_paragraph_part_two: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      pc_konto: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""
     welcome_medien_und_dritte:
-      reply_email: schweiz@grunliberale.ch
-      subject: Thank you for your registration!
-      hello: Good day
-      first_paragraph: Thank you for subscribing to our news and info. We have gladly added your address to the mailing list.
-      second_paragraph_part_one: "If you have any further questions or would like to learn more, you can always contact us at"
-      second_paragraph_part_two: via this e-mail address
-      second_paragraph_part_three: reach
-      first_goodbye: Kind regards
-      second_goodbye: The General Secretariat Team
-      address_first_line: Green Liberals Switzerland
-      address_second_line: General Secretariat
-      address_city: 3011 Bern
-      phone: Phone +41 31 311 33 03
-      opening_hours: (Mon-Fri 10-12 and 14-16)
+      reply_email: ""
+      subject: ""
+      hello: ""
+      first_paragraph: ""
+      second_paragraph_part_one: ""
+      second_paragraph_part_two: ""
+      second_paragraph_part_three: ""
+      first_goodbye: ""
+      second_goodbye: ""
+      address_first_line: ""
+      address_second_line: ""
+      address_city: ""
+      phone: ""
+      opening_hours: ""
