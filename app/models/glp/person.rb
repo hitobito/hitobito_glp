@@ -14,7 +14,7 @@ module Glp::Person
   included do
     Person::PUBLIC_ATTRS << :title << :preferred_language
     alias_method_chain :full_name, :title
-    scope :admin, -> { joins(:roles).where('roles.type LIKE "%::Administrator"') }
+    scope :admin, -> { joins(:roles).where("roles.type LIKE '%::Administrator'") }
     scope :notify_on_join, -> { where(notify_on_join: true) }
   end
 
