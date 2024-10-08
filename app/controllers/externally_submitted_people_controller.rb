@@ -50,7 +50,7 @@ class ExternallySubmittedPeopleController < ApplicationController
       if @person.save
         SortingHat::Song.new(@person, submitted_role, jglp).sing
         render json: PersonSerializer.new(@person.decorate,
-          group: @person.primary_group,
+          group: @person.roles.last.group, # cannot rely on value set in after_commit callbacks
           controller: self),
           status: :ok
       else

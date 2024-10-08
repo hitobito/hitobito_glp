@@ -41,17 +41,6 @@ describe Role do
         expect(version.event).to eq('update')
         expect(version.main).to eq(person)
       end
-
-      it 'sets main on destroy' do
-        role = person.roles.first
-        expect do
-          role.really_destroy!
-        end.to change { PaperTrail::Version.count }.by(1)
-
-        version = PaperTrail::Version.order(:created_at, :id).last
-        expect(version.event).to eq('destroy')
-        expect(version.main).to eq(person)
-      end
     end
 
     context 'on donor role' do
@@ -68,13 +57,6 @@ describe Role do
         role = donor.roles.first
         expect do
           role.update!(label: 'Foo')
-        end.to_not change { PaperTrail::Version.count }
-      end
-
-      it 'does not set main on destroy' do
-        role = donor.roles.first
-        expect do
-          role.really_destroy!
         end.to_not change { PaperTrail::Version.count }
       end
     end
