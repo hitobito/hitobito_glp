@@ -1,58 +1,58 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
-require 'spec_helper'
+require "spec_helper"
 
 describe MailingList do
+  let!(:role) { Group::RootZugeordnete::Mitglied.name.to_sym }
+  let!(:other_role) { Group::KantonZugeordnete::Mitglied.name.to_sym }
+  let!(:person) { Fabricate(role, group: groups(:root_zugeordnete)).person }
+  let!(:other_person) { Fabricate(other_role, group: groups(:bern_zugeordnete)).person }
+  let!(:root) { groups(:root) }
 
-  let(:role)         { Group::RootZugeordnete::Mitglied.name.to_sym }
-  let(:other_role)   { Group::KantonZugeordnete::Mitglied.name.to_sym }
-  let(:person)       { Fabricate(role, group: groups(:root_zugeordnete)).person }
-  let(:other_person) { Fabricate(other_role, group: groups(:bern_zugeordnete)).person }
-  let(:root)         { groups(:root) }
+  before do
+    subscribe_group(root, Group::RootZugeordnete::Mitglied.sti_name)
+  end
 
-  before { subscribe_group(root, Group::RootZugeordnete::Mitglied.sti_name) }
+  describe "without filters" do
+    let(:list) { Fabricate(:mailing_list, group: root) }
 
-  describe 'without filters' do
-    let(:list){ Fabricate(:mailing_list, group: root) }
-    it 'has the correct people in it ' do
+    it "has the correct people in it " do
       expect(list.people).not_to include(other_person)
-      expect(list.people).to include(person)
+      expect(list.reload.people).to include(person)
     end
   end
 
-  describe 'with age filter' do
-    let(:person_aged_20) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, birthday: Time.now - 20.years)).person }
-    let(:person_aged_50) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, birthday: Time.now - 50.years)).person }
+  describe "with age filter" do
+    let!(:person_aged_20) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, birthday: Time.now - 20.years)).person }
+    let!(:person_aged_50) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, birthday: Time.now - 50.years)).person }
 
-    describe '(age > 30)' do
-      let(:list){ Fabricate(:mailing_list, group: root, age_start: 30) }
-      it 'has the correct people in it ' do
+    describe "(age > 30)" do
+      let(:list) { Fabricate(:mailing_list, group: root, age_start: 30) }
+
+      it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).not_to include(person)
         expect(list.people).not_to include(person_aged_20)
         expect(list.people).to include(person_aged_50)
       end
 
-      it 'includes explicitly subscribed person even though attribute filter does not match' do
+      it "includes explicitly subscribed person even though attribute filter does not match" do
         list.subscriptions.create(subscriber: person_aged_20)
         expect(list.people).not_to include(person)
         expect(list.people).to include(person_aged_20)
       end
 
-      it 'includes explicitly subscribed person when no attribute filter is defined' do
+      it "includes explicitly subscribed person when no attribute filter is defined" do
         list.update(age_start: nil)
         list.subscriptions.create(subscriber: person_aged_20)
         expect(list.people).to include(person_aged_20)
         expect(list.people).to include(person_aged_50)
       end
 
-      it 'but not if subscription is for a different list' do
+      it "but not if subscription is for a different list" do
         other_list = Fabricate(:mailing_list, group: root)
         other_list.subscriptions.create(subscriber: person_aged_20)
         expect(list.people).not_to include(person_aged_20)
@@ -60,9 +60,9 @@ describe MailingList do
       end
     end
 
-    describe '(age < 30)' do
-      let(:list){ Fabricate(:mailing_list, group: root, age_finish: 30) }
-      it 'has the correct people in it ' do
+    describe "(age < 30)" do
+      let(:list) { Fabricate(:mailing_list, group: root, age_finish: 30) }
+      it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).not_to include(person)
         expect(list.people).to include(person_aged_20)
@@ -70,9 +70,9 @@ describe MailingList do
       end
     end
 
-    describe '(30 < age < 60)' do
-      let(:list){ Fabricate(:mailing_list, group: root, age_start: 30, age_finish: 60) }
-      it 'has the correct people in it ' do
+    describe "(30 < age < 60)" do
+      let(:list) { Fabricate(:mailing_list, group: root, age_start: 30, age_finish: 60) }
+      it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).not_to include(person)
         expect(list.people).not_to include(person_aged_20)
@@ -81,14 +81,15 @@ describe MailingList do
     end
   end
 
-  describe 'with gender filter' do
-    let(:person_with_unknown_gender) { Fabricate(role, group: groups(:root_zugeordnete)).person }
-    let(:person_with_male_gender) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, gender: 'm')).person }
-    let(:person_with_female_gender) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, gender: 'w')).person }
+  describe "with gender filter" do
+    let!(:person_with_unknown_gender) { Fabricate(role, group: groups(:root_zugeordnete)).person }
+    let!(:person_with_male_gender) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, gender: "m")).person }
+    let!(:person_with_female_gender) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, gender: "w")).person }
 
-    describe '(genders = [])' do
-      let(:list){ Fabricate(:mailing_list, group: root, genders: "") }
-      it 'has the correct people in it ' do
+    describe "(genders = [])" do
+      let(:list) { Fabricate(:mailing_list, group: root, genders: "") }
+
+      it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)
         expect(list.people).to include(person_with_unknown_gender)
@@ -97,9 +98,9 @@ describe MailingList do
       end
     end
 
-    describe '(genders = [m])' do
-      let(:list){ Fabricate(:mailing_list, group: root, genders: "m") }
-      it 'has the correct people in it ' do
+    describe "(genders = [m])" do
+      let(:list) { Fabricate(:mailing_list, group: root, genders: "m") }
+      it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).not_to include(person)
         expect(list.people).not_to include(person_with_unknown_gender)
@@ -108,9 +109,9 @@ describe MailingList do
       end
     end
 
-    describe '(genders = [m,w,_nil])' do
-      let(:list){ Fabricate(:mailing_list, group: root, genders: "m,w,_nil") }
-      it 'has the correct people in it ' do
+    describe "(genders = [m,w,_nil])" do
+      let(:list) { Fabricate(:mailing_list, group: root, genders: "m,w,_nil") }
+      it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)
         expect(list.people).to include(person_with_unknown_gender)
@@ -119,9 +120,9 @@ describe MailingList do
       end
     end
 
-    describe '(genders = [_nil])' do
-      let(:list){ Fabricate(:mailing_list, group: root, genders: "_nil") }
-      it 'has the correct people in it ' do
+    describe "(genders = [_nil])" do
+      let(:list) { Fabricate(:mailing_list, group: root, genders: "_nil") }
+      it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)
         expect(list.people).to include(person_with_unknown_gender)
@@ -131,14 +132,14 @@ describe MailingList do
     end
   end
 
-  describe 'with language filter' do
-    let(:person_preferring_german) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, preferred_language: :de)).person }
-    let(:person_preferring_french) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, preferred_language: :fr)).person }
-    let(:person_preferring_italian) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, preferred_language: :it)).person }
+  describe "with language filter" do
+    let!(:person_preferring_german) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, preferred_language: :de)).person }
+    let!(:person_preferring_french) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, preferred_language: :fr)).person }
+    let!(:person_preferring_italian) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, preferred_language: :it)).person }
 
-    describe '(languages = [])' do
-      let(:list){ Fabricate(:mailing_list, group: root, languages: "") }
-      it 'has the correct people in it ' do
+    describe "(languages = [])" do
+      let(:list) { Fabricate(:mailing_list, group: root, languages: "") }
+      it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)
         expect(list.people).to include(person_preferring_german)
@@ -147,9 +148,9 @@ describe MailingList do
       end
     end
 
-    describe '(languages = [de])' do
-      let(:list){ Fabricate(:mailing_list, group: root, languages: "de") }
-      it 'has the correct people in it ' do
+    describe "(languages = [de])" do
+      let(:list) { Fabricate(:mailing_list, group: root, languages: "de") }
+      it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)
         expect(list.people).to include(person_preferring_german)
@@ -158,9 +159,9 @@ describe MailingList do
       end
     end
 
-    describe '(languages = [de,fr,it])' do
-      let(:list){ Fabricate(:mailing_list, group: root, languages: "de,fr,it") }
-      it 'has the correct people in it ' do
+    describe "(languages = [de,fr,it])" do
+      let(:list) { Fabricate(:mailing_list, group: root, languages: "de,fr,it") }
+      it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)
         expect(list.people).to include(person_preferring_german)
@@ -178,5 +179,4 @@ describe MailingList do
     sub.save!
     sub
   end
-
 end
