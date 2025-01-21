@@ -12,7 +12,7 @@ module Glp::Person::Subscriptions
       .where(filter_by_age_start)
       .where(filter_by_age_finish)
       .where(filter_by_language)
-      .or(MailingList.distinct.where(id: direct_inclusions.select("mailing_list_id")))
+      .or(MailingList.where(id: direct_inclusions.select("mailing_list_id")))
   end
 
   def subscribable
