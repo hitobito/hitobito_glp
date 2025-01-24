@@ -12,6 +12,8 @@ module Glp::Person
   SIMPLIFIED_VIEW_ROLES = %w[Kontakt Sympathisant Mitglied Spender]
 
   included do
+    self.validate_zip_code = false
+
     Person::PUBLIC_ATTRS << :title << :preferred_language
     alias_method_chain :full_name, :title
     scope :admin, -> { joins(:roles).where("roles.type LIKE '%::Administrator'") }
@@ -35,11 +37,5 @@ module Glp::Person
 
   def simplified_view?
     roles.all? { |role| SIMPLIFIED_VIEW_ROLES.include?(role.class.to_s.demodulize) } && !root?
-  end
-
-  private
-
-  def assert_is_valid_swiss_post_code
-    true
   end
 end
