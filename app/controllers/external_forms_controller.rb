@@ -101,12 +101,12 @@ class ExternalFormsController < ApplicationController
               <br/>
               <label for='terms_and_conditions'>
                 <input name='terms_and_conditions' id='terms_and_conditions' type='checkbox' required='required' />
-                #{t("external_form_js.terms_and_conditions_checkbox_html", link: 
+                #{t("external_form_js.terms_and_conditions_checkbox_html", link:
                   view_context.link_to(
                     t("external_form_js.terms_and_conditions_link_text"),
                     t("external_form_js.terms_and_conditions_link"),
                     target: "_blank", rel: "noopener"
-                  ).tr('"', "'"))} *
+                  ).tr('"', "'").html_safe)} *
               </label>
               <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
               <input type='hidden' name='externally_submitted_person[preferred_language]' value='#{@language}'/>
