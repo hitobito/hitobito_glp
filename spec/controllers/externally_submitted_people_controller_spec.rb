@@ -120,7 +120,7 @@ describe ExternallySubmittedPeopleController do
         expect { subject_with_args }.to change(mails, :count).by(5)
       end
 
-      monitoring_mail = mails.find { |m| m.to.include?('mitgliederdatenbank@grunliberale.ch') }
+      monitoring_mail = mails.find { |m| m.to.include?('schweiz@grunliberale.ch') }
       group_mail = mails.find { |m| m.to.include?('kanton@bern.net') }
       youth_mail = mails.find { |m| m.to.include?('junge@grunliberale.ch') }
 
@@ -134,7 +134,7 @@ describe ExternallySubmittedPeopleController do
         expect { subject_with_args({jglp: 1}) }.to change(mails, :count).by(6)
       end
 
-      monitoring_mail = mails.find { |m| m.to.include?('mitgliederdatenbank@grunliberale.ch') }
+      monitoring_mail = mails.find { |m| m.to.include?('schweiz@grunliberale.ch') }
       group_mail = mails.find { |m| m.to.include?('kanton@bern.net') }
       youth_mail = mails.find { |m| m.to.include?('junge@grunliberale.ch') }
 
