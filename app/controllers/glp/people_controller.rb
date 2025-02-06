@@ -17,7 +17,7 @@ module Glp::PeopleController
 
   def notify_schweiz_at_grunliberale_ch
     if entry.zip_code_changed? && entry.valid?
-      NotifierMailer.zip_code_changed(entry, "mitgliederdatenbank@grunliberale.ch").deliver_later
+      NotifierMailer.zip_code_changed(entry, "schweiz@grunliberale.ch").deliver_later
     end
   end
 

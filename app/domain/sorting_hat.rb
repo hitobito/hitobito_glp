@@ -9,7 +9,7 @@ module SortingHat
   FOREIGN_ZIP_CODE = 102
   JGLP_ZIP_CODE = 103
 
-  MONITORING_EMAIL = "mitgliederdatenbank@grunliberale.ch"
+  MONITORING_EMAIL = "schweiz@grunliberale.ch"
   JGLP_EMAIL = "junge@grunliberale.ch"
 
   ROLES = {
