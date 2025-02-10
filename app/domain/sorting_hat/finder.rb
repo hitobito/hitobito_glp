@@ -50,7 +50,7 @@ module SortingHat
 
       scope = scope.where("groups.type LIKE ?", "%#{SortingHat::ROLES.fetch(@role)}")
       groups = scope.without_deleted
-      groups.to_a.one? ? groups : Group.none
+      groups.to_a.any? ? groups : Group.none
     end
 
     def root
