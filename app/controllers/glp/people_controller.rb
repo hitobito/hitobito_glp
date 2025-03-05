@@ -49,6 +49,6 @@ module Glp::PeopleController
   end
 
   def person_email_attrs
-    entry.slice("first_name", "last_name", "address", "zip_code", "email")
+    entry.slice("first_name", "last_name", "street", "housenumber", "zip_code", "email")
   end
 end
