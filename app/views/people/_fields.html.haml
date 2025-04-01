@@ -4,18 +4,9 @@
 -#  https://github.com/hitobito/hitobito_glp.
 
 
--# encoding: utf-8
-
--#  Copyright (c) 2012-2018, Grünliberale Partei Schweiz. This file is part of
--#  hitobito and licensed under the Affero General Public License version 3
--#  or later. See the COPYING file at the top-level directory or at
--#  https://github.com/hitobito/hitobito.
-
 -# BEWARE: This partial is used from different places (e.g. event/register/register).
 -#         Make sure not to use relative partial paths here or in any extensions
 -#         unless these partials also exist in all folders referencing this file here.
-
-- without_relations ||= false
 
 = field_set_tag do
   = f.labeled_input_fields :title, :first_name, :last_name, :nickname, :occupation, :place_of_origin
@@ -49,12 +40,6 @@
   - if @person.admin?
     = field_set_tag do
       = f.labeled_input_field(:notify_on_join)
-
-- if !without_relations && PeopleRelation.possible_kinds.present?
-  = field_set_tag do
-    = f.labeled_inline_fields_for :relations_to_tails,
-                                  'people_relation_fields',
-                                  entry.relations_to_tails.includes(:tail)
 
 = field_set_tag do
   = f.labeled_input_field(:additional_information, help: t('.no_sensitive_information'))
