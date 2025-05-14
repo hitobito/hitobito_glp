@@ -1,16 +1,10 @@
-#  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
-#  hitobito_glp and licensed under the Affero General Public License version 3
-#  or later. See the COPYING file at the top-level directory or at
-#  https://github.com/hitobito/hitobito_glp.
-
-
 en:
   groups:
     form:
       label_zip_codes: Zip codes (separated by commas)
   layouts:
     unauthorized:
-      first_login: "First login? Set password here"
+      first_login: First login? Set password here
       first_password: Set password
   devise:
     sessions:
@@ -24,20 +18,19 @@ en:
     age: Age
     age_start: Minimum age
     age_finish: Maximum age
-
   external_form_js:
     submit: Send
-    submitting: "Data has been submitted, thank you!"
+    submitting: Data has been submitted, thank you!
     submit_error_required_fields: Please fill in all fields.
-    submit_error_email_taken: "Sorry, your email address is already taken. Please contact us at +41 31 311 33 03 or schweiz@grunliberale.ch so that we can upgrade you to a member or help you with your request."
+    submit_error_email_taken: Sorry, your email address is already taken. Please contact us at +41 31 311 33 03 or schweiz@grunliberale.ch so that we can upgrade you to a member or help you with your request.
     submit_error_terms_conditions: You must agree to the privacy policy.
     submit_error: An error has occurred.
     server_error_captcha: The captcha ("I am not a robot") must be filled in.
-    submit_success_member: "Thank you very much, you will receive your access data shortly."
-    submit_success_other: "Thank you, you have successfully signed up for our party updates."
-    terms_and_conditions_checkbox_html: "I accept the %{link}."
+    submit_success_member: Thank you very much, you will receive your access data shortly.
+    submit_success_other: Thank you, you have successfully signed up for our party updates.
+    terms_and_conditions_checkbox_html: I accept the %{link}.
     terms_and_conditions_link_text: Privacy policy
-    terms_and_conditions_link: "https://grunliberale.ch/datenschutz"
+    terms_and_conditions_link: https://grunliberale.ch/datenschutz
     first_name: First name
     last_name: Last name
     email: E-mail
@@ -56,7 +49,6 @@ en:
     jglp: I am under 35 and would also like to become a member of the Young Green Liberals (recommended).
     show_more: Show more
     show_less: Show less
-
   filter_navigation/people:
     root:
       members: Members on the national level
@@ -74,49 +66,3 @@ en:
       members: Members in the local section
       sympis: Sympathizers in the local section
       members_and_sympis: Members and sympathisers in the local section
-  notifier_mailer:
-    welcome_mitglied:
-      subject: ""
-      hello: ""
-      first_paragraph: ""
-      second_paragraph: ""
-      link_to_young_liberals: ""
-      fourth_paragraph: ""
-      first_goodbye: ""
-      second_goodbye: ""
-      address_first_line: ""
-      address_second_line: ""
-      address_city: ""
-      phone: ""
-      opening_hours: ""
-    welcome_sympathisant:
-      reply_email: ""
-      subject: ""
-      hello: ""
-      first_paragraph: ""
-      second_paragraph: ""
-      third_paragraph_part_one: ""
-      third_paragraph_part_two: ""
-      first_goodbye: ""
-      second_goodbye: ""
-      address_first_line: ""
-      address_second_line: ""
-      pc_konto: ""
-      address_city: ""
-      phone: ""
-      opening_hours: ""
-    welcome_medien_und_dritte:
-      reply_email: ""
-      subject: ""
-      hello: ""
-      first_paragraph: ""
-      second_paragraph_part_one: ""
-      second_paragraph_part_two: ""
-      second_paragraph_part_three: ""
-      first_goodbye: ""
-      second_goodbye: ""
-      address_first_line: ""
-      address_second_line: ""
-      address_city: ""
-      phone: ""
-      opening_hours: ""

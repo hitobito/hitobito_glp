@@ -1,16 +1,10 @@
-#  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
-#  hitobito_glp and licensed under the Affero General Public License version 3
-#  or later. See the COPYING file at the top-level directory or at
-#  https://github.com/hitobito/hitobito_glp.
-
-
 it:
   groups:
     form:
       label_zip_codes: Codice postale (separati da virgole)
   layouts:
     unauthorized:
-      first_login: "Primo accesso? Impostare la password qui"
+      first_login: Primo accesso? Impostare la password qui
       first_password: Impostare la password
   devise:
     sessions:
@@ -24,20 +18,19 @@ it:
     age: Età
     age_start: Età minima
     age_finish: Età massima
-
   external_form_js:
     submit: Inviare
-    submitting: "Grazie mille, i tuoi dati sono stati trasmessi con successo!"
+    submitting: Grazie mille, i tuoi dati sono stati trasmessi con successo!
     submit_error_required_fields: Completa tutti i campi per favore.
     submit_error_email_taken: Purtroppo il tuo indirizzo e-mail è già stato assegnato. Contattaci allo +41 31 311 33 03 o all'indirizzo di posta elettronica (svizzera@verdiliberali.ch) per aggiornare il tuo stato di socio o per evadere la tua richiesta.
     submit_error_terms_conditions: Devi accettare la dichiarazione sulla protezione dei dati.
     submit_error: Si è verificato un errore.
     server_error_captcha: È necessario compilare il captcha ("Non sono un robot").
-    submit_success_member: "Grazie mille, a breve riceverai i tuoi dati di accesso."
-    submit_success_other: "Grazie mille, ti sei abbonato/a con successo alle informazioni del nostro partito."
-    terms_and_conditions_checkbox_html: "Accetto la %{link}."
+    submit_success_member: Grazie mille, a breve riceverai i tuoi dati di accesso.
+    submit_success_other: Grazie mille, ti sei abbonato/a con successo alle informazioni del nostro partito.
+    terms_and_conditions_checkbox_html: Accetto la %{link}.
     terms_and_conditions_link_text: dichiarazione sulla protezione dei dati
-    terms_and_conditions_link: "https://verdiliberali.ch/protezione-dei-dati"
+    terms_and_conditions_link: https://verdiliberali.ch/protezione-dei-dati
     first_name: Nome
     last_name: Cognome
     email: E-mail
@@ -56,7 +49,6 @@ it:
     jglp: Ho meno di 30-35 anni (a dipendenza dalle sezioni) e vorrei diventare membro anche dei giovani verdi liberali (raccomandato).
     show_more: Mostrare di più
     show_less: Mostrare di meno
-
   filter_navigation/people:
     root:
       members: Membro nazionale
@@ -74,49 +66,3 @@ it:
       members: Membro della sezione comunale
       sympis: Simpatizzante della sezione comunale
       members_and_sympis: Membro e simpatizzante della sezione comunale
-  notifier_mailer:
-    welcome_mitglied:
-      subject: ""
-      hello: ""
-      first_paragraph: ""
-      second_paragraph: ""
-      link_to_young_liberals: ""
-      fourth_paragraph: ""
-      first_goodbye: ""
-      second_goodbye: ""
-      address_first_line: ""
-      address_second_line: ""
-      address_city: ""
-      phone: ""
-      opening_hours: ""
-    welcome_sympathisant:
-      reply_email: ""
-      subject: ""
-      hello: ""
-      first_paragraph: ""
-      second_paragraph: ""
-      third_paragraph_part_one: ""
-      third_paragraph_part_two: ""
-      first_goodbye: ""
-      second_goodbye: ""
-      address_first_line: ""
-      address_second_line: ""
-      pc_konto: ""
-      address_city: ""
-      phone: ""
-      opening_hours: ""
-    welcome_medien_und_dritte:
-      reply_email: ""
-      subject: ""
-      hello: ""
-      first_paragraph: ""
-      second_paragraph_part_one: ""
-      second_paragraph_part_two: ""
-      second_paragraph_part_three: ""
-      first_goodbye: ""
-      second_goodbye: ""
-      address_first_line: ""
-      address_second_line: ""
-      address_city: ""
-      phone: ""
-      opening_hours: ""
