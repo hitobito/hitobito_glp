@@ -17,6 +17,8 @@ module Glp::PersonReadables
   end
 
   def donor_visible?
+    return false unless group
+
     group_read_in_this_group? ||
       group_read_in_above_group? ||
       (financial_layers_ids & group.layer_hierarchy.map(&:id)).present?
