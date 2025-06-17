@@ -5,8 +5,8 @@
 
 module Glp
   module GroupDecorator
-    def possible_roles
-      super.select do |type|
+    def possible_roles(person: Person.new)
+      super(person:).select do |type|
         can?(:create, group.roles.build(type: type.sti_name))
       end
     end
