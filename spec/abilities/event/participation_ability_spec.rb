@@ -1,16 +1,16 @@
 # frozen_string_literal: true
+
 #  Copyright (c) 2020, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
-require 'spec_helper'
+require "spec_helper"
 
 describe Event::ParticipationAbility do
-  let(:root)     { groups(:root) }
-  let(:kanton)   { groups(:bern) }
-  let(:bezirk)   { kanton.children.create!(type: 'Group::Bezirk', name: 'Stadt') }
+  let(:root) { groups(:root) }
+  let(:kanton) { groups(:bern) }
+  let(:bezirk) { kanton.children.create!(type: "Group::Bezirk", name: "Stadt") }
 
   subject { Ability.new(person.reload) }
 
@@ -31,10 +31,10 @@ describe Event::ParticipationAbility do
     participation
   end
 
-  context 'Root::Administrator' do
-    let(:person)   { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)).person }
+  context "Root::Administrator" do
+    let(:person) { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)).person }
 
-    %w(create destroy).each do |action|
+    %w[create destroy].each do |action|
       it "may execute #{action} on event-particpation for event in kanton" do
         expect(subject).to be_able_to(action.to_sym, event_participation(kanton))
       end
@@ -45,10 +45,10 @@ describe Event::ParticipationAbility do
     end
   end
 
-  context 'Kanton::Administrator' do
-    let(:person) {  Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
+  context "Kanton::Administrator" do
+    let(:person) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
 
-    %w(create destroy).each do |action|
+    %w[create destroy].each do |action|
       it "may execute #{action} on event-particpation for event in kanton" do
         expect(subject).to be_able_to(action.to_sym, event_participation(kanton))
       end

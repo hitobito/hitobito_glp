@@ -5,13 +5,12 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
-require 'spec_helper'
+require "spec_helper"
 
 describe SubscriptionAbility do
-  let(:root)     { groups(:root) }
-  let(:kanton)   { groups(:bern) }
-  let(:bezirk)   { kanton.children.create!(type: 'Group::Bezirk', name: 'Stadt') }
+  let(:root) { groups(:root) }
+  let(:kanton) { groups(:bern) }
+  let(:bezirk) { kanton.children.create!(type: "Group::Bezirk", name: "Stadt") }
 
   subject { Ability.new(person.reload) }
 
@@ -23,10 +22,10 @@ describe SubscriptionAbility do
     build_list(group).subscriptions.new
   end
 
-  context 'Root::Administrator' do
-    let(:person)   { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)).person }
+  context "Root::Administrator" do
+    let(:person) { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)).person }
 
-    %w(new).each do |action|
+    %w[new].each do |action|
       it "may execute #{action} on mailing_list in kanton" do
         expect(subject).to be_able_to(action.to_sym, new_subscription(kanton))
       end
@@ -37,10 +36,10 @@ describe SubscriptionAbility do
     end
   end
 
-  context 'Kanton::Administrator' do
-    let(:person) {  Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
+  context "Kanton::Administrator" do
+    let(:person) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
 
-    %w(new).each do |action|
+    %w[new].each do |action|
       it "may execute #{action} on mailing_list in kanton" do
         expect(subject).to be_able_to(action.to_sym, new_subscription(kanton))
       end

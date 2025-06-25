@@ -5,13 +5,12 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
-require 'spec_helper'
+require "spec_helper"
 
 describe ServiceTokenAbility do
-  let(:root)     { groups(:root) }
-  let(:kanton)   { groups(:bern) }
-  let(:bezirk)   { kanton.children.create!(type: 'Group::Bezirk', name: 'Stadt') }
+  let(:root) { groups(:root) }
+  let(:kanton) { groups(:bern) }
+  let(:bezirk) { kanton.children.create!(type: "Group::Bezirk", name: "Stadt") }
 
   subject { Ability.new(person.reload) }
 
@@ -19,11 +18,10 @@ describe ServiceTokenAbility do
     Fabricate(:service_token, layer: group)
   end
 
+  context "Root::Administrator" do
+    let(:person) { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)).person }
 
-  context 'Root::Administrator' do
-    let(:person)   { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)).person }
-
-    %w(update show edit destroy).each do |action|
+    %w[update show edit destroy].each do |action|
       it "may execute #{action} in kanton" do
         expect(subject).to be_able_to(action.to_sym, service_token(kanton))
       end
@@ -34,10 +32,10 @@ describe ServiceTokenAbility do
     end
   end
 
-  context 'Kanton::Administrator' do
-    let(:person) {  Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
+  context "Kanton::Administrator" do
+    let(:person) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
 
-    %w(update show edit destroy).each do |action|
+    %w[update show edit destroy].each do |action|
       it "may execute #{action} in kanton" do
         expect(subject).to be_able_to(action.to_sym, service_token(kanton))
       end

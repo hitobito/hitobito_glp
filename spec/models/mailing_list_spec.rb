@@ -26,8 +26,8 @@ describe MailingList do
   end
 
   describe "with age filter" do
-    let!(:person_aged_20) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, birthday: Time.now - 20.years)).person }
-    let!(:person_aged_50) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, birthday: Time.now - 50.years)).person }
+    let!(:person_aged_20) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, birthday: 20.years.ago)).person }
+    let!(:person_aged_50) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, birthday: 50.years.ago)).person }
 
     describe "(age > 30)" do
       let(:list) { Fabricate(:mailing_list, group: root, age_start: 30) }
@@ -62,6 +62,7 @@ describe MailingList do
 
     describe "(age < 30)" do
       let(:list) { Fabricate(:mailing_list, group: root, age_finish: 30) }
+
       it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).not_to include(person)
@@ -72,6 +73,7 @@ describe MailingList do
 
     describe "(30 < age < 60)" do
       let(:list) { Fabricate(:mailing_list, group: root, age_start: 30, age_finish: 60) }
+
       it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).not_to include(person)
@@ -100,6 +102,7 @@ describe MailingList do
 
     describe "(genders = [m])" do
       let(:list) { Fabricate(:mailing_list, group: root, genders: "m") }
+
       it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).not_to include(person)
@@ -111,6 +114,7 @@ describe MailingList do
 
     describe "(genders = [m,w,_nil])" do
       let(:list) { Fabricate(:mailing_list, group: root, genders: "m,w,_nil") }
+
       it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)
@@ -122,6 +126,7 @@ describe MailingList do
 
     describe "(genders = [_nil])" do
       let(:list) { Fabricate(:mailing_list, group: root, genders: "_nil") }
+
       it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)
@@ -139,6 +144,7 @@ describe MailingList do
 
     describe "(languages = [])" do
       let(:list) { Fabricate(:mailing_list, group: root, languages: "") }
+
       it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)
@@ -150,6 +156,7 @@ describe MailingList do
 
     describe "(languages = [de])" do
       let(:list) { Fabricate(:mailing_list, group: root, languages: "de") }
+
       it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)
@@ -161,6 +168,7 @@ describe MailingList do
 
     describe "(languages = [de,fr,it])" do
       let(:list) { Fabricate(:mailing_list, group: root, languages: "de,fr,it") }
+
       it "has the correct people in it " do
         expect(list.people).not_to include(other_person)
         expect(list.people).to include(person)

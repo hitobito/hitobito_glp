@@ -5,20 +5,19 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
 
-
-require 'spec_helper'
+require "spec_helper"
 
 describe GroupAbility do
-  let(:root)     { groups(:root) }
-  let(:kanton)   { groups(:bern) }
-  let(:bezirk)   { kanton.children.create!(type: 'Group::Bezirk', name: 'Stadt') }
+  let(:root) { groups(:root) }
+  let(:kanton) { groups(:bern) }
+  let(:bezirk) { kanton.children.create!(type: "Group::Bezirk", name: "Stadt") }
 
   subject { Ability.new(person.reload) }
 
-  context 'Root::Administrator' do
-    let(:person)   { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)).person }
+  context "Root::Administrator" do
+    let(:person) { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)).person }
 
-    %w(activate_person_add_requests deactivate_person_add_requests index_service_tokens).each do |action|
+    %w[activate_person_add_requests deactivate_person_add_requests index_service_tokens].each do |action|
       it "may execute #{action} in kanton" do
         expect(subject).to be_able_to(action.to_sym, kanton)
       end
@@ -29,10 +28,10 @@ describe GroupAbility do
     end
   end
 
-  context 'Kanton::Administrator' do
-    let(:person) {  Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
+  context "Kanton::Administrator" do
+    let(:person) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
 
-    %w(activate_person_add_requests deactivate_person_add_requests index_service_tokens).each do |action|
+    %w[activate_person_add_requests deactivate_person_add_requests index_service_tokens].each do |action|
       it "may execute #{action} in kanton" do
         expect(subject).to be_able_to(action.to_sym, kanton)
       end
