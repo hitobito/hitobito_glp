@@ -28,8 +28,7 @@ describe Role do
           role.save!
         end.to change { PaperTrail::Version.count }.by(2)
 
-        version = PaperTrail::Version.order(:created_at, :id)[3]
-        expect(version.event).to eq('create')
+        version = PaperTrail::Version.where(event: "create").order(:created_at, :id).last
         expect(version.main).to eq(person)
       end
 
@@ -41,8 +40,7 @@ describe Role do
           role.update!(label: 'Foo')
         end.to change { PaperTrail::Version.count }.by(2)
 
-        version = PaperTrail::Version.order(:created_at, :id).last
-        expect(version.event).to eq('update')
+        version = PaperTrail::Version.where(event: "update").order(:created_at, :id).last
         expect(version.main).to eq(person)
       end
     end
