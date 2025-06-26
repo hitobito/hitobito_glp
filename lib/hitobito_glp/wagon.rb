@@ -23,6 +23,7 @@ module HitobitoGlp
 
     config.to_prepare do # rubocop:disable Metrics/BlockLength
       Person.include Glp::Person
+      Role.include Glp::Role
       Group.include Glp::Group
 
       HitobitoGlp::Wagon.configure_paper_trail!
