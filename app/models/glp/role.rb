@@ -10,7 +10,7 @@ module Glp::Role
 
   included do
     def touch_person
-      person.touch if self.type.constantize != Group::Spender::Spender
+      person.paper_trail.save_with_version if self.type.constantize != Group::Spender::Spender
     end
   end
 end
