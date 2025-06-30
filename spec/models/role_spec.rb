@@ -13,10 +13,6 @@ describe Role do
     let!(:donor_group) { Fabricate(Group::Spender.to_s, parent: groups(:root)) }
     let!(:donor) { Fabricate(Group::Spender::Spender.to_s, group: donor_group).person }
 
-    before do
-      HitobitoGlp::Wagon.configure_paper_trail!
-    end
-
     context "on non donor role" do
       it "sets main on create" do
         # Changes by 2 because of role creation and role assignment to person
@@ -48,6 +44,16 @@ describe Role do
       it "does not set main on create" do
         expect do
           role = Group::Spender::Spender.new
+          role.group = donor_group
+          role.person = person
+          role.save!
+        end.to_not change { PaperTrail::Version.count }
+      end
+
+      it "does not set main on create, even when role type is set late" do
+        expect do
+          role = Role.new
+          role.type = Group::Spender::Spender.to_s
           role.group = donor_group
           role.person = person
           role.save!

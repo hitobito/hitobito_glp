@@ -9,6 +9,8 @@ module Glp::Role
   extend ActiveSupport::Concern
 
   included do
+    paper_trail_options[:unless] = proc { |r| r.type.constantize == Group::Spender::Spender }
+
     def touch_person
       person.paper_trail.save_with_version if type.constantize != Group::Spender::Spender
     end
