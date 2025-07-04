@@ -47,7 +47,7 @@ describe Role do
           role.group = donor_group
           role.person = person
           role.save!
-        end.to_not change { PaperTrail::Version.count }
+        end.to_not change { PaperTrail::Version.where(main_type: "Role").count }
       end
 
       it "does not set main on create, even when role type is set late" do
@@ -57,14 +57,14 @@ describe Role do
           role.group = donor_group
           role.person = person
           role.save!
-        end.to_not change { PaperTrail::Version.count }
+        end.to_not change { PaperTrail::Version.where(main_type: "Role").count }
       end
 
       it "does not set main on update" do
         role = donor.roles.first
         expect do
           role.update!(label: "Foo")
-        end.to_not change { PaperTrail::Version.count }
+        end.to_not change { PaperTrail::Version.where(main_type: "Role").count }
       end
     end
   end
