@@ -15,13 +15,12 @@ describe Role do
 
     context "on non donor role" do
       it "sets main on create" do
-        # Changes by 2 because of role creation and role assignment to person
         expect do
           role = Group::Root::Administrator.new
           role.group = groups(:root)
           role.person = person
           role.save!
-        end.to change { PaperTrail::Version.count }.by(2)
+        end.to change { PaperTrail::Version.count }.by(1)
 
         version = PaperTrail::Version.where(event: "create").order(:created_at, :id).last
         expect(version.main).to eq(person)
@@ -30,10 +29,9 @@ describe Role do
       it "sets main on update" do
         role = person.roles.first
 
-        # Changes by 2 because of the role update and the updated on the person record
         expect do
           role.update!(label: "Foo")
-        end.to change { PaperTrail::Version.count }.by(2)
+        end.to change { PaperTrail::Version.count }.by(1)
 
         version = PaperTrail::Version.where(event: "update").order(:created_at, :id).last
         expect(version.main).to eq(person)
