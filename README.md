@@ -5,6 +5,10 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
 [![Build
 Status](https://travis-ci.org/hitobito/hitobito_glp.svg)](https://travis-ci.org/hitobito/hitobito_glp)
 
+# Specific Features
+
+* [Registration via externes Formular](doc/external_form.md)
+
 # GLP Organization Hierarchy
 
     * Schweiz
