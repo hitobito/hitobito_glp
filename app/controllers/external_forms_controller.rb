@@ -119,7 +119,9 @@ class ExternalFormsController < ApplicationController
       </div>
     HTML
   end
+  # rubocop:todo Lint/MissingCopEnableDirective
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  # rubocop:enable Lint/MissingCopEnableDirective
 
   def jglp_field(role)
     return "" unless role == "mitglied"

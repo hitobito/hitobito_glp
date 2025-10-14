@@ -13,9 +13,11 @@ describe SortingHat::Finder do
   subject { finder.groups }
 
   def create_foreign_subtree
-    @foreign = Group::Kanton.create!(name: "Ausland", parent: root, zip_codes: SortingHat::FOREIGN_ZIP_CODE)
+    @foreign = Group::Kanton.create!(name: "Ausland", parent: root,
+      zip_codes: SortingHat::FOREIGN_ZIP_CODE)
     @foreign_kontakte = Group::KantonKontakte.create!(name: "Ausland Kontakte", parent: @foreign)
-    @foreign_zugeordnete = Group::KantonZugeordnete.create!(name: "Ausland Zugeordnete", parent: @foreign)
+    @foreign_zugeordnete = Group::KantonZugeordnete.create!(name: "Ausland Zugeordnete",
+      parent: @foreign)
   end
 
   def create_jglp_subtree
@@ -27,10 +29,12 @@ describe SortingHat::Finder do
   def create_jglp_be_subtree(zip_codes)
     @jglp_be = Group::Bezirk.create!(name: "jGLP be", parent: @jglp, zip_codes: zip_codes)
     @jglp_be_kontakte = Group::BezirkKontakte.create!(name: "jGLP be Kontakte", parent: @jglp_be)
-    @jglp_be_zugeordnete = Group::BezirkZugeordnete.create!(name: "jGLP be Zugeordnete", parent: @jglp_be)
+    @jglp_be_zugeordnete = Group::BezirkZugeordnete.create!(name: "jGLP be Zugeordnete",
+      parent: @jglp_be)
   end
 
-  %w[Mitglied Sympathisant Medien_und_dritte].zip(%w[zugeordnete zugeordnete kontakte]).each do |role_type, group_type|
+  %w[Mitglied Sympathisant
+    Medien_und_dritte].zip(%w[zugeordnete zugeordnete kontakte]).each do |role_type, group_type|
     describe role_type do
       let(:role) { role_type }
       let(:jglp) { false }
@@ -63,9 +67,12 @@ describe SortingHat::Finder do
         expect(subject).to eq [groups(:"bern_#{group_type}")]
       end
 
+      # rubocop:todo Layout/LineLength
       it "is bern_#{group_type} if zip matches and multiple matching types exist but one is deleted " do
+        # rubocop:enable Layout/LineLength
         groups(:bern).update(zip_codes: zip)
-        groups(:bern).children.create!(type: "Group::Kanton#{group_type.camelcase}", name: "dummy", deleted_at: Time.zone.now)
+        groups(:bern).children.create!(type: "Group::Kanton#{group_type.camelcase}", name: "dummy",
+          deleted_at: Time.zone.now)
         expect(subject).to eq [groups(:"bern_#{group_type}")]
       end
 

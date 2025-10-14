@@ -8,9 +8,16 @@ require "spec_helper"
 describe RoleAbility do
   let(:root) { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)) }
   let(:administrator) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)) }
-  let(:spendenverwaltung) { Fabricate(Group::Kanton::Spendenverwalter.name.to_sym, group: groups(:bern)) }
-  let(:adressverwaltung) { Fabricate(Group::KantonZugeordnete::Adressverwaltung.name.to_sym, group: groups(:bern_zugeordnete)) }
-  let(:mitglied) { Fabricate(Group::KantonZugeordnete::Mitglied.name.to_sym, group: groups(:bern_zugeordnete)) }
+  let(:spendenverwaltung) {
+    Fabricate(Group::Kanton::Spendenverwalter.name.to_sym, group: groups(:bern))
+  }
+  let(:adressverwaltung) {
+    Fabricate(Group::KantonZugeordnete::Adressverwaltung.name.to_sym,
+      group: groups(:bern_zugeordnete))
+  }
+  let(:mitglied) {
+    Fabricate(Group::KantonZugeordnete::Mitglied.name.to_sym, group: groups(:bern_zugeordnete))
+  }
 
   subject { Ability.new(person.reload) }
 
@@ -75,7 +82,9 @@ describe RoleAbility do
   end
 
   context :glp_spendenverwaltung do
-    let(:person) { Fabricate(Group::Root::Spendenverwalter.name.to_sym, group: groups(:root)).person }
+    let(:person) {
+      Fabricate(Group::Root::Spendenverwalter.name.to_sym, group: groups(:root)).person
+    }
 
     it "may create Spendenverwalter" do
       is_expected.to be_able_to(:create, spendenverwaltung)

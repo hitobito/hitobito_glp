@@ -30,7 +30,8 @@ describe "FilterNavigation::People" do
   def path(name, regex)
     types = Role.all_types.select { |type| type.to_s =~ regex }
     role_type_ids = types.collect(&:id).join(Person::Filter::Base::ID_URL_SEPARATOR)
-    template.group_people_path(group.layer_group, filters: {role: {role_type_ids: role_type_ids}}, name: name, range: "deep")
+    template.group_people_path(group.layer_group, filters: {role: {role_type_ids: role_type_ids}},
+      name: name, range: "deep")
   end
 
   def attrs_hash_from_item(item)
@@ -49,22 +50,28 @@ describe "FilterNavigation::People" do
     let(:group) { groups(:root) }
 
     it "has link for Mitglieder im Bund" do
-      expect(main_items).to have_link "Mitglieder im Bund (1)", href: path("Mitglieder im Bund", /Zugeordnete::Mitglied$/)
+      expect(main_items).to have_link "Mitglieder im Bund (1)",
+        href: path("Mitglieder im Bund", /Zugeordnete::Mitglied$/)
     end
 
     it "counts Mitglieder from lower layers" do
       bezirk = Fabricate(Group::Bezirk.sti_name, name: "Bern Stadt", parent: groups(:bern))
-      bezirk_zugeordnete = Fabricate(Group::BezirkZugeordnete.sti_name, name: "Zugeordnet Stadt", parent: bezirk)
+      bezirk_zugeordnete = Fabricate(Group::BezirkZugeordnete.sti_name, name: "Zugeordnet Stadt",
+        parent: bezirk)
       Fabricate(Group::Bezirk::BezirkZugeordnete::Mitglied.name.to_sym, group: bezirk_zugeordnete)
-      expect(main_items).to have_link "Mitglieder im Bund (2)", href: path("Mitglieder im Bund", /Zugeordnete::Mitglied$/)
+      expect(main_items).to have_link "Mitglieder im Bund (2)",
+        href: path("Mitglieder im Bund", /Zugeordnete::Mitglied$/)
     end
 
     it "dropdown has link for Sympathisanten im Bund" do
-      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Sympathisanten im Bund", /Zugeordnete::Sympathisant$/))
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Sympathisanten im Bund",
+        /Zugeordnete::Sympathisant$/))
     end
 
     it "dropdown has link for Mitglieder and Sympathisanten im Bund" do
-      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Mitglieder und Sympathisanten im Bund", /Zugeordnete::(Mitglied|Sympathisant)$/))
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item(
+        "Mitglieder und Sympathisanten im Bund", /Zugeordnete::(Mitglied|Sympathisant)$/
+      ))
     end
   end
 
@@ -72,15 +79,19 @@ describe "FilterNavigation::People" do
     let(:group) { groups(:bern) }
 
     it "has link for Mitglieder im Kanton" do
-      expect(main_items).to have_link "Mitglieder im Kanton (0)", href: path("Mitglieder im Kanton", /Zugeordnete::Mitglied$/)
+      expect(main_items).to have_link "Mitglieder im Kanton (0)",
+        href: path("Mitglieder im Kanton", /Zugeordnete::Mitglied$/)
     end
 
     it "dropdown has link for Sympathisanten im Kanton" do
-      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Sympathisanten im Kanton", /Zugeordnete::Sympathisant$/))
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Sympathisanten im Kanton",
+        /Zugeordnete::Sympathisant$/))
     end
 
     it "dropdown has link for Mitglieder and Sympathisanten im Kanton" do
-      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Mitglieder und Sympathisanten im Kanton", /Zugeordnete::(Mitglied|Sympathisant)$/))
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item(
+        "Mitglieder und Sympathisanten im Kanton", /Zugeordnete::(Mitglied|Sympathisant)$/
+      ))
     end
   end
 
@@ -88,15 +99,19 @@ describe "FilterNavigation::People" do
     let(:group) { Fabricate(Group::Bezirk.sti_name, name: "Bern Stadt", parent: groups(:bern)) }
 
     it "has link for Mitglieder im Bezirk" do
-      expect(main_items).to have_link "Mitglieder im Bezirk (0)", href: path("Mitglieder im Bezirk", /Zugeordnete::Mitglied$/)
+      expect(main_items).to have_link "Mitglieder im Bezirk (0)",
+        href: path("Mitglieder im Bezirk", /Zugeordnete::Mitglied$/)
     end
 
     it "dropdown has link for Sympathisanten im Bezirk" do
-      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Sympathisanten im Bezirk", /Zugeordnete::Sympathisant$/))
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Sympathisanten im Bezirk",
+        /Zugeordnete::Sympathisant$/))
     end
 
     it "dropdown has link for Mitglieder and Sympathisanten im Bezirk" do
-      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Mitglieder und Sympathisanten im Bezirk", /Zugeordnete::(Mitglied|Sympathisant)$/))
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item(
+        "Mitglieder und Sympathisanten im Bezirk", /Zugeordnete::(Mitglied|Sympathisant)$/
+      ))
     end
   end
 
@@ -105,15 +120,22 @@ describe "FilterNavigation::People" do
     let(:group) { Fabricate(Group::Ortsektion.sti_name, name: "Bern Stadt", parent: bezirk) }
 
     it "has link for Mitglieder im Ortsektion" do
-      expect(main_items).to have_link "Mitglieder in der Ortsektion (0)", href: path("Mitglieder in der Ortsektion", /Zugeordnete::Mitglied$/)
+      expect(main_items).to have_link "Mitglieder in der Ortsektion (0)",
+        href: path("Mitglieder in der Ortsektion", /Zugeordnete::Mitglied$/)
     end
 
     it "dropdown has link for Sympathisanten im Ortsektion" do
-      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Sympathisanten in der Ortsektion", /Zugeordnete::Sympathisant$/))
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item(
+        "Sympathisanten in der Ortsektion", /Zugeordnete::Sympathisant$/
+      ))
     end
 
     it "dropdown has link for Mitglieder and Sympathisanten in der Ortsektion" do
-      expect(dropdown_item_attrs).to include attrs_hash_from_item(item("Mitglieder und Sympathisanten in der Ortsektion", /Zugeordnete::(Mitglied|Sympathisant)$/))
+      expect(dropdown_item_attrs).to include attrs_hash_from_item(item(
+        # rubocop:todo Layout/LineLength
+        "Mitglieder und Sympathisanten in der Ortsektion", /Zugeordnete::(Mitglied|Sympathisant)$/
+        # rubocop:enable Layout/LineLength
+      ))
     end
   end
 end

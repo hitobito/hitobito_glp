@@ -58,11 +58,13 @@ module SortingHat
     end
 
     def send_welcome_mail
-      NotifierMailer.send(:"welcome_#{@role.downcase}", @person, @person.preferred_language).deliver_later
+      NotifierMailer.send(:"welcome_#{@role.downcase}", @person,
+        @person.preferred_language).deliver_later
     end
 
     def notify_monitoring_address
-      NotifierMailer.mitglied_joined_monitoring(@person, @role, MONITORING_EMAIL, jglp?).deliver_later
+      NotifierMailer.mitglied_joined_monitoring(@person, @role, MONITORING_EMAIL,
+        jglp?).deliver_later
     end
 
     def notify_youth_address

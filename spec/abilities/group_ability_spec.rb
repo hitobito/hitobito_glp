@@ -17,7 +17,8 @@ describe GroupAbility do
   context "Root::Administrator" do
     let(:person) { Fabricate(Group::Root::Administrator.name.to_sym, group: groups(:root)).person }
 
-    %w[activate_person_add_requests deactivate_person_add_requests index_service_tokens].each do |action|
+    %w[activate_person_add_requests deactivate_person_add_requests
+      index_service_tokens].each do |action|
       it "may execute #{action} in kanton" do
         expect(subject).to be_able_to(action.to_sym, kanton)
       end
@@ -29,9 +30,12 @@ describe GroupAbility do
   end
 
   context "Kanton::Administrator" do
-    let(:person) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
+    let(:person) {
+      Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person
+    }
 
-    %w[activate_person_add_requests deactivate_person_add_requests index_service_tokens].each do |action|
+    %w[activate_person_add_requests deactivate_person_add_requests
+      index_service_tokens].each do |action|
       it "may execute #{action} in kanton" do
         expect(subject).to be_able_to(action.to_sym, kanton)
       end

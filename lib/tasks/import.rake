@@ -106,7 +106,9 @@ def group_type_and_role_for_category category # rubocop:disable Metrics/Cyclomat
   end
 end
 
-def group_for_zip_code_with_group_type zip_code, group_type
+# rubocop:todo Metrics/CyclomaticComplexity
+# rubocop:todo Metrics/MethodLength
+def group_for_zip_code_with_group_type zip_code, group_type # rubocop:todo Metrics/AbcSize # rubocop:todo Metrics/MethodLength
   groups_with_zip_codes = Group.without_deleted
     .where.not(zip_codes: "")
     .where.not(type: "Group::Root")
@@ -126,6 +128,8 @@ def group_for_zip_code_with_group_type zip_code, group_type
   end
   false
 end
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/CyclomaticComplexity
 
 def root_group_with_group_type group_type
   root_group = Group.without_deleted.find_by(type: "Group::Root")
@@ -180,7 +184,8 @@ rescue
   nil
 end
 
-def determine_gender title
+# rubocop:todo Metrics/MethodLength
+def determine_gender title # rubocop:todo Metrics/CyclomaticComplexity # rubocop:todo Metrics/MethodLength
   case title
   when "Herr"
     :m
@@ -198,6 +203,7 @@ def determine_gender title
     :w
   end
 end
+# rubocop:enable Metrics/MethodLength
 
 def debug_failure_for_person message, id, error = false
   puts "- Person with old Addr-ID '#{id}' not added: #{message}"

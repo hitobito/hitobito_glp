@@ -32,13 +32,15 @@ describe SortingHat::Song do
   end
 
   def create_jglp_subtree
-    @jglp = Group::Kanton.create!(name: "jGLP", parent: root, zip_codes: jglp_zip_code, email: "jglp@example.com")
+    @jglp = Group::Kanton.create!(name: "jGLP", parent: root, zip_codes: jglp_zip_code,
+      email: "jglp@example.com")
     @jglp_kontakte = Group::KantonKontakte.create!(name: "Kontakte", parent: @jglp)
     @jglp_zugeordnete = Group::KantonZugeordnete.create!(name: "Zugeordnete", parent: @jglp)
   end
 
   def create_jglp_be_subtree
-    @jglp_be = Group::Bezirk.create!(name: "be", parent: @jglp, zip_codes: "3010", email: "jglp_be@example.com")
+    @jglp_be = Group::Bezirk.create!(name: "be", parent: @jglp, zip_codes: "3010",
+      email: "jglp_be@example.com")
     @jglp_be_kontakte = Group::BezirkKontakte.create!(name: "Kontakte", parent: @jglp_be)
     @jglp_be_zugeordnete = Group::BezirkZugeordnete.create!(name: "Zugeordnete", parent: @jglp_be)
   end
@@ -101,7 +103,8 @@ describe SortingHat::Song do
 
       it "puts person in Bezirk with matching zip" do
         person.update(zip_code: 3002)
-        bezirk = Fabricate(Group::Bezirk.sti_name, parent: groups(:bern), zip_codes: "3002", email: "bezirk@example.com")
+        bezirk = Fabricate(Group::Bezirk.sti_name, parent: groups(:bern), zip_codes: "3002",
+          email: "bezirk@example.com")
         bezirk_zugeordnete = Fabricate(Group::BezirkZugeordnete.sti_name, parent: bezirk)
         expect(notifier).to receive(:mitglied_joined).with(person, "bezirk@example.com", jglp)
         SortingHat::Song.new(person, role, jglp).sing
@@ -111,7 +114,8 @@ describe SortingHat::Song do
 
       it "notifies admins of kanton and root group" do
         person.update(zip_code: 3000)
-        kantons_admin = Fabricate(Group::Kanton::Administrator.sti_name, group: groups(:bern)).person
+        kantons_admin = Fabricate(Group::Kanton::Administrator.sti_name,
+          group: groups(:bern)).person
 
         [kantons_admin, people(:leader), people(:admin)].each do |admin|
           expect(notifier).to receive(:mitglied_joined_monitoring).with(person,

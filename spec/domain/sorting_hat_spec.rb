@@ -5,7 +5,9 @@
 
 describe SortingHat do
   it ".locked? is true for top level foreign and jglp groups" do
+    # rubocop:todo Layout/LineLength
     expect(SortingHat.locked?(Group::Kanton.new(zip_codes: SortingHat::FOREIGN_ZIP_CODE))).to eq true
+    # rubocop:enable Layout/LineLength
     expect(SortingHat.locked?(Group::Kanton.new(zip_codes: SortingHat::JGLP_ZIP_CODE))).to eq true
     expect(SortingHat.locked?(Group::Kanton.new(zip_codes: "other"))).to eq false
   end
