@@ -26,8 +26,14 @@ describe MailingList do
   end
 
   describe "with age filter" do
-    let!(:person_aged_20) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, birthday: 20.years.ago)).person }
-    let!(:person_aged_50) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, birthday: 50.years.ago)).person }
+    let!(:person_aged_20) {
+      Fabricate(role, group: groups(:root_zugeordnete),
+        person: Fabricate(:person, birthday: 20.years.ago)).person
+    }
+    let!(:person_aged_50) {
+      Fabricate(role, group: groups(:root_zugeordnete),
+        person: Fabricate(:person, birthday: 50.years.ago)).person
+    }
 
     describe "(age > 30)" do
       let(:list) { Fabricate(:mailing_list, group: root, age_start: 30) }
@@ -85,8 +91,14 @@ describe MailingList do
 
   describe "with gender filter" do
     let!(:person_with_unknown_gender) { Fabricate(role, group: groups(:root_zugeordnete)).person }
-    let!(:person_with_male_gender) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, gender: "m")).person }
-    let!(:person_with_female_gender) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, gender: "w")).person }
+    let!(:person_with_male_gender) {
+      Fabricate(role, group: groups(:root_zugeordnete),
+        person: Fabricate(:person, gender: "m")).person
+    }
+    let!(:person_with_female_gender) {
+      Fabricate(role, group: groups(:root_zugeordnete),
+        person: Fabricate(:person, gender: "w")).person
+    }
 
     describe "(genders = [])" do
       let(:list) { Fabricate(:mailing_list, group: root, genders: "") }
@@ -138,9 +150,18 @@ describe MailingList do
   end
 
   describe "with language filter" do
-    let!(:person_preferring_german) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, preferred_language: :de)).person }
-    let!(:person_preferring_french) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, preferred_language: :fr)).person }
-    let!(:person_preferring_italian) { Fabricate(role, group: groups(:root_zugeordnete), person: Fabricate(:person, preferred_language: :it)).person }
+    let!(:person_preferring_german) {
+      Fabricate(role, group: groups(:root_zugeordnete),
+        person: Fabricate(:person, preferred_language: :de)).person
+    }
+    let!(:person_preferring_french) {
+      Fabricate(role, group: groups(:root_zugeordnete),
+        person: Fabricate(:person, preferred_language: :fr)).person
+    }
+    let!(:person_preferring_italian) {
+      Fabricate(role, group: groups(:root_zugeordnete),
+        person: Fabricate(:person, preferred_language: :it)).person
+    }
 
     describe "(languages = [])" do
       let(:list) { Fabricate(:mailing_list, group: root, languages: "") }

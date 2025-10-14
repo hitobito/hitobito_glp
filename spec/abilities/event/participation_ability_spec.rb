@@ -46,7 +46,9 @@ describe Event::ParticipationAbility do
   end
 
   context "Kanton::Administrator" do
-    let(:person) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
+    let(:person) {
+      Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person
+    }
 
     %w[create destroy].each do |action|
       it "may execute #{action} on event-particpation for event in kanton" do

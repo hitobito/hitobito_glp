@@ -33,7 +33,9 @@ describe ServiceTokenAbility do
   end
 
   context "Kanton::Administrator" do
-    let(:person) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
+    let(:person) {
+      Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person
+    }
 
     %w[update show edit destroy].each do |action|
       it "may execute #{action} in kanton" do

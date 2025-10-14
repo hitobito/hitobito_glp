@@ -28,7 +28,9 @@ describe PeopleController, type: :controller do
   it "notifies schweiz@grunliberale.ch whenever a person changes his/her PLZ." do
     perform_enqueued_jobs do
       expect do
-        put :update, params: {group_id: role.person.primary_group.id, id: role.person.id, person: {zip_code: "4321"}}
+        put :update,
+          params: {group_id: role.person.primary_group.id, id: role.person.id,
+                   person: {zip_code: "4321"}}
       end.to change(ActionMailer::Base.deliveries, :count).by(1)
     end
   end

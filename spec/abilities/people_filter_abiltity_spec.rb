@@ -31,7 +31,9 @@ describe PeopleFilterAbility do
   end
 
   context "Kanton::Administrator" do
-    let(:person) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
+    let(:person) {
+      Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person
+    }
 
     %w[create destroy edit update].each do |action|
       it "may execute #{action} on people_filter in kanton" do

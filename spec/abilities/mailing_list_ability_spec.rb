@@ -31,7 +31,9 @@ describe MailingListAbility do
   end
 
   context "Kanton::Administrator" do
-    let(:person) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
+    let(:person) {
+      Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person
+    }
 
     %w[index_subscriptions export_subscriptions create update destroy].each do |action|
       it "may execute #{action} on mailing_list in kanton" do

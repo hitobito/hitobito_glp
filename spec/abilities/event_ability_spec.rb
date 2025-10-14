@@ -31,7 +31,9 @@ describe EventAbility do
   end
 
   context "Kanton::Administrator" do
-    let(:person) { Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person }
+    let(:person) {
+      Fabricate(Group::Kanton::Administrator.name.to_sym, group: groups(:bern)).person
+    }
 
     %w[create destroy application_market qualify qualifications_read].each do |action|
       it "may execute #{action} on event in kanton" do

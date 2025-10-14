@@ -39,7 +39,7 @@ class MemberList
     }
   end
 
-  def role_type_ids
+  def role_type_ids # rubocop:todo Metrics/CyclomaticComplexity
     types = if @kind == "members"
       Role.all_types.select { |type| type.to_s =~ /Zugeordnete::Mitglied$/ }
     elsif @kind == "sympis"
