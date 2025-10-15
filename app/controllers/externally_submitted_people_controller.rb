@@ -33,7 +33,7 @@ class ExternallySubmittedPeopleController < ApplicationController
     unless is_captcha_valid?
       render({
         json: {error: t("external_form_js.server_error_captcha")},
-        status: :unprocessable_entity
+        status: :unprocessable_content
       })
       return
     end
@@ -65,7 +65,7 @@ class ExternallySubmittedPeopleController < ApplicationController
         end
         render({
           json: {error: message},
-          status: :unprocessable_entity
+          status: :unprocessable_content
         })
       end
     end
