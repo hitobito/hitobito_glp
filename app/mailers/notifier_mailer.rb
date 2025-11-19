@@ -42,11 +42,10 @@ class NotifierMailer < ApplicationMailer
       @category = "Medien & Dritte"
     else
       @subject = "Achtung: Neue Anmeldung"
-      Raven.capture_exception(RuntimeError.new(<<~MESSAGE))
-        Kategorie "#{submitted_role}" wird von "mitglied_joined_monitoring" nicht direkt erwartet.
-
-        Person-ID: #{person.id}
-      MESSAGE
+      Sentry.with_scope do |scope|
+        scope.set_context(category: submitted_role, person_id: person.id)
+        Sentry.capture_message("Unerwartete Kategorie in 'mitglied_joined_monitoring'")
+      end
     end
 
     mail(to: email, subject: @subject)
