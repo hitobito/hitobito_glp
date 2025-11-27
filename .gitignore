@@ -28,3 +28,6 @@ rubocop-results.xml
 tags
 .env
 .pry_history
+
+db/schema.rb
+db/schema.rb.diff
