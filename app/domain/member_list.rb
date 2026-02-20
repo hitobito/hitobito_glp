@@ -47,6 +47,6 @@ class MemberList
     elsif @kind == "members_and_sympis"
       Role.all_types.select { |type| type.to_s =~ /Zugeordnete::(Mitglied|Sympathisant)$/ }
     end
-    types.collect(&:id).join(Person::Filter::Base::ID_URL_SEPARATOR)
+    types.collect(&:type_id).join(Person::Filter::Base::ID_URL_SEPARATOR)
   end
 end
