@@ -29,7 +29,7 @@ describe "FilterNavigation::People" do
 
   def path(name, regex)
     types = Role.all_types.select { |type| type.to_s =~ regex }
-    role_type_ids = types.collect(&:id).join(Person::Filter::Base::ID_URL_SEPARATOR)
+    role_type_ids = types.collect(&:type_id).join(Person::Filter::Base::ID_URL_SEPARATOR)
     template.group_people_path(group.layer_group, filters: {role: {role_type_ids: role_type_ids}},
       name: name, range: "deep")
   end
