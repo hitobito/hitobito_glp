@@ -6,5 +6,5 @@
 #  https://github.com/hitobito/hitobito_glp.
 
 module HitobitoGlp
-  VERSION = "2.8.7"
+  VERSION = "2.8.11"
 end
