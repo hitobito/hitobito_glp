@@ -5,6 +5,9 @@
 
 
 de:
+  admins:
+    show:
+      external_forms: Externe Formulare
   groups:
     form:
       label_zip_codes: PLZ (getrennt durch Kommas)

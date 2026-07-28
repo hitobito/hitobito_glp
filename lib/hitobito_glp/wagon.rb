@@ -68,11 +68,11 @@ module HitobitoGlp
       admin = NavigationHelper::MAIN.find { |entry| entry[:label] == :admin }
       admin[:if] = ->(_) { can?(:manage_global, LabelFormat) }
 
-      NavigationHelper::ADMIN_GROUPS[:people][:items] << {
-        label: "Externe Formulare",
+      NavigationHelper::ADMIN_GROUPS[:people][:items] << NavigationHelper::Item.new(
+        label: "admins.show.external_forms",
         path: :external_forms_path,
         if: ->(_) { can?(:index, LabelFormat) }
-      }
+      )
     end
 
     initializer "glp.add_settings" do |_app|
