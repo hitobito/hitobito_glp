@@ -5,6 +5,9 @@
 
 
 en:
+  admins:
+    show:
+      external_forms: Externe Formulare
   groups:
     form:
       label_zip_codes: Zip codes (separated by commas)
