@@ -76,24 +76,17 @@ module HitobitoGlp
       ActiveSupport::Inflector.inflections do |inflect|
         # inflect.irregular 'census', 'censuses'
       end
-      Rails.application.config.middleware.insert_before 0, Rack::Cors do
-        allow do
-          origins ["http://localhost:4000",
-            "https://grunliberale.ch",
-            "https://vertliberaux.ch",
-            "https://verdiliberali.ch",
-            "https://be.grunliberale.ch",
-            "https://gruenliberale.mironet.ch",
-            "https://www.bennoscherrer.ch/",
-            "http://liste-6.ch/",
-            "http://markusstadler.ch/",
-            "http://tianamoser.ch/",
-            "http://verenadiener.ch/",
-            "http://greenliberals.ch/",
-            /^https:\/\/(.*?)\.grunliberale\.ch$/,
-            /^https:\/\/(.*?)\.vertliberaux\.ch$/,
-            /^https:\/\/(.*?)\.verdiliberali\.ch$/]
-          resource "*", headers: :any, methods: [:get, :post, :options]
+
+      # CORS origins are configured via Settings (e.g. config/settings.local.yml
+      # mounted from a Kubernetes ConfigMap) so they can be changed without a code release.
+      cors_origins = Array.wrap(Settings.glp&.cors&.origins).compact
+
+      if cors_origins.any?
+        Rails.application.config.middleware.insert_before 0, Rack::Cors do
+          allow do
+            origins(cors_origins)
+            resource "*", headers: :any, methods: [:get, :post, :options]
+          end
         end
       end
     end
