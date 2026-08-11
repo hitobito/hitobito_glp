@@ -21,7 +21,7 @@ class ExternallySubmittedPeopleController < ApplicationController
       true
     else
       response = Net::HTTP.post_form(URI.parse("https://www.google.com/recaptcha/api/siteverify"), {
-        secret: "6LcBNGoUAAAAAKoQO8Rvw_H5DlKKkR64Q1ZoP3Is",
+        secret: Settings.glp.recaptcha.secret,
         response: params["g-recaptcha-response"]
       })
       JSON.parse(response.body)["success"] || false
