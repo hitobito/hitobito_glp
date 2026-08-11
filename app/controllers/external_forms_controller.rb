@@ -110,7 +110,7 @@ class ExternalFormsController < ApplicationController
               </label>
               <input type='hidden' name='externally_submitted_person[role]' value='#{role}'/>
               <input type='hidden' name='externally_submitted_person[preferred_language]' value='#{@language}'/>
-              <div class='g-recaptcha' required='required' data-sitekey='6LcBNGoUAAAAAO3PJDEgWoN9f0zFFag1WdBRHjYO' data-size='compact'></div>
+              <div class='g-recaptcha' required='required' data-sitekey='#{Settings.glp.recaptcha.key}' data-size='compact'></div>
               <div class='button-wrapper'>
                 <input type='submit' value='#{t("external_form_js.submit")}'/>
               </div>
