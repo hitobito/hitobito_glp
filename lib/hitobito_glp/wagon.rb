@@ -77,7 +77,9 @@ module HitobitoGlp
 
     initializer "glp.add_settings" do |_app|
       Settings.add_source!(File.join(paths["config"].existent, "settings.yml"))
+      Settings.add_source!(File.join(paths["config"].existent, "settings", "#{Rails.env}.yml"))
       Settings.reload!
+
       ActiveSupport::Inflector.inflections do |inflect|
         # inflect.irregular 'census', 'censuses'
       end
