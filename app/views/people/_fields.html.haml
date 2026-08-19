@@ -35,7 +35,7 @@
                            value: f.date_value(:left_at),
                            help_inline: t('.format_birthday'))
   = f.labeled(:preferred_language) do
-    = f.collection_select(:preferred_language, Person::PREFERRED_LANGUAGES, :to_s, :to_s, {}, class: 'form-select form-select-sm')
+    = f.collection_select(:preferred_language, Person::PREFERRED_LANGUAGES, :to_s, :to_s)
   = f.labeled_input_fields :paperless
   - if @person.admin?
     = field_set_tag do
