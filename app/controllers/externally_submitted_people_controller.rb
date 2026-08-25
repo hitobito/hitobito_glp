@@ -107,7 +107,7 @@ class ExternallySubmittedPeopleController < ApplicationController
     {
       "0": {
         number: model_params[:phone_number],
-        label: PhoneNumber.predefined_labels.first
+        category_id: ContactAccountCategory.for("PhoneNumber", "Person").other.first.id
       }
     }
   end
