@@ -152,7 +152,8 @@ describe ExternallySubmittedPeopleController do
     end.to change { PhoneNumber.count }.by(1)
 
     phone_number = PhoneNumber.last
-    expect(phone_number.label).to eq("Privat")
+    expect(phone_number.category).to eq(ContactAccountCategory.for("PhoneNumber",
+      "Person").other.first)
     expect(phone_number.number).to eq("+41 78 421 92 10")
   end
 
