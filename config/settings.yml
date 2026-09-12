@@ -17,8 +17,6 @@ application:
     width: 100
     height: 60
 
-list_domain: grunliberale.ch
-
 # The person with this email has root access to everything
 # This person should only be used by the operators of the application,
 # not the customers.
