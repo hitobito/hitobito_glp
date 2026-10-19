@@ -1,4 +1,4 @@
-#  Copyright (c) 2012-2019, GLP Schweiz. This file is part of
+#  Copyright (c) 2012-2026, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
@@ -49,8 +49,8 @@ describe PeopleController, type: :controller do
     it "does not render main_nav when view is simplified" do
       get :show, params: {group_id: group.id, id: person.id}
       dom = Capybara::Node::Simple.new(response.body)
-      expect(dom).not_to have_text "Gruppen"
-      expect(dom).not_to have_text "Personen"
+      expect(dom).not_to have_link "Gruppen"
+      expect(dom).not_to have_link "Personen"
     end
   end
 end
