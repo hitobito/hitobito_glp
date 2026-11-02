@@ -87,7 +87,6 @@ class ExternalFormsController < ApplicationController
     <<-HTML
       <div class='form'>
         <div class='form-wrapper'>
-          <p id='hitobito-external-form-message'></p>
           <form action='#{action}' method='post'>
             <fieldset>
               #{input_field("first_name", required: true)}
@@ -114,7 +113,9 @@ class ExternalFormsController < ApplicationController
               <div class='button-wrapper'>
                 <input type='submit' value='#{t("external_form_js.submit")}'/>
               </div>
+            </fieldset>
           </form>
+          <p id='hitobito-external-form-message'></p>
         </div>
       </div>
     HTML
