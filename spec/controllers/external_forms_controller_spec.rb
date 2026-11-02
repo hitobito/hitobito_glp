@@ -24,6 +24,11 @@ describe ExternalFormsController do
       expect(response.body).to match(%r{action=.*it/externally_submitted_people})
     end
 
+    it "places message below form" do
+      get :loader, format: :js
+      expect(Capybara.string(response.body)).to have_css("form ~ #hitobito-external-form-message")
+    end
+
     context "jglp" do
       it "checkbox is present for role mitglied" do
         get :loader, params: {role: "mitglied"}, format: :js
