@@ -1,5 +1,8 @@
 # Hitobito GLP Changelog
 
+## unreleased
+- Adressabgleich mit der Post: Der Adresszusatz wird nicht an die Post übermittelt. Liefert die Post einen Adresszusatz zurück, wird er übernommen, sonst bleibt der bestehende erhalten (hitobito_sww#292)
+
 ## Version 1.28
 - Es gibt neu Spender als Gruppe und Rolle. Personen in diesen Gruppen werden nur Spendenverwaltern angezeigt. (hitobito_glp#33)
 - Die Anmeldeseite wurde umgestaltet (hitobito_glp#34)
