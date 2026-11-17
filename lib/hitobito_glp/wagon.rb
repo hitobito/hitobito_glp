@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2024, GLP Schweiz. This file is part of
+#  Copyright (c) 2012-2026, GLP Schweiz. This file is part of
 #  hitobito_glp and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_glp.
@@ -63,6 +63,8 @@ module HitobitoGlp
       Synchronize::Mailchimp::Synchronizator.member_fields = [
         [:language, ->(p) { p.preferred_language }]
       ]
+      Synchronize::Addresses::SwissPost::Generator.fields =
+        Synchronize::Addresses::SwissPost::Generator.fields.merge(AddressAddition_in: nil)
 
       # Main navigation
       admin = NavigationHelper::MAIN.find { |entry| entry[:label] == :admin }
